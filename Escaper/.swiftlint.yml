@@ -1,0 +1,25 @@
+disabled_rules:
+  - line_length
+ 
+opt_in_rules:
+
+excluded:
+
+force_cast:
+  severity: warning
+force_try:
+  severity: warning
+  
+type_body_length:
+  warning: 400
+  error: 600
+  
+file_length:
+  warning: 500
+  error: 1200
+
+type_name:
+  min_length: 3
+  max_length:
+    warning: 40
+    error: 50
