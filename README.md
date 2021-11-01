@@ -10,17 +10,19 @@
     <img src="https://img.shields.io/badge/Swift-v5.0-red?logo=swift" />
     <img src="https://img.shields.io/badge/Xcode-v13.0-blue?logo=Xcode" />
     <img src="https://img.shields.io/badge/iOS-13.0+-black?logo=apple" />  
-    <div align="end">
+<div align="end">
 <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fboostcampwm-2021%2FiOS05-Escaper&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23CF7373&title=hits&edge_flat=false"/></a>
         <img src="https://img.shields.io/github/issues/boostcampwm-2021/iOS05-Escaper">
         <img src="https://img.shields.io/github/stars/boostcampwm-2021/iOS05-Escaper">
 </p>
+
+</div>
 </br></br>
 
 
 # 👩🏻‍💻👨🏻‍💻👨🏻‍💻👨🏻‍💻 팀 소개
 
-</div>
+
 
 <div align="center">
   <table>
