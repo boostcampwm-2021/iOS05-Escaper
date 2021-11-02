@@ -8,9 +8,9 @@
 import UIKit
 
 class RoomListViewController: UIViewController {
-    
+
     private var viewModel: RoomListViewModelInterface!
-    
+
     func create() {
 //        let repository = DefaultNetworkService()
 //        let useCase = DefaultRoomListUseCase(repository: repository)

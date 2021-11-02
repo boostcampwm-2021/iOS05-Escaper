@@ -13,8 +13,7 @@ protocol RoomListUseCaseInterface {
 
 class DefaultRoomListUseCase: RoomListUseCaseInterface {
     func fetch(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void) {
-        
-    }
-    
-}
 
+    }
+
+}
