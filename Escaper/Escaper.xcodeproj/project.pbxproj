@@ -13,6 +13,10 @@
 		1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
 		1FCDDE75272EE0F10027AAAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE74272EE0F10027AAAD /* Assets.xcassets */; };
 		1FCDDE78272EE0F10027AAAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE76272EE0F10027AAAD /* LaunchScreen.storyboard */; };
+		25513368273107A000A92CF3 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513367273107A000A92CF3 /* Genre.swift */; };
+		2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513369273108A800A92CF3 /* RoomListUseCase.swift */; };
+		2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336B2731093B00A92CF3 /* RoomListViewModel.swift */; };
+		2551336E27310D5500A92CF3 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336D27310D5500A92CF3 /* Room.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		1FCDDE74272EE0F10027AAAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FCDDE77272EE0F10027AAAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FCDDE79272EE0F10027AAAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25513367273107A000A92CF3 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		25513369273108A800A92CF3 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
+		2551336B2731093B00A92CF3 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
+		2551336D27310D5500A92CF3 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,8 @@
 		255133552730E8F300A92CF3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				255133662731072000A92CF3 /* DataStruct */,
+				255133652731070F00A92CF3 /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -148,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */,
+				2551336B2731093B00A92CF3 /* RoomListViewModel.swift */,
 				255133632730F06100A92CF3 /* Views */,
 			);
 			path = RoomList;
@@ -201,6 +212,23 @@
 			children = (
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		255133652731070F00A92CF3 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				25513369273108A800A92CF3 /* RoomListUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		255133662731072000A92CF3 /* DataStruct */ = {
+			isa = PBXGroup;
+			children = (
+				25513367273107A000A92CF3 /* Genre.swift */,
+				2551336D27310D5500A92CF3 /* Room.swift */,
+			);
+			path = DataStruct;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,8 +324,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
+				2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */,
+				2551336E27310D5500A92CF3 /* Room.swift in Sources */,
 				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
+				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
 				1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */,
+				25513368273107A000A92CF3 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
