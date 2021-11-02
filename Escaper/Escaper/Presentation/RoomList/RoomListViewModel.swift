@@ -13,7 +13,7 @@ protocol RoomListViewModelInterface {
 
 class DefaultRoomListViewModel: RoomListViewModelInterface {
     func fetch(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void) {
-        
+
     }
-    
+
 }
