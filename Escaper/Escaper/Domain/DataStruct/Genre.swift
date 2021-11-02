@@ -22,4 +22,12 @@ enum Genre: String {
     case comedy = "코미디"
     case adventure = "모험"
     case outdoor = "야외"
+
+    var previewImageAssetName: String {
+        return String(describing: self) + "Preview"
+    }
+
+    var detailImageAssetName: String {
+        return String(describing: self) + "Detail"
+    }
 }
