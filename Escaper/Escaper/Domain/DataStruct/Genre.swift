@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Genre: String {
+enum Genre: String, Codable {
     case all = "전체"
     case history = "역사"
     case fear = "공포"
