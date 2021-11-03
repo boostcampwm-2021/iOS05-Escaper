@@ -10,6 +10,7 @@ import Foundation
 enum ColorPalette {
     case bloodyBlack
     case bloodyBurgundy
+    case bloodyDarkBurgundy
     case bloodyRed
     case charcoal
     case gloomyPink
