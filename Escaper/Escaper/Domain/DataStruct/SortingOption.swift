@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SortingOption: String {
+enum SortingOption: String, Tagable, CaseIterable {
     case satisfaction = "만족도순"
     case level = "난이도순"
     case distance = "거리순"

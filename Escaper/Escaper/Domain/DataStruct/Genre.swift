@@ -7,7 +7,12 @@
 
 import Foundation
 
-enum Genre: String, Codable {
+enum Genre: String, Tagable, CaseIterable, Codable {
+
+    var name: String {
+        return self.rawValue
+    }
+
     case all = "전체"
     case history = "역사"
     case fear = "공포"
