@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>534296336472-9kv8k2u9sudmkh0a1u8l852db358lgk6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.534296336472-9kv8k2u9sudmkh0a1u8l852db358lgk6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC_odfHMeQo5wTWd3mBN0W9yRxXRBc3HS8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>534296336472</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kr.boostcamp.Escaper</string>
+	<key>PROJECT_ID</key>
+	<string>escaper-67244</string>
+	<key>STORAGE_BUCKET</key>
+	<string>escaper-67244.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:534296336472:ios:6115a897fe7418d450522d</string>
+</dict>
+</plist>
