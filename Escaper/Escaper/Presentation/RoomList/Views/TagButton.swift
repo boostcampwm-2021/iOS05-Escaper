@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TagButton: UIButton {
+final class TagButton: UIButton {
 
     private(set) var element: Tagable?
 
