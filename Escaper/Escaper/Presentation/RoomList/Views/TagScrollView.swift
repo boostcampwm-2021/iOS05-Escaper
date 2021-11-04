@@ -11,7 +11,7 @@ protocol TagScrollViewDelegate: AnyObject {
     func tagSelected(element: Tagable)
 }
 
-class TagScrollView: UIScrollView {
+final class TagScrollView: UIScrollView {
     weak var tagDelegate: TagScrollViewDelegate?
 
     private var selectedButton: TagButton?
