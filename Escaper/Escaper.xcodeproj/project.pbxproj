@@ -14,11 +14,11 @@
 		1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
 		1FCDDE75272EE0F10027AAAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE74272EE0F10027AAAD /* Assets.xcassets */; };
 		1FCDDE78272EE0F10027AAAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE76272EE0F10027AAAD /* LaunchScreen.storyboard */; };
-		2510A1472732200700D3E513 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2510A1462732200700D3E513 /* ColorPalette.swift */; };
 		1FE6C8AC2732621800AC7408 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1FE6C8AB2732621800AC7408 /* FirebaseFirestore */; };
 		1FE6C8AE2732621800AC7408 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1FE6C8AD2732621800AC7408 /* FirebaseFirestoreSwift-Beta */; };
 		1FE6C8B0273273BD00AC7408 /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6C8AF273273BD00AC7408 /* UserRecord.swift */; };
 		1FE6C8B22732741E00AC7408 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6C8B12732741E00AC7408 /* GeoLocation.swift */; };
+		2510A1472732200700D3E513 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2510A1462732200700D3E513 /* ColorPalette.swift */; };
 		25513368273107A000A92CF3 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513367273107A000A92CF3 /* Genre.swift */; };
 		2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513369273108A800A92CF3 /* RoomListUseCase.swift */; };
 		2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336B2731093B00A92CF3 /* RoomListViewModel.swift */; };
@@ -40,9 +40,9 @@
 		1FCDDE74272EE0F10027AAAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FCDDE77272EE0F10027AAAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FCDDE79272EE0F10027AAAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2510A1462732200700D3E513 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		1FE6C8AF273273BD00AC7408 /* UserRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
 		1FE6C8B12732741E00AC7408 /* GeoLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
+		2510A1462732200700D3E513 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		25513367273107A000A92CF3 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		25513369273108A800A92CF3 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
 		2551336B2731093B00A92CF3 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
@@ -99,6 +99,14 @@
 			path = Escaper;
 			sourceTree = "<group>";
 		};
+		251031BA2733950900BD07BF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		255133532730E8DB00A92CF3 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +120,7 @@
 		255133542730E8E700A92CF3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				251031BA2733950900BD07BF /* Common */,
 				2551335B2730ED5500A92CF3 /* Home */,
 				2551335C2730EDA900A92CF3 /* RoomList */,
 				2551335D2730EEDB00A92CF3 /* RoomDetail */,
@@ -145,7 +154,6 @@
 			children = (
 				255133592730EC3B00A92CF3 /* Library */,
 				255133582730EC3300A92CF3 /* Extensions */,
-				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
