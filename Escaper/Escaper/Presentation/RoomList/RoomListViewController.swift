@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RoomListViewController: DefaultViewController {
+final class RoomListViewController: DefaultViewController {
 
     enum Constant {
         static let tagViewHeight = CGFloat(35)
