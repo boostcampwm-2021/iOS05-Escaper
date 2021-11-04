@@ -20,7 +20,7 @@ enum ColorPalette {
     case skullLightWhite
     case skullWhite
 
-    var code: String {
+    var name: String {
         return String(describing: self)
     }
 }

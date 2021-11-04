@@ -17,7 +17,7 @@ enum Genre: String, Tagable, CaseIterable, Codable {
     var detailImageAssetName: String {
         return String(describing: self) + "Detail"
     }
-    
+
     case all = "전체"
     case history = "역사"
     case fear = "공포"

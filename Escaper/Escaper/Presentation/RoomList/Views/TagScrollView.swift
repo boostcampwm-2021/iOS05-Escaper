@@ -13,7 +13,7 @@ protocol TagScrollViewDelegate: AnyObject {
 
 final class TagScrollView: UIScrollView {
     weak var tagDelegate: TagScrollViewDelegate?
-    
+
     private var selectedButton: TagButton?
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -59,7 +59,7 @@ private extension TagScrollView {
             self.stackView.bottomAnchor.constraint(equalTo: self.frameLayoutGuide.bottomAnchor)
         ])
     }
-    
+
     @objc func buttonTouched(sender: TagButton) {
         guard self.selectedButton !== sender,
               let element = sender.element else { return }

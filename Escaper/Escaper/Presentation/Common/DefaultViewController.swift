@@ -11,7 +11,7 @@ class DefaultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(named: ColorPalette.bloodyBlack.code)
+        self.view.backgroundColor = UIColor(named: ColorPalette.bloodyBlack.name)
     }
 
 }
