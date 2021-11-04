@@ -24,6 +24,10 @@
 		2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336B2731093B00A92CF3 /* RoomListViewModel.swift */; };
 		2551336E27310D5500A92CF3 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336D27310D5500A92CF3 /* Room.swift */; };
 		2551339027315B1900A92CF3 /* SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551338F27315B1900A92CF3 /* SortingOption.swift */; };
+		3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BDEA02732C2FB0081A749 /* Tagable.swift */; };
+		3E4378C927325241001ED120 /* TagScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378C827325241001ED120 /* TagScrollView.swift */; };
+		3E4378CB27329028001ED120 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CA27329028001ED120 /* TagButton.swift */; };
+		3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CC2732914B001ED120 /* DefaultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		2551336B2731093B00A92CF3 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
 		2551336D27310D5500A92CF3 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		2551338F27315B1900A92CF3 /* SortingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOption.swift; sourceTree = "<group>"; };
+		3E2BDEA02732C2FB0081A749 /* Tagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tagable.swift; sourceTree = "<group>"; };
+		3E4378C827325241001ED120 /* TagScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagScrollView.swift; sourceTree = "<group>"; };
+		3E4378CA27329028001ED120 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
+		3E4378CC2732914B001ED120 /* DefaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +126,7 @@
 		255133552730E8F300A92CF3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3E2BDE9F2732C2E60081A749 /* Protocol */,
 				255133662731072000A92CF3 /* DataStruct */,
 				255133652731070F00A92CF3 /* UseCase */,
 			);
@@ -136,6 +145,7 @@
 			children = (
 				255133592730EC3B00A92CF3 /* Library */,
 				255133582730EC3300A92CF3 /* Extensions */,
+				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -218,6 +228,8 @@
 		255133632730F06100A92CF3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3E4378C827325241001ED120 /* TagScrollView.swift */,
+				3E4378CA27329028001ED120 /* TagButton.swift */,
 				255133642730F07000A92CF3 /* Cells */,
 			);
 			path = Views;
@@ -248,6 +260,14 @@
 				2551338F27315B1900A92CF3 /* SortingOption.swift */,
 			);
 			path = DataStruct;
+			sourceTree = "<group>";
+		};
+		3E2BDE9F2732C2E60081A749 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3E2BDEA02732C2FB0081A749 /* Tagable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,13 +370,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
 				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
 				2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */,
 				2510A1472732200700D3E513 /* ColorPalette.swift in Sources */,
 				1FE6C8B22732741E00AC7408 /* GeoLocation.swift in Sources */,
 				2551336E27310D5500A92CF3 /* Room.swift in Sources */,
+				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
 				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
+				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
 				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
+				3E4378CB27329028001ED120 /* TagButton.swift in Sources */,
 				2551339027315B1900A92CF3 /* SortingOption.swift in Sources */,
 				1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */,
 				1FE6C8B0273273BD00AC7408 /* UserRecord.swift in Sources */,
