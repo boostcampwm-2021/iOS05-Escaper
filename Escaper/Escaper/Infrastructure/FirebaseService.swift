@@ -10,11 +10,12 @@ import Firebase
 import FirebaseFirestoreSwift
 
 protocol RoomListNetwork: AnyObject {
-    func get(genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void)
+    func query(genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void)
 }
 
 final class FirebaseService: RoomListNetwork {
     static let shared = FirebaseService()
+
     let db: Firestore
 
     private init() {
@@ -22,10 +23,10 @@ final class FirebaseService: RoomListNetwork {
         self.db = Firestore.firestore()
     }
 
-    func get(genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
+    func query(genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
         db.collection("rooms")
-            .whereField("genres", arrayContains: genre.rawValue)
-            .whereField("district", isEqualTo: district.rawValue)
+            .whereField("genres", arrayContains: genre.name)
+            .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
                 var roomList = [RoomDTO]()
@@ -40,6 +41,7 @@ final class FirebaseService: RoomListNetwork {
                         }
                     case .failure(let error):
                         completion(.failure(error))
+                        break
                     }
                 }
                 completion(Result.success(roomList))
@@ -48,11 +50,10 @@ final class FirebaseService: RoomListNetwork {
 
     func addRoom(_ room: RoomDTO) {
         if FirebaseApp.app() == nil {
-          FirebaseApp.configure()
+            FirebaseApp.configure()
         }
-       let db = Firestore.firestore()
-       let path = db.collection("rooms").document(room.name)
-
-       path.setData(room.toDictionary)
+        let db = Firestore.firestore()
+        let path = db.collection("rooms").document(room.name)
+        path.setData(room.toDictionary())
     }
 }

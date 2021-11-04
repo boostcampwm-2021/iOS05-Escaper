@@ -9,25 +9,27 @@ import Foundation
 import CoreLocation
 
 protocol RoomListUseCaseInterface {
-    func fetch(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void)
+    func query(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void)
 }
 
 class DefaultRoomListUseCase: RoomListUseCaseInterface {
-    let repository: RoomListRepository
+    let repository: RoomListRepositroyInterface
 
-    init(repository: RoomListRepository) {
+    init(repository: RoomListRepositroyInterface) {
         self.repository = repository
     }
 
-    func fetch(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void) {
+    func query(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void) {
         self.fetchCurrentDistrict(genre: genre, completion: completion)
     }
 
     private func fetchCurrentDistrict(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void) {
-        let locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-
+        let locationManager: CLLocationManager = {
+            let manager = CLLocationManager()
+            manager.desiredAccuracy = kCLLocationAccuracyBest
+            manager.requestWhenInUseAuthorization()
+            return manager
+        }()
         guard let location = locationManager.location else { return }
         let geocoder = CLGeocoder()
         let locale = Locale(identifier: "Ko-kr")
@@ -35,9 +37,7 @@ class DefaultRoomListUseCase: RoomListUseCaseInterface {
             guard let address: [CLPlacemark] = placeMarks,
                   let locality = address.last?.locality,
                   let district = District.init(rawValue: locality) else { return }
-
-            self.repository.get(genre: genre, district: district, completion: completion)
+            self.repository.query(genre: genre, district: district, completion: completion)
         }
-
     }
 }

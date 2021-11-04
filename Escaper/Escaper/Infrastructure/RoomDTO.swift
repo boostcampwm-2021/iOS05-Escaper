@@ -17,7 +17,8 @@ struct RoomDTO: Codable {
     var geoLocation: GeoLocation
     var district: District
     var userRecords: [UserRecord]
-    var toDictionary: [String: Any] {
+
+    func toDictionary() -> [String: Any] {
         let dictionary: [String: Any] = [
             "name": self.name,
             "storeName": self.storeName,
@@ -38,16 +39,15 @@ struct RoomDTO: Codable {
         let satisfactionRawValue = self.userRecords.count == 0 ? 0 : (satisfactionSum / Double(self.userRecords.count)).rounded()
         let satisfaction = Rating(rawValue: Int(satisfactionRawValue)) ?? Rating.zero
         let userRecords = self.userRecords.sorted { $0.playTime > $1.playTime }.prefix(3).map { $0 }
-
         return Room(name: self.name,
-                     storeName: self.storeName,
-                     level: level,
-                     satisfaction: satisfaction,
-                     homepage: self.homePage,
-                     telephone: self.telephone,
-                     genres: self.genres,
-                     geoLocation: self.geoLocation.clLocation,
-                     district: self.district,
-                     userRecords: userRecords)
+                    storeName: self.storeName,
+                    level: level,
+                    satisfaction: satisfaction,
+                    homepage: self.homePage,
+                    telephone: self.telephone,
+                    genres: self.genres,
+                    geoLocation: self.geoLocation.clLocation,
+                    district: self.district,
+                    userRecords: userRecords)
     }
 }

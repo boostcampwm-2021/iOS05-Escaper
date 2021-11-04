@@ -28,6 +28,18 @@ final class RoomListViewController: DefaultViewController {
         super.viewDidLoad()
         self.configureGenreTagScrollView()
         self.configureSortingOptionTagScrollView()
+        let serviec = FirebaseService.shared
+        let repo = RoomListRepository(service: serviec)
+        let usercase = DefaultRoomListUseCase(repository: repo)
+
+        usercase.query(genre: .crime) { result in
+            switch result {
+            case .success(let roomList):
+                print(roomList)
+            case .failure(let err):
+                print(err)
+            }
+        }
     }
 }
 
