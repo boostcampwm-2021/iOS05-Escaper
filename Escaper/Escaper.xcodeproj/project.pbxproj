@@ -13,6 +13,7 @@
 		1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED22733E00300389CFA /* RoomDTO.swift */; };
 		1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED42733E03600389CFA /* FirebaseService.swift */; };
 		1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED62733E04F00389CFA /* RoomListRepository.swift */; };
+		1F72C20E2734010700C59CC1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72C20D2734010700C59CC1 /* Observable.swift */; };
 		1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
 		1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */; };
 		1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
@@ -25,7 +26,7 @@
 		251031BC27339C0200BD07BF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BB27339C0200BD07BF /* RatingView.swift */; };
 		251031C02733A2AC00BD07BF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BF2733A2AC00BD07BF /* Rating.swift */; };
 		251031C22733A5B500BD07BF /* RatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C12733A5B500BD07BF /* RatingImage.swift */; };
-		251031C42733AAF500BD07BF /* RoomOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C32733AAF500BD07BF /* RoomOverviewCollectionViewCell.swift */; };
+		251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */; };
 		251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C52733BCAC00BD07BF /* RatingContainerView.swift */; };
 		2510A1472732200700D3E513 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2510A1462732200700D3E513 /* ColorPalette.swift */; };
 		25513368273107A000A92CF3 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513367273107A000A92CF3 /* Genre.swift */; };
@@ -46,6 +47,7 @@
 		1F0CAED22733E00300389CFA /* RoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
 		1F0CAED42733E03600389CFA /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		1F0CAED62733E04F00389CFA /* RoomListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListRepository.swift; sourceTree = "<group>"; };
+		1F72C20D2734010700C59CC1 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1FCDDE68272EE0F00027AAAD /* Escaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Escaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		251031BB27339C0200BD07BF /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		251031BF2733A2AC00BD07BF /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		251031C12733A5B500BD07BF /* RatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingImage.swift; sourceTree = "<group>"; };
-		251031C32733AAF500BD07BF /* RoomOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomOverviewTableViewCell.swift; sourceTree = "<group>"; };
 		251031C52733BCAC00BD07BF /* RatingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingContainerView.swift; sourceTree = "<group>"; };
 		2510A1462732200700D3E513 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		25513367273107A000A92CF3 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		1F0CAED12733DFF300389CFA /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
+				1F0CAED22733E00300389CFA /* RoomDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -172,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				1F0CAED12733DFF300389CFA /* DataMapping */,
-				1F0CAED22733E00300389CFA /* RoomDTO.swift */,
 				1F0CAED42733E03600389CFA /* FirebaseService.swift */,
 				1F0CAED62733E04F00389CFA /* RoomListRepository.swift */,
 			);
@@ -198,6 +200,7 @@
 		255133592730EC3B00A92CF3 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				1F72C20D2734010700C59CC1 /* Observable.swift */,
 				2510A1462732200700D3E513 /* ColorPalette.swift */,
 				251031C12733A5B500BD07BF /* RatingImage.swift */,
 			);
@@ -278,7 +281,7 @@
 		255133642730F07000A92CF3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				251031C32733AAF500BD07BF /* RoomOverviewCollectionViewCell.swift */,
+				251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -413,7 +416,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				251031C42733AAF500BD07BF /* RoomOverviewCollectionViewCell.swift in Sources */,
+				251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */,
 				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
 				1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */,
 				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
@@ -424,6 +427,7 @@
 				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
 				251031C02733A2AC00BD07BF /* Rating.swift in Sources */,
 				1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */,
+				1F72C20E2734010700C59CC1 /* Observable.swift in Sources */,
 				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
 				1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */,
 				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
