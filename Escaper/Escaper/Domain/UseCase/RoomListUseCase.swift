@@ -12,8 +12,8 @@ protocol RoomListUseCaseInterface {
     func query(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void)
 }
 
-class DefaultRoomListUseCase: RoomListUseCaseInterface {
-    let repository: RoomListRepositroyInterface
+class RoomListUseCase: RoomListUseCaseInterface {
+    private let repository: RoomListRepositroyInterface
 
     init(repository: RoomListRepositroyInterface) {
         self.repository = repository
@@ -37,7 +37,17 @@ class DefaultRoomListUseCase: RoomListUseCaseInterface {
             guard let address: [CLPlacemark] = placeMarks,
                   let locality = address.last?.locality,
                   let district = District.init(rawValue: locality) else { return }
-            self.repository.query(genre: genre, district: district, completion: completion)
+            self.repository.query(genre: genre, district: district) { result in
+                switch result {
+                case .success(var roomList):
+                    for index in 0..<roomList.count {
+                        roomList[index].updateDistance(location.distance(from: roomList[index].geoLocation))
+                    }
+                    completion(.success(roomList))
+                case .failure(let err):
+                    completion(.failure(err))
+                }
+            }
         }
     }
 }
