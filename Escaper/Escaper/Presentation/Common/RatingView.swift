@@ -8,6 +8,11 @@
 import UIKit
 
 class RatingView: UIView {
+    enum Constant {
+        static let spacing = CGFloat(3)
+        static let summationOfElementSpacing = Constant.spacing * CGFloat(Rating.maxRating - 1)
+    }
+
     enum Image {
         static let filled = UIImage(named: RatingImage.starFilled.name)
         static let unfilled = UIImage(named: RatingImage.starUnfilled.name)
@@ -17,6 +22,7 @@ class RatingView: UIView {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
+        stackView.spacing = Constant.spacing
         return stackView
     }()
 
