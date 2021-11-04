@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-struct Room {
+struct Room: Hashable {
     var name: String
     var storeName: String
     var level: Rating
@@ -18,5 +18,19 @@ struct Room {
     var genres: [Genre]
     var geoLocation: CLLocation
     var district: District
+    var distance: Double
     var userRecords: [UserRecord]
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.name)
+        hasher.combine(self.storeName)
+    }
+
+    mutating func updateDistance(_ distance: Double) {
+        self.distance = distance
+    }
+
+    static func == (lhs: Room, rhs: Room) -> Bool {
+        return lhs.name == rhs.name && lhs.storeName == rhs.storeName
+    }
 }
