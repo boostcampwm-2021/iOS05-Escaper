@@ -28,7 +28,6 @@ final class RoomListViewController: DefaultViewController {
         super.viewDidLoad()
         self.configureGenreTagScrollView()
         self.configureSortingOptionTagScrollView()
-        
     }
 }
 
