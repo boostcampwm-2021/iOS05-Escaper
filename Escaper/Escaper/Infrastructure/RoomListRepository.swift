@@ -12,7 +12,7 @@ protocol RoomListRepositroyInterface {
 }
 
 final class RoomListRepository: RoomListRepositroyInterface {
-    let service: RoomListNetwork
+    private let service: RoomListNetwork
 
     init(service: RoomListNetwork) {
         self.service = service
