@@ -8,11 +8,16 @@
 import Foundation
 
 enum Genre: String, Tagable, CaseIterable, Codable {
-
     var name: String {
         return self.rawValue
     }
-
+    var previewImageAssetName: String {
+        return String(describing: self) + "Preview"
+    }
+    var detailImageAssetName: String {
+        return String(describing: self) + "Detail"
+    }
+    
     case all = "전체"
     case history = "역사"
     case fear = "공포"
@@ -27,12 +32,4 @@ enum Genre: String, Tagable, CaseIterable, Codable {
     case comedy = "코미디"
     case adventure = "모험"
     case outdoor = "야외"
-
-    var previewImageAssetName: String {
-        return String(describing: self) + "Preview"
-    }
-
-    var detailImageAssetName: String {
-        return String(describing: self) + "Detail"
-    }
 }

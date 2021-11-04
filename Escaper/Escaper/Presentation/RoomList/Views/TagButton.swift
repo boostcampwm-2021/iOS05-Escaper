@@ -8,7 +8,6 @@
 import UIKit
 
 final class TagButton: UIButton {
-
     private(set) var element: Tagable?
 
     required init?(coder: NSCoder) {
@@ -26,13 +25,7 @@ final class TagButton: UIButton {
         self.element = element
         self.setTitle(element.name, for: .normal)
     }
-
-    private func configure() {
-        self.layer.cornerRadius = 5
-        self.titleLabel?.textColor = UIColor(named: ColorPalette.skullWhite.code)
-        self.untouched()
-    }
-
+    
     func touched() {
         self.backgroundColor = UIColor(named: ColorPalette.pumpkin.code)
     }
@@ -40,5 +33,12 @@ final class TagButton: UIButton {
     func untouched() {
         self.backgroundColor = UIColor(named: ColorPalette.bloodyDarkBurgundy.code)
     }
+}
 
+private extension TagButton {
+    func configure() {
+        self.layer.cornerRadius = 5
+        self.titleLabel?.textColor = UIColor(named: ColorPalette.skullWhite.code)
+        self.untouched()
+    }
 }
