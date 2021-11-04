@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C7F483927337D1C007FE109 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F483827337D1C007FE109 /* District.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F06844E27315D6300E2C789 /* GoogleService-Info.plist */; };
 		1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C7F483827337D1C007FE109 /* District.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		1F061DA7272FF896008FC519 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1F06844E27315D6300E2C789 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1FCDDE68272EE0F00027AAAD /* Escaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Escaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +283,7 @@
 				1FE6C8AF273273BD00AC7408 /* UserRecord.swift */,
 				2551338F27315B1900A92CF3 /* SortingOption.swift */,
 				251031BF2733A2AC00BD07BF /* Rating.swift */,
+				0C7F483827337D1C007FE109 /* District.swift */,
 			);
 			path = DataStruct;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
 				3E4378CB27329028001ED120 /* TagButton.swift in Sources */,
 				251031BC27339C0200BD07BF /* RatingView.swift in Sources */,
+				0C7F483927337D1C007FE109 /* District.swift in Sources */,
 				2551339027315B1900A92CF3 /* SortingOption.swift in Sources */,
 				1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */,
 				1FE6C8B0273273BD00AC7408 /* UserRecord.swift in Sources */,
