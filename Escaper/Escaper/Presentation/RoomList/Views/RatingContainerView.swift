@@ -41,15 +41,13 @@ class RatingContainerView: UIView {
         self.configure()
     }
 
-    func update() {
-        self.levelRatingView.fill(rating: .five)
-        self.satisfactionRatingView.fill(rating: .two)
+    func update(level: Rating, satisfaction: Rating) {
+        self.levelRatingView.fill(rating: level)
+        self.satisfactionRatingView.fill(rating: satisfaction)
     }
 
     func prepareForReuse() {
-        self.levelLabel.text = ""
         self.levelRatingView.fill(rating: .zero)
-        self.satisfactionLabel.text = ""
         self.satisfactionRatingView.fill(rating: .zero)
     }
 }
