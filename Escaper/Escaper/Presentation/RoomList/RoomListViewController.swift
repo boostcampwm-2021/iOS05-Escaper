@@ -8,42 +8,40 @@
 import UIKit
 
 final class RoomListViewController: DefaultViewController {
-
     enum Constant {
         static let tagViewHeight = CGFloat(35)
     }
 
     private var viewModel: RoomListViewModelInterface!
-
     private var genreTagScrollView: TagScrollView = {
         let tagScrollView: TagScrollView = TagScrollView()
         tagScrollView.showsHorizontalScrollIndicator = false
         return tagScrollView
     }()
-
     private var sortingOptionTagScrollView: TagScrollView = {
         let tagScrollView: TagScrollView = TagScrollView()
         tagScrollView.showsHorizontalScrollIndicator = false
         return tagScrollView
     }()
 
-    func create() {
-//        let repository = DefaultNetworkService()
-//        let useCase = DefaultRoomListUseCase(repository: repository)
-//        let viewModel = DefaultRoomListViewModel(usecase: useCase)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.configureGenreTagScrollView()
         self.configureSortingOptionTagScrollView()
+        
     }
+}
 
-    private func configureGenreTagScrollView() {
+extension RoomListViewController: TagScrollViewDelegate {
+    func tagSelected(element: Tagable) {
+        print(element.name)
+    }
+}
+
+private extension RoomListViewController {
+    func configureGenreTagScrollView() {
         self.genreTagScrollView.tagDelegate = self
         self.genreTagScrollView.inject(elements: Genre.allCases)
-
         self.genreTagScrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.genreTagScrollView)
         NSLayoutConstraint.activate([
@@ -54,10 +52,9 @@ final class RoomListViewController: DefaultViewController {
         ])
     }
 
-    private func configureSortingOptionTagScrollView() {
+    func configureSortingOptionTagScrollView() {
         self.sortingOptionTagScrollView.tagDelegate = self
         self.sortingOptionTagScrollView.inject(elements: SortingOption.allCases)
-
         self.sortingOptionTagScrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.sortingOptionTagScrollView)
         NSLayoutConstraint.activate([
@@ -67,11 +64,4 @@ final class RoomListViewController: DefaultViewController {
             self.sortingOptionTagScrollView.heightAnchor.constraint(equalToConstant: Constant.tagViewHeight)
         ])
     }
-}
-
-extension RoomListViewController: TagScrollViewDelegate {
-    func tagSelected(element: Tagable) {
-        print(element.name)
-    }
-
 }
