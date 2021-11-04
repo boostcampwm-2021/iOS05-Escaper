@@ -16,6 +16,7 @@ enum ColorPalette {
     case gloomyPink
     case gloomyPurple
     case gloomyRed
+    case gloomyBrown
     case pumpkin
     case skullLightWhite
     case skullWhite
