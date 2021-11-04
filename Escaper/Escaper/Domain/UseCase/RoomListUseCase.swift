@@ -14,6 +14,12 @@ protocol RoomListUseCaseInterface {
 
 class RoomListUseCase: RoomListUseCaseInterface {
     private let repository: RoomListRepositroyInterface
+    private let locationManager: CLLocationManager = {
+        let manager = CLLocationManager()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        return manager
+    }()
 
     init(repository: RoomListRepositroyInterface) {
         self.repository = repository
@@ -24,13 +30,7 @@ class RoomListUseCase: RoomListUseCaseInterface {
     }
 
     private func fetchCurrentDistrict(genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void) {
-        let locationManager: CLLocationManager = {
-            let manager = CLLocationManager()
-            manager.desiredAccuracy = kCLLocationAccuracyBest
-            manager.requestWhenInUseAuthorization()
-            return manager
-        }()
-        guard let location = locationManager.location else { return }
+        guard let location = self.locationManager.location else { return }
         let geocoder = CLGeocoder()
         let locale = Locale(identifier: "Ko-kr")
         geocoder.reverseGeocodeLocation(location, preferredLocale: locale) {  placeMarks, _ in
