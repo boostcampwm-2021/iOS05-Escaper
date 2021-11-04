@@ -15,14 +15,14 @@ protocol RoomListNetwork: AnyObject {
 
 final class FirebaseService: RoomListNetwork {
     static let shared = FirebaseService()
-
-    let db: Firestore
-
+    
+    private let db: Firestore
+    
     private init() {
         FirebaseApp.configure()
         self.db = Firestore.firestore()
     }
-
+    
     func query(genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
         db.collection("rooms")
             .whereField("genres", arrayContains: genre.name)
@@ -47,7 +47,7 @@ final class FirebaseService: RoomListNetwork {
                 completion(Result.success(roomList))
             }
     }
-
+    
     func addRoom(_ room: RoomDTO) {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
