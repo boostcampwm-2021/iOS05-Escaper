@@ -14,7 +14,7 @@ protocol TagScrollViewDelegate: AnyObject {
 final class TagScrollView: UIScrollView {
     weak var tagDelegate: TagScrollViewDelegate?
 
-    private var selectedButton: TagButton?
+    private(set) var selectedButton: TagButton?
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -41,9 +41,11 @@ final class TagScrollView: UIScrollView {
             button.addTarget(self, action: #selector(buttonTouched(sender:)), for: .touchUpInside)
             self.stackView.addArrangedSubview(button)
         }
-        if let first = self.stackView.arrangedSubviews.first as? TagButton {
+        if let first = self.stackView.arrangedSubviews.first as? TagButton,
+           let element = first.element {
             self.selectedButton = first
             self.selectedButton?.touched()
+            self.tagDelegate?.tagSelected(element: element)
         }
     }
 }
