@@ -48,6 +48,7 @@ struct RoomDTO: Codable {
                     genres: self.genres,
                     geoLocation: self.geoLocation.clLocation,
                     district: self.district,
+                    distance: 0,
                     userRecords: userRecords)
     }
 }
