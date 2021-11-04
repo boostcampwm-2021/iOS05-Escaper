@@ -22,6 +22,7 @@
 		251031C02733A2AC00BD07BF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BF2733A2AC00BD07BF /* Rating.swift */; };
 		251031C22733A5B500BD07BF /* RatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C12733A5B500BD07BF /* RatingImage.swift */; };
 		251031C42733AAF500BD07BF /* RoomOverviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C32733AAF500BD07BF /* RoomOverviewCollectionViewCell.swift */; };
+		251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C52733BCAC00BD07BF /* RatingContainerView.swift */; };
 		2510A1472732200700D3E513 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2510A1462732200700D3E513 /* ColorPalette.swift */; };
 		25513368273107A000A92CF3 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513367273107A000A92CF3 /* Genre.swift */; };
 		2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513369273108A800A92CF3 /* RoomListUseCase.swift */; };
@@ -50,6 +51,7 @@
 		251031BF2733A2AC00BD07BF /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		251031C12733A5B500BD07BF /* RatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingImage.swift; sourceTree = "<group>"; };
 		251031C32733AAF500BD07BF /* RoomOverviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomOverviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		251031C52733BCAC00BD07BF /* RatingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingContainerView.swift; sourceTree = "<group>"; };
 		2510A1462732200700D3E513 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		25513367273107A000A92CF3 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		25513369273108A800A92CF3 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				3E4378C827325241001ED120 /* TagScrollView.swift */,
 				3E4378CA27329028001ED120 /* TagButton.swift */,
+				251031C52733BCAC00BD07BF /* RatingContainerView.swift */,
 				255133642730F07000A92CF3 /* Cells */,
 			);
 			path = Views;
@@ -397,6 +400,7 @@
 				2510A1472732200700D3E513 /* ColorPalette.swift in Sources */,
 				1FE6C8B22732741E00AC7408 /* GeoLocation.swift in Sources */,
 				2551336E27310D5500A92CF3 /* Room.swift in Sources */,
+				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
 				251031C02733A2AC00BD07BF /* Rating.swift in Sources */,
 				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
 				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
