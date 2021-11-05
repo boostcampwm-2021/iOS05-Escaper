@@ -12,8 +12,12 @@ final class RoomOverviewTableViewCell: UITableViewCell {
 
     enum Constant {
         static let cornerRadius = CGFloat(20)
+        static let imageLength = CGFloat(40)
         static let verticalSpace = CGFloat(5)
+        static let imageTitleSpace = CGFloat(10)
         static let horizontalSpace = CGFloat(20)
+        static let contentSideSpace = CGFloat(20)
+        static let titleWidth = CGFloat(120)
     }
 
     private let genreImageView: UIImageView = {
@@ -22,10 +26,8 @@ final class RoomOverviewTableViewCell: UITableViewCell {
         return imageView
     }()
     private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor(named: ColorPalette.skullLightWhite.name)
-        label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.lineBreakMode = .byCharWrapping
+        let label = DesignSystem.Label.b02B(color: .skullLightWhite)
+        label.lineBreakMode = .byWordWrapping
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 2
         return label
@@ -80,7 +82,7 @@ private extension RoomOverviewTableViewCell {
         self.selectedBackgroundView = bgColorView
         self.backgroundColor = .clear
         self.contentView.layer.masksToBounds = true
-        self.contentView.backgroundColor = UIColor(named: ColorPalette.gloomyBrown.name)
+        self.contentView.backgroundColor = DesignSystem.Color.gloomyBrown.asset
     }
 
     func configureGenreImageViewLayout() {
@@ -88,9 +90,9 @@ private extension RoomOverviewTableViewCell {
         self.contentView.addSubview(self.genreImageView)
         NSLayoutConstraint.activate([
             self.genreImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.genreImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20),
-            self.genreImageView.heightAnchor.constraint(equalToConstant: 40),
-            self.genreImageView.widthAnchor.constraint(equalToConstant: 40)
+            self.genreImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constant.contentSideSpace),
+            self.genreImageView.heightAnchor.constraint(equalToConstant: Constant.imageLength),
+            self.genreImageView.widthAnchor.constraint(equalToConstant: Constant.imageLength)
         ])
     }
 
@@ -98,9 +100,9 @@ private extension RoomOverviewTableViewCell {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.genreImageView.trailingAnchor, constant: 10),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.genreImageView.trailingAnchor, constant: Constant.imageTitleSpace),
             self.titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.titleLabel.widthAnchor.constraint(equalToConstant: 100)
+            self.titleLabel.widthAnchor.constraint(equalToConstant: Constant.titleWidth)
         ])
     }
 
@@ -109,7 +111,7 @@ private extension RoomOverviewTableViewCell {
         self.contentView.addSubview(self.ratingContainerView)
         NSLayoutConstraint.activate([
             self.ratingContainerView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.ratingContainerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20),
+            self.ratingContainerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constant.contentSideSpace),
             self.ratingContainerView.heightAnchor.constraint(equalToConstant: 30),
             self.ratingContainerView.widthAnchor.constraint(equalToConstant: 100)
         ])

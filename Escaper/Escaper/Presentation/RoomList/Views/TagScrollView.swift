@@ -36,7 +36,7 @@ final class TagScrollView: UIScrollView {
     func inject(elements: [Tagable]) {
         elements.forEach { element in
             let button = TagButton(element: element)
-            let width = self.calculateStringWidth(text: element.name)+20
+            let width = self.calculateStringWidth(text: element.name) + 20
             button.widthAnchor.constraint(equalToConstant: width).isActive = true
             button.addTarget(self, action: #selector(buttonTouched(sender:)), for: .touchUpInside)
             self.stackView.addArrangedSubview(button)
