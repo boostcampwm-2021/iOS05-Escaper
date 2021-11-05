@@ -27,18 +27,17 @@ final class TagButton: UIButton {
     }
 
     func touched() {
-        self.backgroundColor = UIColor(named: ColorPalette.pumpkin.name)
+        self.backgroundColor = DesignSystem.Color.pumpkin.asset
     }
 
     func untouched() {
-        self.backgroundColor = UIColor(named: ColorPalette.bloodyDarkBurgundy.name)
+        self.backgroundColor = DesignSystem.Color.bloodyDarkBurgundy.asset
     }
 }
 
 private extension TagButton {
     func configure() {
         self.layer.cornerRadius = 5
-        self.titleLabel?.textColor = UIColor(named: ColorPalette.skullWhite.name)
         self.untouched()
     }
 }
