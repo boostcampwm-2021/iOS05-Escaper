@@ -5,79 +5,63 @@
 //  Created by 최완식 on 2021/11/05.
 //
 
-import Foundation
 import UIKit
 
-enum DesignSystem {
+typealias EDSColor = EDSKit.Color
+typealias EDSLabel = EDSKit.Label
+
+enum EDSKit {
     enum Label {
         static func h01B(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.boldSystemFont(ofSize: 24)
             return label
         }
 
         static func h02B(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.boldSystemFont(ofSize: 22)
             return label
         }
 
         static func h03B(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.boldSystemFont(ofSize: 20)
             return label
         }
 
         static func b01B(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.boldSystemFont(ofSize: 14)
             return label
         }
 
         static func b02B(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.boldSystemFont(ofSize: 12)
             return label
         }
 
         static func b03B(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.boldSystemFont(ofSize: 10)
             return label
         }
 
         static func b01R(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.systemFont(ofSize: 14)
             return label
         }
 
         static func b02R(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.systemFont(ofSize: 12)
             return label
         }
 
         static func b03R(text: String = "", color: Color) -> UILabel {
-            let label = UILabel()
-            label.text = text
-            label.textColor = color.asset
+            let label = Label.makeLabel(text: text, color: color)
             label.font = UIFont.systemFont(ofSize: 10)
             return label
         }
@@ -97,8 +81,17 @@ enum DesignSystem {
         case skullLightWhite
         case skullWhite
 
-        var asset: UIColor? {
+        var value: UIColor? {
             return UIColor(named: String(describing: self))
         }
+    }
+}
+
+private extension EDSKit.Label {
+    static func makeLabel(text: String, color: EDSKit.Color) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.textColor = color.value
+        return label
     }
 }
