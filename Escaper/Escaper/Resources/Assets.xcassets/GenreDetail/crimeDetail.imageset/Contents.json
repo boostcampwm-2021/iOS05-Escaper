@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "crimeDetail@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "crimeDetail@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

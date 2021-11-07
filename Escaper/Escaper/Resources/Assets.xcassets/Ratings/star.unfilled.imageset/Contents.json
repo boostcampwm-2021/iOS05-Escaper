@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "star.unfilled-2.png",
+      "filename" : "star.unfilled.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "star.unfilled@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "star.unfilled@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
