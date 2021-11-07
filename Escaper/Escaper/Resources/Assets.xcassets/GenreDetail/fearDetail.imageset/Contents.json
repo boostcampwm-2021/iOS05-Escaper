@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "fearDetail@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "fearDetail@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
