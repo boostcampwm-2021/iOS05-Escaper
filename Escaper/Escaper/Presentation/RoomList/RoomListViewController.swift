@@ -9,10 +9,11 @@ import UIKit
 
 final class RoomListViewController: DefaultViewController {
     enum Constant {
-        static let tagViewHeight = CGFloat(35)
+        static let tagViewHeight = CGFloat(30)
         static let cellHeight = CGFloat(65)
-        static let defaultVerticalSpace = CGFloat(10)
-        static let defaultOutlineSpace = CGFloat(20)
+        static let topVerticalSpace = CGFloat(18)
+        static let defaultVerticalSpace = CGFloat(13)
+        static let defaultOutlineSpace = CGFloat(14)
     }
 
     enum Section {
@@ -76,7 +77,7 @@ private extension RoomListViewController {
         self.genreTagScrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.genreTagScrollView)
         NSLayoutConstraint.activate([
-            self.genreTagScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.genreTagScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: Constant.topVerticalSpace),
             self.genreTagScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             self.genreTagScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             self.genreTagScrollView.heightAnchor.constraint(equalToConstant: Constant.tagViewHeight)

@@ -18,6 +18,8 @@ final class RoomOverviewTableViewCell: UITableViewCell {
         static let horizontalSpace = CGFloat(20)
         static let contentSideSpace = CGFloat(20)
         static let titleWidth = CGFloat(120)
+        static let ratingContainerWidth = CGFloat(100)
+        static let ratingContainerHeight = CGFloat(30)
     }
 
     private let genreImageView: UIImageView = {
@@ -26,7 +28,7 @@ final class RoomOverviewTableViewCell: UITableViewCell {
         return imageView
     }()
     private let titleLabel: UILabel = {
-        let label = DesignSystem.Label.b02B(color: .skullLightWhite)
+        let label = EDSLabel.b02B(color: .skullLightWhite)
         label.lineBreakMode = .byWordWrapping
         label.lineBreakMode = .byTruncatingTail
         label.numberOfLines = 2
@@ -82,7 +84,7 @@ private extension RoomOverviewTableViewCell {
         self.selectedBackgroundView = bgColorView
         self.backgroundColor = .clear
         self.contentView.layer.masksToBounds = true
-        self.contentView.backgroundColor = DesignSystem.Color.gloomyBrown.asset
+        self.contentView.backgroundColor = EDSKit.Color.gloomyBrown.value
     }
 
     func configureGenreImageViewLayout() {
@@ -112,8 +114,8 @@ private extension RoomOverviewTableViewCell {
         NSLayoutConstraint.activate([
             self.ratingContainerView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             self.ratingContainerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constant.contentSideSpace),
-            self.ratingContainerView.heightAnchor.constraint(equalToConstant: 30),
-            self.ratingContainerView.widthAnchor.constraint(equalToConstant: 100)
+            self.ratingContainerView.heightAnchor.constraint(equalToConstant: Constant.ratingContainerHeight),
+            self.ratingContainerView.widthAnchor.constraint(equalToConstant: Constant.ratingContainerWidth)
         ])
     }
 }
