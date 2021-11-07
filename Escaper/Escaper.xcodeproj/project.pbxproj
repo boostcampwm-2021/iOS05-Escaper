@@ -314,6 +314,8 @@
 				3E2BDEA02732C2FB0081A749 /* Tagable.swift */,
 			);
 			path = Protocol;
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +432,7 @@
 				1F72C20E2734010700C59CC1 /* Observable.swift in Sources */,
 				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
 				1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */,
+				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
 				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
 				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
 				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
