@@ -9,7 +9,8 @@ import UIKit
 
 final class TagButton: UIButton {
     enum Constant {
-        static let cornerRadius = CGFloat(7)
+        static let cornerRadius = CGFloat(8)
+        static let borderWidth = CGFloat(0.25)
     }
 
     private(set) var element: Tagable?
@@ -36,11 +37,11 @@ final class TagButton: UIButton {
     }
 
     func touched() {
-        self.backgroundColor = EDSColor.pumpkin.value
+        self.backgroundColor = EDSColor.bloodyDarkBurgundy.value
     }
 
     func untouched() {
-        self.backgroundColor = EDSColor.bloodyDarkBurgundy.value
+        self.backgroundColor = EDSColor.bloodyBlack.value
     }
 }
 
@@ -52,6 +53,8 @@ private extension TagButton {
 
     func configureButtonUI() {
         self.layer.cornerRadius = Constant.cornerRadius
+        self.layer.borderWidth = Constant.borderWidth
+        self.layer.borderColor = EDSColor.bloodyDarkBurgundy.value?.cgColor
         self.untouched()
     }
 
