@@ -12,14 +12,18 @@ final class RoomOverviewTableViewCell: UITableViewCell {
 
     enum Constant {
         static let cornerRadius = CGFloat(20)
-        static let imageLength = CGFloat(40)
+        static let imageLength = CGFloat(50)
         static let verticalSpace = CGFloat(5)
-        static let imageTitleSpace = CGFloat(10)
+        static let imageTitleSpace = CGFloat(24)
         static let horizontalSpace = CGFloat(20)
         static let contentSideSpace = CGFloat(20)
-        static let titleWidth = CGFloat(120)
         static let ratingContainerWidth = CGFloat(100)
         static let ratingContainerHeight = CGFloat(30)
+        static let ratingVerticalSpace = CGFloat(8)
+        static let imageYAnchorSpace = CGFloat(8)
+        static let titleYAnchorSpace = CGFloat(20)
+        static let titleSpace = CGFloat(20)
+        static let distanceSpace = CGFloat(4)
     }
 
     private let genreImageView: UIImageView = {
@@ -31,7 +35,11 @@ final class RoomOverviewTableViewCell: UITableViewCell {
         let label = EDSLabel.b02B(color: .skullLightWhite)
         label.lineBreakMode = .byWordWrapping
         label.lineBreakMode = .byTruncatingTail
-        label.numberOfLines = 2
+        label.numberOfLines = 1
+        return label
+    }()
+    private let distanceLabel: UILabel = {
+        let label = EDSLabel.b03R(color: .skullWhite)
         return label
     }()
     private let ratingContainerView = RatingContainerView()
@@ -51,6 +59,7 @@ final class RoomOverviewTableViewCell: UITableViewCell {
         self.genreImageView.image = UIImage(named: genre.previewImageAssetName)
         self.titleLabel.text = room.name
         self.ratingContainerView.update(level: room.level, satisfaction: room.satisfaction)
+        self.distanceLabel.text = room.distance < 1000 ? "\(Int(room.distance))m" : "\((room.distance / 100).rounded() / 10)km"
     }
 
     override func prepareForReuse() {
@@ -77,6 +86,7 @@ private extension RoomOverviewTableViewCell {
         self.configureGenreImageViewLayout()
         self.configureTitleLabelLayout()
         self.configureRatingContainerViewLayout()
+        self.configureDistanceLabelLayout()
     }
 
     func configureCell() {
@@ -92,8 +102,8 @@ private extension RoomOverviewTableViewCell {
         self.genreImageView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.genreImageView)
         NSLayoutConstraint.activate([
-            self.genreImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.genreImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constant.contentSideSpace),
+            self.genreImageView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -Constant.imageYAnchorSpace),
+            self.genreImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constant.contentSideSpace),
             self.genreImageView.heightAnchor.constraint(equalToConstant: Constant.imageLength),
             self.genreImageView.widthAnchor.constraint(equalToConstant: Constant.imageLength)
         ])
@@ -103,9 +113,9 @@ private extension RoomOverviewTableViewCell {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.genreImageView.trailingAnchor, constant: Constant.imageTitleSpace),
-            self.titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.titleLabel.widthAnchor.constraint(equalToConstant: Constant.titleWidth)
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constant.imageTitleSpace),
+            self.titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -Constant.titleYAnchorSpace),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.genreImageView.leadingAnchor, constant: -Constant.titleSpace)
         ])
     }
 
@@ -113,10 +123,19 @@ private extension RoomOverviewTableViewCell {
         self.ratingContainerView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.ratingContainerView)
         NSLayoutConstraint.activate([
-            self.ratingContainerView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.ratingContainerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constant.contentSideSpace),
+            self.ratingContainerView.leadingAnchor.constraint(equalTo: self.titleLabel.leadingAnchor),
+            self.ratingContainerView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: Constant.ratingVerticalSpace),
             self.ratingContainerView.heightAnchor.constraint(equalToConstant: Constant.ratingContainerHeight),
             self.ratingContainerView.widthAnchor.constraint(equalToConstant: Constant.ratingContainerWidth)
+        ])
+    }
+
+    func configureDistanceLabelLayout() {
+        self.distanceLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(self.distanceLabel)
+        NSLayoutConstraint.activate([
+            self.distanceLabel.centerXAnchor.constraint(equalTo: self.genreImageView.centerXAnchor),
+            self.distanceLabel.topAnchor.constraint(equalTo: self.genreImageView.bottomAnchor, constant: Constant.distanceSpace)
         ])
     }
 }

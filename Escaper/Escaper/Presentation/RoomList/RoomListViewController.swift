@@ -10,7 +10,7 @@ import UIKit
 final class RoomListViewController: DefaultViewController {
     enum Constant {
         static let tagViewHeight = CGFloat(30)
-        static let cellHeight = CGFloat(65)
+        static let cellHeight = CGFloat(96)
         static let topVerticalSpace = CGFloat(18)
         static let defaultVerticalSpace = CGFloat(13)
         static let defaultOutlineSpace = CGFloat(14)
