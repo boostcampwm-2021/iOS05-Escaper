@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class RoomListViewController: DefaultViewController {
     enum Constant {
+        static let localeIdentifier = "Ko-kr"
         static let tagViewHeight = CGFloat(30)
         static let cellHeight = CGFloat(65)
         static let topVerticalSpace = CGFloat(18)
@@ -34,9 +36,11 @@ final class RoomListViewController: DefaultViewController {
     private let roomOverviewTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
         tableView.rowHeight = Constant.cellHeight
         return tableView
     }()
+    private var locationManager: CLLocationManager?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
 
     override func viewDidLoad() {
@@ -44,6 +48,7 @@ final class RoomListViewController: DefaultViewController {
         self.configureGenreTagScrollViewLayout()
         self.configureSortingOptionTagScrollViewLayout()
         self.configureRoomOverviewTableViewLayout()
+        self.configureLocationManager()
         self.configureDelegates()
         self.configureDataSource()
         self.injectTagScrollViewElements()
@@ -63,9 +68,33 @@ extension RoomListViewController: TagScrollViewDelegate {
         switch element {
         case let genre as Genre:
             guard let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
-            self.viewModel?.fetch(genre: genre, sortingOption: sortingOption)
+            self.fetchCurrentDistrict { [weak self] district in
+                self?.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
+            }
         case let sortingOption as SortingOption:
             self.viewModel?.sort(option: sortingOption)
+        default:
+            break
+        }
+    }
+}
+
+extension RoomListViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        var status: CLAuthorizationStatus?
+        if #available(iOS 14.0, *) {
+            status = self.locationManager?.authorizationStatus
+        } else {
+            status = CLLocationManager.authorizationStatus()
+        }
+        guard let status = status else { return }
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse, .authorized:
+            guard let genre = self.genreTagScrollView.selectedButton?.element as? Genre,
+                  let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
+            self.fetchCurrentDistrict { [weak self] district in
+                self?.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
+            }
         default:
             break
         }
@@ -116,6 +145,13 @@ private extension RoomListViewController {
         }
     }
 
+    func configureLocationManager() {
+        self.locationManager = CLLocationManager()
+        self.locationManager?.delegate = self
+        self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager?.requestWhenInUseAuthorization()
+    }
+
     func configureDelegates() {
         self.genreTagScrollView.tagDelegate = self
         self.sortingOptionTagScrollView.tagDelegate = self
@@ -132,6 +168,18 @@ private extension RoomListViewController {
             snapshot.appendSections([Section.main])
             snapshot.appendItems(roomList)
             self.dataSource?.apply(snapshot, animatingDifferences: true)
+        }
+    }
+
+    func fetchCurrentDistrict(completion: @escaping (District) -> Void) {
+        guard let location = self.locationManager?.location else { return }
+        let geocoder = CLGeocoder()
+        let locale = Locale(identifier: Constant.localeIdentifier)
+        geocoder.reverseGeocodeLocation(location, preferredLocale: locale) {  placeMarks, _ in
+            guard let address: [CLPlacemark] = placeMarks,
+                  let locality = address.last?.locality,
+                  let district = District.init(rawValue: locality) else { return }
+            completion(district)
         }
     }
 }
