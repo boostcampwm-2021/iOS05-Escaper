@@ -47,7 +47,8 @@ final class RoomOverviewTableViewCell: UITableViewCell {
     }
 
     func update(_ room: Room) {
-        self.genreImageView.image = UIImage(named: room.genres.first!.previewImageAssetName)
+        guard let genre = room.genres.first else { return }
+        self.genreImageView.image = UIImage(named: genre.previewImageAssetName)
         self.titleLabel.text = room.name
         self.ratingContainerView.update(level: room.level, satisfaction: room.satisfaction)
     }

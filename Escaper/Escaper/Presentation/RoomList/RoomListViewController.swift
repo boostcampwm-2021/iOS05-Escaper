@@ -20,7 +20,7 @@ final class RoomListViewController: DefaultViewController {
         case main
     }
 
-    private var viewModel: RoomListViewModelInterface!
+    private var viewModel: RoomListViewModelInterface?
     private let genreTagScrollView: TagScrollView = {
         let tagScrollView: TagScrollView = TagScrollView()
         tagScrollView.showsHorizontalScrollIndicator = false
@@ -37,7 +37,7 @@ final class RoomListViewController: DefaultViewController {
         tableView.rowHeight = Constant.cellHeight
         return tableView
     }()
-    private var dataSource: UITableViewDiffableDataSource<Section, Room>!
+    private var dataSource: UITableViewDiffableDataSource<Section, Room>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,9 +63,9 @@ extension RoomListViewController: TagScrollViewDelegate {
         switch element {
         case let genre as Genre:
             guard let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
-            self.viewModel.fetch(genre: genre, sortingOption: sortingOption)
+            self.viewModel?.fetch(genre: genre, sortingOption: sortingOption)
         case let sortingOption as SortingOption:
-            self.viewModel.sort(option: sortingOption)
+            self.viewModel?.sort(option: sortingOption)
         default:
             break
         }
@@ -127,11 +127,11 @@ private extension RoomListViewController {
     }
 
     func bindViewModel() {
-        self.viewModel.rooms.observe(on: self) { roomList in
+        self.viewModel?.rooms.observe(on: self) { roomList in
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([Section.main])
             snapshot.appendItems(roomList)
-            self.dataSource.apply(snapshot, animatingDifferences: true)
+            self.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
 }
