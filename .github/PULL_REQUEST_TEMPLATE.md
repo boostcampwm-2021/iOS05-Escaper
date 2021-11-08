@@ -1,4 +1,4 @@
-issue number : [#02](../issues/02)
+issue number : [#](../issues/)
 close #
 
 ### 작업 사항
@@ -7,6 +7,5 @@ close #
 
 ### 참고 자료
 
-[참고자료1]()  
-[참고자료2]()
+[참고자료1]()
 
