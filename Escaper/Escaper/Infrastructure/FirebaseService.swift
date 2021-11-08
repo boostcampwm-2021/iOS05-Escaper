@@ -16,15 +16,15 @@ protocol RoomListNetwork: AnyObject {
 final class FirebaseService: RoomListNetwork {
     static let shared = FirebaseService()
 
-    private let db: Firestore
+    private let database: Firestore
 
     private init() {
         FirebaseApp.configure()
-        self.db = Firestore.firestore()
+        self.database = Firestore.firestore()
     }
 
     func query(genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
-        db.collection("rooms")
+        database.collection("rooms")
             .whereField("genres", arrayContains: genre.name)
             .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
@@ -41,7 +41,7 @@ final class FirebaseService: RoomListNetwork {
                         }
                     case .failure(let error):
                         completion(.failure(error))
-                        break
+                        return
                     }
                 }
                 completion(Result.success(roomList))
@@ -52,8 +52,8 @@ final class FirebaseService: RoomListNetwork {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
-        let db = Firestore.firestore()
-        let path = db.collection("rooms").document(room.name)
+        let database = Firestore.firestore()
+        let path = database.collection("rooms").document(room.name)
         path.setData(room.toDictionary())
     }
 }
