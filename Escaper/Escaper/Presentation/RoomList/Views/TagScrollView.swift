@@ -46,11 +46,9 @@ final class TagScrollView: UIScrollView {
             button.addTarget(self, action: #selector(buttonTouched(sender:)), for: .touchUpInside)
             self.stackView.addArrangedSubview(button)
         }
-        if let first = self.stackView.arrangedSubviews.first as? TagButton,
-           let element = first.element {
+        if let first = self.stackView.arrangedSubviews.first as? TagButton {
             self.selectedButton = first
             self.selectedButton?.touched()
-            self.tagDelegate?.tagSelected(element: element)
         }
     }
 }
