@@ -12,4 +12,5 @@ enum UtilityImage: String {
         return self.rawValue
     }
     case chevronDown
+    case recordCard
 }
