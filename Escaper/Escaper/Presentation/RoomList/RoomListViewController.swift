@@ -12,11 +12,13 @@ final class RoomListViewController: DefaultViewController {
     enum Constant {
         static let localeIdentifier = "Ko-kr"
         static let tagViewHeight = CGFloat(30)
+        static let sideSpace = CGFloat(20)
         static let cellHeight = CGFloat(96)
         static let topVerticalSpace = CGFloat(18)
         static let defaultVerticalSpace = CGFloat(13)
         static let defaultOutlineSpace = CGFloat(14)
-        static let defaultSortingOptionTrailingSpace = CGFloat(160)
+        static let districtSelectButtonWidth = CGFloat(100)
+        static let sortingOptionWidth = CGFloat(230)
     }
 
     enum Section {
@@ -24,6 +26,9 @@ final class RoomListViewController: DefaultViewController {
     }
 
     private var viewModel: RoomListViewModelInterface?
+    private var locationManager: CLLocationManager?
+    private var dataSource: UITableViewDiffableDataSource<Section, Room>?
+    private var districtSelectButton = DistrictSelectButton()
     private let genreTagScrollView: TagScrollView = {
         let tagScrollView: TagScrollView = TagScrollView()
         tagScrollView.showsHorizontalScrollIndicator = false
@@ -41,22 +46,10 @@ final class RoomListViewController: DefaultViewController {
         tableView.rowHeight = Constant.cellHeight
         return tableView
     }()
-    private var locationManager: CLLocationManager?
-    private lazy var addressButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: UtilityImage.chevronDown.name), for: .normal)
-        button.semanticContentAttribute = .forceRightToLeft
-        button.setTitleColor(EDSColor.pumpkin.value, for: .normal)
-        button.backgroundColor = EDSColor.bloodyBlack.value
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        return button
-    }()
-    private var dataSource: UITableViewDiffableDataSource<Section, Room>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configure()
-        self.configureLayout()
         self.injectTagScrollViewElements()
         self.bindViewModel()
     }
@@ -72,16 +65,21 @@ final class RoomListViewController: DefaultViewController {
 extension RoomListViewController: TagScrollViewDelegate {
     func tagSelected(element: Tagable) {
         switch element {
-        case let genre as Genre:
-            guard let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
+        case is Genre:
             self.fetchCurrentDistrict { [weak self] district in
-                self?.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
+                self?.fetchWithCurrentSelectedOption(with: district)
             }
         case let sortingOption as SortingOption:
             self.viewModel?.sort(option: sortingOption)
         default:
             break
         }
+    }
+}
+
+extension RoomListViewController: DistrictSelectViewDelegate {
+    func districtDidSelected(district: District) {
+        self.fetchWithCurrentSelectedOption(with: district)
     }
 }
 
@@ -96,39 +94,13 @@ extension RoomListViewController: CLLocationManagerDelegate {
         guard let status = status else { return }
         switch status {
         case .authorizedAlways, .authorizedWhenInUse, .authorized:
-            guard let genre = self.genreTagScrollView.selectedButton?.element as? Genre,
-                  let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
             self.fetchCurrentDistrict { [weak self] district in
-                if let buttonTitle = self?.buttonTitle(district: district.name) {
-                    self?.addressButton.setTitle(buttonTitle, for: .normal)
-                }
-                self?.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
+                self?.districtSelectButton.updateTitle(district: district)
+                self?.fetchWithCurrentSelectedOption(with: district)
             }
         default:
             break
         }
-    }
-}
-
-extension RoomListViewController: UIContextMenuInteractionDelegate {
-    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            let addressButtonTitle = District.allCases.map({ $0.name })
-            let addressButtonActions = addressButtonTitle
-               .enumerated()
-               .map { _, title in
-                 return UIAction(title: title) { _ in
-                     guard let district = District(rawValue: title),
-                           let genre = self.genreTagScrollView.selectedButton?.element as? Genre,
-                           let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
-                     let buttonTitle = self.buttonTitle(district: district.name)
-                     self.addressButton.setTitle(buttonTitle, for: .normal)
-                     self.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
-                 }
-               }
-             return UIMenu(title: "", children: addressButtonActions)
-           }
-        return configuration
     }
 }
 
@@ -137,14 +109,10 @@ private extension RoomListViewController {
         self.configureLocationManager()
         self.configureDelegates()
         self.configureDataSource()
-        self.configureAddressButton()
-    }
-
-    func configureLayout() {
         self.configureGenreTagScrollViewLayout()
         self.configureSortingOptionTagScrollViewLayout()
         self.configureRoomOverviewTableViewLayout()
-        self.configureAddressButtonLayout()
+        self.configureDistrictSelectButtonLayout()
     }
 
     func configureGenreTagScrollViewLayout() {
@@ -164,7 +132,7 @@ private extension RoomListViewController {
         NSLayoutConstraint.activate([
             self.sortingOptionTagScrollView.topAnchor.constraint(equalTo: self.genreTagScrollView.bottomAnchor, constant: Constant.defaultVerticalSpace),
             self.sortingOptionTagScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            self.sortingOptionTagScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Constant.defaultSortingOptionTrailingSpace),
+            self.sortingOptionTagScrollView.widthAnchor.constraint(equalToConstant: Constant.sortingOptionWidth),
             self.sortingOptionTagScrollView.heightAnchor.constraint(equalToConstant: Constant.tagViewHeight)
         ])
     }
@@ -182,14 +150,14 @@ private extension RoomListViewController {
         ])
     }
 
-    func configureAddressButtonLayout() {
-        self.addressButton.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.addressButton)
+    func configureDistrictSelectButtonLayout() {
+        self.districtSelectButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.districtSelectButton)
         NSLayoutConstraint.activate([
-            self.addressButton.topAnchor.constraint(equalTo: self.genreTagScrollView.bottomAnchor, constant: Constant.defaultVerticalSpace),
-            self.addressButton.leadingAnchor.constraint(equalTo: self.sortingOptionTagScrollView.trailingAnchor),
-            self.addressButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            self.addressButton.bottomAnchor.constraint(equalTo: self.roomOverviewTableView.topAnchor, constant: -Constant.defaultVerticalSpace)
+            self.districtSelectButton.centerYAnchor.constraint(equalTo: self.sortingOptionTagScrollView.centerYAnchor),
+            self.districtSelectButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.sideSpace),
+            self.districtSelectButton.widthAnchor.constraint(equalToConstant: Constant.districtSelectButtonWidth),
+            self.districtSelectButton.heightAnchor.constraint(equalToConstant: Constant.tagViewHeight)
         ])
     }
 
@@ -211,11 +179,7 @@ private extension RoomListViewController {
     func configureDelegates() {
         self.genreTagScrollView.tagDelegate = self
         self.sortingOptionTagScrollView.tagDelegate = self
-    }
-
-    func configureAddressButton() {
-        let interaction = UIContextMenuInteraction(delegate: self)
-        self.addressButton.addInteraction(interaction)
+        self.districtSelectButton.delegate = self
     }
 
     func injectTagScrollViewElements() {
@@ -244,7 +208,9 @@ private extension RoomListViewController {
         }
     }
 
-    func buttonTitle(district: String) -> String {
-        return district + " 기준 "
+    func fetchWithCurrentSelectedOption(with district: District) {
+        guard let genre = self.genreTagScrollView.selectedButton?.element as? Genre,
+              let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
+        self.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
     }
 }
