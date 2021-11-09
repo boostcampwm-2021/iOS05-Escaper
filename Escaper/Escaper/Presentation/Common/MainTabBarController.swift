@@ -24,7 +24,7 @@ private extension MainTabBarController {
         var title: String {
             return self.rawValue
         }
-        var image: UIImage? {
+        var unselectedImage: UIImage? {
             return UIImage(named: String(describing: self))
         }
         var selectedImage: UIImage? {
@@ -40,7 +40,7 @@ private extension MainTabBarController {
     func configureTabBar() {
         let homeBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.home.title,
-            unselected: TabBarItemConfig.home.image,
+            unselected: TabBarItemConfig.home.unselectedImage,
             selected: TabBarItemConfig.home.selectedImage
         )
         let homeViewController = RoomListViewController()
@@ -49,7 +49,7 @@ private extension MainTabBarController {
 
         let recordBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.record.title,
-            unselected: TabBarItemConfig.record.image,
+            unselected: TabBarItemConfig.record.unselectedImage,
             selected: TabBarItemConfig.record.selectedImage
         )
         let recordViewController = RecordViewController()
@@ -58,7 +58,7 @@ private extension MainTabBarController {
 
         let mapBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.map.title,
-            unselected: TabBarItemConfig.map.image,
+            unselected: TabBarItemConfig.map.unselectedImage,
             selected: TabBarItemConfig.map.selectedImage
         )
         let mapViewController = MapViewController()
@@ -67,7 +67,7 @@ private extension MainTabBarController {
 
         let leaderBoardBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.leaderBoard.title,
-            unselected: TabBarItemConfig.leaderBoard.image,
+            unselected: TabBarItemConfig.leaderBoard.unselectedImage,
             selected: TabBarItemConfig.leaderBoard.selectedImage
         )
         let leaderBoardViewController = LeaderBoardViewController()
