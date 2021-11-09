@@ -15,7 +15,7 @@ final class TagScrollView: UIScrollView {
     enum Constant {
         static let tagSpace = CGFloat(8)
         static let tagElementExtraSpace = CGFloat(16)
-        static let extraTagSpace = CGFloat(12)
+        static let extraViewSpace = CGFloat(12)
     }
 
     weak var tagDelegate: TagScrollViewDelegate?
@@ -53,15 +53,8 @@ final class TagScrollView: UIScrollView {
             self.selectedButton?.touched()
             self.tagDelegate?.tagSelected(element: element)
         }
-        injectExtraTag(firstIndex: 0, lastIndex: elements.count+1)
-    }
-    func injectExtraTag(firstIndex: Int, lastIndex: Int) {
-        let firstExtraButton = UIButton()
-        firstExtraButton.widthAnchor.constraint(equalToConstant: Constant.extraTagSpace).isActive = true
-        self.stackView.insertArrangedSubview(firstExtraButton, at: firstIndex)
-        let lastExtraButton = UIButton()
-        lastExtraButton.widthAnchor.constraint(equalToConstant: Constant.extraTagSpace).isActive = true
-        self.stackView.insertArrangedSubview(lastExtraButton, at: lastIndex)
+        injectExtraView(index: 0)
+        injectExtraView(index: elements.count+1)
     }
 }
 
@@ -90,5 +83,11 @@ private extension TagScrollView {
         let temporaryLabel = UILabel()
         temporaryLabel.text = text
         return CGFloat(temporaryLabel.intrinsicContentSize.width)
+    }
+
+    func injectExtraView(index: Int) {
+        let extraView = UIView()
+        extraView.widthAnchor.constraint(equalToConstant: Constant.extraViewSpace).isActive = true
+        self.stackView.insertArrangedSubview(extraView, at: index)
     }
 }
