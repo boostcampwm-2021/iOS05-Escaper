@@ -95,6 +95,7 @@ private extension MainTabBarController {
             image: image,
             selectedImage: selected
         )
+        item.imageInsets = UIEdgeInsets(top: Constant.itemInset, left: Constant.itemInset, bottom: Constant.itemInset, right: Constant.itemInset)
         return item
     }
 }
