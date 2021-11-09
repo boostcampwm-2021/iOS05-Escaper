@@ -11,12 +11,11 @@ final class RoomOverviewTableViewCell: UITableViewCell {
     static let identifier = String(describing: RoomOverviewTableViewCell.self)
 
     enum Constant {
-        static let cornerRadius = CGFloat(20)
+        static let cornerRadius = CGFloat(15)
         static let imageLength = CGFloat(50)
         static let verticalSpace = CGFloat(5)
-        static let imageTitleSpace = CGFloat(24)
         static let horizontalSpace = CGFloat(20)
-        static let contentSideSpace = CGFloat(20)
+        static let contentSideSpace = CGFloat(24)
         static let ratingContainerWidth = CGFloat(100)
         static let ratingContainerHeight = CGFloat(30)
         static let ratingVerticalSpace = CGFloat(8)
@@ -35,13 +34,9 @@ final class RoomOverviewTableViewCell: UITableViewCell {
         let label = EDSLabel.b02B(color: .skullLightWhite)
         label.lineBreakMode = .byWordWrapping
         label.lineBreakMode = .byTruncatingTail
-        label.numberOfLines = 1
         return label
     }()
-    private let distanceLabel: UILabel = {
-        let label = EDSLabel.b03R(color: .skullWhite)
-        return label
-    }()
+    private let distanceLabel = EDSLabel.b03R(color: .skullWhite)
     private let ratingContainerView = RatingContainerView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -113,7 +108,7 @@ private extension RoomOverviewTableViewCell {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constant.imageTitleSpace),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constant.contentSideSpace),
             self.titleLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor, constant: -Constant.titleYAnchorSpace),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.genreImageView.leadingAnchor, constant: -Constant.titleSpace)
         ])
