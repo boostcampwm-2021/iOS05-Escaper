@@ -14,8 +14,8 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureSubViewControllers()
         self.configureTabBar()
+        self.configureSubViewControllers()
     }
 }
 
@@ -40,7 +40,7 @@ private extension MainTabBarController {
     func configureTabBar() {
         let homeBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.home.title,
-            image: TabBarItemConfig.home.image,
+            unselected: TabBarItemConfig.home.image,
             selected: TabBarItemConfig.home.selectedImage
         )
         let homeViewController = RoomListViewController()
@@ -49,7 +49,7 @@ private extension MainTabBarController {
 
         let recordBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.record.title,
-            image: TabBarItemConfig.record.image,
+            unselected: TabBarItemConfig.record.image,
             selected: TabBarItemConfig.record.selectedImage
         )
         let recordViewController = RecordViewController()
@@ -58,7 +58,7 @@ private extension MainTabBarController {
 
         let mapBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.map.title,
-            image: TabBarItemConfig.map.image,
+            unselected: TabBarItemConfig.map.image,
             selected: TabBarItemConfig.map.selectedImage
         )
         let mapViewController = MapViewController()
@@ -67,7 +67,7 @@ private extension MainTabBarController {
 
         let leaderBoardBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.leaderBoard.title,
-            image: TabBarItemConfig.leaderBoard.image,
+            unselected: TabBarItemConfig.leaderBoard.image,
             selected: TabBarItemConfig.leaderBoard.selectedImage
         )
         let leaderBoardViewController = LeaderBoardViewController()
@@ -89,10 +89,10 @@ private extension MainTabBarController {
         self.tabBar.barTintColor = EDSKit.Color.skullLightWhite.value
     }
 
-    func makeTabBarItem(title: String, image: UIImage?, selected: UIImage?) -> UITabBarItem {
+    func makeTabBarItem(title: String, unselected: UIImage?, selected: UIImage?) -> UITabBarItem {
         let item = UITabBarItem(
             title: title,
-            image: image,
+            image: unselected,
             selectedImage: selected
         )
         item.imageInsets = UIEdgeInsets(top: Constant.itemInset, left: Constant.itemInset, bottom: Constant.itemInset, right: Constant.itemInset)
