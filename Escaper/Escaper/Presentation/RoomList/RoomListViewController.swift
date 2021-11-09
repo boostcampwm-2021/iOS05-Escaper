@@ -17,7 +17,7 @@ final class RoomListViewController: DefaultViewController {
         static let topVerticalSpace = CGFloat(18)
         static let defaultVerticalSpace = CGFloat(13)
         static let defaultOutlineSpace = CGFloat(14)
-        static let districtSelectButtonWidth = CGFloat(100)
+        static let districtSelectButtonWidth = CGFloat(105)
         static let sortingOptionWidth = CGFloat(230)
     }
 
