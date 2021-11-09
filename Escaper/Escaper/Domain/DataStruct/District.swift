@@ -11,9 +11,6 @@ enum District: String, CaseIterable, Codable {
     var name: String {
         return self.rawValue
     }
-    var title: String {
-        return self.rawValue + " 기준 "
-    }
 
     case dobonggu = "도봉구"
     case dongdaemungu = "동대문구"
