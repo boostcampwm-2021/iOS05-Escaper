@@ -7,9 +7,12 @@
 
 import Foundation
 
-enum District: String, Codable {
+enum District: String, CaseIterable, Codable {
     var name: String {
         return self.rawValue
+    }
+    var title: String {
+        return self.rawValue + " 기준 "
     }
 
     case dobonggu = "도봉구"
