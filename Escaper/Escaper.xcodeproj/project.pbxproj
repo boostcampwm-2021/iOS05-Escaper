@@ -23,6 +23,9 @@
 		1FE6C8AE2732621800AC7408 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1FE6C8AD2732621800AC7408 /* FirebaseFirestoreSwift-Beta */; };
 		1FE6C8B0273273BD00AC7408 /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6C8AF273273BD00AC7408 /* UserRecord.swift */; };
 		1FE6C8B22732741E00AC7408 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6C8B12732741E00AC7408 /* GeoLocation.swift */; };
+		25020598273A3300004B024E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020597273A3300004B024E /* RecordViewController.swift */; };
+		2502059A273A33A5004B024E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020599273A33A5004B024E /* MapViewController.swift */; };
+		2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059B273A33CB004B024E /* LeaderBoardViewController.swift */; };
 		251031BC27339C0200BD07BF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BB27339C0200BD07BF /* RatingView.swift */; };
 		251031C02733A2AC00BD07BF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BF2733A2AC00BD07BF /* Rating.swift */; };
 		251031C22733A5B500BD07BF /* RatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C12733A5B500BD07BF /* RatingImage.swift */; };
@@ -34,6 +37,7 @@
 		2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336B2731093B00A92CF3 /* RoomListViewModel.swift */; };
 		2551336E27310D5500A92CF3 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336D27310D5500A92CF3 /* Room.swift */; };
 		2551339027315B1900A92CF3 /* SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551338F27315B1900A92CF3 /* SortingOption.swift */; };
+		25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */; };
 		3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BDEA02732C2FB0081A749 /* Tagable.swift */; };
 		3E4378C927325241001ED120 /* TagScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378C827325241001ED120 /* TagScrollView.swift */; };
 		3E4378CB27329028001ED120 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CA27329028001ED120 /* TagButton.swift */; };
@@ -57,6 +61,9 @@
 		1FCDDE79272EE0F10027AAAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FE6C8AF273273BD00AC7408 /* UserRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
 		1FE6C8B12732741E00AC7408 /* GeoLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
+		25020597273A3300004B024E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		25020599273A33A5004B024E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2502059B273A33CB004B024E /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		251031BB27339C0200BD07BF /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		251031BF2733A2AC00BD07BF /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		251031C12733A5B500BD07BF /* RatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingImage.swift; sourceTree = "<group>"; };
@@ -68,6 +75,7 @@
 		2551336B2731093B00A92CF3 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
 		2551336D27310D5500A92CF3 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		2551338F27315B1900A92CF3 /* SortingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOption.swift; sourceTree = "<group>"; };
+		25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3E2BDEA02732C2FB0081A749 /* Tagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tagable.swift; sourceTree = "<group>"; };
 		3E4378C827325241001ED120 /* TagScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagScrollView.swift; sourceTree = "<group>"; };
 		3E4378CA27329028001ED120 /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 			children = (
 				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
 				251031BB27339C0200BD07BF /* RatingView.swift */,
+				25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -153,7 +162,7 @@
 				2551335B2730ED5500A92CF3 /* Home */,
 				2551335C2730EDA900A92CF3 /* RoomList */,
 				2551335D2730EEDB00A92CF3 /* RoomDetail */,
-				2551335E2730EEE200A92CF3 /* Search */,
+				2551335E2730EEE200A92CF3 /* Map */,
 				255133602730EF0300A92CF3 /* Record */,
 				255133612730EF4500A92CF3 /* AddRecord */,
 				2551335F2730EEEF00A92CF3 /* LeaderBoard */,
@@ -239,16 +248,18 @@
 			path = RoomDetail;
 			sourceTree = "<group>";
 		};
-		2551335E2730EEE200A92CF3 /* Search */ = {
+		2551335E2730EEE200A92CF3 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				25020599273A33A5004B024E /* MapViewController.swift */,
 			);
-			path = Search;
+			path = Map;
 			sourceTree = "<group>";
 		};
 		2551335F2730EEEF00A92CF3 /* LeaderBoard */ = {
 			isa = PBXGroup;
 			children = (
+				2502059B273A33CB004B024E /* LeaderBoardViewController.swift */,
 			);
 			path = LeaderBoard;
 			sourceTree = "<group>";
@@ -256,6 +267,7 @@
 		255133602730EF0300A92CF3 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				25020597273A3300004B024E /* RecordViewController.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -419,6 +431,7 @@
 				251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */,
 				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
 				1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */,
+				25020598273A3300004B024E /* RecordViewController.swift in Sources */,
 				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
 				2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */,
 				1FE6C8B22732741E00AC7408 /* GeoLocation.swift in Sources */,
@@ -428,6 +441,7 @@
 				1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */,
 				1F72C20E2734010700C59CC1 /* Observable.swift in Sources */,
 				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
+				2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */,
 				1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */,
 				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
 				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
@@ -436,11 +450,13 @@
 				2513CACF2735192F00A574C7 /* EDSKit.swift in Sources */,
 				251031BC27339C0200BD07BF /* RatingView.swift in Sources */,
 				0C7F483927337D1C007FE109 /* District.swift in Sources */,
+				25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */,
 				2551339027315B1900A92CF3 /* SortingOption.swift in Sources */,
 				1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */,
 				1FE6C8B0273273BD00AC7408 /* UserRecord.swift in Sources */,
 				251031C22733A5B500BD07BF /* RatingImage.swift in Sources */,
 				25513368273107A000A92CF3 /* Genre.swift in Sources */,
+				2502059A273A33A5004B024E /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
