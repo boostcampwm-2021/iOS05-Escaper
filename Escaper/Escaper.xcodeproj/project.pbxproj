@@ -26,6 +26,7 @@
 		25020598273A3300004B024E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020597273A3300004B024E /* RecordViewController.swift */; };
 		2502059A273A33A5004B024E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020599273A33A5004B024E /* MapViewController.swift */; };
 		2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059B273A33CB004B024E /* LeaderBoardViewController.swift */; };
+		2502059E273A6405004B024E /* DistrictSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059D273A6405004B024E /* DistrictSelectView.swift */; };
 		251031BC27339C0200BD07BF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BB27339C0200BD07BF /* RatingView.swift */; };
 		251031C02733A2AC00BD07BF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BF2733A2AC00BD07BF /* Rating.swift */; };
 		251031C22733A5B500BD07BF /* RatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C12733A5B500BD07BF /* RatingImage.swift */; };
@@ -65,6 +66,7 @@
 		25020597273A3300004B024E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		25020599273A33A5004B024E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2502059B273A33CB004B024E /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
+		2502059D273A6405004B024E /* DistrictSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictSelectView.swift; sourceTree = "<group>"; };
 		251031BB27339C0200BD07BF /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		251031BF2733A2AC00BD07BF /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		251031C12733A5B500BD07BF /* RatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingImage.swift; sourceTree = "<group>"; };
@@ -140,9 +142,10 @@
 		251031BA2733950900BD07BF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */,
 				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
 				251031BB27339C0200BD07BF /* RatingView.swift */,
-				25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */,
+				2502059D273A6405004B024E /* DistrictSelectView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				25020598273A3300004B024E /* RecordViewController.swift in Sources */,
 				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
 				2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */,
+				2502059E273A6405004B024E /* DistrictSelectView.swift in Sources */,
 				1FE6C8B22732741E00AC7408 /* GeoLocation.swift in Sources */,
 				2551336E27310D5500A92CF3 /* Room.swift in Sources */,
 				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
