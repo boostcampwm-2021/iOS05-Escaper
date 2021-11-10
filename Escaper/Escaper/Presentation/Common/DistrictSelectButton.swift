@@ -14,14 +14,20 @@ protocol DistrictSelectViewDelegate: AnyObject {
 class DistrictSelectButton: UIButton {
     private enum Constant {
         static let sideSpace = CGFloat(5)
-        static let districtLabelWidth = CGFloat(86)
+        static let districtLabelWidth = CGFloat(61)
+        static let infoLabelWidth = CGFloat(25)
         static let imageLength = CGFloat(14)
     }
 
     weak var delegate: DistrictSelectViewDelegate?
 
     private var districtLabel: UILabel = {
-        let label = EDSLabel.b01B(text: " 지역 선택 ", color: .pumpkin)
+        let label = EDSLabel.b01B(text: "         지역 ", color: .pumpkin)
+        label.textAlignment = .center
+        return label
+    }()
+    private var infoLabel: UILabel = {
+        let label = EDSLabel.b01B(text: "선택 ", color: .pumpkin)
         label.textAlignment = .right
         return label
     }()
@@ -45,15 +51,17 @@ class DistrictSelectButton: UIButton {
     }
 
     func updateTitle(district: District) {
-        self.districtLabel.text = " \(district.name) 기준 "
+        self.districtLabel.text = " \(district.name) "
+        self.infoLabel.text = "기준 "
     }
 }
 
 private extension DistrictSelectButton {
     func configure() {
         self.configureUI()
-        self.configureDistrictLayout()
         self.configureIndicatorImageViewLayout()
+        self.configureDistrictLayout()
+        self.configureInfoLabelLayout()
     }
 
     func configureUI() {
@@ -77,12 +85,22 @@ private extension DistrictSelectButton {
         ])
     }
 
+    func configureInfoLabelLayout() {
+        self.infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.infoLabel)
+        NSLayoutConstraint.activate([
+            self.infoLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.infoLabel.trailingAnchor.constraint(equalTo: self.indicatorImageView.leadingAnchor, constant: -Constant.sideSpace),
+            self.infoLabel.widthAnchor.constraint(equalToConstant: Constant.infoLabelWidth)
+        ])
+    }
+
     func configureIndicatorImageViewLayout() {
         self.indicatorImageView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.indicatorImageView)
         NSLayoutConstraint.activate([
             self.indicatorImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.indicatorImageView.leadingAnchor.constraint(equalTo: self.districtLabel.trailingAnchor, constant: Constant.sideSpace),
+            self.indicatorImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.indicatorImageView.widthAnchor.constraint(equalToConstant: Constant.imageLength),
             self.indicatorImageView.heightAnchor.constraint(equalToConstant: Constant.imageLength)
         ])
