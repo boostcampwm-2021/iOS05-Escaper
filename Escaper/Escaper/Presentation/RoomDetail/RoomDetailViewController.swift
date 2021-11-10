@@ -7,23 +7,150 @@
 
 import UIKit
 
-class RoomDetailViewController: UIViewController {
+class RoomDetailViewController: DefaultViewController {
+    private enum Constant {
+        static let stackViewSpace: CGFloat = 10
+        static let rankViewHeight: CGFloat = 60
+        static let genreImageSize: CGFloat = 180
+        static let shortVerticalSpace: CGFloat = 4
+        static let longVerticalSpace: CGFloat = 24
+        static let verticalSpace: CGFloat = 16
+        static let horizontalSpace: CGFloat = 20
+        static let DetailInfoHeight: CGFloat = 160
+        static let DetailInfoSideSpace: CGFloat = 60
+    }
+
+    var room: Room?
+    private let scrollView = UIScrollView()
+    private let genreImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "outdoorDetail")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    private let titleLabel: UILabel = {
+        let label = EDSLabel.h01B(text: "title", color: .skullLightWhite)
+        return label
+    }()
+    private let storeNameLabel: UILabel = {
+        let label = EDSLabel.b01R(text: "storeName", color: .shadowGrey)
+        return label
+    }()
+    private let roomDetailInfoVeiw = RoomDetailInfoView()
+    private let rankTitleLabel = EDSLabel.h01B(text: "이 방의 TOP3!", color: .skullLightWhite)
+    private let userRankStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = Constant.stackViewSpace
+        stackView.distribution = .fill
+        return stackView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        guard let room = room else { return }
+        self.configure()
+        self.update(room: room)
+        self.roomDetailInfoVeiw.update(room: room)
+        self.updateStackView(userRecords: room.userRecords)
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func update(room: Room) {
+        self.genreImageView.image = UIImage(named: room.genres.first?.detailImageAssetName ?? "")
+        self.titleLabel.text = room.name
+        self.storeNameLabel.text = room.storeName
     }
-    */
 
+    private func updateStackView(userRecords: [UserRecord]) {
+        for (rank, userRecord) in userRecords.enumerated() {
+            let rankView = RoomDetailUserRankView()
+            rankView.translatesAutoresizingMaskIntoConstraints = false
+            rankView.heightAnchor.constraint(equalToConstant: Constant.rankViewHeight).isActive = true
+            rankView.layer.cornerRadius = Constant.rankViewHeight/2
+            rankView.update(userRecord, rank: rank)
+            self.userRankStackView.addArrangedSubview(rankView)
+        }
+    }
+}
+
+private extension RoomDetailViewController {
+    func configure() {
+        self.configureScrollViewLayout()
+        self.configureGenreImageViewLayout()
+        self.configureTitleLabelLayout()
+        self.configureStoreNameLabelLayout()
+        self.configureRoomDetailInfoViewLayout()
+        self.configureRankTitleLabelLayout()
+        self.configureRankStackViewLayout()
+    }
+
+    func configureScrollViewLayout() {
+        self.scrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.scrollView)
+        NSLayoutConstraint.activate([
+            self.scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            self.scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+
+    func configureGenreImageViewLayout() {
+        self.genreImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.genreImageView)
+        NSLayoutConstraint.activate([
+            self.genreImageView.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor),
+            self.genreImageView.topAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.topAnchor, constant: 64),
+            self.genreImageView.widthAnchor.constraint(equalToConstant: Constant.genreImageSize),
+            self.genreImageView.heightAnchor.constraint(equalToConstant: Constant.genreImageSize)
+        ])
+    }
+
+    func configureTitleLabelLayout() {
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.titleLabel)
+        NSLayoutConstraint.activate([
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor),
+            self.titleLabel.topAnchor.constraint(equalTo: self.genreImageView.bottomAnchor, constant: Constant.longVerticalSpace)
+        ])
+    }
+
+    func configureStoreNameLabelLayout() {
+        self.storeNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.storeNameLabel)
+        NSLayoutConstraint.activate([
+            self.storeNameLabel.centerXAnchor.constraint(equalTo: self.titleLabel.centerXAnchor),
+            self.storeNameLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: Constant.shortVerticalSpace)
+        ])
+    }
+
+    func configureRoomDetailInfoViewLayout() {
+        self.roomDetailInfoVeiw.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.roomDetailInfoVeiw)
+        NSLayoutConstraint.activate([
+            self.roomDetailInfoVeiw.topAnchor.constraint(equalTo: self.storeNameLabel.bottomAnchor, constant: Constant.verticalSpace),
+            self.roomDetailInfoVeiw.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.DetailInfoSideSpace),
+            self.roomDetailInfoVeiw.heightAnchor.constraint(equalToConstant: Constant.DetailInfoHeight)
+        ])
+    }
+
+    func configureRankTitleLabelLayout() {
+        self.rankTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.rankTitleLabel)
+        NSLayoutConstraint.activate([
+            self.rankTitleLabel.topAnchor.constraint(equalTo: self.roomDetailInfoVeiw.bottomAnchor, constant: Constant.verticalSpace),
+            self.rankTitleLabel.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor)
+        ])
+    }
+
+    func configureRankStackViewLayout() {
+        self.userRankStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.userRankStackView)
+        NSLayoutConstraint.activate([
+            self.userRankStackView.bottomAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.bottomAnchor, constant: -Constant.verticalSpace),
+            self.userRankStackView.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.horizontalSpace),
+            self.userRankStackView.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -Constant.horizontalSpace),
+            self.userRankStackView.topAnchor.constraint(equalTo: self.rankTitleLabel.bottomAnchor, constant: Constant.verticalSpace)
+        ])
+    }
 }
