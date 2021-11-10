@@ -38,8 +38,8 @@ class DistrictSelectButton: UIButton {
     }
 
     override func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            return self.makeMenu()
+        let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ in
+            return self?.makeMenu()
         }
         return configuration
     }
