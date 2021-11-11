@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct RecordInfoDTO: Codable {
     var userEmail: String
     var roomId: String

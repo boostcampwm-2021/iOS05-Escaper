@@ -47,6 +47,12 @@ final class RoomDetailViewController: DefaultViewController {
         self.roomDetailInfoVeiw.update(room: room)
         self.updateStackView(userRecords: room.userRecords)
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
+    }
 }
 
 private extension RoomDetailViewController {
@@ -64,10 +70,10 @@ private extension RoomDetailViewController {
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.scrollView)
         NSLayoutConstraint.activate([
-            self.scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            self.scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            self.scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            self.scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            self.scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            self.scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
