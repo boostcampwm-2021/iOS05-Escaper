@@ -235,8 +235,6 @@ private extension RoomListViewController {
         if #available(iOS 14.0, *) {
             return
         } else {
-            let manager = CLLocationManager()
-            manager.requestWhenInUseAuthorization()
             let status = CLLocationManager.authorizationStatus()
             switch status {
             case .authorizedAlways, .authorizedWhenInUse, .authorized:
