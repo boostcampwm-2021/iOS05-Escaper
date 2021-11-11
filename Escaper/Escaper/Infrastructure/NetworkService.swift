@@ -13,11 +13,17 @@ class NetworkService {
 
     func downloadImage(from url: URL, completion: @escaping (Result<URL, NetworkError>) -> Void) {
         URLSession.shared.downloadTask(with: url) { filePath, response, error in
-            guard error == nil else { return }
-            guard let response = response as? HTTPURLResponse else { return }
+            guard error == nil,
+                  let response = response as? HTTPURLResponse else {
+                      completion(.failure(.responseError))
+                      return
+                  }
             switch response.statusCode {
             case (200..<300):
-                guard let filePath = filePath else { return }
+                guard let filePath = filePath else {
+                    completion(.failure(.filePathError))
+                    return
+                }
                 completion(.success(filePath))
             case (300..<400):
                 completion(.failure(.clientError))
@@ -35,6 +41,9 @@ extension NetworkService {
         case clientError
         case serverError
         case decodeError
+        case filePathError
+        case responseError
+
         public var errorDescription: String? {
             switch self {
             case .clientError:
@@ -43,6 +52,10 @@ extension NetworkService {
                 return NSLocalizedString("서버 에러", comment: "Server Error")
             case .decodeError:
                 return NSLocalizedString("디코드 에러", comment: "Decode Error")
+            case .filePathError:
+                return NSLocalizedString("파일 경로 에러", comment: "File Path Error")
+            case .responseError:
+                return NSLocalizedString("응답 에러", comment: "Response Error")
             }
         }
     }
