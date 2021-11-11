@@ -8,7 +8,9 @@
 import Foundation
 
 struct RecordInfo {
-    var imageUrlString: String = "gs://escaper-67244.appspot.com/records/default"
+    static let defaultImageUrlString = "gs://escaper-67244.appspot.com/records/default"
+
+    var imageUrlString: String
     var userEmail: String
     var roomId: String
     var satisfaction: Rating
