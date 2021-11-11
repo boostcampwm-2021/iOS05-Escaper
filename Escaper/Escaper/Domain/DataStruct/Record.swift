@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Record {
+struct Record: Hashable {
     var username: String
     var imageUrlString: String
     var roomName: String
