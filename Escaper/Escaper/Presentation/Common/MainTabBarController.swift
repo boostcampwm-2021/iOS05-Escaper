@@ -99,6 +99,7 @@ private extension MainTabBarController {
             return appearance
         }()
         self.tabBar.standardAppearance = tabBarAppearance
+        self.tabBar.backgroundColor = EDSColor.gloomyBrown.value
         self.tabBar.tintColor = EDSColor.skullLightWhite.value
         self.tabBar.barTintColor = EDSColor.skullLightWhite.value
     }
