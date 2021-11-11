@@ -8,7 +8,7 @@
 import Foundation
 
 protocol RecordViewModelInput {
-    func fetch()
+    func fetch(userEmail: String)
 }
 
 protocol RecordViewModelOutput {
@@ -18,17 +18,22 @@ protocol RecordViewModelOutput {
 protocol RecordViewModel: RecordViewModelInput, RecordViewModelOutput { }
 
 final class DefaultRecordViewModel: RecordViewModel {
-    private(set) var records: Observable<[Record]>?
-    private let useCase: RecordUseCase = RecordUseCase()
+    internal var records: Observable<[Record]>
+    private let useCase: RecordUsecase?
 
-    init(useCase: RecordInterface) {
+    init(useCase: RecordUsecase) {
         self.useCase = useCase
         self.records = Observable([])
     }
 
-    func fetch() {
-        self.useCase.fetch() { [weak self] records in
-            self?.records = records
+    func fetch(userEmail: String) {
+        self.useCase?.fetchAllRecords(userEmail: userEmail) { result in
+            switch result {
+            case .success(let record):
+                self.records.value.append(record)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }
