@@ -39,9 +39,19 @@ class RecordHeadView: UIView {
         configureLayout()
     }
 
-    func update(title: String, place: String) {
+    func update(imageURLString: String, title: String, place: String) {
         self.titleLabel.text = title
         self.placeLabel.text = place
+        ImageCacheManager.shared.download(urlString: imageURLString) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async { [weak self] in
+                    self?.recordImageView.image = UIImage(data: data)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
