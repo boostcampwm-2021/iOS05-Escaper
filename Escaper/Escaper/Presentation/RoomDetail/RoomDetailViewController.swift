@@ -82,7 +82,7 @@ private extension RoomDetailViewController {
         self.scrollView.addSubview(self.genreImageView)
         NSLayoutConstraint.activate([
             self.genreImageView.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor),
-            self.genreImageView.topAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.topAnchor, constant: 64),
+            self.genreImageView.topAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.topAnchor, constant: 32),
             self.genreImageView.widthAnchor.constraint(equalToConstant: Constant.genreImageSize),
             self.genreImageView.heightAnchor.constraint(equalToConstant: Constant.genreImageSize)
         ])

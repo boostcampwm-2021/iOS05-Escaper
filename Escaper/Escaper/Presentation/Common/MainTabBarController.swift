@@ -55,6 +55,10 @@ private extension MainTabBarController {
         homeViewController.navigationController?.navigationBar.standardAppearance = navigationAppearance
         homeViewController.navigationController?.navigationBar.tintColor = EDSColor.skullLightWhite.value
         homeViewController.navigationController?.navigationBar.barTintColor = EDSColor.skullLightWhite.value
+        if #available(iOS 15.0, *) {
+            homeViewController.navigationController?.navigationBar.compactScrollEdgeAppearance = navigationAppearance
+            homeViewController.navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
+        }
         let recordBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.record.title,
             unselected: TabBarItemConfig.record.unselectedImage,
