@@ -46,7 +46,15 @@ private extension MainTabBarController {
         let homeViewController = RoomListViewController()
         homeViewController.tabBarItem = homeBarItem
         homeViewController.create()
-
+        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+        let navigationAppearance: UINavigationBarAppearance = {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = EDSColor.gloomyBrown.value
+            return appearance
+        }()
+        homeViewController.navigationController?.navigationBar.standardAppearance = navigationAppearance
+        homeViewController.navigationController?.navigationBar.tintColor = EDSColor.skullLightWhite.value
+        homeViewController.navigationController?.navigationBar.barTintColor = EDSColor.skullLightWhite.value
         let recordBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.record.title,
             unselected: TabBarItemConfig.record.unselectedImage,
@@ -55,7 +63,6 @@ private extension MainTabBarController {
         let recordViewController = RecordViewController()
         recordViewController.tabBarItem = recordBarItem
         recordViewController.create()
-
         let mapBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.map.title,
             unselected: TabBarItemConfig.map.unselectedImage,
@@ -64,7 +71,6 @@ private extension MainTabBarController {
         let mapViewController = MapViewController()
         mapViewController.tabBarItem = mapBarItem
         mapViewController.create()
-
         let leaderBoardBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.leaderBoard.title,
             unselected: TabBarItemConfig.leaderBoard.unselectedImage,
@@ -73,9 +79,8 @@ private extension MainTabBarController {
         let leaderBoardViewController = LeaderBoardViewController()
         leaderBoardViewController.tabBarItem = leaderBoardBarItem
         leaderBoardViewController.create()
-
         let viewControllers = [
-            UINavigationController(rootViewController: homeViewController),
+            homeNavigationController,
             recordViewController,
             mapViewController,
             leaderBoardViewController
@@ -84,9 +89,14 @@ private extension MainTabBarController {
     }
 
     func configureSubViewControllers() {
-        self.tabBar.backgroundColor = EDSKit.Color.gloomyBrown.value
-        self.tabBar.tintColor = EDSKit.Color.skullLightWhite.value
-        self.tabBar.barTintColor = EDSKit.Color.skullLightWhite.value
+        let tabBarAppearance: UITabBarAppearance = {
+            let appearance = UITabBarAppearance()
+            appearance.backgroundColor = EDSColor.gloomyBrown.value
+            return appearance
+        }()
+        self.tabBar.standardAppearance = tabBarAppearance
+        self.tabBar.tintColor = EDSColor.skullLightWhite.value
+        self.tabBar.barTintColor = EDSColor.skullLightWhite.value
     }
 
     func makeTabBarItem(title: String, unselected: UIImage?, selected: UIImage?) -> UITabBarItem {

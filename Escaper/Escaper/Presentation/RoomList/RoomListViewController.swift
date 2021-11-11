@@ -54,6 +54,12 @@ final class RoomListViewController: DefaultViewController {
         self.bindViewModel()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
+    }
+
     func create() {
         let repository = RoomListRepository(service: FirebaseService.shared)
         let usecase = RoomListUseCase(repository: repository)
