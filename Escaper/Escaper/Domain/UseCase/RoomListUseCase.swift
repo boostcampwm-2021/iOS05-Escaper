@@ -10,6 +10,7 @@ import CoreLocation
 
 protocol RoomListUseCaseInterface {
     func query(district: District, genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void)
+    func fetch(name: String, completion: @escaping (Result<[Room], Error>) -> Void)
 }
 
 class RoomListUseCase: RoomListUseCaseInterface {
@@ -33,4 +34,16 @@ class RoomListUseCase: RoomListUseCaseInterface {
             }
         }
     }
+
+    func fetch(name: String, completion: @escaping (Result<[Room], Error>) -> Void) {
+        self.repository.fetch(name: name) { result in
+            switch result {
+            case .success(let rooms):
+                completion(.success(rooms))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
 }

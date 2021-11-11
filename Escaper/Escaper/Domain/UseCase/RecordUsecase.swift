@@ -26,7 +26,7 @@ class RecordUsecase: RecordUsecaseInterface {
             switch result {
             case .success(let recordInfos):
                 recordInfos.forEach { recordInfo in
-                    self.roomRepository.fetch(by: recordInfo.roomId) { result in
+                    self.roomRepository.fetch(roomId: recordInfo.roomId) { result in
                         switch result {
                         case .success(let room):
                             completion(.success(Record(recordInfo: recordInfo, room: room)))
