@@ -7,8 +7,8 @@
 
 import Foundation
 
-
 struct RecordInfoDTO: Codable {
+    var imageUrlString: String
     var userEmail: String
     var roomId: String
     var satisfaction: Double
@@ -17,6 +17,7 @@ struct RecordInfoDTO: Codable {
 
     func toDictionary() -> [String: Any] {
         let dictionary: [String: Any] = [
+            "imageUrlString": self.imageUrlString,
             "userEmail": self.userEmail,
             "roomId": self.roomId,
             "satisfaction": self.satisfaction,
@@ -27,10 +28,11 @@ struct RecordInfoDTO: Codable {
     }
 
     func toDomain() -> RecordInfo {
-        return RecordInfo(userEmail: self.userEmail,
-                                roomId: self.roomId,
-                                satisfaction: Rating(rawValue: Int(self.satisfaction.rounded())) ?? Rating.zero,
-                                isSuccess: self.isSuccess,
-                                time: self.time)
+        return RecordInfo(imageUrlString: self.imageUrlString,
+                          userEmail: self.userEmail,
+                          roomId: self.roomId,
+                          satisfaction: Rating(rawValue: Int(self.satisfaction.rounded())) ?? Rating.zero,
+                          isSuccess: self.isSuccess,
+                          time: self.time)
     }
 }

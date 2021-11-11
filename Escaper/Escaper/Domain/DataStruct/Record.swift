@@ -8,7 +8,8 @@
 import Foundation
 
 struct Record {
-    var userEmail: String
+    var username: String
+    var imageUrlString: String
     var roomName: String
     var storeName: String
     var isSuccess: Bool
@@ -19,14 +20,15 @@ struct Record {
     var time: Int
 
     init(recordInfo: RecordInfo, room: Room) {
-        self.userEmail = recordInfo.userEmail
+        self.username = Helper.parseUsername(email: recordInfo.userEmail) ?? "Unknown"
+        self.imageUrlString = recordInfo.imageUrlString
         self.roomName = room.name
         self.storeName = room.storeName
         self.isSuccess = recordInfo.isSuccess
         self.satisfaction = recordInfo.satisfaction
         self.difficulty = room.level
         self.numberOfTotalPlayers = room.userRecords.count
-        self.rank = Self.calculateRank(username: self.userEmail, time: recordInfo.time, allRecords: room.userRecords) ?? 0
+        self.rank = Self.calculateRank(username: self.username, time: recordInfo.time, allRecords: room.userRecords) ?? 0
         self.time = recordInfo.time
     }
 }
