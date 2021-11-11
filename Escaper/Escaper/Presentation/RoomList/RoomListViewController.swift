@@ -52,6 +52,7 @@ final class RoomListViewController: DefaultViewController {
         self.configure()
         self.injectTagScrollViewElements()
         self.bindViewModel()
+        self.locationAuthorization()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +108,15 @@ extension RoomListViewController: CLLocationManagerDelegate {
         default:
             break
         }
+    }
+}
+
+extension RoomListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        let detailViewController = RoomDetailViewController()
+        detailViewController.room = room
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
 
@@ -220,13 +230,23 @@ private extension RoomListViewController {
               let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
         self.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
     }
-}
 
-extension RoomListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
-        let detailViewController = RoomDetailViewController()
-        detailViewController.room = room
-        self.navigationController?.pushViewController(detailViewController, animated: true)
+    func locationAuthorization() {
+        if #available(iOS 14.0, *) {
+            return
+        } else {
+            let manager = CLLocationManager()
+            manager.requestWhenInUseAuthorization()
+            let status = CLLocationManager.authorizationStatus()
+            switch status {
+            case .authorizedAlways, .authorizedWhenInUse, .authorized:
+                self.fetchCurrentDistrict { [weak self] district in
+                    self?.districtSelectButton.updateTitle(district: district)
+                    self?.fetchWithCurrentSelectedOption(with: district)
+                }
+            default:
+                break
+            }
+        }
     }
 }
