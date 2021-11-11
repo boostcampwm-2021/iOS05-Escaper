@@ -13,8 +13,19 @@ class RecordUserView: UIView {
         static let horizontalSpace = CGFloat(5)
     }
 
+    enum Result: String {
+        var name: String {
+            return self.rawValue
+        }
+
+        case success
+        case fail
+    }
+
     private let userImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.cornerRadius = CGFloat(20)
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     private let participantLabel: UILabel = {
@@ -30,6 +41,8 @@ class RecordUserView: UIView {
     private let resultLabel: UILabel = {
         let label = EDSLabel.b03R(text: "Fail", color: .bloodyBlack)
         label.textAlignment = .center
+        label.layer.cornerRadius = CGFloat(12)
+        label.layer.masksToBounds = true
         return label
     }()
     private let horizontalStackView: UIStackView = {
@@ -57,15 +70,23 @@ class RecordUserView: UIView {
 
     func update(nickname: String, result: Bool) {
         self.nicknameLabel.text = nickname
-        self.resultLabel.text = result ? "success" : "fail"
+        self.resultLabel.text = result ? Result.success.name : Result.fail.name
+        switch result {
+        case true:
+            self.resultLabel.backgroundColor = EDSColor.pumpkin.value
+        case false:
+            self.resultLabel.backgroundColor = EDSColor.bloodyRed.value
+        }
     }
 }
 
 extension RecordUserView {
     func configureLayout() {
         configureUserImageViewLayout()
-        configureHorizontalStackView()
-        configureVerticalStackView()
+        configureHorizontalStackViewLayout()
+        configureVerticalStackViewLayout()
+        configureNicknameLabeLayout()
+        configureResultLabelLayout()
     }
 
     func configureUserImageViewLayout() {
@@ -79,14 +100,14 @@ extension RecordUserView {
         ])
     }
 
-    func configureHorizontalStackView() {
+    func configureHorizontalStackViewLayout() {
         self.horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.horizontalStackView)
         self.horizontalStackView.addArrangedSubview(self.nicknameLabel)
         self.horizontalStackView.addArrangedSubview(self.resultLabel)
     }
 
-    func configureVerticalStackView() {
+    func configureVerticalStackViewLayout() {
         self.verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.verticalStackView)
         self.verticalStackView.addArrangedSubview(self.participantLabel)
@@ -97,5 +118,15 @@ extension RecordUserView {
             self.verticalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.verticalSpace),
             self.verticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constant.verticalSpace)
         ])
+    }
+
+    func configureNicknameLabeLayout() {
+        self.nicknameLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.nicknameLabel.widthAnchor.constraint(equalTo: self.verticalStackView.widthAnchor, multiplier: 0.7).isActive = true
+    }
+
+    func configureResultLabelLayout() {
+        self.resultLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.resultLabel.widthAnchor.constraint(equalTo: self.verticalStackView.widthAnchor, multiplier: 0.3).isActive = true
     }
 }
