@@ -218,7 +218,7 @@ private extension RoomListViewController {
 
 extension RoomListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let room = self.viewModel?.rooms.value[indexPath.row] else { return }
+        guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         let detailViewController = RoomDetailViewController()
         detailViewController.room = room
         self.navigationController?.pushViewController(detailViewController, animated: true)
