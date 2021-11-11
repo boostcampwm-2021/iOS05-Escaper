@@ -8,6 +8,7 @@
 import Foundation
 
 struct RecordInfo {
+    var imageUrlString: String = "gs://escaper-67244.appspot.com/records/default"
     var userEmail: String
     var roomId: String
     var satisfaction: Rating
@@ -15,10 +16,11 @@ struct RecordInfo {
     var time: Int
 
     func toDTO() -> RecordInfoDTO {
-        return RecordInfoDTO(userEmail: self.userEmail,
-                                     roomId: self.roomId,
-                                     satisfaction: Double(self.satisfaction.rawValue),
-                                     isSuccess: self.isSuccess,
-                                     time: self.time)
+        return RecordInfoDTO(imageUrlString: self.imageUrlString,
+                             userEmail: self.userEmail,
+                             roomId: self.roomId,
+                             satisfaction: Double(self.satisfaction.rawValue),
+                             isSuccess: self.isSuccess,
+                             time: self.time)
     }
 }
