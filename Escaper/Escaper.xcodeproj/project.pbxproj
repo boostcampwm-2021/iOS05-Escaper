@@ -30,6 +30,11 @@
 		2502059A273A33A5004B024E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020599273A33A5004B024E /* MapViewController.swift */; };
 		2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059B273A33CB004B024E /* LeaderBoardViewController.swift */; };
 		2502059E273A6405004B024E /* DistrictSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059D273A6405004B024E /* DistrictSelectButton.swift */; };
+		25020600273CE1D8004B024E /* RecordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250205FE273CE1D8004B024E /* RecordInfo.swift */; };
+		25020601273CE1D8004B024E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250205FF273CE1D8004B024E /* Record.swift */; };
+		25020603273CE1E1004B024E /* RecordUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020602273CE1E1004B024E /* RecordUsecase.swift */; };
+		25020605273CE1FC004B024E /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020604273CE1FC004B024E /* RecordRepository.swift */; };
+		25020609273CE349004B024E /* RecordInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020608273CE349004B024E /* RecordInfoDTO.swift */; };
 		251031BC27339C0200BD07BF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BB27339C0200BD07BF /* RatingView.swift */; };
 		251031C02733A2AC00BD07BF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BF2733A2AC00BD07BF /* Rating.swift */; };
 		251031C22733A5B500BD07BF /* RatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C12733A5B500BD07BF /* RatingImage.swift */; };
@@ -42,6 +47,8 @@
 		2551336E27310D5500A92CF3 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336D27310D5500A92CF3 /* Room.swift */; };
 		2551339027315B1900A92CF3 /* SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551338F27315B1900A92CF3 /* SortingOption.swift */; };
 		25772766273CFBD100881845 /* DistrictSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772765273CFBD100881845 /* DistrictSelectButton.swift */; };
+		25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */; };
+		25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772762273CE87F00881845 /* RecordRepositoryInterface.swift */; };
 		25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */; };
 		3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BDEA02732C2FB0081A749 /* Tagable.swift */; };
 		3E4378C927325241001ED120 /* TagScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378C827325241001ED120 /* TagScrollView.swift */; };
@@ -74,6 +81,11 @@
 		25020599273A33A5004B024E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2502059B273A33CB004B024E /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
 		2502059D273A6405004B024E /* DistrictSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictSelectButton.swift; sourceTree = "<group>"; };
+		250205FE273CE1D8004B024E /* RecordInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordInfo.swift; sourceTree = "<group>"; };
+		250205FF273CE1D8004B024E /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		25020602273CE1E1004B024E /* RecordUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordUsecase.swift; sourceTree = "<group>"; };
+		25020604273CE1FC004B024E /* RecordRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
+		25020608273CE349004B024E /* RecordInfoDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordInfoDTO.swift; sourceTree = "<group>"; };
 		251031BB27339C0200BD07BF /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		251031BF2733A2AC00BD07BF /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		251031C12733A5B500BD07BF /* RatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingImage.swift; sourceTree = "<group>"; };
@@ -86,6 +98,8 @@
 		2551336D27310D5500A92CF3 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		2551338F27315B1900A92CF3 /* SortingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOption.swift; sourceTree = "<group>"; };
 		25772765273CFBD100881845 /* DistrictSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistrictSelectButton.swift; sourceTree = "<group>"; };
+		25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListRepositoryInterface.swift; sourceTree = "<group>"; };
+		25772762273CE87F00881845 /* RecordRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordRepositoryInterface.swift; sourceTree = "<group>"; };
 		25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3E2BDEA02732C2FB0081A749 /* Tagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tagable.swift; sourceTree = "<group>"; };
 		3E4378C827325241001ED120 /* TagScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagScrollView.swift; sourceTree = "<group>"; };
@@ -119,6 +133,7 @@
 		1F0CAED12733DFF300389CFA /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
+				25020608273CE349004B024E /* RecordInfoDTO.swift */,
 				1F0CAED22733E00300389CFA /* RoomDTO.swift */,
 			);
 			path = DataMapping;
@@ -196,6 +211,7 @@
 		255133552730E8F300A92CF3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				2577275F273CE87F00881845 /* Interface */,
 				3E2BDE9F2732C2E60081A749 /* Protocol */,
 				255133662731072000A92CF3 /* DataStruct */,
 				255133652731070F00A92CF3 /* UseCase */,
@@ -206,9 +222,10 @@
 		255133562730E8FD00A92CF3 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				1F0CAED12733DFF300389CFA /* DataMapping */,
 				1F0CAED42733E03600389CFA /* FirebaseService.swift */,
+				25020604273CE1FC004B024E /* RecordRepository.swift */,
 				1F0CAED62733E04F00389CFA /* RoomListRepository.swift */,
+				1F0CAED12733DFF300389CFA /* DataMapping */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -327,6 +344,7 @@
 		255133652731070F00A92CF3 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				25020602273CE1E1004B024E /* RecordUsecase.swift */,
 				25513369273108A800A92CF3 /* RoomListUseCase.swift */,
 			);
 			path = UseCase;
@@ -335,6 +353,8 @@
 		255133662731072000A92CF3 /* DataStruct */ = {
 			isa = PBXGroup;
 			children = (
+				250205FF273CE1D8004B024E /* Record.swift */,
+				250205FE273CE1D8004B024E /* RecordInfo.swift */,
 				25513367273107A000A92CF3 /* Genre.swift */,
 				2551336D27310D5500A92CF3 /* Room.swift */,
 				1FE6C8B12732741E00AC7408 /* GeoLocation.swift */,
@@ -344,6 +364,23 @@
 				0C7F483827337D1C007FE109 /* District.swift */,
 			);
 			path = DataStruct;
+			sourceTree = "<group>";
+		};
+		2577275F273CE87F00881845 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				25772760273CE87F00881845 /* Repositories */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		25772760273CE87F00881845 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */,
+				25772762273CE87F00881845 /* RecordRepositoryInterface.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		3E2BDE9F2732C2E60081A749 /* Protocol */ = {
@@ -454,10 +491,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25020609273CE349004B024E /* RecordInfoDTO.swift in Sources */,
 				251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */,
+				25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */,
 				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
 				1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */,
 				25020598273A3300004B024E /* RecordViewController.swift in Sources */,
+				25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */,
 				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
 				2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */,
 				0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */,
@@ -473,12 +513,16 @@
 				1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */,
 				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
 				25772766273CFBD100881845 /* DistrictSelectButton.swift in Sources */,
+				25020601273CE1D8004B024E /* Record.swift in Sources */,
 				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
 				0CAEE3B1273BA7C3002C1136 /* RoomDetailUserRankView.swift in Sources */,
 				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
 				3E4378CB27329028001ED120 /* TagButton.swift in Sources */,
 				2513CACF2735192F00A574C7 /* EDSKit.swift in Sources */,
+				25020603273CE1E1004B024E /* RecordUsecase.swift in Sources */,
 				251031BC27339C0200BD07BF /* RatingView.swift in Sources */,
+				25020605273CE1FC004B024E /* RecordRepository.swift in Sources */,
+				25020600273CE1D8004B024E /* RecordInfo.swift in Sources */,
 				0C7F483927337D1C007FE109 /* District.swift in Sources */,
 				25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */,
 				3EBBD12B273A5621005B65F1 /* UtilityImage.swift in Sources */,
