@@ -102,7 +102,7 @@ class RecordViewController: DefaultViewController {
         self.viewModel?.records.observe(on: self) { [weak self] result in
             self?.configureRecordCollectionViewData(records: result)
         }
-        self.viewModel?.fetch(userEmail: "lamar.schaden@hotmail.com")
+        self.viewModel?.fetch(userEmail: "kessler.myah@hotmail.com")
     }
 }
 

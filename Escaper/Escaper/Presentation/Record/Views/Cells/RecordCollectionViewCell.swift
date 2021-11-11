@@ -64,8 +64,8 @@ final class RecordCollectionViewCell: UICollectionViewCell {
     }
 
     func update(record: Record) {
-        recordHeadView.update(title: record.roomName, place: record.storeName)
-        recordUserView.update(nickname: record.userEmail, result: record.isSuccess)
+        recordHeadView.update(imageURLString: record.imageUrlString, title: record.roomName, place: record.storeName)
+        recordUserView.update(nickname: record.username, result: record.isSuccess)
         recordStarView.update(satisfaction: record.satisfaction, difficulty: record.difficulty)
         recordResultView.update(playerRank: record.rank, numberOfPlayers: record.numberOfTotalPlayers, time: record.time)
     }
