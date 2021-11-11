@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 protocol RoomListNetwork: AnyObject {
     func query(genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void)
     func query(roomId: String, completion: @escaping (Result<RoomDTO, Error>) -> Void)
+    func query(name: String, completion: @escaping (Result<[RoomDTO], Error>) -> Void)
 }
 
 protocol RecordNetwork: AnyObject {
@@ -69,6 +70,30 @@ final class FirebaseService: RoomListNetwork {
                     completion(.failure(error))
                     return
                 }
+            }
+    }
+
+    func query(name: String, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
+        database.collection("rooms")
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents else { return }
+                var roomList = [RoomDTO]()
+                for document in documents {
+                    let result = Result {
+                        try document.data(as: RoomDTO.self)
+                    }
+                    switch result {
+                    case .success(let room):
+                        if let room = room,
+                           room.name.hasPrefix(name) {
+                            roomList.append(room)
+                        }
+                    case .failure(let error):
+                        completion(.failure(error))
+                        return
+                    }
+                }
+                completion(Result.success(roomList))
             }
     }
 
