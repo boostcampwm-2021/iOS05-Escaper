@@ -42,21 +42,12 @@ class RecordUsecase: RecordUsecaseInterface {
     }
 
     func addRecord(imageUrlString: String?, userEmail: String, roomId: String, satisfaction: Rating, isSuccess: Bool, time: Int) {
-        if let imageUrlString = imageUrlString {
-            let recordInfo = RecordInfo(imageUrlString: imageUrlString,
-                                        userEmail: userEmail,
-                                        roomId: roomId,
-                                        satisfaction: satisfaction,
-                                        isSuccess: isSuccess,
-                                        time: time)
-            self.recordRepository.addRecord(recordInfo: recordInfo)
-        } else {
-            let recordInfo = RecordInfo(userEmail: userEmail,
-                                        roomId: roomId,
-                                        satisfaction: satisfaction,
-                                        isSuccess: isSuccess,
-                                        time: time)
-            self.recordRepository.addRecord(recordInfo: recordInfo)
-        }
+        let recordInfo = RecordInfo(imageUrlString: imageUrlString ?? RecordInfo.defaultImageUrlString,
+                                    userEmail: userEmail,
+                                    roomId: roomId,
+                                    satisfaction: satisfaction,
+                                    isSuccess: isSuccess,
+                                    time: time)
+        self.recordRepository.addRecord(recordInfo: recordInfo)
     }
 }
