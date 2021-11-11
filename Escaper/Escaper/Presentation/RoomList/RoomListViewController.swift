@@ -177,6 +177,7 @@ private extension RoomListViewController {
     }
 
     func configureDelegates() {
+        self.roomOverviewTableView.delegate = self
         self.genreTagScrollView.tagDelegate = self
         self.sortingOptionTagScrollView.tagDelegate = self
         self.districtSelectButton.delegate = self
@@ -212,5 +213,14 @@ private extension RoomListViewController {
         guard let genre = self.genreTagScrollView.selectedButton?.element as? Genre,
               let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
         self.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
+    }
+}
+
+extension RoomListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let room = self.viewModel?.rooms.value[indexPath.row] else { return }
+        let detailViewController = RoomDetailViewController()
+        detailViewController.room = room
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
