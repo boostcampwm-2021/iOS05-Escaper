@@ -8,6 +8,8 @@
 import UIKit
 
 class RoomDetailUserRankView: UIView {
+    static let rankColor = [EDSColor.pumpkin.value, EDSColor.gloomyPink.value, EDSColor.gloomyRed.value]
+
     private enum Constant {
         static let userImageSize: CGFloat = 50
         static let sideSpace: CGFloat = 32
@@ -16,37 +18,41 @@ class RoomDetailUserRankView: UIView {
         static let titleLabelSize: CGFloat = 100
     }
 
-    private let userRankLabel = EDSLabel.b01B(color: .bloodyBlack)
-    private let userImageView: UIImageView = {
+    private let rankLabel: UILabel = {
+        let label = EDSLabel.b01B(color: .bloodyBlack)
+        label.textAlignment = .left
+        return label
+    }()
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
         return imageView
     }()
-    private let userTitleLabel = EDSLabel.b01B(color: .bloodyBlack)
-    private let userTimeLabel = EDSLabel.b01R(color: .bloodyBlack)
+    private let titleLabel = EDSLabel.b01B(color: .bloodyBlack)
+    private let timeLabel = EDSLabel.b01R(color: .bloodyBlack)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configure()
+        self.configureLayout()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.configure()
+        self.configureLayout()
     }
 
     func update(_ user: UserRecord, rank: Int) {
-        self.userRankLabel.text = "\(rank + 1)"
-        self.userImageView.image = UIImage(named: "romancePreview")
-        self.userTitleLabel.text = user.nickname
-        self.userTimeLabel.text = self.timeToString(time: user.playTime)
+        self.rankLabel.text = "\(rank + 1)"
+        self.imageView.image = UIImage(named: "romancePreview")
+        self.titleLabel.text = user.nickname
+        self.timeLabel.text = self.timeToString(time: user.playTime)
         self.backgroundColor = .clear
-        self.backgroundColor = [EDSColor.pumpkin.value, EDSColor.gloomyPink.value, EDSColor.gloomyRed.value][rank]
+        self.backgroundColor = Self.rankColor[rank]
     }
 }
 
 private extension RoomDetailUserRankView {
-    func configure() {
+    func configureLayout() {
         self.userRankLabelLayout()
         self.userImageViewLayout()
         self.userTitleLabelLayout()
@@ -54,49 +60,46 @@ private extension RoomDetailUserRankView {
     }
 
     func userRankLabelLayout() {
-        self.userRankLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.userRankLabel)
+        self.rankLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.rankLabel)
         NSLayoutConstraint.activate([
-            self.userRankLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.userRankLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.sideSpace),
-            self.userRankLabel.widthAnchor.constraint(equalToConstant: Constant.rankSize)
+            self.rankLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.rankLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.sideSpace),
+            self.rankLabel.widthAnchor.constraint(equalToConstant: Constant.rankSize)
         ])
     }
 
     func userImageViewLayout() {
-        self.userImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.userImageView)
+        self.imageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.imageView)
         NSLayoutConstraint.activate([
-            self.userImageView.centerYAnchor.constraint(equalTo: self.userRankLabel.centerYAnchor),
-            self.userImageView.leadingAnchor.constraint(equalTo: self.userRankLabel.trailingAnchor, constant: Constant.gapSpace),
-            self.userImageView.widthAnchor.constraint(equalToConstant: Constant.userImageSize),
-            self.userImageView.heightAnchor.constraint(equalToConstant: Constant.userImageSize)
+            self.imageView.centerYAnchor.constraint(equalTo: self.rankLabel.centerYAnchor),
+            self.imageView.leadingAnchor.constraint(equalTo: self.rankLabel.trailingAnchor, constant: Constant.gapSpace),
+            self.imageView.widthAnchor.constraint(equalToConstant: Constant.userImageSize),
+            self.imageView.heightAnchor.constraint(equalToConstant: Constant.userImageSize)
         ])
-        self.userImageView.layer.cornerRadius = Constant.userImageSize/2
+        self.imageView.layer.cornerRadius = Constant.userImageSize/2
     }
 
     func userTitleLabelLayout() {
-        self.userTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.userTitleLabel)
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([
-            self.userTitleLabel.centerYAnchor.constraint(equalTo: self.userImageView.centerYAnchor),
-            self.userTitleLabel.leadingAnchor.constraint(equalTo: self.userImageView.trailingAnchor, constant: Constant.gapSpace),
-            self.userTitleLabel.widthAnchor.constraint(equalToConstant: Constant.titleLabelSize)
+            self.titleLabel.centerYAnchor.constraint(equalTo: self.imageView.centerYAnchor),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: Constant.gapSpace),
+            self.titleLabel.widthAnchor.constraint(equalToConstant: Constant.titleLabelSize)
         ])
-
     }
 
     func userTimeLabelLayout() {
-        self.userTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.userTimeLabel)
+        self.timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.timeLabel)
         NSLayoutConstraint.activate([
-            self.userTimeLabel.centerYAnchor.constraint(equalTo: self.userTitleLabel.centerYAnchor),
-            self.userTimeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.sideSpace)
+            self.timeLabel.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor),
+            self.timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.sideSpace)
         ])
     }
-}
 
-private extension RoomDetailUserRankView {
     func timeToString(time: Int) -> String {
         var ret = ""
         var time = time

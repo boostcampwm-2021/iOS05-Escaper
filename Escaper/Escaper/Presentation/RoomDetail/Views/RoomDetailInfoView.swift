@@ -32,12 +32,12 @@ class RoomDetailInfoView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configure()
+        self.configureLayout()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        self.configure()
+        self.configureLayout()
     }
 
     func update(room: Room) {
@@ -49,7 +49,7 @@ class RoomDetailInfoView: UIView {
 }
 
 private extension RoomDetailInfoView {
-    func configure() {
+    func configureLayout() {
         self.configureLevelLabelLayout()
         self.configureSatisfactionLabelLayout()
         self.configureHomepageTitleLabelLayout()
