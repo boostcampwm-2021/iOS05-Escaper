@@ -11,11 +11,11 @@ final class RecordCollectionViewCell: UICollectionViewCell {
     static let identifier = String(describing: RecordCollectionViewCell.self)
 
     enum Constant {
-        static var defaultHorizontalSpace = CGFloat(60)
+        static var defaultHorizontalSpace = CGFloat(50)
 
         static var longHorizontalSpace = CGFloat(180)
-        static var middleHorizontalSpace = CGFloat(100)
-        static var shortHorizontalSpace = CGFloat(40)
+        static var middleHorizontalSpace = CGFloat(120)
+        static var shortHorizontalSpace = CGFloat(50)
 
         static let longVerticalSpace = CGFloat(30)
         static let middleVerticalSpace = CGFloat(15)
@@ -65,7 +65,7 @@ final class RecordCollectionViewCell: UICollectionViewCell {
 
     func update(record: Record) {
         recordHeadView.update(title: record.roomName, place: record.storeName)
-        recordUserView.update(nickname: record.username, result: record.isSuccess)
+        recordUserView.update(nickname: record.userEmail, result: record.isSuccess)
         recordStarView.update(satisfaction: record.satisfaction, difficulty: record.difficulty)
         recordResultView.update(playerRank: record.rank, numberOfPlayers: record.numberOfTotalPlayers, time: record.time)
     }
@@ -110,7 +110,7 @@ extension RecordCollectionViewCell {
         self.addSubview(self.recordHeadView)
         NSLayoutConstraint.activate([
             self.recordHeadView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constant.middleVerticalSpace),
-            self.recordHeadView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2),
+            self.recordHeadView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25),
             self.recordHeadView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
@@ -120,8 +120,8 @@ extension RecordCollectionViewCell {
         self.addSubview(self.recordUserView)
         NSLayoutConstraint.activate([
             self.recordUserView.topAnchor.constraint(equalTo: self.recordHeadView.bottomAnchor, constant: Constant.longVerticalSpace),
-            self.recordUserView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.shortHorizontalSpace),
-            self.recordUserView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.shortHorizontalSpace),
+            self.recordUserView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.shortHorizontalSpace-15),
+            self.recordUserView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.shortHorizontalSpace+15),
             self.recordUserView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.14)
         ])
     }
@@ -141,7 +141,7 @@ extension RecordCollectionViewCell {
         self.recordResultView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.recordResultView)
         NSLayoutConstraint.activate([
-            self.recordResultView.topAnchor.constraint(equalTo: self.recordStarView.bottomAnchor, constant: Constant.shortVerticalSpace),
+            self.recordResultView.topAnchor.constraint(equalTo: self.recordStarView.bottomAnchor, constant: Constant.middleVerticalSpace),
             self.recordResultView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.defaultHorizontalSpace),
             self.recordResultView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.defaultHorizontalSpace),
             self.recordResultView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.18)
