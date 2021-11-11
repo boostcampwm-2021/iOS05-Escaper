@@ -14,6 +14,8 @@ class RecordHeadView: UIView {
 
     private var recordImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.layer.cornerRadius = CGFloat(15)
+        imageView.layer.masksToBounds = true
         return imageView
     }()
     private var titleLabel: UILabel = {
