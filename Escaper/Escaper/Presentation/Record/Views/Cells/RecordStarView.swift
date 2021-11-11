@@ -58,12 +58,9 @@ class RecordStarView: UIView {
         self.configureLayout()
     }
 
-    func update(satisfaction: Double, difficulty: Double) {
-        if let satisfactionRating = Rating(rawValue: Int(satisfaction)),
-           let difficultyRating = Rating(rawValue: Int(difficulty)) {
-            self.popularityRatingView.fill(rating: satisfactionRating)
-            self.difficultyRatingView.fill(rating: difficultyRating)
-        }
+    func update(satisfaction: Rating, difficulty: Rating) {
+        self.popularityRatingView.fill(rating: satisfaction)
+        self.difficultyRatingView.fill(rating: difficulty)
     }
 }
 
@@ -106,28 +103,28 @@ extension RecordStarView {
     func configurePopularityLabelLayout() {
         self.popularityLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.popularityLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6)
+            self.popularityLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.55)
         ])
     }
 
     func configureDifficultyLabelLayout() {
         self.difficultyLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.difficultyLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6)
+            self.difficultyLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.55)
         ])
     }
 
     func configurePopularityRatingViewLayout() {
         self.popularityRatingView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.popularityRatingView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4)
+            self.popularityRatingView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45)
         ])
     }
 
     func configureDifficultyRatingViewLayout() {
         self.difficultyRatingView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.difficultyRatingView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4)
+            self.difficultyRatingView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45)
         ])
     }
 }
