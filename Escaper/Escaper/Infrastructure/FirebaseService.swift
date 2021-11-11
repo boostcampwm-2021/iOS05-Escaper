@@ -26,7 +26,6 @@ final class FirebaseService: RoomListNetwork {
     private let database: Firestore
 
     private init() {
-        FirebaseApp.configure()
         self.database = Firestore.firestore()
     }
 
