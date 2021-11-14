@@ -12,42 +12,24 @@ final class RecordCollectionViewCell: UICollectionViewCell {
 
     enum Constant {
         static var defaultHorizontalSpace = CGFloat(50)
-
         static var longHorizontalSpace = CGFloat(180)
         static var middleHorizontalSpace = CGFloat(120)
         static var shortHorizontalSpace = CGFloat(50)
-
         static let longVerticalSpace = CGFloat(30)
         static let middleVerticalSpace = CGFloat(15)
         static let shortVerticalSpace = CGFloat(10)
     }
 
-    private let backgroundImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: UtilityImage.recordCard.name))
-        return imageView
-    }()
-    private let recordHeadView: RecordHeadView = {
-        let view = RecordHeadView()
-        return view
-    }()
-    private let recordUserView: RecordUserView = {
-        let view = RecordUserView()
-        return view
-    }()
-    private let recordStarView: RecordStarView = {
-        let view = RecordStarView()
-        return view
-    }()
-    private let recordResultView: RecordResultView = {
-        let view = RecordResultView()
-        return view
-    }()
+    private let backgroundImageView: UIImageView = UIImageView(image: UIImage(named: UtilityImage.recordCard.name))
+    private let recordHeadView: RecordHeadView = RecordHeadView()
+    private let recordUserView: RecordUserView = RecordUserView()
+    private let recordStarView: RecordStarView = RecordStarView()
+    private let recordResultView: RecordResultView = RecordResultView()
     private let shareButton: UIButton = {
         let button = UIButton()
         button.setTitle("Share", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         button.setTitleColor(EDSColor.skullWhite.value, for: .normal)
-        button.titleLabel?.textAlignment = .center
         button.backgroundColor = EDSColor.gloomyPurple.value
         button.layer.cornerRadius = 10
         return button
@@ -64,30 +46,29 @@ final class RecordCollectionViewCell: UICollectionViewCell {
     }
 
     func update(record: Record) {
-        recordHeadView.update(imageURLString: record.imageUrlString, title: record.roomName, place: record.storeName)
-        recordUserView.update(nickname: record.username, result: record.isSuccess)
-        recordStarView.update(satisfaction: record.satisfaction, difficulty: record.difficulty)
-        recordResultView.update(playerRank: record.rank, numberOfPlayers: record.numberOfTotalPlayers, time: record.time)
+        self.recordHeadView.update(imageURLString: record.imageUrlString, title: record.roomName, place: record.storeName)
+        self.recordUserView.update(nickname: record.username, result: record.isSuccess)
+        self.recordStarView.update(satisfaction: record.satisfaction, difficulty: record.difficulty)
+        self.recordResultView.update(playerRank: record.rank, numberOfPlayers: record.numberOfTotalPlayers, time: record.time)
     }
 
     override func prepareForReuse() {
-
+        self.recordHeadView.prepareForReuse()
+        self.recordUserView.prepareForReuse()
+        self.recordStarView.prepareForReuse()
+        self.recordResultView.prepareForReuse()
     }
 }
 
 extension RecordCollectionViewCell {
-    func configure() {
-
-    }
-
     func configureLayout() {
-        configureViewLayout()
-        configureBackgroundImageViewLayout()
-        configureRecordHeadViewLayout()
-        configureRecordUserViewLayout()
-        configureRecordStarViewLayout()
-        configureRecordResultViewLayout()
-        configureShareButtonLayout()
+        self.configureViewLayout()
+        self.configureBackgroundImageViewLayout()
+        self.configureRecordHeadViewLayout()
+        self.configureRecordUserViewLayout()
+        self.configureRecordStarViewLayout()
+        self.configureRecordResultViewLayout()
+        self.configureShareButtonLayout()
     }
 
     func configureViewLayout() {
@@ -120,8 +101,8 @@ extension RecordCollectionViewCell {
         self.addSubview(self.recordUserView)
         NSLayoutConstraint.activate([
             self.recordUserView.topAnchor.constraint(equalTo: self.recordHeadView.bottomAnchor, constant: Constant.longVerticalSpace),
-            self.recordUserView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.shortHorizontalSpace-15),
-            self.recordUserView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.shortHorizontalSpace+15),
+            self.recordUserView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 35),
+            self.recordUserView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -35),
             self.recordUserView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.14)
         ])
     }

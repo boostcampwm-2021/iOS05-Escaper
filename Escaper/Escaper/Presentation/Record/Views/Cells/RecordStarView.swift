@@ -13,22 +13,10 @@ class RecordStarView: UIView {
         static let ratingViewWidth = CGFloat(65)
     }
 
-    private let popularityLabel: UILabel = {
-        let label = EDSLabel.b01B(text: "인기도", color: .gloomyPurple)
-        return label
-    }()
-    private let popularityRatingView: RatingView = {
-        let view = RatingView()
-        return view
-    }()
-    private let difficultyLabel: UILabel = {
-        let label = EDSLabel.b01B(text: "난이도", color: .gloomyPurple)
-        return label
-    }()
-    private let difficultyRatingView: RatingView = {
-        let view = RatingView()
-        return view
-    }()
+    private let popularityLabel: UILabel = EDSLabel.b01B(text: "인기도", color: .gloomyPurple)
+    private var popularityRatingView: RatingView = RatingView()
+    private let difficultyLabel: UILabel = EDSLabel.b01B(text: "난이도", color: .gloomyPurple)
+    private var difficultyRatingView: RatingView = RatingView()
     private let popularityHorizontalStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -62,17 +50,22 @@ class RecordStarView: UIView {
         self.popularityRatingView.fill(rating: satisfaction)
         self.difficultyRatingView.fill(rating: difficulty)
     }
+
+    func prepareForReuse() {
+        self.popularityRatingView = RatingView()
+        self.difficultyRatingView = RatingView()
+    }
 }
 
 extension RecordStarView {
     func configureLayout() {
-        configurePopularityHorizontalStackView()
-        configureDifficultyHorizontalStackView()
-        configureVerticalStackView()
-        configurePopularityLabelLayout()
-        configureDifficultyLabelLayout()
-        configurePopularityRatingViewLayout()
-        configureDifficultyRatingViewLayout()
+        self.configurePopularityHorizontalStackView()
+        self.configureDifficultyHorizontalStackView()
+        self.configureVerticalStackView()
+        self.configurePopularityLabelLayout()
+        self.configureDifficultyLabelLayout()
+        self.configurePopularityRatingViewLayout()
+        self.configureDifficultyRatingViewLayout()
     }
 
     func configurePopularityHorizontalStackView() {

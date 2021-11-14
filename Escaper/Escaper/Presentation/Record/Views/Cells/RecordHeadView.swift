@@ -19,24 +19,24 @@ class RecordHeadView: UIView {
         return imageView
     }()
     private var titleLabel: UILabel = {
-        let label = EDSLabel.h02B(text: "미스테리 거울의 방", color: .bloodyBlack)
+        let label = EDSLabel.h02B(text: "", color: .bloodyBlack)
         label.textAlignment = .center
         return label
     }()
     private var placeLabel: UILabel = {
-        let label = EDSLabel.b01R(text: "이스케이프룸 강남점", color: .gloomyPurple)
+        let label = EDSLabel.b01R(text: "", color: .gloomyPurple)
         label.textAlignment = .center
         return label
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureLayout()
+        self.configureLayout()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        configureLayout()
+        self.configureLayout()
     }
 
     func update(imageURLString: String, title: String, place: String) {
@@ -53,13 +53,19 @@ class RecordHeadView: UIView {
             }
         }
     }
+
+    func prepareForReuse() {
+        self.recordImageView = UIImageView()
+        self.titleLabel.text = ""
+        self.placeLabel.text = ""
+    }
 }
 
 extension RecordHeadView {
     func configureLayout() {
-        configureRecordImageViewLayout()
-        configureTitleLabelLayout()
-        configurePlaceLabelLayout()
+        self.configureRecordImageViewLayout()
+        self.configureTitleLabelLayout()
+        self.configurePlaceLabelLayout()
     }
 
     func configureRecordImageViewLayout() {
