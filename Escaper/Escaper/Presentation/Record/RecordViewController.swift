@@ -48,14 +48,13 @@ class RecordViewController: DefaultViewController {
     }()
     private let countingLabel: UILabel = {
         let label = UILabel()
-        label.text = "15"
         label.textColor = EDSColor.pumpkin.value
         label.font = UIFont.systemFont(ofSize: 26, weight: .bold)
         label.textAlignment = .center
         return label
     }()
     private let greetingLabel: UILabel = {
-        let label: UILabel = EDSLabel.b02B(text: GreetingMessage.level1.value, color: .skullWhite)
+        let label: UILabel = EDSLabel.b02B(text: "", color: .skullWhite)
         label.textAlignment = .center
         return label
     }()
@@ -65,7 +64,7 @@ class RecordViewController: DefaultViewController {
         layout.estimatedItemSize = .zero
         let collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.contentInsetAdjustmentBehavior = .never
-        collectionView.backgroundColor = EDSColor.bloodyBlack.value
+        collectionView.backgroundColor = .clear
         collectionView.contentInset = UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width*0.1, bottom: 0, right: UIScreen.main.bounds.size.width*0.1)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.decelerationRate = .fast
@@ -84,10 +83,9 @@ class RecordViewController: DefaultViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        create()
-        configure()
-        configureLayout()
-        bindViewModel()
+        self.configure()
+        self.configureLayout()
+        self.bindViewModel()
     }
 
     func create() {
@@ -131,56 +129,36 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
         let roundedIndex = round(index)
         let indexPath = IndexPath(item: Int(roundedIndex), section: Section.card.index)
         if let cell = self.recordCollectionView.cellForItem(at: indexPath) {
-            animateZoomforCell(zoomCell: cell)
+            self.animateZoomforCell(zoomCell: cell)
         }
         if Int(roundedIndex) != 0 {
             let index = Int(roundedIndex) - 1
             let indexPath = IndexPath(item: index, section: Section.card.index)
             if let previousCell = self.recordCollectionView.cellForItem(at: indexPath) {
-                animateZoomforCellremove(zoomCell: previousCell)
+                self.animateZoomforCellremove(zoomCell: previousCell)
             }
         }
         if Int(roundedIndex) != self.recordCollectionView.numberOfItems(inSection: Section.card.index)-1 {
             let index = Int(roundedIndex) + 1
             let indexPath = IndexPath(item: index, section: Section.card.index)
             if let nextCell = self.recordCollectionView.cellForItem(at: indexPath) {
-                animateZoomforCellremove(zoomCell: nextCell)
+                self.animateZoomforCellremove(zoomCell: nextCell)
             }
         }
     }
-
-    func animateZoomforCell(zoomCell: UICollectionViewCell) {
-        UIView.animate(withDuration: 0.2,
-                        delay: 0,
-                        options: .curveEaseOut,
-                        animations: {
-                            zoomCell.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
-                        },
-                        completion: nil)
-    }
-
-    func animateZoomforCellremove(zoomCell: UICollectionViewCell) {
-        UIView.animate(withDuration: 0,
-                       delay: 0,
-                       options: .curveEaseOut,
-                       animations: {
-                            zoomCell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-                       },
-                       completion: nil)
-    }
 }
 
-extension RecordViewController {
+private extension RecordViewController {
     func configure() {
         configureRecordCollectionView()
     }
 
     func configureLayout() {
-        configureTitleLabelLayout()
-        configureCountingLabelLayout()
-        configureGreetingLabelLayout()
-        configureRecordCollectionViewLayout()
-        configureAddButtonLayout()
+        self.configureTitleLabelLayout()
+        self.configureCountingLabelLayout()
+        self.configureGreetingLabelLayout()
+        self.configureRecordCollectionViewLayout()
+        self.configureAddButtonLayout()
     }
 
     func configureRecordCollectionView() {
@@ -271,5 +249,25 @@ extension RecordViewController {
             self.addButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.shortHorizontalSpace),
             self.addButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.shortHorizontalSpace)
         ])
+    }
+
+    func animateZoomforCell(zoomCell: UICollectionViewCell) {
+        UIView.animate(withDuration: 0.2,
+                        delay: 0,
+                        options: .curveEaseOut,
+                        animations: {
+                            zoomCell.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+                        },
+                        completion: nil)
+    }
+
+    func animateZoomforCellremove(zoomCell: UICollectionViewCell) {
+        UIView.animate(withDuration: 0,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations: {
+                            zoomCell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                       },
+                       completion: nil)
     }
 }

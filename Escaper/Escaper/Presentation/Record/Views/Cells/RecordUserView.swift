@@ -28,18 +28,10 @@ class RecordUserView: UIView {
         imageView.layer.masksToBounds = true
         return imageView
     }()
-    private let participantLabel: UILabel = {
-        let label = EDSLabel.b03R(text: "참가자", color: .gloomyPurple)
-        label.textAlignment = .left
-        return label
-    }()
-    private let nicknameLabel: UILabel = {
-        let label = EDSLabel.b01B(text: "닉네임", color: .bloodyBlack)
-        label.textAlignment = .left
-        return label
-    }()
+    private let participantLabel: UILabel = EDSLabel.b03R(text: "참가자", color: .gloomyPurple)
+    private let nicknameLabel: UILabel = EDSLabel.b01B(text: "", color: .bloodyBlack)
     private let resultLabel: UILabel = {
-        let label = EDSLabel.b03R(text: "Fail", color: .bloodyBlack)
+        let label = EDSLabel.b03R(text: "", color: .bloodyBlack)
         label.textAlignment = .center
         label.layer.cornerRadius = CGFloat(12)
         label.layer.masksToBounds = true
@@ -77,6 +69,11 @@ class RecordUserView: UIView {
         case false:
             self.resultLabel.backgroundColor = EDSColor.bloodyRed.value
         }
+    }
+
+    func prepareForReuse() {
+        self.nicknameLabel.text = ""
+        self.resultLabel.text = ""
     }
 }
 

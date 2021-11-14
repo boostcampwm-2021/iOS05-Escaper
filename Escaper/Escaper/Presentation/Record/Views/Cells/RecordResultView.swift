@@ -8,36 +8,25 @@
 import UIKit
 
 class RecordResultView: UIView {
-    private let rankLabel: UILabel = {
-        let label = EDSLabel.h03B(text: "Rank", color: .gloomyPurple)
-        label.textAlignment = .center
-        return label
-    }()
+    private let rankLabel: UILabel = EDSLabel.h03B(text: "Rank", color: .gloomyPurple)
     private var rankResultLabel: UILabel = {
         let label = UILabel()
-        label.text = "12/33"
         label.textColor = EDSColor.bloodyBlack.value
         label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
-        label.textAlignment = .center
         return label
     }()
-    private let timeLabel: UILabel = {
-        let label = EDSLabel.h03B(text: "Time", color: .gloomyPurple)
-        label.textAlignment = .center
-        return label
-    }()
+    private let timeLabel: UILabel = EDSLabel.h03B(text: "Time", color: .gloomyPurple)
     private var timeResultLabel: UILabel = {
         let label = UILabel()
-        label.text = "27:40"
         label.textColor = EDSColor.bloodyBlack.value
         label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
-        label.textAlignment = .center
         return label
     }()
     private let rankStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .fill
         return stackView
     }()
@@ -45,6 +34,7 @@ class RecordResultView: UIView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.distribution = .fill
         return stackView
     }()
@@ -62,6 +52,11 @@ class RecordResultView: UIView {
     func update(playerRank: Int, numberOfPlayers: Int, time: Int) {
         self.rankResultLabel.text = String(playerRank) + "/" + String(numberOfPlayers)
         self.timeResultLabel.text = String(time/60) + ":" + String(time%60)
+    }
+
+    func prepareForReuse() {
+        self.rankResultLabel.text = ""
+        self.timeResultLabel.text = ""
     }
 }
 
