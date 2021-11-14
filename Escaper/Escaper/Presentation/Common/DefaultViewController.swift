@@ -10,6 +10,6 @@ import UIKit
 class DefaultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = EDSKit.Color.bloodyBlack.value
+        self.view.backgroundColor = EDSColor.bloodyBlack.value
     }
 }

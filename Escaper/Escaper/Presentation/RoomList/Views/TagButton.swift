@@ -15,7 +15,7 @@ final class TagButton: UIButton {
 
     private(set) var element: Tagable?
     private var elementLabel: UILabel = {
-        let label = EDSKit.Label.b01R(color: .skullWhite)
+        let label = EDSLabel.b01R(color: .skullWhite)
         label.textAlignment = .center
         return label
     }()
