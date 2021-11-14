@@ -90,7 +90,7 @@ private extension RoomOverviewTableViewCell {
         self.selectedBackgroundView = bgColorView
         self.backgroundColor = .clear
         self.contentView.layer.masksToBounds = true
-        self.contentView.backgroundColor = EDSKit.Color.gloomyBrown.value
+        self.contentView.backgroundColor = EDSColor.gloomyBrown.value
     }
 
     func configureGenreImageViewLayout() {
