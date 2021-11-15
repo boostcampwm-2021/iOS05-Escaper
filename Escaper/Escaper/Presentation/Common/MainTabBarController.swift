@@ -55,13 +55,13 @@ private extension MainTabBarController {
             }()
             navigationController.navigationBar.standardAppearance = navigationAppearance
             navigationController.navigationBar.tintColor = EDSColor.skullLightWhite.value
+            navigationController.navigationBar.topItem?.title = ""
             if #available(iOS 15.0, *) {
                 navigationController.navigationBar.compactScrollEdgeAppearance = navigationAppearance
                 navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
             }
             return navigationController
         }()
-
         let recordBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.record.title,
             unselected: TabBarItemConfig.record.unselectedImage,
