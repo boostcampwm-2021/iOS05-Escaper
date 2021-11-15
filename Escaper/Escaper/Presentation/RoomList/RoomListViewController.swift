@@ -124,7 +124,7 @@ private extension RoomListViewController {
     func configure() {
         self.configureLocationManager()
         self.configureDelegates()
-        self.configureDataSource()
+        self.configureRoomOverViewTableView()
         self.configureGenreTagScrollViewLayout()
         self.configureSortingOptionTagScrollViewLayout()
         self.configureRoomOverviewTableViewLayout()
@@ -155,8 +155,6 @@ private extension RoomListViewController {
 
     func configureRoomOverviewTableViewLayout() {
         self.roomOverviewTableView.translatesAutoresizingMaskIntoConstraints = false
-        self.roomOverviewTableView.register(RoomOverviewTableViewCell.self,
-                           forCellReuseIdentifier: RoomOverviewTableViewCell.identifier)
         self.view.addSubview(self.roomOverviewTableView)
         NSLayoutConstraint.activate([
             self.roomOverviewTableView.topAnchor.constraint(equalTo: self.sortingOptionTagScrollView.bottomAnchor, constant: Constant.defaultVerticalSpace),
@@ -177,7 +175,8 @@ private extension RoomListViewController {
         ])
     }
 
-    func configureDataSource() {
+    func configureRoomOverViewTableView() {
+        self.roomOverviewTableView.register(RoomOverviewTableViewCell.self, forCellReuseIdentifier: RoomOverviewTableViewCell.identifier)
         self.dataSource = UITableViewDiffableDataSource<Section, Room>(tableView: roomOverviewTableView) { (tableView: UITableView, _: IndexPath, room: Room) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: RoomOverviewTableViewCell.identifier) as? RoomOverviewTableViewCell
             cell?.update(room)
