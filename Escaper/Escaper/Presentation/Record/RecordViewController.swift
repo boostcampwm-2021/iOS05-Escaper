@@ -88,6 +88,12 @@ class RecordViewController: DefaultViewController {
         self.bindViewModel()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel?.records.value.removeAll()
+        self.viewModel?.fetch(userEmail: "kessler.myah@hotmail.com")
+    }
+
     func create() {
         let roomRepository = RoomListRepository(service: FirebaseService.shared)
         let recordRepository = RecordRepository(service: FirebaseService.shared)
@@ -100,7 +106,13 @@ class RecordViewController: DefaultViewController {
         self.viewModel?.records.observe(on: self) { [weak self] result in
             self?.configureRecordCollectionViewData(records: result)
         }
-        self.viewModel?.fetch(userEmail: "kessler.myah@hotmail.com")
+    }
+
+    @objc func addButtonTapped() {
+        let addRecordViewController = AddRecordViewController()
+        addRecordViewController.create()
+        addRecordViewController.modalPresentationStyle = .fullScreen
+        self.present(addRecordViewController, animated: true)
     }
 }
 
