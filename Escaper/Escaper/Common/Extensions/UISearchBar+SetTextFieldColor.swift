@@ -10,12 +10,14 @@ import UIKit
 extension UISearchBar {
     func setTextFieldColor(color: UIColor?) {
         guard let textField = self.value(forKey: "searchField") as? UITextField else { return }
-        switch searchBarStyle {
+        switch self.searchBarStyle {
         case .minimal:
             textField.layer.backgroundColor = color?.cgColor
             textField.layer.cornerRadius = 6
-        case .prominent, .default: textField.backgroundColor = color
-        @unknown default: break
+        case .prominent, .default:
+            textField.backgroundColor = color
+        @unknown default:
+            break
         }
     }
 }
