@@ -9,6 +9,7 @@ import Foundation
 import CoreLocation
 
 struct Room: Hashable {
+    var identifier: String
     var name: String
     var storeName: String
     var level: Rating
