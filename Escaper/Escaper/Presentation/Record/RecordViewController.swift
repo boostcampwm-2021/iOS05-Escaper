@@ -181,6 +181,7 @@ private extension RecordViewController {
             return cell
         }
         self.recordCollectionView.register(RecordCollectionViewCell.self, forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
+        self.addButton.addTarget(self, action: #selector(self.addButtonTapped), for: .touchUpInside)
     }
 
     func configureRecordCollectionViewData(records: [Record]) {
