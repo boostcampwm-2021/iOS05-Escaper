@@ -14,12 +14,12 @@ class RecordUserView: UIView {
     }
 
     enum Result: String {
+        case success
+        case fail
+
         var name: String {
             return self.rawValue
         }
-
-        case success
-        case fail
     }
 
     private let userImageView: UIImageView = {
