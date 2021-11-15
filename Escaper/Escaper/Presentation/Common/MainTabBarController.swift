@@ -46,19 +46,22 @@ private extension MainTabBarController {
         let homeViewController = RoomListViewController()
         homeViewController.tabBarItem = homeBarItem
         homeViewController.create()
-        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-        let navigationAppearance: UINavigationBarAppearance = {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = EDSColor.gloomyBrown.value
-            return appearance
+        let homeNavigationController: UINavigationController = {
+            let navigationController = UINavigationController(rootViewController: homeViewController)
+            let navigationAppearance: UINavigationBarAppearance = {
+                let appearance = UINavigationBarAppearance()
+                appearance.backgroundColor = EDSColor.bloodyBlack.value
+                return appearance
+            }()
+            navigationController.navigationBar.standardAppearance = navigationAppearance
+            navigationController.navigationBar.tintColor = EDSColor.skullLightWhite.value
+            if #available(iOS 15.0, *) {
+                navigationController.navigationBar.compactScrollEdgeAppearance = navigationAppearance
+                navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
+            }
+            return navigationController
         }()
-        homeViewController.navigationController?.navigationBar.standardAppearance = navigationAppearance
-        homeViewController.navigationController?.navigationBar.tintColor = EDSColor.skullLightWhite.value
-        homeViewController.navigationController?.navigationBar.barTintColor = EDSColor.skullLightWhite.value
-        if #available(iOS 15.0, *) {
-            homeViewController.navigationController?.navigationBar.compactScrollEdgeAppearance = navigationAppearance
-            homeViewController.navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
-        }
+
         let recordBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.record.title,
             unselected: TabBarItemConfig.record.unselectedImage,
