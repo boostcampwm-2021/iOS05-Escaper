@@ -14,7 +14,7 @@ class AddRecordViewController: DefaultViewController {
         static let saveButtonHeight = CGFloat(35)
     }
 
-    private var viewModel: (AddRecordViwModelInput & AddRecordViewModelOutput)?
+    private var viewModel: (AddRecordViewModelInput & AddRecordViewModelOutput)?
     private let titleLabel: UILabel = EDSLabel.h02B(text: "기록 추가", color: .skullLightWhite)
     private let backButton: UIButton = {
         let button = UIButton()
