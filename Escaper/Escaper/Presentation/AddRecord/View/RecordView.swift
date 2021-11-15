@@ -146,7 +146,7 @@ class RecordView: UIView {
     func updateTimePicker(hour: Int, minutes: Int, seconds: Int) {
         let timeString = "\(String(format: "%02d", hour)) : \(String(format: "%02d", minutes)) : \(String(format: "%02d", seconds))"
         self.escapingTimePickerButton.setTitle(timeString, for: .normal)
-        self.delegate?.updateEscapingTime(time: hour*360 + minutes*60 + seconds)
+        self.delegate?.updateEscapingTime(time: hour*3600 + minutes*60 + seconds)
     }
 
     func updateUserSelectedImage(_ image: UIImage) {
