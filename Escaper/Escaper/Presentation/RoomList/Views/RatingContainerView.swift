@@ -14,20 +14,8 @@ class RatingContainerView: UIView {
         static let ratingViewWidth = Constant.ratingViewHeight * CGFloat(Rating.maxRating) + RatingView.Constant.summationOfElementSpacing
     }
 
-    private let levelLabel: UILabel = {
-        let label = UILabel()
-        label.text = "난이도"
-        label.textColor = UIColor(named: ColorPalette.skullWhite.name)
-        label.font = UIFont.systemFont(ofSize: 10)
-        return label
-    }()
-    private let satisfactionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "만족도"
-        label.textColor = UIColor(named: ColorPalette.skullWhite.name)
-        label.font = UIFont.systemFont(ofSize: 10)
-        return label
-    }()
+    private let levelLabel = EDSLabel.b03R(text: "난이도", color: .skullWhite)
+    private let satisfactionLabel = EDSLabel.b03R(text: "만족도", color: .skullWhite)
     private let levelRatingView = RatingView()
     private let satisfactionRatingView = RatingView()
 

@@ -8,7 +8,17 @@
 import UIKit
 
 final class TagButton: UIButton {
+    enum Constant {
+        static let cornerRadius = CGFloat(8)
+        static let borderWidth = CGFloat(0.25)
+    }
+
     private(set) var element: Tagable?
+    private var elementLabel: UILabel = {
+        let label = EDSLabel.b01R(color: .skullWhite)
+        label.textAlignment = .center
+        return label
+    }()
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -23,22 +33,37 @@ final class TagButton: UIButton {
     convenience init(element: Tagable) {
         self.init(frame: .zero)
         self.element = element
-        self.setTitle(element.name, for: .normal)
+        self.elementLabel.text = element.name
     }
 
     func touched() {
-        self.backgroundColor = UIColor(named: ColorPalette.pumpkin.name)
+        self.backgroundColor = EDSColor.bloodyDarkBurgundy.value
     }
 
     func untouched() {
-        self.backgroundColor = UIColor(named: ColorPalette.bloodyDarkBurgundy.name)
+        self.backgroundColor = EDSColor.bloodyBlack.value
     }
 }
 
 private extension TagButton {
     func configure() {
-        self.layer.cornerRadius = 5
-        self.titleLabel?.textColor = UIColor(named: ColorPalette.skullWhite.name)
+        self.configureButtonUI()
+        self.configureElementLabelLayout()
+    }
+
+    func configureButtonUI() {
+        self.layer.cornerRadius = Constant.cornerRadius
+        self.layer.borderWidth = Constant.borderWidth
+        self.layer.borderColor = EDSColor.bloodyDarkBurgundy.value?.cgColor
         self.untouched()
+    }
+
+    func configureElementLabelLayout() {
+        self.elementLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(elementLabel)
+        NSLayoutConstraint.activate([
+            self.elementLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.elementLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
     }
 }

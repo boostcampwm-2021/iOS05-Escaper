@@ -8,6 +8,7 @@
 import Foundation
 
 struct RoomDTO: Codable {
+    var identifier: String
     var name: String
     var storeName: String
     var level: Double
@@ -20,6 +21,7 @@ struct RoomDTO: Codable {
 
     func toDictionary() -> [String: Any] {
         let dictionary: [String: Any] = [
+            "identifier": self.identifier,
             "name": self.name,
             "storeName": self.storeName,
             "level": self.level,
@@ -38,8 +40,9 @@ struct RoomDTO: Codable {
         let satisfactionSum = self.userRecords.reduce(0.0, { $0 + $1.satisfaction })
         let satisfactionRawValue = self.userRecords.count == 0 ? 0 : (satisfactionSum / Double(self.userRecords.count)).rounded()
         let satisfaction = Rating(rawValue: Int(satisfactionRawValue)) ?? Rating.zero
-        let userRecords = self.userRecords.sorted { $0.playTime > $1.playTime }.prefix(3).map { $0 }
-        return Room(name: self.name,
+        let userRecords = self.userRecords.sorted { $0.playTime < $1.playTime }.prefix(3).map { $0 }
+        return Room(identifier: self.identifier,
+                    name: self.name,
                     storeName: self.storeName,
                     level: level,
                     satisfaction: satisfaction,

@@ -10,7 +10,7 @@ import Foundation
 protocol RoomListViewModelInterface {
     var rooms: Observable<[Room]> { get }
 
-    func fetch(genre: Genre, sortingOption: SortingOption)
+    func fetch(district: District, genre: Genre, sortingOption: SortingOption)
     func sort(option: SortingOption)
 }
 
@@ -23,8 +23,8 @@ class DefaultRoomListViewModel: RoomListViewModelInterface {
         self.rooms = Observable([])
     }
 
-    func fetch(genre: Genre, sortingOption: SortingOption) {
-        self.usecase.query(genre: genre) { result in
+    func fetch(district: District, genre: Genre, sortingOption: SortingOption) {
+        self.usecase.query(district: district, genre: genre) { result in
             switch result {
             case .success(let rooms):
                 self.rooms.value = self.sort(rooms: rooms, by: sortingOption)

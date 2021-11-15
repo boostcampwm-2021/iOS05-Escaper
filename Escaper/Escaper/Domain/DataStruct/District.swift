@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum District: String, Codable {
+enum District: String, CaseIterable, Codable {
     var name: String {
         return self.rawValue
     }

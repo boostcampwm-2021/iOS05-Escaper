@@ -15,7 +15,7 @@ Pods/
 .DS_Store
 .AppleDouble
 .LSOverride
-
+GoogleService-Info.plist
 # Icon must end with two \r
 Icon
 
