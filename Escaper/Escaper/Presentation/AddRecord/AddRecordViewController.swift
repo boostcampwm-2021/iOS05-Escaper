@@ -33,6 +33,7 @@ class AddRecordViewController: DefaultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configure()
+        self.configureLayout()
     }
 
     func create() {
@@ -52,10 +53,10 @@ class AddRecordViewController: DefaultViewController {
         guard let image = self.recordView.fetchSelectedImage(),
               let roomId = self.viewModel?.roomId else { return }
         self.dismiss(animated: true) {
-            ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { result in
+            ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
                 switch result {
                 case .success(let url):
-                    self.viewModel?.post(email: userEmail, imageUrlString: url)
+                    self?.viewModel?.post(email: userEmail, imageUrlString: url)
                 case .failure(let err):
                     print(err)
                 }
@@ -114,8 +115,7 @@ extension AddRecordViewController: RoomInformationTransferable {
 }
 
 extension AddRecordViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true)
         guard let image = info[.originalImage] as? UIImage else { return }
         self.recordView.updateUserSelectedImage(image)
@@ -124,13 +124,16 @@ extension AddRecordViewController: UIImagePickerControllerDelegate, UINavigation
 
 private extension AddRecordViewController {
     func configure() {
+        self.configureDelegates()
+        self.configureButtonAction()
+        self.bindViewModel()
+    }
+
+    func configureLayout() {
         self.configureTitleLabelLayout()
         self.configureRecordViewLayout()
         self.configureBackButtonLayout()
         self.configureSaveButtonLayout()
-        self.configureDelegates()
-        self.configureButtonAction()
-        self.bindViewModel()
         self.tabBarController?.tabBar.isHidden = true
     }
 
@@ -184,9 +187,9 @@ private extension AddRecordViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.state.observe(on: self) { postableState in
-            self.saveRecordButton.isEnabled = postableState
-            self.saveRecordButton.backgroundColor = postableState ? EDSColor.pumpkin.value : EDSColor.skullGrey.value
+        self.viewModel?.state.observe(on: self) { [weak self] postableState in
+            self?.saveRecordButton.isEnabled = postableState
+            self?.saveRecordButton.backgroundColor = postableState ? EDSColor.pumpkin.value : EDSColor.skullGrey.value
         }
     }
 }

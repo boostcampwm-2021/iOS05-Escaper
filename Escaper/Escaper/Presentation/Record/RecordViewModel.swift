@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 protocol RecordViewModelInput {
     func fetch(userEmail: String)
 }

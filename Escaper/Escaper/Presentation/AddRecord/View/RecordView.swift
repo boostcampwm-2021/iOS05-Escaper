@@ -50,11 +50,7 @@ class RecordView: UIView {
     private let satisfactionLabel: UILabel = EDSLabel.b01B(text: "만족도", color: .charcoal)
     private let escapingStatusLabel = EDSLabel.b01B(text: "탈출 여부", color: .charcoal)
     private let escapingTimeLabel = EDSLabel.b01B(text: "탈출 시간", color: .charcoal)
-    private let satisFactionRatingView: RatingView = {
-        let ratingView = RatingView()
-        ratingView.fill(rating: .five)
-        return ratingView
-    }()
+    private let satisFactionRatingView = RatingView()
     private let escapingStatusSegmentControl: UISegmentedControl = {
         let segmentControl = UISegmentedControl(items: ["Success", "Fail"])
         segmentControl.tintColor = .clear
@@ -111,11 +107,13 @@ class RecordView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configure()
+        self.configureLayout()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.configure()
+        self.configureLayout()
     }
 
     @objc func findRoomButtonTouched() {
@@ -160,6 +158,11 @@ class RecordView: UIView {
 
 private extension RecordView {
     func configure() {
+        self.configureImageViewEvent()
+        self.configureAddTarget()
+    }
+
+    func configureLayout() {
         self.configureRecordBackgroundImageViewLayout()
         self.configureImagePickerButtonLayout()
         self.configurArrrangeSubViews()
@@ -167,8 +170,6 @@ private extension RecordView {
         self.configureEscapingtimePickerButtonLayout()
         self.configureRoomInformationStackViewLayout()
         self.configureEscapingStackViewLayout()
-        self.configureImageViewEvent()
-        self.configureAddTarget()
     }
 
     func configureRecordBackgroundImageViewLayout() {

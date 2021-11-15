@@ -20,7 +20,7 @@ class FindRoomViewController: UIViewController {
         case main
     }
 
-    private var viewModel: (FindRoomInput & FindRoomOutput)?
+    private var viewModel: (FindRoomViewModelInput & FindRoomViewModelOutput)?
     private var searchRequestWorkItem: DispatchWorkItem?
     weak var roomTransferDelegate: RoomInformationTransferable?
     private let containerView: UIView = {
