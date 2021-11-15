@@ -19,22 +19,22 @@ class RecordViewController: DefaultViewController {
     }
 
     private enum GreetingMessage: String {
-        var value: String {
-            return self.rawValue
-        }
-
         case level0 = "방탈출이 처음이시군요!"
         case level1 = "방탈출 세계에 입문하신걸 축하드립니다!"
         case level2 = "조금만 더 하면 나도 방탈출 고수!"
         case level3 = "이정도면, 왠만한 방은 거의 탈출해보셨겠는걸요?"
+
+        var value: String {
+            return self.rawValue
+        }
     }
 
     private enum Section: Int {
+        case card = 0
+
         var index: Int {
             return self.rawValue
         }
-
-        case card = 0
     }
 
     private typealias Datasource = UICollectionViewDiffableDataSource<Section, Record>
@@ -150,7 +150,7 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
 
 private extension RecordViewController {
     func configure() {
-        configureRecordCollectionView()
+        self.configureRecordCollectionView()
     }
 
     func configureLayout() {
