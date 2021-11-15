@@ -94,11 +94,13 @@ enum EDSKit {
         }
 
         case chevronDown
+        case recordCard
+        case plus
     }
 }
 
-private extension EDSKit.Label {
-    static func makeLabel(text: String, color: EDSKit.Color) -> UILabel {
+private extension EDSLabel {
+    static func makeLabel(text: String, color: EDSColor) -> UILabel {
         let label = UILabel()
         label.text = text
         label.textColor = color.value
