@@ -21,6 +21,15 @@ protocol RecordNetwork: AnyObject {
 }
 
 final class FirebaseService: RoomListNetwork {
+    enum Collection: String {
+        case rooms
+        case records
+
+        var value: String {
+            return self.rawValue
+        }
+    }
+
     static let shared = FirebaseService()
 
     private let database: Firestore
@@ -30,7 +39,7 @@ final class FirebaseService: RoomListNetwork {
     }
 
     func query(genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
-        database.collection("rooms")
+        database.collection(Collection.rooms.value)
             .whereField("genres", arrayContains: genre.name)
             .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
@@ -55,7 +64,7 @@ final class FirebaseService: RoomListNetwork {
     }
 
     func query(roomId: String, completion: @escaping (Result<RoomDTO, Error>) -> Void) {
-        database.collection("rooms")
+        database.collection(Collection.rooms.value)
             .document(roomId)
             .getDocument { snapshot, error in
                 let result = Result {
@@ -73,7 +82,7 @@ final class FirebaseService: RoomListNetwork {
     }
 
     func query(name: String, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
-        database.collection("rooms")
+        database.collection(Collection.rooms.value)
             .getDocuments { snapshot, error in
                 guard let documents = snapshot?.documents else { return }
                 var roomList = [RoomDTO]()
@@ -92,23 +101,23 @@ final class FirebaseService: RoomListNetwork {
                         return
                     }
                 }
-                completion(Result.success(roomList))
+                completion(Result.success(roomList.sorted(by: {$0.name < $1.name })))
             }
     }
 
-    func addRoom(_ room: RoomDTO) {
+    func addRoom(identifier: Int, _ room: RoomDTO) {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
         let database = Firestore.firestore()
-        let path = database.collection("rooms").document(room.name)
+        let path = database.collection(Collection.rooms.value).document("\(identifier)")
         path.setData(room.toDictionary())
     }
 }
 
 extension FirebaseService: RecordNetwork {
     func query(userEmail: String, completion: @escaping (Result<[RecordInfoDTO], Error>) -> Void) {
-        database.collection("records")
+        database.collection(Collection.records.value)
             .whereField("userEmail", isEqualTo: userEmail)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
@@ -136,7 +145,7 @@ extension FirebaseService: RecordNetwork {
             FirebaseApp.configure()
         }
         let database = Firestore.firestore()
-        let path = database.collection("records").document()
+        let path = database.collection(Collection.records.value).document()
         path.setData(recordInfoDTO.toDictionary())
     }
 }
