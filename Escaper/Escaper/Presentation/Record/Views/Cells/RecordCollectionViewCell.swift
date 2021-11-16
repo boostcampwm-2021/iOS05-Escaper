@@ -20,7 +20,7 @@ final class RecordCollectionViewCell: UICollectionViewCell {
         static let shortVerticalSpace = CGFloat(10)
     }
 
-    private let backgroundImageView: UIImageView = UIImageView(image: UIImage(named: UtilityImage.recordCard.name))
+    private let backgroundImageView: UIImageView = UIImageView(image: EDSImage.recordCard.value)
     private let recordHeadView: RecordHeadView = RecordHeadView()
     private let recordUserView: RecordUserView = RecordUserView()
     private let recordStarView: RecordStarView = RecordStarView()
