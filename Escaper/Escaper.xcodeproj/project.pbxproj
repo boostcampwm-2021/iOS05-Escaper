@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0CE8D0274529BE00F94BF5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0CE8CF274529BE00F94BF5 /* User.swift */; };
 		0C7F483927337D1C007FE109 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F483827337D1C007FE109 /* District.swift */; };
 		0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */; };
 		0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0CE8CF274529BE00F94BF5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0C7F483827337D1C007FE109 /* District.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewController.swift; sourceTree = "<group>"; };
 		0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailInfoView.swift; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 				2551338F27315B1900A92CF3 /* SortingOption.swift */,
 				251031BF2733A2AC00BD07BF /* Rating.swift */,
 				0C7F483827337D1C007FE109 /* District.swift */,
+				0C0CE8CF274529BE00F94BF5 /* User.swift */,
 			);
 			path = DataStruct;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				3E5902AA273B9C850045ADDE /* RecordStarView.swift in Sources */,
 				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
 				3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */,
+				0C0CE8D0274529BE00F94BF5 /* User.swift in Sources */,
 				1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */,
 				25020598273A3300004B024E /* RecordViewController.swift in Sources */,
 				25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */,
