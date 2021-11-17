@@ -82,6 +82,7 @@ enum EDSKit {
         case skullLightWhite
         case skullWhite
         case skullGrey
+        case zombiePurple
 
         var value: UIColor? {
             return UIColor(named: String(describing: self))
