@@ -11,7 +11,12 @@ final class LeaderBoardViewController: DefaultViewController {
     var dummyUsers = [User.init(email: "abc", name: "신희", password: "1", imageURL: nil, score: 1), User.init(email: "완식", name: "완식", password: "1", imageURL: nil, score: 1), User.init(email: "abc", name: "택현", password: "1", imageURL: nil, score: 1), User.init(email: "abc", name: "영광", password: "1", imageURL: nil, score: 1), User.init(email: "abc", name: "a", password: "1", imageURL: nil, score: 1), User.init(email: "abc", name: "a", password: "1", imageURL: nil, score: 1), User.init(email: "abc", name: "a", password: "1", imageURL: nil, score: 1), User.init(email: "abc", name: "a", password: "1", imageURL: nil, score: 1)]
 
     private let scrollView = UIScrollView()
-    private let titleLabel = EDSLabel.h02B(text: "리더보드", color: .skullLightWhite)
+    private let titleLabel: UILabel = {
+        let label = EDSLabel.h02B(text: "리더보드", color: .skullLightWhite)
+        label.accessibilityLabel = "리더보드화면은 스크롤로 되어있습니다."
+        return label
+    }()
+
     private let topRankView = TopRankView()
     private let userRankStackView: UIStackView = {
         let stackView = UIStackView()
@@ -30,7 +35,6 @@ final class LeaderBoardViewController: DefaultViewController {
     func create() {
         // 의존성 주입
     }
-
 }
 
 private extension LeaderBoardViewController {
@@ -93,12 +97,14 @@ private extension LeaderBoardViewController {
     }
 
     func updateStackView() {
-        for (rank, userInfo) in self.dummyUsers.enumerated() {
+        for (rank, user) in self.dummyUsers.enumerated() {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: 60).isActive = true
             rankView.layer.cornerRadius = 30
-            rankView.update(userInfo, rank: rank)
+            rankView.update(user, rank: rank)
+            rankView.isAccessibilityElement = true
+            rankView.accessibilityLabel = "전체 \(self.dummyUsers.count)명 중 \(rank + 1)등 \(user.name)님 \(user.score)점"
             self.userRankStackView.addArrangedSubview(rankView)
         }
     }
