@@ -1,0 +1,154 @@
+{
+    "stores": [
+      {
+        "storeName": "룸엘이스케이프 신림점",
+        "telephone": "02-882-1215",
+        "homepage": "https://www.roomlescape.com/",
+        "address": "서울 관악구 신림로 322-4",
+        "rooms": [
+          {
+            "title": "악몽",
+            "genre": "공포",
+            "difficulty": 5
+          },
+          {
+            "title": "아빠..어디가?",
+            "genre": "코미디",
+            "difficulty": 3
+          },
+          {
+            "title": "METRO",
+            "genre": "스릴러",
+            "difficulty": 3
+          },
+          {
+            "title": "트레져헌터",
+            "genre": "판타지",
+            "difficulty": 4
+          }
+        ]
+      },
+      {
+        "storeName": "비트포비아 신림점",
+        "telephone": "02-878-2139",
+        "homepage": "https://www.xphobia.net/",
+        "address": "서울 관악구 신림로59길 9",
+        "rooms": [
+          {
+            "title": "섹스 어필",
+            "genre": "19금",
+            "difficulty": 3
+          },
+          {
+            "title": "스윙게이트",
+            "genre": "범죄",
+            "difficulty": 3
+          },
+          {
+            "title": "스플릿",
+            "genre": "스릴러",
+            "difficulty": 3
+          },
+          {
+            "title": "네버랜드를 찾아서",
+            "genre": "판타지",
+            "difficulty": 2
+          }
+        ]
+      },
+      {
+        "storeName": "넥스트에디션 신림점",
+        "telephone": "02-882-3775",
+        "homepage": "https://www.nextedition.co.kr/",
+        "address": "서울 관악구 남부순환로 1598",
+        "rooms": [
+          {
+            "title": "LOVER",
+            "genre": "로맨스",
+            "difficulty": 3
+          },
+          {
+            "title": "옛날옛날에",
+            "genre": "모험",
+            "difficulty": 2
+          },
+          {
+            "title": "씨프?? XX!!",
+            "genre": "코미디",
+            "difficulty": 4
+          },
+          {
+            "title": "Tester",
+            "genre": "추리",
+            "difficulty": 5
+          },
+          {
+            "title": "극",
+            "genre": "스릴러",
+            "difficulty": 3
+          }
+        ]
+      },
+      {
+        "storeName": "셜록홈즈 신림1호점",
+        "telephone": "02-875-0050",
+        "homepage": "https://sherlock-holmes.co.kr/",
+        "address": "서울 관악구 신림동 1639-27",
+        "rooms": [
+          {
+            "title": "할머니는 마법사",
+            "genre": "판타지",
+            "difficulty": 2
+          },
+          {
+            "title": "스토커",
+            "genre": "스릴러",
+            "difficulty": 3
+          },
+          {
+            "title": "좀비여친",
+            "genre": "SF",
+            "difficulty": 3
+          },
+          {
+            "title": "대마법사 오셀로",
+            "genre": "판타지",
+            "difficulty": 4
+          }
+        ]
+      },
+      {
+        "storeName": "더코드 신림점",
+        "telephone": "02-871-2225",
+        "homepage": "https://thecode09.kr/index.php",
+        "address": "서울 관악구 신림동 1639-23",
+        "rooms": [
+          {
+            "title": "아파트",
+            "genre": "스릴러",
+            "difficulty": 4
+          },
+          {
+            "title": "위자 보드: 위험한 장난",
+            "genre": "스릴러",
+            "difficulty": 4
+          },
+          {
+            "title": "세기 명화를 훔치는 도둑들",
+            "genre": "잠입",
+            "difficulty": 4
+          },
+          {
+            "title": "의문의 동창회",
+            "genre": "스릴러",
+            "difficulty": 3
+          },
+          {
+            "title": "다시 시작된 살인사건",
+            "genre": "스릴러",
+            "difficulty": 3
+          }
+        ]
+      }
+    ]
+  }
