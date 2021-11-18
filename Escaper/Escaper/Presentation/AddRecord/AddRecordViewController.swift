@@ -7,13 +7,7 @@
 
 import UIKit
 
-class AddRecordViewController: DefaultViewController {
-    enum Constant {
-        static let topVerticalSpace = CGFloat(18)
-        static let defaultVerticalSpace = CGFloat(30)
-        static let saveButtonHeight = CGFloat(35)
-    }
-
+final class AddRecordViewController: DefaultViewController {
     private var viewModel: (AddRecordViewModelInput & AddRecordViewModelOutput)?
     private let titleLabel: UILabel = EDSLabel.h02B(text: "기록 추가", color: .skullLightWhite)
     private let backButton: UIButton = {
@@ -22,7 +16,7 @@ class AddRecordViewController: DefaultViewController {
         button.setTitleColor(EDSColor.bloodyRed.value, for: .normal)
         return button
     }()
-    private let recordView = RecordView()
+    private let recordView = AddRecordView()
     private let saveRecordButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 10
@@ -49,23 +43,22 @@ class AddRecordViewController: DefaultViewController {
     }
 
     @objc func saveRecordButtonTapped() {
-        let userEmail = "kessler.myah@hotmail.com"
+        let userEmail = "wansook0316@gmail.com"
         guard let image = self.recordView.fetchSelectedImage(),
               let roomId = self.viewModel?.roomId else { return }
-        self.dismiss(animated: true) {
-            ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
-                switch result {
-                case .success(let url):
-                    self?.viewModel?.post(email: userEmail, imageUrlString: url)
-                case .failure(let err):
-                    print(err)
-                }
+        ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
+            switch result {
+            case .success(let urlString):
+                self?.viewModel?.post(email: userEmail, imageURLString: urlString)
+                self?.dismiss(animated: true)
+            case .failure(let err):
+                print(err)
             }
         }
     }
 }
 
-extension AddRecordViewController: RecordViewDelegate {
+extension AddRecordViewController: AddRecordViewDelegate {
     func updateEscapingTime(time: Int) {
         self.viewModel?.time = time
         self.viewModel?.changeSaveState()
@@ -81,7 +74,7 @@ extension AddRecordViewController: RecordViewDelegate {
     }
 
     func findRoomTitleButtonTapped() {
-        let findRoomViewController = FindRoomViewController()
+        let findRoomViewController = SearchRoomViewController()
         findRoomViewController.create()
         findRoomViewController.modalPresentationStyle = .automatic
         findRoomViewController.roomTransferDelegate = self
@@ -111,6 +104,7 @@ extension AddRecordViewController: TimePickerDelegate {
 extension AddRecordViewController: RoomInformationTransferable {
     func transfer(room: Room) {
         self.recordView.updateRoomInformation(room)
+        self.viewModel?.records = room.records
     }
 }
 
@@ -123,6 +117,12 @@ extension AddRecordViewController: UIImagePickerControllerDelegate, UINavigation
 }
 
 private extension AddRecordViewController {
+    enum Constant {
+        static let topVerticalSpace = CGFloat(18)
+        static let defaultVerticalSpace = CGFloat(30)
+        static let saveButtonHeight = CGFloat(35)
+    }
+
     func configure() {
         self.configureDelegates()
         self.configureButtonAction()
