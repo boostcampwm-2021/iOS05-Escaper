@@ -10,11 +10,7 @@ import UIKit
 final class RankView: UIView {
     static let rankColor = [EDSColor.pumpkin.value, EDSColor.gloomyPink.value, EDSColor.gloomyRed.value]
 
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "romancePreview")
-        return imageView
-    }()
+    private let imageView = UIImageView()
     private let rankNumberLabel: UILabel = {
         let label = EDSLabel.b01B(text: "1", color: .bloodyBlack)
         label.textAlignment = .center
@@ -47,9 +43,18 @@ final class RankView: UIView {
     func update(user: User, rank: Int) {
         self.rankNumberLabel.text = "\(rank + 1)"
         self.userNameLabel.text = user.name
-        self.imageView.image = UIImage(named: "romancePreview")
         self.imageView.layer.borderColor = Self.rankColor[rank]?.cgColor
         self.rankNumberLabel.backgroundColor = Self.rankColor[rank]
+        ImageCacheManager.shared.download(urlString: user.imageURL, completion: { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self?.imageView.image = UIImage(data: data)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        })
     }
 }
 
