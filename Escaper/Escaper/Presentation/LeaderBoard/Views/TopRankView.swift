@@ -13,7 +13,11 @@ final class TopRankView: UIView {
         imageView.image = UIImage(named: "Crown")
         return imageView
     }()
-    private let firstView = RankView()
+    private let firstView: RankView = {
+        let rankView = RankView()
+        rankView.isAccessibilityElement = true
+        return rankView
+    }()
     private let secondView = RankView()
     private let thirdView = RankView()
     private let topThree: [RankView]
@@ -31,8 +35,10 @@ final class TopRankView: UIView {
     }
 
     func update(users: [User]) {
-        for (index, userInfo) in users.enumerated() {
-            self.topThree[index].update(user: userInfo, rank: index)
+        for (rank, userInfo) in users.enumerated() {
+            self.topThree[rank].isAccessibilityElement = true
+            self.topThree[rank].update(user: userInfo, rank: rank)
+            self.topThree[rank].accessibilityLabel = "Top3 \(rank + 1)등 \(userInfo.name)님"
         }
     }
 }
