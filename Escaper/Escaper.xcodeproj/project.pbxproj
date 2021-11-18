@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C0CE8D0274529BE00F94BF5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0CE8CF274529BE00F94BF5 /* User.swift */; };
-		0C7F483927337D1C007FE109 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7F483827337D1C007FE109 /* District.swift */; };
 		0C955CE627434E690002B787 /* TopRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE527434E690002B787 /* TopRankView.swift */; };
 		0C955CE827437A300002B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE727437A300002B787 /* RankView.swift */; };
 		0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */; };
@@ -26,6 +24,16 @@
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
 		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
 		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
+		1FAAD09F274666AD00C2AE90 /* RecordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD094274666AD00C2AE90 /* RecordCard.swift */; };
+		1FAAD0A0274666AD00C2AE90 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD095274666AD00C2AE90 /* User.swift */; };
+		1FAAD0A1274666AD00C2AE90 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD096274666AD00C2AE90 /* Room.swift */; };
+		1FAAD0A2274666AD00C2AE90 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD098274666AD00C2AE90 /* District.swift */; };
+		1FAAD0A3274666AD00C2AE90 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD099274666AD00C2AE90 /* Genre.swift */; };
+		1FAAD0A4274666AD00C2AE90 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09A274666AD00C2AE90 /* GeoLocation.swift */; };
+		1FAAD0A5274666AD00C2AE90 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09B274666AD00C2AE90 /* Rating.swift */; };
+		1FAAD0A6274666AD00C2AE90 /* SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09C274666AD00C2AE90 /* SortingOption.swift */; };
+		1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09D274666AD00C2AE90 /* Store.swift */; };
+		1FAAD0A8274666AD00C2AE90 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09E274666AD00C2AE90 /* Record.swift */; };
 		1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
 		1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */; };
 		1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
@@ -36,32 +44,24 @@
 		1FE53406273FB0D300867832 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53405273FB0D200867832 /* UIView+RoundCorners.swift */; };
 		1FE53408273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */; };
 		1FE5340A273FB25D00867832 /* SearchRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */; };
-		1FE6C8B22732741E00AC7408 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6C8B12732741E00AC7408 /* GeoLocation.swift */; };
 		25020598273A3300004B024E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020597273A3300004B024E /* RecordViewController.swift */; };
 		2502059A273A33A5004B024E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020599273A33A5004B024E /* MapViewController.swift */; };
 		2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059B273A33CB004B024E /* LeaderBoardViewController.swift */; };
-		25020600273CE1D8004B024E /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250205FE273CE1D8004B024E /* Record.swift */; };
-		25020601273CE1D8004B024E /* RecordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250205FF273CE1D8004B024E /* RecordCard.swift */; };
 		25020603273CE1E1004B024E /* RecordUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020602273CE1E1004B024E /* RecordUsecase.swift */; };
 		25020605273CE1FC004B024E /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020604273CE1FC004B024E /* RecordRepository.swift */; };
 		25020609273CE349004B024E /* RecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020608273CE349004B024E /* RecordDTO.swift */; };
 		251031BC27339C0200BD07BF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BB27339C0200BD07BF /* RatingView.swift */; };
-		251031C02733A2AC00BD07BF /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BF2733A2AC00BD07BF /* Rating.swift */; };
 		251031C22733A5B500BD07BF /* RatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C12733A5B500BD07BF /* RatingImage.swift */; };
 		251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */; };
 		251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C52733BCAC00BD07BF /* RatingContainerView.swift */; };
 		25104A462744E90F00DB90BF /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
 		25104A482744E98F00DB90BF /* DataInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A472744E98F00DB90BF /* DataInjection.swift */; };
 		25104A4B2744ED8100DB90BF /* StoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A4A2744ED8100DB90BF /* StoreDTO.swift */; };
-		25104A4D2744F13500DB90BF /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A4C2744F13500DB90BF /* Store.swift */; };
 		25104A512745408E00DB90BF /* extra.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A502745408D00DB90BF /* extra.json */; };
 		25104A53274546E100DB90BF /* sinlim.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A52274546E100DB90BF /* sinlim.json */; };
 		2513CACF2735192F00A574C7 /* EDSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2513CACE2735192F00A574C7 /* EDSKit.swift */; };
-		25513368273107A000A92CF3 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513367273107A000A92CF3 /* Genre.swift */; };
 		2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513369273108A800A92CF3 /* RoomListUseCase.swift */; };
 		2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336B2731093B00A92CF3 /* RoomListViewModel.swift */; };
-		2551336E27310D5500A92CF3 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336D27310D5500A92CF3 /* Room.swift */; };
-		2551339027315B1900A92CF3 /* SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551338F27315B1900A92CF3 /* SortingOption.swift */; };
 		25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */; };
 		25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772762273CE87F00881845 /* RecordRepositoryInterface.swift */; };
 		25772768273D0D0A00881845 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772767273D0D0A00881845 /* ImageCacheManager.swift */; };
@@ -89,8 +89,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C0CE8CF274529BE00F94BF5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		0C7F483827337D1C007FE109 /* District.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		0C955CE527434E690002B787 /* TopRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRankView.swift; sourceTree = "<group>"; };
 		0C955CE727437A300002B787 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 		0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +103,16 @@
 		1F72C20D2734010700C59CC1 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1F74F10D273CEEC700CE4D37 /* AddRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		1F74F112273CEEFE00CE4D37 /* AddRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
+		1FAAD094274666AD00C2AE90 /* RecordCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCard.swift; sourceTree = "<group>"; };
+		1FAAD095274666AD00C2AE90 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1FAAD096274666AD00C2AE90 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		1FAAD098274666AD00C2AE90 /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
+		1FAAD099274666AD00C2AE90 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		1FAAD09A274666AD00C2AE90 /* GeoLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
+		1FAAD09B274666AD00C2AE90 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		1FAAD09C274666AD00C2AE90 /* SortingOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingOption.swift; sourceTree = "<group>"; };
+		1FAAD09D274666AD00C2AE90 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		1FAAD09E274666AD00C2AE90 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		1FCDDE68272EE0F00027AAAD /* Escaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Escaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,32 +125,24 @@
 		1FE53405273FB0D200867832 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
 		1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+SetTextFieldColor.swift"; sourceTree = "<group>"; };
 		1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoomViewModel.swift; sourceTree = "<group>"; };
-		1FE6C8B12732741E00AC7408 /* GeoLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoLocation.swift; sourceTree = "<group>"; };
 		25020597273A3300004B024E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		25020599273A33A5004B024E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2502059B273A33CB004B024E /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
-		250205FE273CE1D8004B024E /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
-		250205FF273CE1D8004B024E /* RecordCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCard.swift; sourceTree = "<group>"; };
 		25020602273CE1E1004B024E /* RecordUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordUsecase.swift; sourceTree = "<group>"; };
 		25020604273CE1FC004B024E /* RecordRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
 		25020608273CE349004B024E /* RecordDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDTO.swift; sourceTree = "<group>"; };
 		251031BB27339C0200BD07BF /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
-		251031BF2733A2AC00BD07BF /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		251031C12733A5B500BD07BF /* RatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingImage.swift; sourceTree = "<group>"; };
 		251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomOverviewTableViewCell.swift; sourceTree = "<group>"; };
 		251031C52733BCAC00BD07BF /* RatingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingContainerView.swift; sourceTree = "<group>"; };
 		25104A452744E90F00DB90BF /* InjectionDTOs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionDTOs.swift; sourceTree = "<group>"; };
 		25104A472744E98F00DB90BF /* DataInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataInjection.swift; sourceTree = "<group>"; };
 		25104A4A2744ED8100DB90BF /* StoreDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDTO.swift; sourceTree = "<group>"; };
-		25104A4C2744F13500DB90BF /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		25104A502745408D00DB90BF /* extra.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = extra.json; sourceTree = "<group>"; };
 		25104A52274546E100DB90BF /* sinlim.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sinlim.json; sourceTree = "<group>"; };
 		2513CACE2735192F00A574C7 /* EDSKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EDSKit.swift; sourceTree = "<group>"; };
-		25513367273107A000A92CF3 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		25513369273108A800A92CF3 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
 		2551336B2731093B00A92CF3 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
-		2551336D27310D5500A92CF3 /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
-		2551338F27315B1900A92CF3 /* SortingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortingOption.swift; sourceTree = "<group>"; };
 		25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListRepositoryInterface.swift; sourceTree = "<group>"; };
 		25772762273CE87F00881845 /* RecordRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordRepositoryInterface.swift; sourceTree = "<group>"; };
 		25772765273CFBD100881845 /* DistrictSelectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistrictSelectButton.swift; sourceTree = "<group>"; };
@@ -217,6 +217,31 @@
 				1F74F112273CEEFE00CE4D37 /* AddRecordView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1FAAD093274666AD00C2AE90 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1FAAD094274666AD00C2AE90 /* RecordCard.swift */,
+				1FAAD095274666AD00C2AE90 /* User.swift */,
+				1FAAD096274666AD00C2AE90 /* Room.swift */,
+				1FAAD097274666AD00C2AE90 /* Supplementary */,
+				1FAAD09D274666AD00C2AE90 /* Store.swift */,
+				1FAAD09E274666AD00C2AE90 /* Record.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		1FAAD097274666AD00C2AE90 /* Supplementary */ = {
+			isa = PBXGroup;
+			children = (
+				1FAAD098274666AD00C2AE90 /* District.swift */,
+				1FAAD099274666AD00C2AE90 /* Genre.swift */,
+				1FAAD09A274666AD00C2AE90 /* GeoLocation.swift */,
+				1FAAD09B274666AD00C2AE90 /* Rating.swift */,
+				1FAAD09C274666AD00C2AE90 /* SortingOption.swift */,
+			);
+			path = Supplementary;
 			sourceTree = "<group>";
 		};
 		1FCDDE5F272EE0F00027AAAD = {
@@ -305,7 +330,6 @@
 			children = (
 				251031BA2733950900BD07BF /* Common */,
 				3E315717274365E800472CAD /* Login */,
-				2551335B2730ED5500A92CF3 /* Home */,
 				2551335C2730EDA900A92CF3 /* RoomList */,
 				2551335D2730EEDB00A92CF3 /* RoomDetail */,
 				2551335E2730EEE200A92CF3 /* Map */,
@@ -322,7 +346,7 @@
 			children = (
 				2577275F273CE87F00881845 /* Interface */,
 				3E2BDE9F2732C2E60081A749 /* Protocol */,
-				255133662731072000A92CF3 /* Entities */,
+				1FAAD093274666AD00C2AE90 /* Entities */,
 				255133652731070F00A92CF3 /* UseCase */,
 			);
 			path = Domain;
@@ -434,7 +458,6 @@
 				1F74F10D273CEEC700CE4D37 /* AddRecordViewController.swift */,
 				3E0A921E27423679002166C6 /* AddRecordViewModel.swift */,
 				1F22E651273D14D700409A96 /* TimePickerViewController.swift */,
-				1F22E653273D619300409A96 /* AddRecordViewModel.swift */,
 				1F74F111273CEEFE00CE4D37 /* View */,
 			);
 			path = AddRecord;
@@ -469,24 +492,6 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
-		255133662731072000A92CF3 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				25A3EFDD2746425B00BD69B5 /* Supplementary */,
-				250205FF273CE1D8004B024E /* RecordCard.swift */,
-				250205FE273CE1D8004B024E /* Record.swift */,
-				2551336D27310D5500A92CF3 /* Room.swift */,
-				1FE6C8B12732741E00AC7408 /* GeoLocation.swift */,
-				1FE6C8AF273273BD00AC7408 /* UserRecord.swift */,
-				2551338F27315B1900A92CF3 /* SortingOption.swift */,
-				251031BF2733A2AC00BD07BF /* Rating.swift */,
-				0C7F483827337D1C007FE109 /* District.swift */,
-				0C0CE8CF274529BE00F94BF5 /* User.swift */,
-				25104A4C2744F13500DB90BF /* Store.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 		2577275F273CE87F00881845 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,18 +514,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		25A3EFDD2746425B00BD69B5 /* Supplementary */ = {
-			isa = PBXGroup;
-			children = (
-				25513367273107A000A92CF3 /* Genre.swift */,
-				1FE6C8B12732741E00AC7408 /* GeoLocation.swift */,
-				2551338F27315B1900A92CF3 /* SortingOption.swift */,
-				251031BF2733A2AC00BD07BF /* Rating.swift */,
-				0C7F483827337D1C007FE109 /* District.swift */,
-			);
-			path = Supplementary;
 			sourceTree = "<group>";
 		};
 		3E2BDE9F2732C2E60081A749 /* Protocol */ = {
@@ -677,10 +670,10 @@
 				25020609273CE349004B024E /* RecordDTO.swift in Sources */,
 				251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */,
 				25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */,
+				1FAAD0A0274666AD00C2AE90 /* User.swift in Sources */,
 				3E5902AA273B9C850045ADDE /* RecordStarView.swift in Sources */,
 				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
 				3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */,
-				0C0CE8D0274529BE00F94BF5 /* User.swift in Sources */,
 				1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */,
 				25020598273A3300004B024E /* RecordViewController.swift in Sources */,
 				25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */,
@@ -689,36 +682,38 @@
 				0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */,
 				25772770273D525500881845 /* Helper.swift in Sources */,
 				3E4603092744F53E003F414D /* SignUpViewController.swift in Sources */,
-				1FE6C8B22732741E00AC7408 /* GeoLocation.swift in Sources */,
 				3E31571C274366B900472CAD /* UserInputView.swift in Sources */,
-				2551336E27310D5500A92CF3 /* Room.swift in Sources */,
 				3E31575A274387AE00472CAD /* ViewType.swift in Sources */,
-				1FE53402273F8ABE00867832 /* FindRoomViewController.swift in Sources */,
+				1FE53402273F8ABE00867832 /* SearchRoomViewController.swift in Sources */,
+				1FAAD0A2274666AD00C2AE90 /* District.swift in Sources */,
+				1FAAD0A1274666AD00C2AE90 /* Room.swift in Sources */,
 				3E5902A8273B92F50045ADDE /* RecordUserView.swift in Sources */,
 				3E0A921F27423679002166C6 /* AddRecordViewModel.swift in Sources */,
 				25104A482744E98F00DB90BF /* DataInjection.swift in Sources */,
 				25104A462744E90F00DB90BF /* InjectionDTOs.swift in Sources */,
 				1FE53402273F8ABE00867832 /* SearchRoomViewController.swift in Sources */,
 				3E5902A8273B92F50045ADDE /* RecordUserView.swift in Sources */,
-				25104A4D2744F13500DB90BF /* Store.swift in Sources */,
 				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
 				25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */,
-				251031C02733A2AC00BD07BF /* Rating.swift in Sources */,
 				1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */,
+				1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */,
 				3E3157192743661800472CAD /* LoginViewController.swift in Sources */,
 				1F72C20E2734010700C59CC1 /* Observable.swift in Sources */,
 				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
 				2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */,
 				1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */,
 				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
+				1FAAD0A3274666AD00C2AE90 /* Genre.swift in Sources */,
+				1FAAD0A8274666AD00C2AE90 /* Record.swift in Sources */,
 				2577276D273D18EB00881845 /* NetworkService.swift in Sources */,
-				25020601273CE1D8004B024E /* RecordCard.swift in Sources */,
 				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
 				0CAEE3B1273BA7C3002C1136 /* RoomDetailUserRankView.swift in Sources */,
 				3E5902AE273BF0630045ADDE /* RecordHeadView.swift in Sources */,
 				25104A4B2744ED8100DB90BF /* StoreDTO.swift in Sources */,
+				1FAAD0A5274666AD00C2AE90 /* Rating.swift in Sources */,
 				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
 				3E4603072744D514003F414D /* UserInputTextField.swift in Sources */,
+				1FAAD0A6274666AD00C2AE90 /* SortingOption.swift in Sources */,
 				0C955CE627434E690002B787 /* TopRankView.swift in Sources */,
 				3E4378CB27329028001ED120 /* TagButton.swift in Sources */,
 				25CE99D3274633BC0097247E /* Array+Extension.swift in Sources */,
@@ -727,19 +722,17 @@
 				25020603273CE1E1004B024E /* RecordUsecase.swift in Sources */,
 				251031BC27339C0200BD07BF /* RatingView.swift in Sources */,
 				25020605273CE1FC004B024E /* RecordRepository.swift in Sources */,
-				25020600273CE1D8004B024E /* Record.swift in Sources */,
-				0C7F483927337D1C007FE109 /* District.swift in Sources */,
+				1FAAD09F274666AD00C2AE90 /* RecordCard.swift in Sources */,
 				25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */,
 				1F22E652273D14D700409A96 /* TimePickerViewController.swift in Sources */,
 				0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */,
 				3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */,
 				1F74F113273CEEFE00CE4D37 /* AddRecordView.swift in Sources */,
-				2551339027315B1900A92CF3 /* SortingOption.swift in Sources */,
 				1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */,
 				251031C22733A5B500BD07BF /* RatingImage.swift in Sources */,
+				1FAAD0A4274666AD00C2AE90 /* GeoLocation.swift in Sources */,
 				1FE5340A273FB25D00867832 /* SearchRoomViewModel.swift in Sources */,
 				25772768273D0D0A00881845 /* ImageCacheManager.swift in Sources */,
-				25513368273107A000A92CF3 /* Genre.swift in Sources */,
 				2502059A273A33A5004B024E /* MapViewController.swift in Sources */,
 				0C955CE827437A300002B787 /* RankView.swift in Sources */,
 				3E5902A6273AA3190045ADDE /* RecordCollectionViewCell.swift in Sources */,
