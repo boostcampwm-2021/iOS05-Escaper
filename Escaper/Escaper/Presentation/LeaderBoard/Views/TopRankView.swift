@@ -38,7 +38,7 @@ final class TopRankView: UIView {
         for (rank, userInfo) in users.enumerated() {
             self.topThree[rank].isAccessibilityElement = true
             self.topThree[rank].update(user: userInfo, rank: rank)
-            self.topThree[rank].accessibilityLabel = "Top3 \(rank + 1)등 \(userInfo.name)님"
+            self.topThree[rank].accessibilityLabel = "상위 유저 3명중 \(rank + 1)등 \(userInfo.name)님"
         }
     }
 }
