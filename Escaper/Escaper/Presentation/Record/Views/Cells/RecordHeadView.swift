@@ -7,11 +7,7 @@
 
 import UIKit
 
-class RecordHeadView: UIView {
-    enum Constant {
-        static let defaultVerticalSpace = CGFloat(10)
-    }
-
+final class RecordHeadView: UIView {
     private var recordImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = CGFloat(15)
@@ -39,9 +35,9 @@ class RecordHeadView: UIView {
         self.configureLayout()
     }
 
-    func update(imageURLString: String, title: String, place: String) {
+    func update(imageURLString: String, title: String, storeName: String) {
         self.titleLabel.text = title
-        self.placeLabel.text = place
+        self.placeLabel.text = storeName
         ImageCacheManager.shared.download(urlString: imageURLString) { result in
             switch result {
             case .success(let data):
@@ -61,7 +57,11 @@ class RecordHeadView: UIView {
     }
 }
 
-extension RecordHeadView {
+private extension RecordHeadView {
+    enum Constant {
+        static let defaultVerticalSpace = CGFloat(10)
+    }
+
     func configureLayout() {
         self.configureRecordImageViewLayout()
         self.configureTitleLabelLayout()

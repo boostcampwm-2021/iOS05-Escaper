@@ -8,6 +8,6 @@
 import Foundation
 
 protocol RecordRepositoryInterface {
-    func query(userEmail: String, completion: @escaping (Result<[RecordInfo], Error>) -> Void)
-    func addRecord(recordInfo: RecordInfo)
+    func query(userEmail: String, completion: @escaping (Result<[Record], Error>) -> Void)
+    func addRecord(_ record: Record)
 }
