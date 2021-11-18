@@ -46,6 +46,8 @@ final class DistrictSelectButton: UIButton {
     func updateTitle(district: District) {
         self.districtLabel.text = " \(district.name) "
         self.infoLabel.text = "기준 "
+        self.accessibilityLabel = district.name
+        self.accessibilityHint = "더블 탭해서 지역구를 선택할 수 있습니다."
     }
 }
 
@@ -114,6 +116,6 @@ private extension DistrictSelectButton {
                 self?.updateTitle(district: district)
             }
         }
-        return UIMenu(title: "", children: districtActions)
+        return UIMenu(title: "지역구", children: districtActions)
     }
 }
