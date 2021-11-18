@@ -19,8 +19,10 @@ final class AddRecordViewController: DefaultViewController {
     private let recordView = AddRecordView()
     private let saveRecordButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 10
         button.setTitle("저장하기", for: .normal)
+        button.setTitleColor(EDSColor.bloodyBlack.value, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        button.layer.cornerRadius = 10
         return button
     }()
 
@@ -120,7 +122,7 @@ private extension AddRecordViewController {
     enum Constant {
         static let topVerticalSpace = CGFloat(18)
         static let defaultVerticalSpace = CGFloat(30)
-        static let saveButtonHeight = CGFloat(35)
+        static let saveButtonHeight = CGFloat(50)
     }
 
     func configure() {
@@ -172,7 +174,7 @@ private extension AddRecordViewController {
         NSLayoutConstraint.activate([
             self.saveRecordButton.centerXAnchor.constraint(equalTo: self.recordView.centerXAnchor),
             self.saveRecordButton.topAnchor.constraint(equalTo: self.recordView.bottomAnchor, constant: Constant.defaultVerticalSpace),
-            self.saveRecordButton.widthAnchor.constraint(equalTo: self.recordView.widthAnchor),
+            self.saveRecordButton.widthAnchor.constraint(equalTo: self.recordView.widthAnchor, multiplier: 0.85),
             self.saveRecordButton.heightAnchor.constraint(equalToConstant: Constant.saveButtonHeight)
         ])
     }
