@@ -140,6 +140,8 @@ private extension RoomDetailViewController {
         self.genreImageView.image = UIImage(named: room.genre.detailImageAssetName)
         self.titleLabel.text = room.title
         self.storeNameLabel.text = room.storeName
+        self.genreImageView.isAccessibilityElement = true
+        self.genreImageView.accessibilityLabel = "테마 종류 \(room.genre.name)"
     }
 
     func updateStackView(records: [Record]) {
