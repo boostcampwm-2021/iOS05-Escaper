@@ -55,7 +55,7 @@ private extension RoomDetailViewController {
         static let DetailInfoHeight: CGFloat = 160
         static let DetailInfoSideSpace: CGFloat = 60
     }
-    
+
     func configureLayout() {
         self.configureScrollViewLayout()
         self.configureGenreImageViewLayout()
