@@ -29,6 +29,7 @@ final class TagButton: UIButton {
         self.init(frame: .zero)
         self.element = element
         self.elementLabel.text = element.name
+        self.accessibilityLabel = element.name
     }
 
     func touched() {
@@ -45,7 +46,7 @@ private extension TagButton {
         static let cornerRadius = CGFloat(8)
         static let borderWidth = CGFloat(0.25)
     }
-    
+
     func configure() {
         self.configureButtonUI()
         self.configureElementLabelLayout()
