@@ -56,7 +56,7 @@ private extension TagScrollView {
         static let tagElementExtraSpace = CGFloat(16)
         static let extraViewSpace = CGFloat(12)
     }
-    
+
     func configureLayout() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(stackView)

@@ -39,7 +39,9 @@ final class RoomOverviewTableViewCell: UITableViewCell {
         self.titleLabel.text = room.title
         self.ratingContainerView.update(difficulty: room.difficulty, satisfaction: room.averageSatisfaction)
         // TODO: - Measurement 사용하기: Measurement.init(value: room.distance, unit: UnitLength.kilometers)
-        self.distanceLabel.text = room.distance < 1000 ? "\(Int(room.distance))m" : "\((room.distance / 100).rounded() / 10)km"
+        self.distanceLabel.text = Helper.measureDistance(room.distance)
+        self.accessibilityLabel = "테마 이름 \(room.title), 테마 종류 \(room.genre.name), 난이도 \(room.difficulty)점, 만족도 \(room.averageSatisfaction)점, 거리 " + Helper.measureDistance(room.distance)
+        self.accessibilityHint = "위 아래로 스와이프해서 다양한 방탈출 정보를 확인하세요."
     }
 
     override func prepareForReuse() {
