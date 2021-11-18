@@ -1,5 +1,5 @@
 //
-//  RecordView.swift
+//  AddRecordView.swift
 //  Escaper
 //
 //  Created by TakHyun Jung on 2021/11/10.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol RecordViewDelegate: AnyObject {
+protocol AddRecordViewDelegate: AnyObject {
     func findRoomTitleButtonTapped()
     func userImageViewTapped()
     func escapingTimePickerButtonTapped()
@@ -16,11 +16,7 @@ protocol RecordViewDelegate: AnyObject {
     func updateEscapingTime(time: Int)
 }
 
-class RecordView: UIView {
-    enum Constant {
-        static let stackViewSpacing = CGFloat(20)
-    }
-
+final class AddRecordView: UIView {
     private let recordBackgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = EDSImage.recordCard.value
@@ -102,7 +98,7 @@ class RecordView: UIView {
         return stackView
     }()
 
-    weak var delegate: RecordViewDelegate?
+    weak var delegate: AddRecordViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -135,10 +131,10 @@ class RecordView: UIView {
     }
 
     func updateRoomInformation(_ room: Room) {
-        self.findRoomTitleButton.setTitle(room.name, for: .normal)
+        self.findRoomTitleButton.setTitle(room.title, for: .normal)
         self.findRoomTitleButton.setImage(nil, for: .normal)
         self.roomStoreTitleLabel.text = room.storeName
-        self.delegate?.updateRoom(identifer: room.identifier)
+        self.delegate?.updateRoom(identifer: room.roomId)
     }
 
     func updateTimePicker(hour: Int, minutes: Int, seconds: Int) {
@@ -156,7 +152,11 @@ class RecordView: UIView {
     }
 }
 
-private extension RecordView {
+private extension AddRecordView {
+    enum Constant {
+        static let stackViewSpacing = CGFloat(20)
+    }
+
     func configure() {
         self.configureImageViewEvent()
         self.configureAddTarget()

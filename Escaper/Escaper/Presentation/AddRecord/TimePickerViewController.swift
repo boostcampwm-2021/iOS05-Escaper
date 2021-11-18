@@ -11,7 +11,12 @@ protocol TimePickerDelegate: AnyObject {
     func updateTime(hour: Int, minutes: Int, seconds: Int)
 }
 
-class TimePickerViewController: UIViewController {
+final class TimePickerViewController: UIViewController {
+    weak var delegate: TimePickerDelegate?
+
+    private var hour: Int = 0
+    private var minutes: Int = 0
+    private var seconds: Int = 0
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = EDSColor.bloodyBlack.value
@@ -28,11 +33,6 @@ class TimePickerViewController: UIViewController {
         pickerView.setValue(EDSColor.pumpkin.value, forKeyPath: "textColor")
         return pickerView
     }()
-
-    weak var delegate: TimePickerDelegate?
-    var hour: Int = 0
-    var minutes: Int = 0
-    var seconds: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +54,12 @@ class TimePickerViewController: UIViewController {
         self.dismiss(animated: true)
     }
 
-@objc func clearViewTapped(_ sender: UITapGestureRecognizer) {
-    let tappedPoint = sender.location(in: self.containerView)
-    guard self.containerView.hitTest(tappedPoint, with: nil) == nil else { return }
-    self.delegate?.updateTime(hour: self.hour, minutes: self.minutes, seconds: self.seconds)
-    self.dismiss(animated: true)
-}
+    @objc func clearViewTapped(_ sender: UITapGestureRecognizer) {
+        let tappedPoint = sender.location(in: self.containerView)
+        guard self.containerView.hitTest(tappedPoint, with: nil) == nil else { return }
+        self.delegate?.updateTime(hour: self.hour, minutes: self.minutes, seconds: self.seconds)
+        self.dismiss(animated: true)
+    }
 }
 
 private extension TimePickerViewController {
