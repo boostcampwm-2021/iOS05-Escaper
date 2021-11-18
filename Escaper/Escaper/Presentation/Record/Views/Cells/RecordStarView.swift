@@ -7,12 +7,7 @@
 
 import UIKit
 
-class RecordStarView: UIView {
-    enum Constant {
-        static let defaultHeight = CGFloat(13)
-        static let ratingViewWidth = CGFloat(65)
-    }
-
+final class RecordStarView: UIView {
     private let popularityLabel: UILabel = EDSLabel.b01B(text: "인기도", color: .gloomyPurple)
     private var popularityRatingView: RatingView = RatingView()
     private let difficultyLabel: UILabel = EDSLabel.b01B(text: "난이도", color: .gloomyPurple)
@@ -57,7 +52,12 @@ class RecordStarView: UIView {
     }
 }
 
-extension RecordStarView {
+private extension RecordStarView {
+    enum Constant {
+        static let defaultHeight = CGFloat(13)
+        static let ratingViewWidth = CGFloat(65)
+    }
+
     func configureLayout() {
         self.configurePopularityHorizontalStackView()
         self.configureDifficultyHorizontalStackView()

@@ -13,7 +13,7 @@ protocol RoomListUseCaseInterface {
     func fetch(name: String, completion: @escaping (Result<[Room], Error>) -> Void)
 }
 
-class RoomListUseCase: RoomListUseCaseInterface {
+final class RoomListUseCase: RoomListUseCaseInterface {
     private let repository: RoomListRepositroyInterface
 
     init(repository: RoomListRepositroyInterface) {
@@ -45,5 +45,4 @@ class RoomListUseCase: RoomListUseCaseInterface {
             }
         }
     }
-
 }

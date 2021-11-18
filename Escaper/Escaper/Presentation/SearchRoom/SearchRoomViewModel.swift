@@ -1,5 +1,5 @@
 //
-//  FindRoomViewModel.swift
+//  SearchRoomViewModel.swift
 //  Escaper
 //
 //  Created by TakHyun Jung on 2021/11/13.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-protocol FindRoomViewModelInput {
+protocol SearchRoomViewModelInput {
     func fetch(name: String)
 }
 
-protocol FindRoomViewModelOutput {
+protocol SearchRoomViewModelOutput {
     var rooms: Observable<[Room]> { get }
 }
 
-class FindRoomViewModel: FindRoomViewModelInput, FindRoomViewModelOutput {
+final class SearchRoomViewModel: SearchRoomViewModelInput, SearchRoomViewModelOutput {
     private let usecase: RoomListUseCaseInterface
     private(set) var rooms: Observable<[Room]>
 

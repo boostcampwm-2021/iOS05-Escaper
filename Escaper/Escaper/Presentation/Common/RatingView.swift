@@ -7,15 +7,10 @@
 
 import UIKit
 
-class RatingView: UIView {
+final class RatingView: UIView {
     enum Constant {
         static let spacing = CGFloat(3)
         static let summationOfElementSpacing = Constant.spacing * CGFloat(Rating.maxRating - 1)
-    }
-
-    enum Image {
-        static let filled = UIImage(named: RatingImage.starFilled.name)
-        static let unfilled = UIImage(named: RatingImage.starUnfilled.name)
     }
 
     private var stackView: UIStackView = {
@@ -47,6 +42,11 @@ class RatingView: UIView {
 }
 
 private extension RatingView {
+    enum Image {
+        static let filled = UIImage(named: RatingImage.starFilled.name)
+        static let unfilled = UIImage(named: RatingImage.starUnfilled.name)
+    }
+
     func configureLayout() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.stackView)

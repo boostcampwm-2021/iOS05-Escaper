@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Observable<T> {
+final class Observable<T> {
     struct Observer<T> {
         weak var observer: AnyObject?
         let block: (T) -> Void

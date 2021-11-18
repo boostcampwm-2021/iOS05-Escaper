@@ -1,5 +1,5 @@
 //
-//  FindRoomTableViewCell.swift
+//  SearchRoomTableViewCell.swift
 //  Escaper
 //
 //  Created by TakHyun Jung on 2021/11/10.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class FindRoomTableViewCell: UITableViewCell {
-    static let identifier = String(describing: RoomOverviewTableViewCell.self)
+final class SearchRoomTableViewCell: UITableViewCell {
+    static let identifier = String(describing: SearchRoomTableViewCell.self)
 
     private let titleLabel = EDSLabel.b01B(color: .pumpkin)
     private let storeNameLabel = EDSLabel.b03R(color: .skullLightWhite)
@@ -31,12 +31,12 @@ class FindRoomTableViewCell: UITableViewCell {
     }
 
     func update(_ room: Room) {
-        self.titleLabel.text = room.name
+        self.titleLabel.text = room.title
         self.storeNameLabel.text = room.storeName
     }
 }
 
-private extension FindRoomTableViewCell {
+private extension SearchRoomTableViewCell {
     func configure() {
         self.configureStackViewLayout()
         self.clearBackgroundSelectedCell()

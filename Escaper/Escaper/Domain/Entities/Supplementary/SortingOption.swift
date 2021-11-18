@@ -8,11 +8,11 @@
 import Foundation
 
 enum SortingOption: String, Tagable, CaseIterable {
+    case satisfaction = "만족도"
+    case difficulty = "난이도"
+    case distance = "거리"
+
     var name: String {
         return self.rawValue
     }
-
-    case satisfaction = "만족도"
-    case level = "난이도"
-    case distance = "거리"
 }
