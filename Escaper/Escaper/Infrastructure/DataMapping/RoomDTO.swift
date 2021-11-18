@@ -8,50 +8,43 @@
 import Foundation
 
 struct RoomDTO: Codable {
-    var identifier: String
-    var name: String
+    var roomId: String
+    var title: String
     var storeName: String
-    var level: Double
-    var homePage: String
-    var telephone: String
-    var genres: [Genre]
+    var difficulty: Int
+    var genre: String
     var geoLocation: GeoLocation
-    var district: District
-    var userRecords: [UserRecord]
+    var district: String
+    var records: [RecordDTO]
 
     func toDictionary() -> [String: Any] {
         let dictionary: [String: Any] = [
-            "identifier": self.identifier,
-            "name": self.name,
+            "roomId": self.roomId,
+            "title": self.title,
             "storeName": self.storeName,
-            "level": self.level,
-            "homePage": self.homePage,
-            "telephone": self.telephone,
-            "genres": self.genres.map { $0.rawValue },
+            "difficulty": self.difficulty,
+            "genre": self.genre,
             "geoLocation": self.geoLocation.toDictionary,
-            "district": self.district.rawValue,
-            "userRecords": self.userRecords.map { $0.toDictionary }
+            "district": self.district,
+            "records": self.records.map { $0.toDictionary }
         ]
         return dictionary
     }
 
     func toDomain() -> Room {
-        let level = Rating(rawValue: Int(self.level.rounded())) ?? Rating.zero
-        let satisfactionSum = self.userRecords.reduce(0.0, { $0 + $1.satisfaction })
-        let satisfactionRawValue = self.userRecords.count == 0 ? 0 : (satisfactionSum / Double(self.userRecords.count)).rounded()
-        let satisfaction = Rating(rawValue: Int(satisfactionRawValue)) ?? Rating.zero
-        let userRecords = self.userRecords.sorted { $0.playTime < $1.playTime }.prefix(3).map { $0 }
-        return Room(identifier: self.identifier,
-                    name: self.name,
+        let genre = Genre(rawValue: self.genre) ?? Genre.all
+        let district = District(rawValue: self.district) ?? District.none
+        let satisfactionSum = self.records.reduce(.zero, { $0 + $1.satisfaction })
+        let avarageSatisfaction = self.records.count == .zero ? .zero : (satisfactionSum / Double(self.records.count)).rounded()
+        return Room(roomId: self.roomId,
+                    title: self.title,
                     storeName: self.storeName,
-                    level: level,
-                    satisfaction: satisfaction,
-                    homepage: self.homePage,
-                    telephone: self.telephone,
-                    genres: self.genres,
+                    difficulty: self.difficulty,
+                    averageSatisfaction: avarageSatisfaction,
+                    genre: genre,
                     geoLocation: self.geoLocation.clLocation,
-                    district: self.district,
-                    distance: 0,
-                    userRecords: userRecords)
+                    district: district,
+                    records: self.records.map({ $0.toDomain() }),
+                    distance: .zero)
     }
 }
