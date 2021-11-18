@@ -19,18 +19,33 @@ final class TimePickerViewController: UIViewController {
     private var seconds: Int = 0
     private let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = EDSColor.bloodyBlack.value
+        view.backgroundColor = EDSColor.gloomyBrown.value
         return view
     }()
-    private let toolBar: UIToolbar = {
-        let toolBar = UIToolbar()
-        toolBar.barTintColor = EDSColor.gloomyBrown.value
-        return toolBar
+    private let buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
+    private let cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(EDSColor.bloodyRed.value, for: .normal)
+        button.backgroundColor = .clear
+        return button
+    }()
+    private let confirmButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("확인", for: .normal)
+        button.setTitleColor(EDSColor.skullWhite.value, for: .normal)
+        button.backgroundColor = .clear
+        return button
     }()
     private let pickerView: UIPickerView = {
         let pickerView = UIPickerView()
-        pickerView.backgroundColor = EDSColor.gloomyBrown.value
         pickerView.setValue(EDSColor.pumpkin.value, forKeyPath: "textColor")
+        pickerView.backgroundColor = EDSColor.bloodyBlack.value
         return pickerView
     }()
 
@@ -45,11 +60,11 @@ final class TimePickerViewController: UIViewController {
         self.containerView.roundCorners(corners: [.topLeft, .topRight], radius: 25)
     }
 
-    @objc func cancelBarButtonTapped() {
+    @objc func cancelButtonTapped() {
         self.dismiss(animated: true)
     }
 
-    @objc func confirmBarButtonTapped() {
+    @objc func confirmButtonTapped() {
         self.delegate?.updateTime(hour: self.hour, minutes: self.minutes, seconds: self.seconds)
         self.dismiss(animated: true)
     }
@@ -65,9 +80,10 @@ final class TimePickerViewController: UIViewController {
 private extension TimePickerViewController {
     func configure() {
         self.configureContainerViewLayout()
-        self.configureToolBarLayout()
+        self.configureButtonStackViewSubViews()
+        self.configureButtonStackViewLayout()
         self.configurePickerViewLayout()
-        self.configureToolBarItems()
+        self.configureButtonAction()
         self.configureTapGesture()
         self.pickerView.delegate = self
     }
@@ -77,20 +93,25 @@ private extension TimePickerViewController {
         self.view.addSubview(self.containerView)
         NSLayoutConstraint.activate([
             self.containerView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3),
-            self.containerView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.containerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.containerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.containerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
 
-    func configureToolBarLayout() {
-        self.toolBar.translatesAutoresizingMaskIntoConstraints = false
-        self.containerView.addSubview(self.toolBar)
+    func configureButtonStackViewSubViews() {
+        self.buttonStackView.addArrangedSubview(self.cancelButton)
+        self.buttonStackView.addArrangedSubview(self.confirmButton)
+    }
+
+    func configureButtonStackViewLayout() {
+        self.buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.buttonStackView)
         NSLayoutConstraint.activate([
-            self.toolBar.topAnchor.constraint(equalTo: self.containerView.topAnchor),
-            self.toolBar.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor),
-            self.toolBar.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor),
-            self.toolBar.heightAnchor.constraint(equalTo: self.containerView.heightAnchor, multiplier: 0.25)
+            self.buttonStackView.topAnchor.constraint(equalTo: self.containerView.topAnchor),
+            self.buttonStackView.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
+            self.buttonStackView.widthAnchor.constraint(equalTo: self.containerView.widthAnchor, multiplier: 0.85),
+            self.buttonStackView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
@@ -98,20 +119,16 @@ private extension TimePickerViewController {
         self.pickerView.translatesAutoresizingMaskIntoConstraints = false
         self.containerView.addSubview(self.pickerView)
         NSLayoutConstraint.activate([
-            self.pickerView.topAnchor.constraint(equalTo: self.toolBar.bottomAnchor),
+            self.pickerView.topAnchor.constraint(equalTo: self.buttonStackView.bottomAnchor),
             self.pickerView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor),
             self.pickerView.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor),
             self.pickerView.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor)
         ])
     }
 
-    func configureToolBarItems() {
-        let cancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelBarButtonTapped))
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let save = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(self.confirmBarButtonTapped))
-        cancel.tintColor = EDSColor.bloodyRed.value
-        save.tintColor = EDSColor.skullWhite.value
-        self.toolBar.items = [cancel, spacer, save]
+    func configureButtonAction() {
+        self.cancelButton.addTarget(self, action: #selector(self.cancelButtonTapped), for: .touchUpInside)
+        self.confirmButton.addTarget(self, action: #selector(self.confirmButtonTapped), for: .touchUpInside)
     }
 
     func configureTapGesture() {
