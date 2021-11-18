@@ -1,5 +1,5 @@
 //
-//  FindRoomViewController.swift
+//  SearchRoomViewController.swift
 //  Escaper
 //
 //  Created by TakHyun Jung on 2021/11/10.
@@ -11,18 +11,12 @@ protocol RoomInformationTransferable: AnyObject {
     func transfer(room: Room)
 }
 
-class FindRoomViewController: UIViewController {
-    enum Constant {
-        static let verticalSpace = CGFloat(20)
-    }
-
-    enum Section {
-        case main
-    }
-
-    private var viewModel: (FindRoomViewModelInput & FindRoomViewModelOutput)?
-    private var searchRequestWorkItem: DispatchWorkItem?
+final class SearchRoomViewController: UIViewController {
     weak var roomTransferDelegate: RoomInformationTransferable?
+
+    private var viewModel: (SearchRoomViewModelInput & SearchRoomViewModelOutput)?
+    private var searchRequestWorkItem: DispatchWorkItem?
+    private var dataSource: UITableViewDiffableDataSource<Section, Room>?
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = EDSColor.gloomyBrown.value
@@ -40,7 +34,6 @@ class FindRoomViewController: UIViewController {
         tableView.keyboardDismissMode = .onDrag
         return tableView
     }()
-    private var dataSource: UITableViewDiffableDataSource<Section, Room>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +48,7 @@ class FindRoomViewController: UIViewController {
     func create() {
         let repository = RoomListRepository(service: FirebaseService.shared)
         let usecase = RoomListUseCase(repository: repository)
-        let viewModel = FindRoomViewModel(usecase: usecase)
+        let viewModel = SearchRoomViewModel(usecase: usecase)
         self.viewModel = viewModel
     }
 
@@ -66,7 +59,7 @@ class FindRoomViewController: UIViewController {
     }
 }
 
-extension FindRoomViewController: UISearchBarDelegate {
+extension SearchRoomViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchRequestWorkItem?.cancel()
         let requestWorkItem = DispatchWorkItem { [weak self] in
@@ -77,7 +70,7 @@ extension FindRoomViewController: UISearchBarDelegate {
     }
 }
 
-extension FindRoomViewController: UITableViewDelegate {
+extension SearchRoomViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedRoom = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         self.roomTransferDelegate?.transfer(room: selectedRoom)
@@ -85,7 +78,15 @@ extension FindRoomViewController: UITableViewDelegate {
     }
 }
 
-private extension FindRoomViewController {
+private extension SearchRoomViewController {
+    enum Constant {
+        static let verticalSpace = CGFloat(20)
+    }
+
+    enum Section {
+        case main
+    }
+
     func configure() {
         self.configureContainerViewLayout()
         self.configureSearchBarLayout()
@@ -132,9 +133,9 @@ private extension FindRoomViewController {
     }
 
     func configureRoomListTableView() {
-        self.roomListTableView.register(FindRoomTableViewCell.self, forCellReuseIdentifier: FindRoomTableViewCell.identifier)
+        self.roomListTableView.register(SearchRoomTableViewCell.self, forCellReuseIdentifier: SearchRoomTableViewCell.identifier)
         self.dataSource = UITableViewDiffableDataSource<Section, Room>(tableView: self.roomListTableView) { (_: UITableView, _: IndexPath, room: Room) -> UITableViewCell? in
-            let cell = self.roomListTableView.dequeueReusableCell(withIdentifier: FindRoomTableViewCell.identifier) as? FindRoomTableViewCell
+            let cell = self.roomListTableView.dequeueReusableCell(withIdentifier: SearchRoomTableViewCell.identifier) as? SearchRoomTableViewCell
             cell?.update(room)
             return cell
         }

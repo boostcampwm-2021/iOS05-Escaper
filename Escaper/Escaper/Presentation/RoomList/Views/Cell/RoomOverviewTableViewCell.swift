@@ -10,21 +10,6 @@ import UIKit
 final class RoomOverviewTableViewCell: UITableViewCell {
     static let identifier = String(describing: RoomOverviewTableViewCell.self)
 
-    enum Constant {
-        static let cornerRadius = CGFloat(15)
-        static let imageLength = CGFloat(50)
-        static let verticalSpace = CGFloat(5)
-        static let horizontalSpace = CGFloat(20)
-        static let contentSideSpace = CGFloat(24)
-        static let ratingContainerWidth = CGFloat(100)
-        static let ratingContainerHeight = CGFloat(30)
-        static let ratingVerticalSpace = CGFloat(8)
-        static let imageYAnchorSpace = CGFloat(8)
-        static let titleYAnchorSpace = CGFloat(20)
-        static let titleSpace = CGFloat(20)
-        static let distanceSpace = CGFloat(4)
-    }
-
     private let genreImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
@@ -50,10 +35,10 @@ final class RoomOverviewTableViewCell: UITableViewCell {
     }
 
     func update(_ room: Room) {
-        guard let genre = room.genres.first else { return }
-        self.genreImageView.image = UIImage(named: genre.previewImageAssetName)
-        self.titleLabel.text = room.name
-        self.ratingContainerView.update(level: room.level, satisfaction: room.satisfaction)
+        self.genreImageView.image = UIImage(named: room.genre.previewImageAssetName)
+        self.titleLabel.text = room.title
+        self.ratingContainerView.update(difficulty: room.difficulty, satisfaction: room.averageSatisfaction)
+        // TODO: - Measurement 사용하기: Measurement.init(value: room.distance, unit: UnitLength.kilometers)
         self.distanceLabel.text = room.distance < 1000 ? "\(Int(room.distance))m" : "\((room.distance / 100).rounded() / 10)km"
     }
 
@@ -76,6 +61,21 @@ final class RoomOverviewTableViewCell: UITableViewCell {
 }
 
 private extension RoomOverviewTableViewCell {
+    enum Constant {
+        static let cornerRadius = CGFloat(15)
+        static let imageLength = CGFloat(50)
+        static let verticalSpace = CGFloat(5)
+        static let horizontalSpace = CGFloat(20)
+        static let contentSideSpace = CGFloat(24)
+        static let ratingContainerWidth = CGFloat(100)
+        static let ratingContainerHeight = CGFloat(30)
+        static let ratingVerticalSpace = CGFloat(8)
+        static let imageYAnchorSpace = CGFloat(8)
+        static let titleYAnchorSpace = CGFloat(20)
+        static let titleSpace = CGFloat(20)
+        static let distanceSpace = CGFloat(4)
+    }
+    
     func configure() {
         self.configureCell()
         self.configureGenreImageViewLayout()

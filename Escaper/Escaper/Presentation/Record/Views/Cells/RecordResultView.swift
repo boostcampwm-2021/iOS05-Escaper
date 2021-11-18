@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RecordResultView: UIView {
+final class RecordResultView: UIView {
     private let rankLabel: UILabel = EDSLabel.h03B(text: "Rank", color: .gloomyPurple)
     private var rankResultLabel: UILabel = {
         let label = UILabel()
@@ -60,7 +60,7 @@ class RecordResultView: UIView {
     }
 }
 
-extension RecordResultView {
+private extension RecordResultView {
     func configureLayout() {
         configureRankStackViewLayout()
         configureTimeStackViewLayout()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
     enum Constant {
         static let itemInset = CGFloat(10)
     }
@@ -21,6 +21,11 @@ class MainTabBarController: UITabBarController {
 
 private extension MainTabBarController {
     enum TabBarItemConfig: String {
+        case home = "홈"
+        case record = "기록"
+        case map = "지도"
+        case leaderBoard = "리더보드"
+
         var title: String {
             return self.rawValue
         }
@@ -30,11 +35,6 @@ private extension MainTabBarController {
         var selectedImage: UIImage? {
             return UIImage(named: String(describing: self) + "Selected")
         }
-
-        case home = "홈"
-        case record = "기록"
-        case map = "지도"
-        case leaderBoard = "리더보드"
     }
 
     func configureTabBar() {

@@ -7,21 +7,7 @@
 
 import UIKit
 
-class RecordUserView: UIView {
-    enum Constant {
-        static let verticalSpace = CGFloat(10)
-        static let horizontalSpace = CGFloat(5)
-    }
-
-    enum Result: String {
-        case success
-        case fail
-
-        var name: String {
-            return self.rawValue
-        }
-    }
-
+final class RecordUserView: UIView {
     private let userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = CGFloat(20)
@@ -77,7 +63,21 @@ class RecordUserView: UIView {
     }
 }
 
-extension RecordUserView {
+private extension RecordUserView {
+    enum Constant {
+        static let verticalSpace = CGFloat(10)
+        static let horizontalSpace = CGFloat(5)
+    }
+
+    enum Result: String {
+        case success
+        case fail
+
+        var name: String {
+            return self.rawValue
+        }
+    }
+
     func configureLayout() {
         configureUserImageViewLayout()
         configureHorizontalStackViewLayout()

@@ -8,11 +8,6 @@
 import UIKit
 
 final class TagButton: UIButton {
-    enum Constant {
-        static let cornerRadius = CGFloat(8)
-        static let borderWidth = CGFloat(0.25)
-    }
-
     private(set) var element: Tagable?
     private var elementLabel: UILabel = {
         let label = EDSLabel.b01R(color: .skullWhite)
@@ -46,6 +41,11 @@ final class TagButton: UIButton {
 }
 
 private extension TagButton {
+    enum Constant {
+        static let cornerRadius = CGFloat(8)
+        static let borderWidth = CGFloat(0.25)
+    }
+    
     func configure() {
         self.configureButtonUI()
         self.configureElementLabelLayout()

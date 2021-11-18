@@ -8,10 +8,10 @@
 import Foundation
 
 enum RatingImage: String {
+    case starFilled = "star.filled"
+    case starUnfilled = "star.unfilled"
+
     var name: String {
         return self.rawValue
     }
-
-    case starFilled = "star.filled"
-    case starUnfilled = "star.unfilled"
 }

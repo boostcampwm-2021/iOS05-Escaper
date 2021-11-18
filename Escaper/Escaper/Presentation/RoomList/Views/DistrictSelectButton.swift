@@ -11,14 +11,7 @@ protocol DistrictSelectViewDelegate: AnyObject {
     func districtDidSelected(district: District)
 }
 
-class DistrictSelectButton: UIButton {
-    private enum Constant {
-        static let sideSpace = CGFloat(5)
-        static let districtLabelWidth = CGFloat(61)
-        static let infoLabelWidth = CGFloat(25)
-        static let imageLength = CGFloat(14)
-    }
-
+final class DistrictSelectButton: UIButton {
     weak var delegate: DistrictSelectViewDelegate?
 
     private var districtLabel: UILabel = {
@@ -57,6 +50,13 @@ class DistrictSelectButton: UIButton {
 }
 
 private extension DistrictSelectButton {
+    enum Constant {
+        static let sideSpace = CGFloat(5)
+        static let districtLabelWidth = CGFloat(61)
+        static let infoLabelWidth = CGFloat(25)
+        static let imageLength = CGFloat(14)
+    }
+
     func configure() {
         self.configureUI()
         self.configureIndicatorImageViewLayout()
@@ -107,7 +107,8 @@ private extension DistrictSelectButton {
     }
 
     func makeMenu() -> UIMenu {
-        let districtActions = District.allCases.map { district in
+        let possibleDistricts = District.allCases.dropLast()
+        let districtActions = possibleDistricts.map { district in
             UIAction(title: district.name) { [weak self] _ in
                 self?.delegate?.districtDidSelected(district: district)
                 self?.updateTitle(district: district)
