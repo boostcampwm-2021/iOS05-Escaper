@@ -148,7 +148,7 @@ final class AddRecordView: UIView {
     }
 
     func fetchSelectedImage() -> UIImage? {
-        return self.userSelectedImageView.image
+        return self.userSelectedImageView.image == EDSImage.plus.value ? nil : self.userSelectedImageView.image
     }
 }
 
