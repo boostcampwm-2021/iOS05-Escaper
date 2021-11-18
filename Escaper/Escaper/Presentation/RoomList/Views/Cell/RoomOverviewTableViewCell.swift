@@ -41,7 +41,8 @@ final class RoomOverviewTableViewCell: UITableViewCell {
         // TODO: - Measurement 사용하기: Measurement.init(value: room.distance, unit: UnitLength.kilometers)
         self.distanceLabel.text = Helper.measureDistance(room.distance)
         self.accessibilityLabel = "테마 이름 \(room.title), 테마 종류 \(room.genre.name), 난이도 \(room.difficulty)점, 만족도 \(room.averageSatisfaction)점, 거리 " + Helper.measureDistance(room.distance)
-        self.accessibilityHint = "위 아래로 스와이프해서 다양한 방탈출 정보를 확인하세요."
+        self.accessibilityTraits = .button
+        self.accessibilityHint = "위 아래로 스와이프해서 다양한 방탈출 정보를 확인 할 수 있고 더블 탭을 하면 방 세부 정보를 확인 할 수 있어요"
     }
 
     override func prepareForReuse() {
