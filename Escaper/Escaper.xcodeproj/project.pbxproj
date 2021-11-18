@@ -34,6 +34,7 @@
 		1FAAD0A6274666AD00C2AE90 /* SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09C274666AD00C2AE90 /* SortingOption.swift */; };
 		1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09D274666AD00C2AE90 /* Store.swift */; };
 		1FAAD0A8274666AD00C2AE90 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09E274666AD00C2AE90 /* Record.swift */; };
+		1FAAD0AA2746885100C2AE90 /* StoreRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD0A92746885100C2AE90 /* StoreRegion.swift */; };
 		1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
 		1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */; };
 		1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
@@ -113,6 +114,7 @@
 		1FAAD09C274666AD00C2AE90 /* SortingOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortingOption.swift; sourceTree = "<group>"; };
 		1FAAD09D274666AD00C2AE90 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1FAAD09E274666AD00C2AE90 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		1FAAD0A92746885100C2AE90 /* StoreRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRegion.swift; sourceTree = "<group>"; };
 		1FCDDE68272EE0F00027AAAD /* Escaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Escaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				1FAAD094274666AD00C2AE90 /* RecordCard.swift */,
 				1FAAD095274666AD00C2AE90 /* User.swift */,
 				1FAAD096274666AD00C2AE90 /* Room.swift */,
+				1FAAD0A92746885100C2AE90 /* StoreRegion.swift */,
 				1FAAD097274666AD00C2AE90 /* Supplementary */,
 				1FAAD09D274666AD00C2AE90 /* Store.swift */,
 				1FAAD09E274666AD00C2AE90 /* Record.swift */,
@@ -691,6 +694,7 @@
 				3E0A921F27423679002166C6 /* AddRecordViewModel.swift in Sources */,
 				25104A482744E98F00DB90BF /* DataInjection.swift in Sources */,
 				25104A462744E90F00DB90BF /* InjectionDTOs.swift in Sources */,
+				1FAAD0AA2746885100C2AE90 /* StoreRegion.swift in Sources */,
 				1FE53402273F8ABE00867832 /* SearchRoomViewController.swift in Sources */,
 				3E5902A8273B92F50045ADDE /* RecordUserView.swift in Sources */,
 				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
