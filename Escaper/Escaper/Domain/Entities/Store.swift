@@ -13,6 +13,7 @@ struct Store {
     var homePage: String
     var telephone: String
     var address: String
+    var region: StoreRegion
     var geoLocation: CLLocation
     var district: District
     var roomIds: [String]

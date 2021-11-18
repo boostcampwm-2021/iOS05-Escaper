@@ -12,6 +12,7 @@ struct StoreDTO: Codable {
     var homePage: String
     var telephone: String
     var address: String
+    var region: String
     var geoLocation: GeoLocation
     var district: String
     var roomIds: [String]
@@ -22,6 +23,7 @@ struct StoreDTO: Codable {
             "homePage": self.homePage,
             "telephone": self.telephone,
             "address": self.address,
+            "region": self.region,
             "geoLocation": self.geoLocation.toDictionary,
             "district": self.district,
             "roomIds": self.roomIds
@@ -31,11 +33,12 @@ struct StoreDTO: Codable {
 
     func toDomain() -> Store {
         let district = District(rawValue: self.district) ?? District.none
-
+        let region = StoreRegion(rawValue: self.region) ?? StoreRegion.extra
         return Store(name: self.name,
                      homePage: self.homePage,
                      telephone: self.telephone,
                      address: self.address,
+                     region: region,
                      geoLocation: self.geoLocation.clLocation,
                      district: district,
                      roomIds: self.roomIds)
