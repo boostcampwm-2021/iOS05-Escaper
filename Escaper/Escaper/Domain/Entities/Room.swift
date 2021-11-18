@@ -9,22 +9,19 @@ import Foundation
 import CoreLocation
 
 struct Room: Hashable {
-    var identifier: String
-    var name: String
+    var roomId: String
+    var title: String
     var storeName: String
-    var level: Rating
-    var satisfaction: Rating
-    var homepage: String
-    var telephone: String
-    var genres: [Genre]
+    var difficulty: Int
+    var averageSatisfaction: Double
+    var genre: Genre
     var geoLocation: CLLocation
     var district: District
-    var distance: Double
-    var userRecords: [UserRecord]
+    var records: [Record]
+    var distance: Double // TODO: - 이러다 다죽어
 
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self.name)
-        hasher.combine(self.storeName)
+        hasher.combine(self.roomId)
     }
 
     mutating func updateDistance(_ distance: Double) {
@@ -32,6 +29,6 @@ struct Room: Hashable {
     }
 
     static func == (lhs: Room, rhs: Room) -> Bool {
-        return lhs.name == rhs.name && lhs.storeName == rhs.storeName
+        return lhs.roomId == rhs.roomId
     }
 }
