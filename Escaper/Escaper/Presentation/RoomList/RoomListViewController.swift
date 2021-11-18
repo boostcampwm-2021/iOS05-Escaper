@@ -9,23 +9,8 @@ import UIKit
 import CoreLocation
 
 final class RoomListViewController: DefaultViewController {
-    enum Constant {
-        static let localeIdentifier = "Ko-kr"
-        static let tagViewHeight = CGFloat(30)
-        static let sideSpace = CGFloat(20)
-        static let cellHeight = CGFloat(96)
-        static let topVerticalSpace = CGFloat(18)
-        static let defaultVerticalSpace = CGFloat(13)
-        static let defaultOutlineSpace = CGFloat(14)
-        static let districtSelectButtonWidth = CGFloat(105)
-        static let sortingOptionWidth = CGFloat(230)
-    }
-
-    enum Section {
-        case main
-    }
-
     private var viewModel: RoomListViewModelInterface?
+    private var selectedDistrict: District?
     private var locationManager: CLLocationManager?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
     private var districtSelectButton = DistrictSelectButton()
@@ -73,9 +58,9 @@ extension RoomListViewController: TagScrollViewDelegate {
     func tagSelected(element: Tagable) {
         switch element {
         case is Genre:
-            self.fetchCurrentDistrict { [weak self] district in
-                self?.fetchWithCurrentSelectedOption(with: district)
-            }
+            guard let district = self.selectedDistrict else { return }
+            self.fetchWithCurrentSelectedOption(with: district)
+
         case let sortingOption as SortingOption:
             self.viewModel?.sort(option: sortingOption)
         default:
@@ -86,6 +71,7 @@ extension RoomListViewController: TagScrollViewDelegate {
 
 extension RoomListViewController: DistrictSelectViewDelegate {
     func districtDidSelected(district: District) {
+        self.selectedDistrict = district
         self.fetchWithCurrentSelectedOption(with: district)
     }
 }
@@ -121,6 +107,22 @@ extension RoomListViewController: UITableViewDelegate {
 }
 
 private extension RoomListViewController {
+    enum Constant {
+        static let localeIdentifier = "Ko-kr"
+        static let tagViewHeight = CGFloat(30)
+        static let sideSpace = CGFloat(20)
+        static let cellHeight = CGFloat(96)
+        static let topVerticalSpace = CGFloat(18)
+        static let defaultVerticalSpace = CGFloat(13)
+        static let defaultOutlineSpace = CGFloat(14)
+        static let districtSelectButtonWidth = CGFloat(105)
+        static let sortingOptionWidth = CGFloat(230)
+    }
+
+    enum Section {
+        case main
+    }
+    
     func configure() {
         self.configureLocationManager()
         self.configureDelegates()

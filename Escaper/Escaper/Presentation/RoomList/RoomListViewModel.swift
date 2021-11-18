@@ -14,7 +14,7 @@ protocol RoomListViewModelInterface {
     func sort(option: SortingOption)
 }
 
-class DefaultRoomListViewModel: RoomListViewModelInterface {
+final class DefaultRoomListViewModel: RoomListViewModelInterface {
     private let usecase: RoomListUseCaseInterface
     private(set) var rooms: Observable<[Room]>
 
@@ -43,9 +43,9 @@ private extension DefaultRoomListViewModel {
     func sort(rooms: [Room], by option: SortingOption) -> [Room] {
         switch option {
         case .satisfaction:
-            return rooms.sorted(by: { $0.satisfaction.value > $1.satisfaction.value })
-        case .level:
-            return rooms.sorted(by: { $0.level.value > $1.level.value })
+            return rooms.sorted(by: { $0.averageSatisfaction > $1.averageSatisfaction })
+        case .difficulty:
+            return rooms.sorted(by: { $0.difficulty > $1.difficulty })
         case .distance:
             return rooms.sorted(by: { $0.distance < $1.distance })
         }

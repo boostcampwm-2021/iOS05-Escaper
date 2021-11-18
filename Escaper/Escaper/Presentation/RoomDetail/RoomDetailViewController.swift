@@ -8,18 +8,6 @@
 import UIKit
 
 final class RoomDetailViewController: DefaultViewController {
-    private enum Constant {
-        static let stackViewSpace: CGFloat = 10
-        static let rankViewHeight: CGFloat = 60
-        static let genreImageSize: CGFloat = 180
-        static let shortVerticalSpace: CGFloat = 4
-        static let longVerticalSpace: CGFloat = 24
-        static let verticalSpace: CGFloat = 16
-        static let horizontalSpace: CGFloat = 20
-        static let DetailInfoHeight: CGFloat = 160
-        static let DetailInfoSideSpace: CGFloat = 60
-    }
-
     var room: Room?
     private let scrollView = UIScrollView()
     private let genreImageView: UIImageView = {
@@ -45,7 +33,7 @@ final class RoomDetailViewController: DefaultViewController {
         self.configureLayout()
         self.update(room: room)
         self.roomDetailInfoVeiw.update(room: room)
-        self.updateStackView(userRecords: room.userRecords)
+        self.updateStackView(records: room.records)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +44,18 @@ final class RoomDetailViewController: DefaultViewController {
 }
 
 private extension RoomDetailViewController {
+    enum Constant {
+        static let stackViewSpace: CGFloat = 10
+        static let rankViewHeight: CGFloat = 60
+        static let genreImageSize: CGFloat = 180
+        static let shortVerticalSpace: CGFloat = 4
+        static let longVerticalSpace: CGFloat = 24
+        static let verticalSpace: CGFloat = 16
+        static let horizontalSpace: CGFloat = 20
+        static let DetailInfoHeight: CGFloat = 160
+        static let DetailInfoSideSpace: CGFloat = 60
+    }
+    
     func configureLayout() {
         self.configureScrollViewLayout()
         self.configureGenreImageViewLayout()
@@ -137,18 +137,19 @@ private extension RoomDetailViewController {
     }
 
     func update(room: Room) {
-        self.genreImageView.image = UIImage(named: room.genres.first?.detailImageAssetName ?? Genre.romance.detailImageAssetName)
-        self.titleLabel.text = room.name
+        self.genreImageView.image = UIImage(named: room.genre.detailImageAssetName)
+        self.titleLabel.text = room.title
         self.storeNameLabel.text = room.storeName
     }
 
-    func updateStackView(userRecords: [UserRecord]) {
-        for (rank, userRecord) in userRecords.enumerated() {
+    func updateStackView(records: [Record]) {
+        self.rankTitleLabel.isHidden = records.isEmpty
+        for (rank, record) in records.sorted(by: { $0.escapingTime < $1.escapingTime }).prefix(3).enumerated() {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: Constant.rankViewHeight).isActive = true
             rankView.layer.cornerRadius = Constant.rankViewHeight/2
-            rankView.update(userRecord, rank: rank)
+            rankView.update(record, rank: rank)
             self.userRankStackView.addArrangedSubview(rankView)
         }
     }

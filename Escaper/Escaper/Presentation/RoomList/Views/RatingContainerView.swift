@@ -7,13 +7,7 @@
 
 import UIKit
 
-class RatingContainerView: UIView {
-    enum Constant {
-        static let labelWidth = CGFloat(30)
-        static let ratingViewHeight = CGFloat(10)
-        static let ratingViewWidth = Constant.ratingViewHeight * CGFloat(Rating.maxRating) + RatingView.Constant.summationOfElementSpacing
-    }
-
+final class RatingContainerView: UIView {
     private let levelLabel = EDSLabel.b03R(text: "난이도", color: .skullWhite)
     private let satisfactionLabel = EDSLabel.b03R(text: "만족도", color: .skullWhite)
     private let levelRatingView = RatingView()
@@ -29,9 +23,9 @@ class RatingContainerView: UIView {
         self.configure()
     }
 
-    func update(level: Rating, satisfaction: Rating) {
-        self.levelRatingView.fill(rating: level)
-        self.satisfactionRatingView.fill(rating: satisfaction)
+    func update(difficulty: Int, satisfaction: Double) {
+        self.levelRatingView.fill(rating: Rating(rawValue: difficulty)!)
+        self.satisfactionRatingView.fill(rating: Rating(rawValue: Int(satisfaction))!)
     }
 
     func prepareForReuse() {
@@ -41,6 +35,12 @@ class RatingContainerView: UIView {
 }
 
 private extension RatingContainerView {
+    enum Constant {
+        static let labelWidth = CGFloat(30)
+        static let ratingViewHeight = CGFloat(10)
+        static let ratingViewWidth = Constant.ratingViewHeight * CGFloat(Rating.maxRating) + RatingView.Constant.summationOfElementSpacing
+    }
+    
     func configure() {
         self.configureLevelLabelLayout()
         self.configureSatisfactionLabelLayout()
