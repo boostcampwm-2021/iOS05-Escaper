@@ -1,0 +1,137 @@
+{
+    "stores": [
+      {
+        "storeName": "비트 포비아 히든 퀘스트1",
+        "telephone": "02-322-2600",
+        "homepage": "https://www.xphobia.net/",
+        "address": "서울 중구 을지로 지하 279",
+        "rooms": [
+          {
+            "title": "사라진 그녀",
+            "genre": "추리",
+            "difficulty": 5
+          }
+        ]
+      },
+      {
+        "storeName": "마스터키 잠실점",
+        "telephone": "050-7458-6324",
+        "homepage": "http://www.master-key.co.kr/home",
+        "address": "서울 송파구 백제고분호7길 27",
+        "rooms": [
+          {
+            "title": "어게인",
+            "genre": "감성",
+            "difficulty": 3
+          },
+          {
+            "title": "이스케이프 플랜",
+            "genre": "모험",
+            "difficulty": 5
+          },
+          {
+            "title": "그리고 아무도 없었다",
+            "genre": "추리",
+            "difficulty": 4
+          },
+          {
+            "title": "샵보이스",
+            "genre": "코미디",
+            "difficulty": 3
+          },
+          {
+            "title": "더매치:마지막전쟁",
+            "genre": "코미디",
+            "difficulty": 3
+          }
+        ]
+      },
+      {
+        "storeName": "셜록홈즈 잠실2호점",
+        "telephone": "02-418-0153",
+        "homepage": "http://sherlock-holmes.co.kr/",
+        "address": "서울 송파구 백제고분로7길 31",
+        "rooms": [
+          {
+            "title": "랑슈 뷰티연구소",
+            "genre": "스릴러",
+            "difficulty": 3
+          },
+          {
+            "title": "단잠",
+            "genre": "감성",
+            "difficulty": 3
+          },
+          {
+            "title": "퓨쳐리스트",
+            "genre": "드라마",
+            "difficulty": 4
+          }
+        ]
+      },
+      {
+        "storeName": "비트포비아 히든퀘스트2",
+        "telephone": "02-322-2600",
+        "homepage": "https://www.xphobia.net/",
+        "address": "서울 용산구 백범로 지하 287",
+        "rooms": [
+          {
+            "title": "자비원",
+            "genre": "추리",
+            "difficulty": 4
+          }
+        ]
+      },
+      {
+        "storeName": "넥스트에디션 잠실점",
+        "telephone": "02-423-8255",
+        "homepage": "https://www.nextedition.co.kr/",
+        "address": "서울 송파구 올림픽로 118",
+        "rooms": [
+          {
+            "title": "작은 악마들",
+            "genre": "드라마",
+            "difficulty": 3
+          },
+          {
+            "title": "데.코.연 (데이트 코스 연구회)",
+            "genre": "로맨스",
+            "difficulty": 2
+          }
+        ]
+      },
+      {
+        "storeName": "비트포비아 미션브레이크 CGV 용산점",
+        "telephone": "02-2012-8783",
+        "homepage": "https://www.xphobia.net/",
+        "address": "서울 용산구 한강대로23길 55",
+        "rooms": [
+          {
+            "title": "봉인의탑: 마법사의 길",
+            "genre": "판타지",
+            "difficulty": 2
+          },
+          {
+            "title": "시그널 1989",
+            "genre": "추리",
+            "difficulty": 3
+          },
+          {
+            "title": "시그널 2018",
+            "genre": "추리",
+            "difficulty": 3
+          },
+          {
+            "title": "신서유기: 신묘한 인물사전",
+            "genre": "추리",
+            "difficulty": 3
+          },
+          {
+            "title": "신서유기: 용볼회수 대작전",
+            "genre": "액션",
+            "difficulty": 3
+          }
+        ]
+      }
+    ]
+  }
