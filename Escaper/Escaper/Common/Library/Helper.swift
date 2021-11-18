@@ -26,4 +26,8 @@ enum Helper {
         }
         return nil
     }
+
+    static func measureDistance(_ distance: Double) -> String {
+        return distance < 1000 ? "\(Int(distance))m" : "\((distance / 100).rounded() / 10)km"
+    }
 }
