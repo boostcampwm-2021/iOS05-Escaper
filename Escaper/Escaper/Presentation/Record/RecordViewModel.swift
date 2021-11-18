@@ -7,19 +7,18 @@
 
 import Foundation
 
-
 protocol RecordViewModelInput {
     func fetch(userEmail: String)
 }
 
 protocol RecordViewModelOutput {
-    var records: Observable<[Record]> { get }
+    var records: Observable<[RecordCard]> { get }
 }
 
 protocol RecordViewModel: RecordViewModelInput, RecordViewModelOutput { }
 
 final class DefaultRecordViewModel: RecordViewModel {
-    internal var records: Observable<[Record]>
+    internal var records: Observable<[RecordCard]>
     private let useCase: RecordUsecase?
 
     init(useCase: RecordUsecase) {
@@ -31,7 +30,8 @@ final class DefaultRecordViewModel: RecordViewModel {
         self.useCase?.fetchAllRecords(userEmail: userEmail) { result in
             switch result {
             case .success(let record):
-                self.records.value.append(record)
+                let records = self.records.value + [record]
+                self.records.value = records.sorted(by: { $0.createdTime > $1.createdTime })
             case .failure(let error):
                 print(error)
             }
