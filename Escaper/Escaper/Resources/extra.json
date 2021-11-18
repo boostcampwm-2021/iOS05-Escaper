@@ -132,6 +132,456 @@
             "difficulty": 3
           }
         ]
-      }
+      },
+      {
+            "storeName": "이스케이프 시티 영등포본점",
+            "telephone": "070-8286-7355",
+            "homepage": "https://escapecity.kr/",
+            "address": "서울 영등포구 영중로8길 6",
+            "rooms": [
+              {
+                "title": "기억의 조각",
+                "genre": "스릴러",
+                "difficulty": 3
+              },
+              {
+                "title": "좀비 바이러스",
+                "genre": "잠입",
+                "difficulty": 3
+              },
+              {
+                "title": "마법학교",
+                "genre": "판타지",
+                "difficulty": 3
+              },
+              {
+                "title": "SPY",
+                "genre": "잠입",
+                "difficulty": 3
+              },
+              {
+                "title": "카지노의 전설",
+                "genre": "잠입",
+                "difficulty": 4
+              },
+              {
+                "title": "다시 만날수 있을까?",
+                "genre": "감성",
+                "difficulty": 2
+              }
+            ]
+          },
+          {
+            "storeName": "패닉이스케이프 목동점",
+            "telephone": "02-6408-5044",
+            "homepage": "https://www.panicescape.com/main",
+            "address": "서울 양천구 신정동 902-5",
+            "rooms": [
+              {
+                "title": "방과후 탈출",
+                "genre": "모험",
+                "difficulty": 2
+              },
+              {
+                "title": "두 얼굴의 영주",
+                "genre": "스릴러",
+                "difficulty": 3
+              },
+              {
+                "title": "맛집투어",
+                "genre": "스릴러",
+                "difficulty": 3
+              },
+              {
+                "title": "연쇄살인마",
+                "genre": "범죄",
+                "difficulty": 3
+              },
+              {
+                "title": "패닉특수부대",
+                "genre": "액션",
+                "difficulty": 4
+              }
+            ]
+          },
+          {
+            "storeName": "도어 이스케이프 이수역점",
+            "telephone": "02-534-9745",
+            "homepage": "https://isu.doorescape.co.kr/main.php",
+            "address": "서울 동작구 동작대로27가길 14",
+            "rooms": [
+              {
+                "title": "파라오의 석실",
+                "genre": "모험",
+                "difficulty": 3
+              },
+              {
+                "title": "검은 조직",
+                "genre": "범죄",
+                "difficulty": 3
+              },
+              {
+                "title": "빠삐용",
+                "genre": "범죄",
+                "difficulty": 4
+              },
+              {
+                "title": "S.O.S정글",
+                "genre": "모험",
+                "difficulty": 4
+              }
+            ]
+          },
+          {
+            "storeName": "큐브 이스케이프 잠실점",
+            "telephone": "02-412-9998",
+            "homepage": "https://cubeescape.co.kr/",
+            "address": "서울 송파구 잠실동 177-5",
+            "rooms": [
+              {
+                "title": "집착",
+                "genre": "스릴러",
+                "difficulty": 3
+              },
+              {
+                "title": "타이타닉",
+                "genre": "역사",
+                "difficulty": 3
+              },
+              {
+                "title": "카타콤",
+                "genre": "추리",
+                "difficulty": 3
+              },
+              {
+                "title": "마션",
+                "genre": "SF",
+                "difficulty": 5
+              },
+              {
+                "title": "로미오 포인트",
+                "genre": "스릴러",
+                "difficulty": 4
+              },
+              {
+                "title": "신데렐라",
+                "genre": "판타지",
+                "difficulty": 3
+              }
+            ]
+          },
+          {
+            "storeName": "큐브 이스케이프 천호점",
+            "telephone": "02-472-0808",
+            "homepage": "https://cubeescape.co.kr/",
+            "address": "서울 송파구 잠실동 177-5",
+            "rooms": [
+              {
+                "title": "The Cube",
+                "genre": "스릴러",
+                "difficulty": 4
+              },
+              {
+                "title": "The Maze",
+                "genre": "모험",
+                "difficulty": 3
+              },
+              {
+                "title": "장기밀매 Part2",
+                "genre": "스릴러",
+                "difficulty": 3
+              },
+              {
+                "title": "Stepfather: 사라진 천사들",
+                "genre": "스릴러",
+                "difficulty": 2
+              },
+              {
+                "title": "Piggies: 마녀의 꿈",
+                "genre": "판타지",
+                "difficulty": 3
+              },
+              {
+                "title": "Aphilia: 장미의 비밀",
+                "genre": "추리",
+                "difficulty": 1
+              },
+              {
+                "title": "피고인",
+                "genre": "범죄",
+                "difficulty": 3
+              }
+            ]
+          },
+          {
+            "storeName": "셜록홈즈 종각점",
+            "telephone": "02-725-0522",
+            "homepage": "https://sherlock-holmes.co.kr/",
+            "address": "서울 종로구 삼일대로17길 17",
+            "rooms": [
+              {
+                "title": "빛과 그림자: 화이트의 죽음2",
+                "genre": "추리",
+                "difficulty": 3
+              },
+              {
+                "title": "호텔: 사라진 다이아몬드",
+                "genre": "추리",
+                "difficulty": 3
+              },
+              {
+                "title": "숙제",
+                "genre": "코미디",
+                "difficulty": 3
+              },
+              {
+                "title": "프로젝트: 노아",
+                "genre": "SF",
+                "difficulty": 3
+              },
+              {
+                "title": "죽음의 신",
+                "genre": "드라마",
+                "difficulty": 5
+              }
+            ]
+          },
+          {
+            "storeName": "비트포비아 명동점",
+            "telephone": "02-3798-8094",
+            "homepage": "https://www.xphobia.net/",
+            "address": "서울 중구 명동2가 3-7",
+            "rooms": [
+              {
+                "title": "도깨비",
+                "genre": "모험",
+                "difficulty": 2
+              },
+              {
+                "title": "오늘밤 주인공은 나야 나",
+                "genre": "잠입",
+                "difficulty": 4
+              },
+              {
+                "title": "그 남자 그 여자",
+                "genre": "로맨스",
+                "difficulty": 3
+              }
+            ]
+          },
+          {
+            "storeName": "셜록홈즈 노량진점",
+            "telephone": "02-827-0054",
+            "homepage": "https://sherlock-holmes.co.kr/",
+            "address": "서울 동작구 노량진동 118-8",
+            "rooms": [
+              {
+                "title": "어린왕자",
+                "genre": "감성",
+                "difficulty": 3
+              },
+              {
+                "title": "빛과 그림자: 화이트의 죽음2",
+                "genre": "추리",
+                "difficulty": 3
+              },
+              {
+                "title": "반하셨군요?",
+                "genre": "로맨스",
+                "difficulty": 3
+              },
+              {
+                "title": "중고로운 평화나라",
+                "genre": "코미디",
+                "difficulty": 3
+              }
+            ]
+          },
+          {
+            "storeName": "더코드 왕십리점",
+            "telephone": "02-2291-7981",
+            "homepage": "https://www.thecode12.kr/",
+            "address": "서울 성동구 마조로3가길 15",
+            "rooms": [
+              {
+                "title": "도박꾼: 마지막 베팅",
+                "genre": "범죄",
+                "difficulty": 3
+              },
+              {
+                "title": "피의 일요일",
+                "genre": "스릴러",
+                "difficulty": 4
+              },
+              {
+                "title": "냉동창고: 살인사건#2",
+                "genre": "범죄",
+                "difficulty": 4
+              },
+              {
+                "title": "다이아몬드: 블루문 도둑들#2",
+                "genre": "잠입",
+                "difficulty": 3
+              }
+            ]
+          },
+          {
+            "storeName": "셜록홈즈 잠실1호점",
+            "telephone": "02-422-0053",
+            "homepage": "https://sherlock-holmes.co.kr/",
+            "address": "서울 송파구 잠실동 179-3",
+            "rooms": [
+              {
+                "title": "무속인 살인사건",
+                "genre": "추리",
+                "difficulty": 4
+              },
+              {
+                "title": "빛과 그림자",
+                "genre": "추리",
+                "difficulty": 3
+              },
+              {
+                "title": "위험한 레시피",
+                "genre": "스릴러",
+                "difficulty": 5
+              },
+              {
+                "title": "산속의 여인",
+                "genre": "스릴러",
+                "difficulty": 3
+              },
+              {
+                "title": "학교괴담 태훈이의 죽음",
+                "genre": "스릴러",
+                "difficulty": 3
+              },
+              {
+                "title": "미대교수의 비밀",
+                "genre": "추리",
+                "difficulty": 3
+              },
+              {
+                "title": "웨딩크루즈 살인사건",
+                "genre": "추리",
+                "difficulty": 3
+              }
+            ]
+          },
+          {
+            "storeName": "셜록홈즈 영등포점",
+            "telephone": "02-2676-0051",
+            "homepage": "https://sherlock-holmes.co.kr/",
+            "address": "서울 영등포구 영등포동3가 23-8",
+            "rooms": [
+              {
+                "title": "도둑들",
+                "genre": "잠입",
+                "difficulty": 4
+              },
+              {
+                "title": "혼: 원혼의 저주",
+                "genre": "공포",
+                "difficulty": 4
+              },
+              {
+                "title": "파라오의 비밀",
+                "genre": "모험",
+                "difficulty": 2
+              },
+              {
+                "title": "지하감옥",
+                "genre": "스릴러",
+                "difficulty": 4
+              },
+              {
+                "title": "미녀와 야수2",
+                "genre": "추리",
+                "difficulty": 4
+              },
+              {
+                "title": "빛과 그림자",
+                "genre": "추리",
+                "difficulty": 3
+              }
+            ]
+          },
+          {
+            "storeName": "방탈출 미로",
+            "telephone": "02-356-6446",
+            "homepage": "https://sherlock-holmes.co.kr/",
+            "address": "서울 은평구 연서로29길 16",
+            "rooms": [
+              {
+                "title": "무속인 살인사건",
+                "genre": "추리",
+                "difficulty": 4
+              },
+              {
+                "title": "호텔: 사라진 다이아몬드",
+                "genre": "추리",
+                "difficulty": 3
+              },
+              {
+                "title": "프로젝트: 노아",
+                "genre": "SF",
+                "difficulty": 2
+              }
+            ]
+          },
+          {
+            "storeName": "한국 방탈출 교육원",
+            "telephone": "0507-1372-0279",
+            "homepage": "https://booking.naver.com/booking/5/bizes/548974",
+            "address": "서울 송파구 삼학사로19길 30",
+            "rooms": [
+              {
+                "title": "방탈출 능력 시험",
+                "genre": "?",
+                "difficulty": 5
+              }
+            ]
+          },
+          {
+            "storeName": "더코드 회기점",
+            "telephone": "02-966-6130",
+            "homepage": "https://www.thecode11.kr/",
+            "address": "서울 동대문구 회기동 42-43",
+            "rooms": [
+              {
+                "title": "다시 시작된 살인사건",
+                "genre": "스릴러",
+                "difficulty": 3
+              },
+              {
+                "title": "세기의 명화를 훔치는 도둑들",
+                "genre": "잠입",
+                "difficulty": 4
+              },
+              {
+                "title": "재즈바 W: 위험한 거래",
+                "genre": "잠입",
+                "difficulty": 4
+              },
+              {
+                "title": "강력 1반: 추격자",
+                "genre": "스릴러",
+                "difficulty": 3
+              }
+            ]
+          },
+          {
+            "storeName": "제로월드X롯데월드",
+            "telephone": "02-411-4769",
+            "homepage": "https://zerolotteworld.com/",
+            "address": "서울 송파구 삼학사로19길 30",
+            "rooms": [
+              {
+                "title": "아랑: 굶주린 아리",
+                "genre": "공포",
+                "difficulty": 3
+              }
+            ]
+          }
     ]
   }
