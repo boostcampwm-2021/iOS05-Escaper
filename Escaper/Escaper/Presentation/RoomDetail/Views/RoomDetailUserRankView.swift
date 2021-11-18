@@ -7,16 +7,8 @@
 
 import UIKit
 
-class RoomDetailUserRankView: UIView {
+final class RoomDetailUserRankView: UIView {
     static let rankColor = [EDSColor.pumpkin.value, EDSColor.gloomyPink.value, EDSColor.gloomyRed.value]
-
-    private enum Constant {
-        static let userImageSize: CGFloat = 50
-        static let sideSpace: CGFloat = 32
-        static let gapSpace: CGFloat = 10
-        static let rankSize: CGFloat = 8
-        static let titleLabelSize: CGFloat = 100
-    }
 
     private let rankLabel: UILabel = {
         let label = EDSLabel.b01B(color: .bloodyBlack)
@@ -41,12 +33,12 @@ class RoomDetailUserRankView: UIView {
         self.configureLayout()
     }
 
-    func update(_ user: UserRecord, rank: Int) {
+    func update(_ record: Record, rank: Int) {
         self.rankLabel.text = "\(rank + 1)"
         self.imageView.image = UIImage(named: "romancePreview")
-        self.titleLabel.text = user.nickname
-        self.timeLabel.text = self.timeToString(time: user.playTime)
-        self.backgroundColor = Self.rankColor[rank]
+        self.titleLabel.text = Helper.parseUsername(email: record.userEmail)
+        self.timeLabel.text = self.timeToString(time: record.escapingTime)
+        self.backgroundColor = rank < 3 ? Self.rankColor[rank] : UIColor.clear
     }
 
     func update(_ user: User, rank: Int) {
@@ -71,6 +63,14 @@ class RoomDetailUserRankView: UIView {
 }
 
 private extension RoomDetailUserRankView {
+    enum Constant {
+        static let userImageSize: CGFloat = 50
+        static let sideSpace: CGFloat = 32
+        static let gapSpace: CGFloat = 10
+        static let rankSize: CGFloat = 8
+        static let titleLabelSize: CGFloat = 100
+    }
+
     func configureLayout() {
         self.userRankLabelLayout()
         self.userImageViewLayout()

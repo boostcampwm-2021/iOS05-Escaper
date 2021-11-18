@@ -7,16 +7,7 @@
 
 import UIKit
 
-class RoomDetailInfoView: UIView {
-    private enum Constant {
-        static let titleLabelSize: CGFloat = 150
-        static let ratingViewHeight: CGFloat = 12
-        static let ratingViewWidth: CGFloat = 72
-        static let ratingViewAnchorY: CGFloat = 1
-        static let sideSpace: CGFloat = 16
-        static let gapSapce: CGFloat = 48
-    }
-
+final class RoomDetailInfoView: UIView {
     private let levelLabel = EDSLabel.b01B(text: "난이도", color: .skullWhite)
     private let levelRatingView = RatingView()
     private let satisfactionLabel = EDSLabel.b01B(text: "만족도", color: .skullLightWhite)
@@ -41,14 +32,24 @@ class RoomDetailInfoView: UIView {
     }
 
     func update(room: Room) {
-        self.levelRatingView.fill(rating: room.level)
-        self.satisfactionRatingView.fill(rating: room.satisfaction)
-        self.homepageLabel.text = room.homepage
-        self.phoneNumberLabel.text = room.telephone
+        self.levelRatingView.fill(rating: Rating(rawValue: room.difficulty)!)
+        self.satisfactionRatingView.fill(rating: Rating(rawValue: Int(room.averageSatisfaction))!)
+        // TODO: - StoreUsecase 추가하여 Store 정보를 가져와서 반영해야 함
+//        self.homepageLabel.text = room.homepage
+//        self.phoneNumberLabel.text = room.telephone
     }
 }
 
 private extension RoomDetailInfoView {
+    enum Constant {
+        static let titleLabelSize: CGFloat = 150
+        static let ratingViewHeight: CGFloat = 12
+        static let ratingViewWidth: CGFloat = 72
+        static let ratingViewAnchorY: CGFloat = 1
+        static let sideSpace: CGFloat = 16
+        static let gapSapce: CGFloat = 48
+    }
+
     func configureLayout() {
         self.configureLevelLabelLayout()
         self.configureSatisfactionLabelLayout()
