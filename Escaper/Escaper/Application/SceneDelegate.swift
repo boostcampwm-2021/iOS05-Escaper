@@ -14,8 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-//        DataInjection.shared.run(jsonFileCode: .extra)
-//        DataInjection.shared.run(jsonFileCode: .sinlim)
+//        DataInjection.shared.run(storeRegion: .extra)
+//        DataInjection.shared.run(storeRegion: .sinlim)
         let viewController = MainTabBarController()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene

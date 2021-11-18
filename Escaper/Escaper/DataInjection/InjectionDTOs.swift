@@ -22,4 +22,3 @@ struct RoomInjectionDTO: Codable {
     let title, genre: String
     let difficulty: Int
 }
-
