@@ -12,12 +12,11 @@ final class RankView: UIView {
 
     private let imageView = UIImageView()
     private let rankNumberLabel: UILabel = {
-        let label = EDSLabel.b01B(text: "1", color: .bloodyBlack)
+        let label = EDSLabel.b01B(color: .bloodyBlack)
         label.textAlignment = .center
-        label.backgroundColor = .purple
         return label
     }()
-    private let userNameLabel = EDSLabel.b01B(text: "glory", color: .skullLightWhite)
+    private let userNameLabel = EDSLabel.b01B(color: .skullLightWhite)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
