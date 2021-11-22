@@ -13,10 +13,10 @@ protocol RecordUsecaseInterface {
 }
 
 final class RecordUsecase: RecordUsecaseInterface {
-    private let roomRepository: RoomListRepositroyInterface
+    private let roomRepository: RoomListRepositoryInterface
     private let recordRepository: RecordRepository
 
-    init(roomRepository: RoomListRepositroyInterface, recordRepository: RecordRepository) {
+    init(roomRepository: RoomListRepositoryInterface, recordRepository: RecordRepository) {
         self.roomRepository = roomRepository
         self.recordRepository = recordRepository
     }
