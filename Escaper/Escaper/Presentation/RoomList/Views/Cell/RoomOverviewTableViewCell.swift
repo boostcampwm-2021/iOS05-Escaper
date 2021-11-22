@@ -78,7 +78,7 @@ private extension RoomOverviewTableViewCell {
         static let titleSpace = CGFloat(20)
         static let distanceSpace = CGFloat(4)
     }
-    
+
     func configure() {
         self.configureCell()
         self.configureGenreImageViewLayout()

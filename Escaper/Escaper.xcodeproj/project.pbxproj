@@ -7,97 +7,95 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C955CE627434E690002B787 /* TopRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE527434E690002B787 /* TopRankView.swift */; };
-		0C955CE827437A300002B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE727437A300002B787 /* RankView.swift */; };
-		0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */; };
-		0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */; };
-		0CAEE3B1273BA7C3002C1136 /* RoomDetailUserRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F06844E27315D6300E2C789 /* GoogleService-Info.plist */; };
-		1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED22733E00300389CFA /* RoomDTO.swift */; };
-		1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED42733E03600389CFA /* FirebaseService.swift */; };
-		1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED62733E04F00389CFA /* RoomListRepository.swift */; };
-		1F22E652273D14D700409A96 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22E651273D14D700409A96 /* TimePickerViewController.swift */; };
-		1F72C20E2734010700C59CC1 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72C20D2734010700C59CC1 /* Observable.swift */; };
-		1F74F10E273CEEC700CE4D37 /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74F10D273CEEC700CE4D37 /* AddRecordViewController.swift */; };
-		1F74F113273CEEFE00CE4D37 /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74F112273CEEFE00CE4D37 /* AddRecordView.swift */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
 		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
 		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
-		1FAAD09F274666AD00C2AE90 /* RecordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD094274666AD00C2AE90 /* RecordCard.swift */; };
-		1FAAD0A0274666AD00C2AE90 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD095274666AD00C2AE90 /* User.swift */; };
-		1FAAD0A1274666AD00C2AE90 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD096274666AD00C2AE90 /* Room.swift */; };
-		1FAAD0A2274666AD00C2AE90 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD098274666AD00C2AE90 /* District.swift */; };
-		1FAAD0A3274666AD00C2AE90 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD099274666AD00C2AE90 /* Genre.swift */; };
-		1FAAD0A4274666AD00C2AE90 /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09A274666AD00C2AE90 /* GeoLocation.swift */; };
-		1FAAD0A5274666AD00C2AE90 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09B274666AD00C2AE90 /* Rating.swift */; };
-		1FAAD0A6274666AD00C2AE90 /* SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09C274666AD00C2AE90 /* SortingOption.swift */; };
-		1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09D274666AD00C2AE90 /* Store.swift */; };
-		1FAAD0A8274666AD00C2AE90 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09E274666AD00C2AE90 /* Record.swift */; };
-		1FAAD0AA2746885100C2AE90 /* StoreRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD0A92746885100C2AE90 /* StoreRegion.swift */; };
 		1FAAD0AC2746ADA400C2AE90 /* gangnam.json in Resources */ = {isa = PBXBuildFile; fileRef = 1FAAD0AB2746ADA400C2AE90 /* gangnam.json */; };
-		1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
-		1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */; };
-		1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
 		1FCDDE75272EE0F10027AAAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE74272EE0F10027AAAD /* Assets.xcassets */; };
 		1FCDDE78272EE0F10027AAAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE76272EE0F10027AAAD /* LaunchScreen.storyboard */; };
-		1FE36493274A5BB90011BF38 /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE36492274A5BB90011BF38 /* StoreListViewController.swift */; };
-		1FE53403273F8ABE00867832 /* SearchRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53401273F8ABE00867832 /* SearchRoomTableViewCell.swift */; };
-		1FE53406273FB0D300867832 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53405273FB0D200867832 /* UIView+RoundCorners.swift */; };
-		1FE53408273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */; };
-		1FE5340A273FB25D00867832 /* SearchRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */; };
-		1FEF941B274A828F0049D83D /* StoreOverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF941A274A828F0049D83D /* StoreOverViewTableViewCell.swift */; };
-		1FEF941D274A94F30049D83D /* StoreInformationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF941C274A94F30049D83D /* StoreInformationStackView.swift */; };
-		1FEF941E274B67460049D83D /* RecordUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A7273B92F50045ADDE /* RecordUserView.swift */; };
-		1FEF941F274B67890049D83D /* SearchRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53400273F8ABE00867832 /* SearchRoomViewController.swift */; };
-		25020598273A3300004B024E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020597273A3300004B024E /* RecordViewController.swift */; };
-		2502059A273A33A5004B024E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020599273A33A5004B024E /* MapViewController.swift */; };
-		2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059B273A33CB004B024E /* LeaderBoardViewController.swift */; };
-		25020603273CE1E1004B024E /* RecordUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020602273CE1E1004B024E /* RecordUsecase.swift */; };
-		25020605273CE1FC004B024E /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020604273CE1FC004B024E /* RecordRepository.swift */; };
-		25020609273CE349004B024E /* RecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020608273CE349004B024E /* RecordDTO.swift */; };
-		251031BC27339C0200BD07BF /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BB27339C0200BD07BF /* RatingView.swift */; };
-		251031C22733A5B500BD07BF /* RatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C12733A5B500BD07BF /* RatingImage.swift */; };
-		251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */; };
-		251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C52733BCAC00BD07BF /* RatingContainerView.swift */; };
-		25104A462744E90F00DB90BF /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
-		25104A482744E98F00DB90BF /* DataInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A472744E98F00DB90BF /* DataInjection.swift */; };
-		25104A4B2744ED8100DB90BF /* StoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A4A2744ED8100DB90BF /* StoreDTO.swift */; };
+		1FEF946E274BB3CC0049D83D /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
+		1FEF946F274BB3CC0049D83D /* DataInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A472744E98F00DB90BF /* DataInjection.swift */; };
+		1FEF9470274BB3CC0049D83D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
+		1FEF9471274BB3CC0049D83D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */; };
+		1FEF9472274BB3CC0049D83D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F72C20D2734010700C59CC1 /* Observable.swift */; };
+		1FEF9473274BB3CC0049D83D /* RatingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C12733A5B500BD07BF /* RatingImage.swift */; };
+		1FEF9474274BB3CC0049D83D /* EDSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2513CACE2735192F00A574C7 /* EDSKit.swift */; };
+		1FEF9475274BB3CC0049D83D /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577276F273D525500881845 /* Helper.swift */; };
+		1FEF9476274BB3CC0049D83D /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E315759274387AE00472CAD /* ViewType.swift */; };
+		1FEF9477274BB3CC0049D83D /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53405273FB0D200867832 /* UIView+RoundCorners.swift */; };
+		1FEF9478274BB3CC0049D83D /* UISearchBar+SetTextFieldColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */; };
+		1FEF9479274BB3CC0049D83D /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE99D2274633BC0097247E /* Array+Extension.swift */; };
+		1FEF947A274BB3CC0049D83D /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE4274B062F00A98006 /* StoreDetailViewController.swift */; };
+		1FEF947B274BB3CC0049D83D /* StoreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DED274B737D00A98006 /* StoreDetailViewModel.swift */; };
+		1FEF947C274BB3CC0049D83D /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE7274B099000A98006 /* HorizontalLineView.swift */; };
+		1FEF947D274BB3CC0049D83D /* InfoDescriptionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE9274B09C100A98006 /* InfoDescriptionStackView.swift */; };
+		1FEF947E274BB3CC0049D83D /* InfoDescriptionDetailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DEB274B09EA00A98006 /* InfoDescriptionDetailStackView.swift */; };
+		1FEF947F274BB3CC0049D83D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */; };
+		1FEF9480274BB3CC0049D83D /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CC2732914B001ED120 /* DefaultViewController.swift */; };
+		1FEF9481274BB3CC0049D83D /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BB27339C0200BD07BF /* RatingView.swift */; };
+		1FEF9482274BB3CC0049D83D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3157182743661800472CAD /* LoginViewController.swift */; };
+		1FEF9483274BB3CC0049D83D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603082744F53E003F414D /* SignUpViewController.swift */; };
+		1FEF9484274BB3CC0049D83D /* UserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E31571B274366B900472CAD /* UserInputView.swift */; };
+		1FEF9485274BB3CC0049D83D /* UserInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603062744D514003F414D /* UserInputTextField.swift */; };
+		1FEF9486274BB3CC0049D83D /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
+		1FEF9487274BB3CC0049D83D /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336B2731093B00A92CF3 /* RoomListViewModel.swift */; };
+		1FEF9488274BB3CC0049D83D /* DistrictSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772765273CFBD100881845 /* DistrictSelectButton.swift */; };
+		1FEF9489274BB3CC0049D83D /* TagScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378C827325241001ED120 /* TagScrollView.swift */; };
+		1FEF948A274BB3CC0049D83D /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CA27329028001ED120 /* TagButton.swift */; };
+		1FEF948B274BB3CC0049D83D /* RatingContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C52733BCAC00BD07BF /* RatingContainerView.swift */; };
+		1FEF948C274BB3CC0049D83D /* RoomOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */; };
+		1FEF948D274BB3CC0049D83D /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */; };
+		1FEF948E274BB3CC0049D83D /* RoomDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */; };
+		1FEF948F274BB3CC0049D83D /* RoomDetailUserRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */; };
+		1FEF9490274BB3CC0049D83D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020599273A33A5004B024E /* MapViewController.swift */; };
+		1FEF9491274BB3CC0049D83D /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE36492274A5BB90011BF38 /* StoreListViewController.swift */; };
+		1FEF9492274BB3CC0049D83D /* StoreOverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF941A274A828F0049D83D /* StoreOverViewTableViewCell.swift */; };
+		1FEF9493274BB3CC0049D83D /* StoreInformationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF941C274A94F30049D83D /* StoreInformationStackView.swift */; };
+		1FEF9494274BB3CC0049D83D /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020597273A3300004B024E /* RecordViewController.swift */; };
+		1FEF9495274BB3CC0049D83D /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EED222D273CDA150084D290 /* RecordViewModel.swift */; };
+		1FEF9496274BB3CC0049D83D /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A5273AA3190045ADDE /* RecordCollectionViewCell.swift */; };
+		1FEF9497274BB3CC0049D83D /* RecordHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AD273BF0630045ADDE /* RecordHeadView.swift */; };
+		1FEF9498274BB3CC0049D83D /* RecordUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A7273B92F50045ADDE /* RecordUserView.swift */; };
+		1FEF9499274BB3CC0049D83D /* RecordStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A9273B9C850045ADDE /* RecordStarView.swift */; };
+		1FEF949A274BB3CC0049D83D /* RecordResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AB273BA1DC0045ADDE /* RecordResultView.swift */; };
+		1FEF949B274BB3CC0049D83D /* AddRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74F10D273CEEC700CE4D37 /* AddRecordViewController.swift */; };
+		1FEF949C274BB3CC0049D83D /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A921E27423679002166C6 /* AddRecordViewModel.swift */; };
+		1FEF949D274BB3CC0049D83D /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F22E651273D14D700409A96 /* TimePickerViewController.swift */; };
+		1FEF949E274BB3CC0049D83D /* AddRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74F112273CEEFE00CE4D37 /* AddRecordView.swift */; };
+		1FEF949F274BB3CC0049D83D /* SearchRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53400273F8ABE00867832 /* SearchRoomViewController.swift */; };
+		1FEF94A0274BB3CC0049D83D /* SearchRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */; };
+		1FEF94A1274BB3CC0049D83D /* SearchRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53401273F8ABE00867832 /* SearchRoomTableViewCell.swift */; };
+		1FEF94A2274BB3CC0049D83D /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059B273A33CB004B024E /* LeaderBoardViewController.swift */; };
+		1FEF94A3274BB3CC0049D83D /* TopRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE527434E690002B787 /* TopRankView.swift */; };
+		1FEF94A4274BB3CC0049D83D /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE727437A300002B787 /* RankView.swift */; };
+		1FEF94A5274BB3CC0049D83D /* RoomListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */; };
+		1FEF94A6274BB3CC0049D83D /* RecordRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772762273CE87F00881845 /* RecordRepositoryInterface.swift */; };
+		1FEF94A7274BB3CC0049D83D /* Tagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BDEA02732C2FB0081A749 /* Tagable.swift */; };
+		1FEF94A8274BB3CC0049D83D /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD098274666AD00C2AE90 /* District.swift */; };
+		1FEF94A9274BB3CC0049D83D /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD099274666AD00C2AE90 /* Genre.swift */; };
+		1FEF94AA274BB3CC0049D83D /* GeoLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09A274666AD00C2AE90 /* GeoLocation.swift */; };
+		1FEF94AB274BB3CD0049D83D /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09B274666AD00C2AE90 /* Rating.swift */; };
+		1FEF94AC274BB3CD0049D83D /* SortingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09C274666AD00C2AE90 /* SortingOption.swift */; };
+		1FEF94AD274BB3CD0049D83D /* RecordCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD094274666AD00C2AE90 /* RecordCard.swift */; };
+		1FEF94AE274BB3CD0049D83D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD095274666AD00C2AE90 /* User.swift */; };
+		1FEF94AF274BB3CD0049D83D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD096274666AD00C2AE90 /* Room.swift */; };
+		1FEF94B0274BB3CD0049D83D /* StoreRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD0A92746885100C2AE90 /* StoreRegion.swift */; };
+		1FEF94B1274BB3CD0049D83D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09D274666AD00C2AE90 /* Store.swift */; };
+		1FEF94B2274BB3CD0049D83D /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09E274666AD00C2AE90 /* Record.swift */; };
+		1FEF94B3274BB3CD0049D83D /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513369273108A800A92CF3 /* RoomListUseCase.swift */; };
+		1FEF94B4274BB3CD0049D83D /* RecordUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020602273CE1E1004B024E /* RecordUsecase.swift */; };
+		1FEF94B5274BB3CD0049D83D /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED42733E03600389CFA /* FirebaseService.swift */; };
+		1FEF94B6274BB3CD0049D83D /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020604273CE1FC004B024E /* RecordRepository.swift */; };
+		1FEF94B7274BB3CD0049D83D /* RoomListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED62733E04F00389CFA /* RoomListRepository.swift */; };
+		1FEF94B8274BB3CD0049D83D /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772767273D0D0A00881845 /* ImageCacheManager.swift */; };
+		1FEF94B9274BB3CD0049D83D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577276C273D18EB00881845 /* NetworkService.swift */; };
+		1FEF94BA274BB3CD0049D83D /* RecordDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020608273CE349004B024E /* RecordDTO.swift */; };
+		1FEF94BB274BB3CD0049D83D /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED22733E00300389CFA /* RoomDTO.swift */; };
+		1FEF94BC274BB3CD0049D83D /* StoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A4A2744ED8100DB90BF /* StoreDTO.swift */; };
 		25104A512745408E00DB90BF /* extra.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A502745408D00DB90BF /* extra.json */; };
 		25104A53274546E100DB90BF /* sinlim.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A52274546E100DB90BF /* sinlim.json */; };
-		2513CACF2735192F00A574C7 /* EDSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2513CACE2735192F00A574C7 /* EDSKit.swift */; };
-		2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513369273108A800A92CF3 /* RoomListUseCase.swift */; };
-		2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336B2731093B00A92CF3 /* RoomListViewModel.swift */; };
-		25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */; };
-		25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772762273CE87F00881845 /* RecordRepositoryInterface.swift */; };
-		25772768273D0D0A00881845 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772767273D0D0A00881845 /* ImageCacheManager.swift */; };
-		2577276D273D18EB00881845 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577276C273D18EB00881845 /* NetworkService.swift */; };
-		25772770273D525500881845 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577276F273D525500881845 /* Helper.swift */; };
-		25BB1DE5274B062F00A98006 /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE4274B062F00A98006 /* StoreDetailViewController.swift */; };
-		25BB1DE8274B099000A98006 /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE7274B099000A98006 /* HorizontalLineView.swift */; };
-		25BB1DEA274B09C100A98006 /* InfoDescriptionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE9274B09C100A98006 /* InfoDescriptionStackView.swift */; };
-		25BB1DEC274B09EA00A98006 /* InfoDescriptionDetailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DEB274B09EA00A98006 /* InfoDescriptionDetailStackView.swift */; };
-		25BB1DEE274B737D00A98006 /* StoreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DED274B737D00A98006 /* StoreDetailViewModel.swift */; };
-		25CE99D3274633BC0097247E /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE99D2274633BC0097247E /* Array+Extension.swift */; };
-		25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772765273CFBD100881845 /* DistrictSelectButton.swift */; };
-		25EA50DD274B93B20030C17C /* SearchRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53400273F8ABE00867832 /* SearchRoomViewController.swift */; };
-		25EA50DE274B93B50030C17C /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E315759274387AE00472CAD /* ViewType.swift */; };
-		25EA50DF274B93B80030C17C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3157182743661800472CAD /* LoginViewController.swift */; };
-		25EA50E0274B93BC0030C17C /* UserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E31571B274366B900472CAD /* UserInputView.swift */; };
-		25EA50E1274B93C50030C17C /* RecordUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A7273B92F50045ADDE /* RecordUserView.swift */; };
-		25EA50E2274B93C80030C17C /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A921E27423679002166C6 /* AddRecordViewModel.swift */; };
-		25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */; };
-		3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BDEA02732C2FB0081A749 /* Tagable.swift */; };
-		3E4378C927325241001ED120 /* TagScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378C827325241001ED120 /* TagScrollView.swift */; };
-		3E4378CB27329028001ED120 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CA27329028001ED120 /* TagButton.swift */; };
-		3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CC2732914B001ED120 /* DefaultViewController.swift */; };
-		3E4603072744D514003F414D /* UserInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603062744D514003F414D /* UserInputTextField.swift */; };
-		3E4603092744F53E003F414D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603082744F53E003F414D /* SignUpViewController.swift */; };
-		3E5902A6273AA3190045ADDE /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A5273AA3190045ADDE /* RecordCollectionViewCell.swift */; };
-		3E5902AA273B9C850045ADDE /* RecordStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A9273B9C850045ADDE /* RecordStarView.swift */; };
-		3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AB273BA1DC0045ADDE /* RecordResultView.swift */; };
-		3E5902AE273BF0630045ADDE /* RecordHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AD273BF0630045ADDE /* RecordHeadView.swift */; };
-		3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EED222D273CDA150084D290 /* RecordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -715,90 +713,85 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25EA50E2274B93C80030C17C /* AddRecordViewModel.swift in Sources */,
-				25EA50E1274B93C50030C17C /* RecordUserView.swift in Sources */,
-				25EA50E0274B93BC0030C17C /* UserInputView.swift in Sources */,
-				25EA50DF274B93B80030C17C /* LoginViewController.swift in Sources */,
-				25EA50DE274B93B50030C17C /* ViewType.swift in Sources */,
-				25EA50DD274B93B20030C17C /* SearchRoomViewController.swift in Sources */,
-				1FEF941F274B67890049D83D /* SearchRoomViewController.swift in Sources */,
-				1FEF941E274B67460049D83D /* RecordUserView.swift in Sources */,
-				1FE53406273FB0D300867832 /* UIView+RoundCorners.swift in Sources */,
-				25020609273CE349004B024E /* RecordDTO.swift in Sources */,
-				251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */,
-				25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */,
-				1FAAD0A0274666AD00C2AE90 /* User.swift in Sources */,
-				3E5902AA273B9C850045ADDE /* RecordStarView.swift in Sources */,
-				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
-				3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */,
-				1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */,
-				1FEF941B274A828F0049D83D /* StoreOverViewTableViewCell.swift in Sources */,
-				25020598273A3300004B024E /* RecordViewController.swift in Sources */,
-				25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */,
-				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
-				2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */,
-				0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */,
-				25772770273D525500881845 /* Helper.swift in Sources */,
-				3E4603092744F53E003F414D /* SignUpViewController.swift in Sources */,
-				3E31571C274366B900472CAD /* UserInputView.swift in Sources */,
-				3E31575A274387AE00472CAD /* ViewType.swift in Sources */,
-				1FAAD0A2274666AD00C2AE90 /* District.swift in Sources */,
-				1FAAD0A1274666AD00C2AE90 /* Room.swift in Sources */,
-				25BB1DEC274B09EA00A98006 /* InfoDescriptionDetailStackView.swift in Sources */,
-				25104A482744E98F00DB90BF /* DataInjection.swift in Sources */,
-				25104A462744E90F00DB90BF /* InjectionDTOs.swift in Sources */,
-				1FAAD0AA2746885100C2AE90 /* StoreRegion.swift in Sources */,
-				25BB1DEE274B737D00A98006 /* StoreDetailViewModel.swift in Sources */,
-				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
-				25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */,
-				1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */,
-				1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */,
-				1FE36493274A5BB90011BF38 /* StoreListViewController.swift in Sources */,
-				3E3157192743661800472CAD /* LoginViewController.swift in Sources */,
-				25BB1DE5274B062F00A98006 /* StoreDetailViewController.swift in Sources */,
-				1F72C20E2734010700C59CC1 /* Observable.swift in Sources */,
-				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
-				2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */,
-				1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */,
-				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
-				1FAAD0A3274666AD00C2AE90 /* Genre.swift in Sources */,
-				1FAAD0A8274666AD00C2AE90 /* Record.swift in Sources */,
-				2577276D273D18EB00881845 /* NetworkService.swift in Sources */,
-				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
-				0CAEE3B1273BA7C3002C1136 /* RoomDetailUserRankView.swift in Sources */,
-				3E5902AE273BF0630045ADDE /* RecordHeadView.swift in Sources */,
-				25104A4B2744ED8100DB90BF /* StoreDTO.swift in Sources */,
-				1FAAD0A5274666AD00C2AE90 /* Rating.swift in Sources */,
-				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
-				3E4603072744D514003F414D /* UserInputTextField.swift in Sources */,
-				1FAAD0A6274666AD00C2AE90 /* SortingOption.swift in Sources */,
-				0C955CE627434E690002B787 /* TopRankView.swift in Sources */,
-				3E4378CB27329028001ED120 /* TagButton.swift in Sources */,
-				25CE99D3274633BC0097247E /* Array+Extension.swift in Sources */,
-				1FE53403273F8ABE00867832 /* SearchRoomTableViewCell.swift in Sources */,
-				2513CACF2735192F00A574C7 /* EDSKit.swift in Sources */,
-				25020603273CE1E1004B024E /* RecordUsecase.swift in Sources */,
-				251031BC27339C0200BD07BF /* RatingView.swift in Sources */,
-				25020605273CE1FC004B024E /* RecordRepository.swift in Sources */,
-				25BB1DEA274B09C100A98006 /* InfoDescriptionStackView.swift in Sources */,
-				1FAAD09F274666AD00C2AE90 /* RecordCard.swift in Sources */,
-				25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */,
-				1F22E652273D14D700409A96 /* TimePickerViewController.swift in Sources */,
-				1FEF941D274A94F30049D83D /* StoreInformationStackView.swift in Sources */,
-				0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */,
-				3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */,
-				1F74F113273CEEFE00CE4D37 /* AddRecordView.swift in Sources */,
-				1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */,
-				251031C22733A5B500BD07BF /* RatingImage.swift in Sources */,
-				1FAAD0A4274666AD00C2AE90 /* GeoLocation.swift in Sources */,
-				1FE5340A273FB25D00867832 /* SearchRoomViewModel.swift in Sources */,
-				25BB1DE8274B099000A98006 /* HorizontalLineView.swift in Sources */,
-				25772768273D0D0A00881845 /* ImageCacheManager.swift in Sources */,
-				2502059A273A33A5004B024E /* MapViewController.swift in Sources */,
-				0C955CE827437A300002B787 /* RankView.swift in Sources */,
-				3E5902A6273AA3190045ADDE /* RecordCollectionViewCell.swift in Sources */,
-				1FE53408273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift in Sources */,
-				1F74F10E273CEEC700CE4D37 /* AddRecordViewController.swift in Sources */,
+				1FEF946E274BB3CC0049D83D /* InjectionDTOs.swift in Sources */,
+				1FEF946F274BB3CC0049D83D /* DataInjection.swift in Sources */,
+				1FEF9470274BB3CC0049D83D /* AppDelegate.swift in Sources */,
+				1FEF9471274BB3CC0049D83D /* SceneDelegate.swift in Sources */,
+				1FEF9472274BB3CC0049D83D /* Observable.swift in Sources */,
+				1FEF9473274BB3CC0049D83D /* RatingImage.swift in Sources */,
+				1FEF9474274BB3CC0049D83D /* EDSKit.swift in Sources */,
+				1FEF9475274BB3CC0049D83D /* Helper.swift in Sources */,
+				1FEF9476274BB3CC0049D83D /* ViewType.swift in Sources */,
+				1FEF9477274BB3CC0049D83D /* UIView+RoundCorners.swift in Sources */,
+				1FEF9478274BB3CC0049D83D /* UISearchBar+SetTextFieldColor.swift in Sources */,
+				1FEF9479274BB3CC0049D83D /* Array+Extension.swift in Sources */,
+				1FEF947A274BB3CC0049D83D /* StoreDetailViewController.swift in Sources */,
+				1FEF947B274BB3CC0049D83D /* StoreDetailViewModel.swift in Sources */,
+				1FEF947C274BB3CC0049D83D /* HorizontalLineView.swift in Sources */,
+				1FEF947D274BB3CC0049D83D /* InfoDescriptionStackView.swift in Sources */,
+				1FEF947E274BB3CC0049D83D /* InfoDescriptionDetailStackView.swift in Sources */,
+				1FEF947F274BB3CC0049D83D /* MainTabBarController.swift in Sources */,
+				1FEF9480274BB3CC0049D83D /* DefaultViewController.swift in Sources */,
+				1FEF9481274BB3CC0049D83D /* RatingView.swift in Sources */,
+				1FEF9482274BB3CC0049D83D /* LoginViewController.swift in Sources */,
+				1FEF9483274BB3CC0049D83D /* SignUpViewController.swift in Sources */,
+				1FEF9484274BB3CC0049D83D /* UserInputView.swift in Sources */,
+				1FEF9485274BB3CC0049D83D /* UserInputTextField.swift in Sources */,
+				1FEF9486274BB3CC0049D83D /* RoomListViewController.swift in Sources */,
+				1FEF9487274BB3CC0049D83D /* RoomListViewModel.swift in Sources */,
+				1FEF9488274BB3CC0049D83D /* DistrictSelectButton.swift in Sources */,
+				1FEF9489274BB3CC0049D83D /* TagScrollView.swift in Sources */,
+				1FEF948A274BB3CC0049D83D /* TagButton.swift in Sources */,
+				1FEF948B274BB3CC0049D83D /* RatingContainerView.swift in Sources */,
+				1FEF948C274BB3CC0049D83D /* RoomOverviewTableViewCell.swift in Sources */,
+				1FEF948D274BB3CC0049D83D /* RoomDetailViewController.swift in Sources */,
+				1FEF948E274BB3CC0049D83D /* RoomDetailInfoView.swift in Sources */,
+				1FEF948F274BB3CC0049D83D /* RoomDetailUserRankView.swift in Sources */,
+				1FEF9490274BB3CC0049D83D /* MapViewController.swift in Sources */,
+				1FEF9491274BB3CC0049D83D /* StoreListViewController.swift in Sources */,
+				1FEF9492274BB3CC0049D83D /* StoreOverViewTableViewCell.swift in Sources */,
+				1FEF9493274BB3CC0049D83D /* StoreInformationStackView.swift in Sources */,
+				1FEF9494274BB3CC0049D83D /* RecordViewController.swift in Sources */,
+				1FEF9495274BB3CC0049D83D /* RecordViewModel.swift in Sources */,
+				1FEF9496274BB3CC0049D83D /* RecordCollectionViewCell.swift in Sources */,
+				1FEF9497274BB3CC0049D83D /* RecordHeadView.swift in Sources */,
+				1FEF9498274BB3CC0049D83D /* RecordUserView.swift in Sources */,
+				1FEF9499274BB3CC0049D83D /* RecordStarView.swift in Sources */,
+				1FEF949A274BB3CC0049D83D /* RecordResultView.swift in Sources */,
+				1FEF949B274BB3CC0049D83D /* AddRecordViewController.swift in Sources */,
+				1FEF949C274BB3CC0049D83D /* AddRecordViewModel.swift in Sources */,
+				1FEF949D274BB3CC0049D83D /* TimePickerViewController.swift in Sources */,
+				1FEF949E274BB3CC0049D83D /* AddRecordView.swift in Sources */,
+				1FEF949F274BB3CC0049D83D /* SearchRoomViewController.swift in Sources */,
+				1FEF94A0274BB3CC0049D83D /* SearchRoomViewModel.swift in Sources */,
+				1FEF94A1274BB3CC0049D83D /* SearchRoomTableViewCell.swift in Sources */,
+				1FEF94A2274BB3CC0049D83D /* LeaderBoardViewController.swift in Sources */,
+				1FEF94A3274BB3CC0049D83D /* TopRankView.swift in Sources */,
+				1FEF94A4274BB3CC0049D83D /* RankView.swift in Sources */,
+				1FEF94A5274BB3CC0049D83D /* RoomListRepositoryInterface.swift in Sources */,
+				1FEF94A6274BB3CC0049D83D /* RecordRepositoryInterface.swift in Sources */,
+				1FEF94A7274BB3CC0049D83D /* Tagable.swift in Sources */,
+				1FEF94A8274BB3CC0049D83D /* District.swift in Sources */,
+				1FEF94A9274BB3CC0049D83D /* Genre.swift in Sources */,
+				1FEF94AA274BB3CC0049D83D /* GeoLocation.swift in Sources */,
+				1FEF94AB274BB3CD0049D83D /* Rating.swift in Sources */,
+				1FEF94AC274BB3CD0049D83D /* SortingOption.swift in Sources */,
+				1FEF94AD274BB3CD0049D83D /* RecordCard.swift in Sources */,
+				1FEF94AE274BB3CD0049D83D /* User.swift in Sources */,
+				1FEF94AF274BB3CD0049D83D /* Room.swift in Sources */,
+				1FEF94B0274BB3CD0049D83D /* StoreRegion.swift in Sources */,
+				1FEF94B1274BB3CD0049D83D /* Store.swift in Sources */,
+				1FEF94B2274BB3CD0049D83D /* Record.swift in Sources */,
+				1FEF94B3274BB3CD0049D83D /* RoomListUseCase.swift in Sources */,
+				1FEF94B4274BB3CD0049D83D /* RecordUsecase.swift in Sources */,
+				1FEF94B5274BB3CD0049D83D /* FirebaseService.swift in Sources */,
+				1FEF94B6274BB3CD0049D83D /* RecordRepository.swift in Sources */,
+				1FEF94B7274BB3CD0049D83D /* RoomListRepository.swift in Sources */,
+				1FEF94B8274BB3CD0049D83D /* ImageCacheManager.swift in Sources */,
+				1FEF94B9274BB3CD0049D83D /* NetworkService.swift in Sources */,
+				1FEF94BA274BB3CD0049D83D /* RecordDTO.swift in Sources */,
+				1FEF94BB274BB3CD0049D83D /* RoomDTO.swift in Sources */,
+				1FEF94BC274BB3CD0049D83D /* StoreDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

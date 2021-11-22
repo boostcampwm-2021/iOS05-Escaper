@@ -28,7 +28,7 @@ private extension InfoDescriptionStackView {
     enum Constant {
         static let verticalSpace = CGFloat(10)
     }
-    
+
     func configure() {
         self.configureStackView()
     }

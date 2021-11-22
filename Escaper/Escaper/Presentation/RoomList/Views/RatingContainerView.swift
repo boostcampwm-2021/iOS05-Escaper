@@ -40,7 +40,7 @@ private extension RatingContainerView {
         static let ratingViewHeight = CGFloat(10)
         static let ratingViewWidth = Constant.ratingViewHeight * CGFloat(Rating.maxRating) + RatingView.Constant.summationOfElementSpacing
     }
-    
+
     func configure() {
         self.configureLevelLabelLayout()
         self.configureSatisfactionLabelLayout()

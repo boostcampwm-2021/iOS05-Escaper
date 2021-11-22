@@ -133,7 +133,6 @@ extension FirebaseService: RecordNetwork {
     }
 }
 
-
 private extension FirebaseService {
     func query(by genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
         self.database.collection(Collection.rooms.value)
