@@ -23,6 +23,9 @@ protocol RecordNetwork: AnyObject {
 
 protocol LeaderBoardNetwork: AnyObject {
     func queryUser(completion: @escaping (Result<[User], Error>) -> Void)
+
+protocol StoreNetwork: AnyObject {
+    func queryStore(name: String, completion: @escaping (Result<[StoreDTO], Error>) -> Void)
 }
 
 final class FirebaseService: RoomListNetwork {
@@ -176,6 +179,31 @@ private extension FirebaseService {
                 case .failure(let error):
                     completion(.failure(error))
                 }
+            }
+    }
+}
+
+extension FirebaseService: StoreNetwork {
+    func queryStore(name: String, completion: @escaping (Result<[StoreDTO], Error>) -> Void) {
+        database.collection(Collection.stores.value)
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents else { return }
+                var storeDTOs = [StoreDTO]()
+                for document in documents {
+                    let result = Result {
+                        try document.data(as: StoreDTO.self)
+                    }
+                    switch result {
+                    case .success(let storeDTO):
+                        if let storeDTO = storeDTO, storeDTO.name.contains(name) {
+                            storeDTOs.append(storeDTO)
+                        }
+                    case .failure(let error):
+                        completion(.failure(error))
+                        return
+                    }
+                }
+                completion(Result.success(storeDTOs))
             }
     }
 }
