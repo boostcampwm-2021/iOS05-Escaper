@@ -102,9 +102,10 @@ enum EDSKit {
         case signupSkull
         case genreIcon
         case distanceIcon
+        case mappin
 
         var value: UIImage? {
-            return UIImage(named: String(describing: self))
+            return self == .mappin ? UIImage(systemName: "mappin.and.ellipse") : UIImage(named: String(describing: self))
         }
     }
 }

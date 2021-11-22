@@ -23,9 +23,11 @@ class StoreListViewController: DefaultViewController {
         tableView.rowHeight = 100
         return tableView
     }()
-    let minimumTopSpacing: CGFloat = 120
+    var minimumTopSpacing: CGFloat {
+        return UIScreen.main.bounds.height * 0.15
+    }
     var maximumTopSpacing: CGFloat {
-        return UIScreen.main.bounds.height * 0.7
+        return UIScreen.main.bounds.height * 0.6
     }
 
     override func viewDidLoad() {
@@ -63,7 +65,6 @@ class StoreListViewController: DefaultViewController {
             self.view.frame = CGRect(x: 0, y: positionY + translation.y, width: view.frame.width, height: view.frame.height)
             recognizer.setTranslation(CGPoint.zero, in: self.view)
         }
-
         guard recognizer.state == .ended else { return }
         UIView.animate(withDuration: 0.6, delay: 0.0, options: [.allowUserInteraction], animations: {
             if  velocity.y >= 0 {

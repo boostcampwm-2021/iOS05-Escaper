@@ -19,7 +19,7 @@ class StoreOverViewTableViewCell: UITableViewCell {
     private let regionStackView: StoreInformationStackView = {
         let stackView = StoreInformationStackView()
         stackView.setColor(EDSColor.pumpkin.value)
-        stackView.setImage(UIImage(systemName: "mappin.and.ellipse"))
+        stackView.setImage(EDSImage.mappin.value)
         return stackView
     }()
     private let genreStackView: StoreInformationStackView = {
