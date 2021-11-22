@@ -8,12 +8,12 @@
 import UIKit
 
 class StoreInformationStackView: UIStackView {
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = EDSLabel.b02R(color: .skullLightWhite)
         return label
     }()
