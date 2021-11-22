@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C955CE627434E690002B787 /* TopRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE527434E690002B787 /* TopRankView.swift */; };
+		0C955CE827437A300002B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE727437A300002B787 /* RankView.swift */; };
+		0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */; };
+		0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */; };
+		0CAEE3B1273BA7C3002C1136 /* RoomDetailUserRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */; };
+		0CEA7ED6274B6F37008194AD /* LeaderBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7ED5274B6F37008194AD /* LeaderBoardViewModel.swift */; };
+		0CEA7ED8274B7229008194AD /* LeaderBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */; };
+		0CEA7EDA274B735A008194AD /* LeaderBoardRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */; };
+		0CEA7EDC274B7412008194AD /* LeaderBoardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F06844E27315D6300E2C789 /* GoogleService-Info.plist */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
@@ -138,6 +147,10 @@
 		0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewController.swift; sourceTree = "<group>"; };
 		0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailInfoView.swift; sourceTree = "<group>"; };
 		0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailUserRankView.swift; sourceTree = "<group>"; };
+		0CEA7ED5274B6F37008194AD /* LeaderBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewModel.swift; sourceTree = "<group>"; };
+		0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardUseCase.swift; sourceTree = "<group>"; };
+		0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepositoryInterface.swift; sourceTree = "<group>"; };
+		0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepository.swift; sourceTree = "<group>"; };
 		1F061DA7272FF896008FC519 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1F06844E27315D6300E2C789 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F0CAED22733E00300389CFA /* RoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
@@ -415,6 +428,7 @@
 				1F0CAED42733E03600389CFA /* FirebaseService.swift */,
 				25020604273CE1FC004B024E /* RecordRepository.swift */,
 				1F0CAED62733E04F00389CFA /* RoomListRepository.swift */,
+				0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */,
 				25772767273D0D0A00881845 /* ImageCacheManager.swift */,
 				2577276C273D18EB00881845 /* NetworkService.swift */,
 				25EA50E3274BB61F0030C17C /* UserSupervisor.swift */,
@@ -499,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				2502059B273A33CB004B024E /* LeaderBoardViewController.swift */,
+				0CEA7ED5274B6F37008194AD /* LeaderBoardViewModel.swift */,
 				0C955CE427434E330002B787 /* Views */,
 			);
 			path = LeaderBoard;
@@ -550,6 +565,7 @@
 			children = (
 				25513369273108A800A92CF3 /* RoomListUseCase.swift */,
 				25020602273CE1E1004B024E /* RecordUsecase.swift */,
+				0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -566,6 +582,7 @@
 			isa = PBXGroup;
 			children = (
 				25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */,
+				0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */,
 				25772762273CE87F00881845 /* RecordRepositoryInterface.swift */,
 			);
 			path = Repositories;
@@ -859,8 +876,11 @@
 				25BB1DEE274B737D00A98006 /* StoreDetailViewModel.swift in Sources */,
 				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
 				25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */,
+				0CEA7EDC274B7412008194AD /* LeaderBoardRepository.swift in Sources */,
 				1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */,
 				1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */,
+				3E3157192743661800472CAD /* LoginViewController.swift in Sources */,
+				0CEA7ED6274B6F37008194AD /* LeaderBoardViewModel.swift in Sources */,
 				25BB1DE5274B062F00A98006 /* StoreDetailViewController.swift in Sources */,
 				1F72C20E2734010700C59CC1 /* Observable.swift in Sources */,
 				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
@@ -888,6 +908,7 @@
 				25020605273CE1FC004B024E /* RecordRepository.swift in Sources */,
 				25BB1DEA274B09C100A98006 /* InfoDescriptionStackView.swift in Sources */,
 				25EA50E4274BB61F0030C17C /* UserSupervisor.swift in Sources */,
+				0CEA7ED8274B7229008194AD /* LeaderBoardUseCase.swift in Sources */,
 				1FAAD09F274666AD00C2AE90 /* RecordCard.swift in Sources */,
 				25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */,
 				1F22E652273D14D700409A96 /* TimePickerViewController.swift in Sources */,
@@ -895,6 +916,7 @@
 				3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */,
 				1F74F113273CEEFE00CE4D37 /* AddRecordView.swift in Sources */,
 				1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */,
+				0CEA7EDA274B735A008194AD /* LeaderBoardRepositoryInterface.swift in Sources */,
 				251031C22733A5B500BD07BF /* RatingImage.swift in Sources */,
 				1FAAD0A4274666AD00C2AE90 /* GeoLocation.swift in Sources */,
 				1FE5340A273FB25D00867832 /* SearchRoomViewModel.swift in Sources */,
