@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C955CE627434E690002B787 /* TopRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE527434E690002B787 /* TopRankView.swift */; };
-		0C955CE827437A300002B787 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE727437A300002B787 /* RankView.swift */; };
-		0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */; };
-		0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */; };
-		0CAEE3B1273BA7C3002C1136 /* RoomDetailUserRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */; };
 		0CEA7ED6274B6F37008194AD /* LeaderBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7ED5274B6F37008194AD /* LeaderBoardViewModel.swift */; };
 		0CEA7ED8274B7229008194AD /* LeaderBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */; };
 		0CEA7EDA274B735A008194AD /* LeaderBoardRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */; };
@@ -105,40 +100,7 @@
 		1FEF94BC274BB3CD0049D83D /* StoreDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A4A2744ED8100DB90BF /* StoreDTO.swift */; };
 		25104A512745408E00DB90BF /* extra.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A502745408D00DB90BF /* extra.json */; };
 		25104A53274546E100DB90BF /* sinlim.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A52274546E100DB90BF /* sinlim.json */; };
-		2513CACF2735192F00A574C7 /* EDSKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2513CACE2735192F00A574C7 /* EDSKit.swift */; };
-		2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25513369273108A800A92CF3 /* RoomListUseCase.swift */; };
-		2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551336B2731093B00A92CF3 /* RoomListViewModel.swift */; };
-		25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */; };
-		25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772762273CE87F00881845 /* RecordRepositoryInterface.swift */; };
-		25772768273D0D0A00881845 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772767273D0D0A00881845 /* ImageCacheManager.swift */; };
-		2577276D273D18EB00881845 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577276C273D18EB00881845 /* NetworkService.swift */; };
-		25772770273D525500881845 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577276F273D525500881845 /* Helper.swift */; };
-		25BB1DE5274B062F00A98006 /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE4274B062F00A98006 /* StoreDetailViewController.swift */; };
-		25BB1DE8274B099000A98006 /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE7274B099000A98006 /* HorizontalLineView.swift */; };
-		25BB1DEA274B09C100A98006 /* InfoDescriptionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE9274B09C100A98006 /* InfoDescriptionStackView.swift */; };
-		25BB1DEC274B09EA00A98006 /* InfoDescriptionDetailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DEB274B09EA00A98006 /* InfoDescriptionDetailStackView.swift */; };
-		25BB1DEE274B737D00A98006 /* StoreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DED274B737D00A98006 /* StoreDetailViewModel.swift */; };
-		25CE99D3274633BC0097247E /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE99D2274633BC0097247E /* Array+Extension.swift */; };
-		25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772765273CFBD100881845 /* DistrictSelectButton.swift */; };
-		25EA50DD274B93B20030C17C /* SearchRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53400273F8ABE00867832 /* SearchRoomViewController.swift */; };
-		25EA50DE274B93B50030C17C /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E315759274387AE00472CAD /* ViewType.swift */; };
-		25EA50DF274B93B80030C17C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3157182743661800472CAD /* LoginViewController.swift */; };
-		25EA50E0274B93BC0030C17C /* UserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E31571B274366B900472CAD /* UserInputView.swift */; };
-		25EA50E1274B93C50030C17C /* RecordUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A7273B92F50045ADDE /* RecordUserView.swift */; };
-		25EA50E2274B93C80030C17C /* AddRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A921E27423679002166C6 /* AddRecordViewModel.swift */; };
 		25EA50E4274BB61F0030C17C /* UserSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA50E3274BB61F0030C17C /* UserSupervisor.swift */; };
-		25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */; };
-		3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BDEA02732C2FB0081A749 /* Tagable.swift */; };
-		3E4378C927325241001ED120 /* TagScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378C827325241001ED120 /* TagScrollView.swift */; };
-		3E4378CB27329028001ED120 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CA27329028001ED120 /* TagButton.swift */; };
-		3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CC2732914B001ED120 /* DefaultViewController.swift */; };
-		3E4603072744D514003F414D /* UserInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603062744D514003F414D /* UserInputTextField.swift */; };
-		3E4603092744F53E003F414D /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603082744F53E003F414D /* SignUpViewController.swift */; };
-		3E5902A6273AA3190045ADDE /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A5273AA3190045ADDE /* RecordCollectionViewCell.swift */; };
-		3E5902AA273B9C850045ADDE /* RecordStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A9273B9C850045ADDE /* RecordStarView.swift */; };
-		3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AB273BA1DC0045ADDE /* RecordResultView.swift */; };
-		3E5902AE273BF0630045ADDE /* RecordHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AD273BF0630045ADDE /* RecordHeadView.swift */; };
-		3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EED222D273CDA150084D290 /* RecordViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -845,88 +807,11 @@
 				1FEF94BA274BB3CD0049D83D /* RecordDTO.swift in Sources */,
 				1FEF94BB274BB3CD0049D83D /* RoomDTO.swift in Sources */,
 				1FEF94BC274BB3CD0049D83D /* StoreDTO.swift in Sources */,
-				25EA50E2274B93C80030C17C /* AddRecordViewModel.swift in Sources */,
-				25EA50E1274B93C50030C17C /* RecordUserView.swift in Sources */,
-				25EA50E0274B93BC0030C17C /* UserInputView.swift in Sources */,
-				25EA50DF274B93B80030C17C /* LoginViewController.swift in Sources */,
-				25EA50DE274B93B50030C17C /* ViewType.swift in Sources */,
-				25EA50DD274B93B20030C17C /* SearchRoomViewController.swift in Sources */,
-				1FE53406273FB0D300867832 /* UIView+RoundCorners.swift in Sources */,
-				25020609273CE349004B024E /* RecordDTO.swift in Sources */,
-				251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */,
-				25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */,
-				1FAAD0A0274666AD00C2AE90 /* User.swift in Sources */,
-				3E5902AA273B9C850045ADDE /* RecordStarView.swift in Sources */,
-				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
-				3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */,
-				1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */,
-				25020598273A3300004B024E /* RecordViewController.swift in Sources */,
-				25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */,
-				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
-				2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */,
-				0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */,
-				25772770273D525500881845 /* Helper.swift in Sources */,
-				3E4603092744F53E003F414D /* SignUpViewController.swift in Sources */,
-				1FAAD0A2274666AD00C2AE90 /* District.swift in Sources */,
-				1FAAD0A1274666AD00C2AE90 /* Room.swift in Sources */,
-				25BB1DEC274B09EA00A98006 /* InfoDescriptionDetailStackView.swift in Sources */,
-				25104A482744E98F00DB90BF /* DataInjection.swift in Sources */,
-				25104A462744E90F00DB90BF /* InjectionDTOs.swift in Sources */,
-				1FAAD0AA2746885100C2AE90 /* StoreRegion.swift in Sources */,
-				25BB1DEE274B737D00A98006 /* StoreDetailViewModel.swift in Sources */,
-				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
-				25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */,
 				0CEA7EDC274B7412008194AD /* LeaderBoardRepository.swift in Sources */,
-				1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */,
-				1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */,
-				3E3157192743661800472CAD /* LoginViewController.swift in Sources */,
 				0CEA7ED6274B6F37008194AD /* LeaderBoardViewModel.swift in Sources */,
-				25BB1DE5274B062F00A98006 /* StoreDetailViewController.swift in Sources */,
-				1F72C20E2734010700C59CC1 /* Observable.swift in Sources */,
-				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
-				2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */,
-				1F0CAED72733E04F00389CFA /* RoomListRepository.swift in Sources */,
-				1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */,
-				1FAAD0A3274666AD00C2AE90 /* Genre.swift in Sources */,
-				1FAAD0A8274666AD00C2AE90 /* Record.swift in Sources */,
-				2577276D273D18EB00881845 /* NetworkService.swift in Sources */,
-				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
-				0CAEE3B1273BA7C3002C1136 /* RoomDetailUserRankView.swift in Sources */,
-				3E5902AE273BF0630045ADDE /* RecordHeadView.swift in Sources */,
-				25104A4B2744ED8100DB90BF /* StoreDTO.swift in Sources */,
-				1FAAD0A5274666AD00C2AE90 /* Rating.swift in Sources */,
-				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
-				3E4603072744D514003F414D /* UserInputTextField.swift in Sources */,
-				1FAAD0A6274666AD00C2AE90 /* SortingOption.swift in Sources */,
-				0C955CE627434E690002B787 /* TopRankView.swift in Sources */,
-				3E4378CB27329028001ED120 /* TagButton.swift in Sources */,
-				25CE99D3274633BC0097247E /* Array+Extension.swift in Sources */,
-				1FE53403273F8ABE00867832 /* SearchRoomTableViewCell.swift in Sources */,
-				2513CACF2735192F00A574C7 /* EDSKit.swift in Sources */,
-				25020603273CE1E1004B024E /* RecordUsecase.swift in Sources */,
-				251031BC27339C0200BD07BF /* RatingView.swift in Sources */,
-				25020605273CE1FC004B024E /* RecordRepository.swift in Sources */,
-				25BB1DEA274B09C100A98006 /* InfoDescriptionStackView.swift in Sources */,
 				25EA50E4274BB61F0030C17C /* UserSupervisor.swift in Sources */,
 				0CEA7ED8274B7229008194AD /* LeaderBoardUseCase.swift in Sources */,
-				1FAAD09F274666AD00C2AE90 /* RecordCard.swift in Sources */,
-				25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */,
-				1F22E652273D14D700409A96 /* TimePickerViewController.swift in Sources */,
-				0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */,
-				3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */,
-				1F74F113273CEEFE00CE4D37 /* AddRecordView.swift in Sources */,
-				1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */,
 				0CEA7EDA274B735A008194AD /* LeaderBoardRepositoryInterface.swift in Sources */,
-				251031C22733A5B500BD07BF /* RatingImage.swift in Sources */,
-				1FAAD0A4274666AD00C2AE90 /* GeoLocation.swift in Sources */,
-				1FE5340A273FB25D00867832 /* SearchRoomViewModel.swift in Sources */,
-				25BB1DE8274B099000A98006 /* HorizontalLineView.swift in Sources */,
-				25772768273D0D0A00881845 /* ImageCacheManager.swift in Sources */,
-				2502059A273A33A5004B024E /* MapViewController.swift in Sources */,
-				0C955CE827437A300002B787 /* RankView.swift in Sources */,
-				3E5902A6273AA3190045ADDE /* RecordCollectionViewCell.swift in Sources */,
-				1FE53408273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift in Sources */,
-				1F74F10E273CEEC700CE4D37 /* AddRecordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
