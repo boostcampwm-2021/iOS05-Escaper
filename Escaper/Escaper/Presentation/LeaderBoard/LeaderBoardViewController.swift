@@ -92,9 +92,9 @@ private extension LeaderBoardViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.users.observe(on: self, observerBlock: { users in
-            self.topRankView.update(users: users.prefix(3).map {$0})
-            self.updateStackView(users: users.prefix(10).map {$0})
+        self.viewModel?.users.observe(on: self, observerBlock: { [weak self] users in
+            self?.topRankView.update(users: users.prefix(3).map {$0})
+            self?.updateStackView(users: users.prefix(10).map {$0})
         })
     }
 
