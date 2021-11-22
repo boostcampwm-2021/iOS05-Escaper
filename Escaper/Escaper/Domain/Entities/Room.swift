@@ -18,7 +18,7 @@ struct Room: Hashable {
     var geoLocation: CLLocation
     var district: District
     var records: [Record]
-    var distance: Double // TODO: - 이러다 다죽어
+    var distance: Double
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(self.roomId)

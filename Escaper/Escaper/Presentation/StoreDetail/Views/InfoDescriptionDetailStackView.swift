@@ -8,10 +8,7 @@
 import UIKit
 
 class InfoDescriptionDetailStackView: UIStackView {
-    private var infoTitleLabel: UILabel = {
-        let label = EDSLabel.b01B(color: .gloomyPink)
-        return label
-    }()
+    private var infoTitleLabel: UILabel = EDSLabel.b01B(color: .gloomyPink)
     private var infoContentLabel: UILabel = {
         let label = EDSLabel.b01B(color: .skullWhite)
         label.lineBreakMode = .byCharWrapping
@@ -44,6 +41,7 @@ private extension InfoDescriptionDetailStackView {
     enum Constant {
         static let infoTitleWidth = CGFloat(70)
     }
+
     func configure() {
         self.configureStackView()
         self.configureTitleLabelLayout()
@@ -60,12 +58,6 @@ private extension InfoDescriptionDetailStackView {
 
     func configureTitleLabelLayout() {
         self.infoTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.infoTitleLabel.widthAnchor.constraint(equalToConstant: Constant.infoTitleWidth)
-        ])
-    }
-
-    func configureContentLabelLayout() {
-        self.infoContentLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.infoTitleLabel.widthAnchor.constraint(equalToConstant: Constant.infoTitleWidth).isActive = true
     }
 }
