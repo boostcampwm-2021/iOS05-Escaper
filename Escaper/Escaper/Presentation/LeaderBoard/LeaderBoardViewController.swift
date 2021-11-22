@@ -8,8 +8,7 @@
 import UIKit
 
 final class LeaderBoardViewController: DefaultViewController {
-    var viewModel = [User.init(email: "abc", name: "신희", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "완식", name: "완식", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "택현", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "영광", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "JK", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "유연석", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "a", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "호눅스", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "크롱", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "아이비", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "인정", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1)]
-
+    private var viewModel: LeaderBoardViewModelInterface?
     private let scrollView = UIScrollView()
     private let titleLabel: UILabel = {
         let label = EDSLabel.h02B(text: "리더보드", color: .skullLightWhite)
@@ -34,7 +33,10 @@ final class LeaderBoardViewController: DefaultViewController {
     }
 
     func create() {
-        // 의존성 주입
+        let repository = LeaderBoardRepository(service: FirebaseService.shared)
+        let usecase = LeaderBoardUseCase(repository: repository)
+        let viewModel = DefaultLeadeBoardViewModel(usecase: usecase)
+        self.viewModel = viewModel
     }
 }
 
