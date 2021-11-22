@@ -30,6 +30,7 @@ final class LeaderBoardViewController: DefaultViewController {
         super.viewDidLoad()
         self.configureLayout()
         self.update()
+        self.bindViewModel()
     }
 
     func create() {
@@ -90,27 +91,26 @@ private extension LeaderBoardViewController {
         ])
     }
 
+    func bindViewModel() {
+        self.viewModel?.users.observe(on: self, observerBlock: { users in
+            self.topRankView.update(users: users.prefix(3).map {$0})
+            self.updateStackView(users: users.prefix(10).map {$0})
+        })
+    }
+
     func update() {
         self.viewModel?.fetch()
-        self.updateTopRankView()
-        self.updateStackView()
     }
 
-    //TODO: 옵셔널 처리 필요
-    func updateTopRankView() {
-        self.topRankView.update(users: self.viewModel?.topThreeUser ?? [])
-    }
-
-    //TODO: 옵셔널 처리 필요
-    func updateStackView() {
-        for (rank, user) in self.viewModel!.topTenUser.enumerated() {
+    func updateStackView(users: [User]) {
+        for (rank, user) in users.enumerated() {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: 60).isActive = true
             rankView.layer.cornerRadius = 30
             rankView.update(user, rank: rank)
             rankView.isAccessibilityElement = true
-            rankView.accessibilityLabel = "전체 \(self.viewModel!.count)명 중 \(rank + 1)등 \(user.name)님 \(user.score)점"
+            rankView.accessibilityLabel = "\(rank + 1)등 \(user.name)님 \(user.score)점"
             self.userRankStackView.addArrangedSubview(rankView)
         }
     }
