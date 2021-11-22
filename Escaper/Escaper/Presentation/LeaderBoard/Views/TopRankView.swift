@@ -11,15 +11,24 @@ final class TopRankView: UIView {
     private let crownImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Crown")
+        imageView.isHidden = true
         return imageView
     }()
     private let firstView: RankView = {
         let rankView = RankView()
-        rankView.isAccessibilityElement = true
+        rankView.isHidden = true
         return rankView
     }()
-    private let secondView = RankView()
-    private let thirdView = RankView()
+    private let secondView: RankView = {
+        let rankView = RankView()
+        rankView.isHidden = true
+        return rankView
+    }()
+    private let thirdView: RankView = {
+        let rankView = RankView()
+        rankView.isHidden = true
+        return rankView
+    }()
     private let topThree: [RankView]
 
     override init(frame: CGRect) {
@@ -35,10 +44,14 @@ final class TopRankView: UIView {
     }
 
     func update(users: [User]) {
+        if users.isNotEmpty {
+            self.crownImageView.isHidden = false
+        }
         for (rank, userInfo) in users.enumerated() {
             self.topThree[rank].isAccessibilityElement = true
             self.topThree[rank].update(user: userInfo, rank: rank)
             self.topThree[rank].accessibilityLabel = "상위 유저 3명중 \(rank + 1)등 \(userInfo.name)님"
+            self.topThree[rank].isHidden = false
         }
     }
 }
