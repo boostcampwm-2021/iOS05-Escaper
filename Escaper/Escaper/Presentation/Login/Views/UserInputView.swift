@@ -19,19 +19,19 @@ class UserInputView: UIView {
         super.init(coder: coder)
     }
 
-    convenience init(viewType: ViewType) {
+    convenience init(viewType: TextFieldType) {
         self.init(frame: .zero)
         self.configure(viewType: viewType)
         self.configureLayout()
     }
 
-    func injectDelegate(delegate: LoginViewController) {
+    func injectDelegate(_ delegate: UITextFieldDelegate) {
         self.textField?.delegate = delegate
     }
 }
 
-extension UserInputView {
-    func configure(viewType: ViewType) {
+private extension UserInputView {
+    func configure(viewType: TextFieldType) {
         self.textField = UserInputTextField(viewType: viewType)
     }
 

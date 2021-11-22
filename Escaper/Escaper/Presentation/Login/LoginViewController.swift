@@ -46,7 +46,7 @@ class LoginViewController: DefaultViewController {
         button.layer.masksToBounds = true
         return button
     }()
-    private var guidLabel: UILabel = EDSLabel.b02R(text: "계정이 없으신가요?", color: EDSColor.skullLightWhite)
+    private var guideLabel: UILabel = EDSLabel.b02R(text: "계정이 없으신가요?", color: EDSColor.skullLightWhite)
     private var signupButton: UIButton = {
         let button = UIButton()
         button.setTitle("회원가입", for: .normal)
@@ -83,9 +83,9 @@ extension LoginViewController: UITextFieldDelegate {
 extension LoginViewController {
     func configure() {
         self.configureStackView()
-        self.emailInputView.injectDelegate(delegate: self)
-        self.passwordInputView.injectDelegate(delegate: self)
-        self.signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+        self.emailInputView.injectDelegate(self)
+        self.passwordInputView.injectDelegate(self)
+        self.signupButton.addTarget(self, action: #selector(self.signupButtonTapped), for: .touchUpInside)
     }
 
     func configureLayout() {
@@ -98,7 +98,7 @@ extension LoginViewController {
     }
 
     func configureStackView() {
-        self.stackView.addArrangedSubview(self.guidLabel)
+        self.stackView.addArrangedSubview(self.guideLabel)
         self.stackView.addArrangedSubview(self.signupButton)
     }
 

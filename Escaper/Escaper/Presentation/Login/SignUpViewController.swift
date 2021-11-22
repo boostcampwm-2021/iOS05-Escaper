@@ -28,7 +28,7 @@ class SignUpViewController: DefaultViewController {
     }
 
     private let imagePickerController = UIImagePickerController()
-    private lazy var selectedButton: UIButton = pumpkinImageButton
+    private lazy var selectedButton: UIButton = self.pumpkinImageButton
     private var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("취소", for: .normal)
@@ -67,9 +67,9 @@ class SignUpViewController: DefaultViewController {
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
         return button
     }()
-    private var candleImageButton: UIButton = {
+    private var skullImageButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "signupCandle"), for: .normal)
+        button.setImage(UIImage(named: "signupSkull"), for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
         return button
@@ -101,22 +101,22 @@ class SignUpViewController: DefaultViewController {
     @objc func pumpkinImageButtonTapped() {
         self.selectedButton.layer.borderWidth = 0
         self.selectedButton = self.pumpkinImageButton
-        self.imageView.image = UIImage(named: "loginPumpkin")
+        self.imageView.image = EDSImage.loginPumpkin.value
         self.pumpkinImageButton.layer.borderWidth = 4
     }
 
     @objc func ghostImageButtonTapped() {
         self.selectedButton.layer.borderWidth = 0
         self.selectedButton = self.ghostImageButton
-        self.imageView.image = UIImage(named: "signupGhost")
+        self.imageView.image = EDSImage.signupGhost.value
         self.ghostImageButton.layer.borderWidth = 4
     }
 
-    @objc func candleImageButtonTapped() {
+    @objc func skullImageButtonTapped() {
         self.selectedButton.layer.borderWidth = 0
-        self.selectedButton = self.candleImageButton
-        self.imageView.image = UIImage(named: "signupCandle")
-        self.candleImageButton.layer.borderWidth = 4
+        self.selectedButton = self.skullImageButton
+        self.imageView.image = EDSImage.signupSkull.value
+        self.skullImageButton.layer.borderWidth = 4
     }
 
     @objc func addImageButtonTapped() {
@@ -180,15 +180,15 @@ extension SignUpViewController {
     func configureImageStackView() {
         self.imageStackView.addArrangedSubview(self.pumpkinImageButton)
         self.imageStackView.addArrangedSubview(self.ghostImageButton)
-        self.imageStackView.addArrangedSubview(self.candleImageButton)
+        self.imageStackView.addArrangedSubview(self.skullImageButton)
         self.imageStackView.addArrangedSubview(self.addImageButton)
     }
 
     func configureAddTarget() {
-        self.cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        self.cancelButton.addTarget(self, action: #selector(self.cancelButtonTapped), for: .touchUpInside)
         self.pumpkinImageButton.addTarget(self, action: #selector(pumpkinImageButtonTapped), for: .touchUpInside)
         self.ghostImageButton.addTarget(self, action: #selector(ghostImageButtonTapped), for: .touchUpInside)
-        self.candleImageButton.addTarget(self, action: #selector(candleImageButtonTapped), for: .touchUpInside)
+        self.skullImageButton.addTarget(self, action: #selector(skullImageButtonTapped), for: .touchUpInside)
         self.addImageButton.addTarget(self, action: #selector(addImageButtonTapped), for: .touchUpInside)
     }
 
@@ -242,12 +242,12 @@ extension SignUpViewController {
     func configureImageStackViewElementLayout() {
         self.pumpkinImageButton.translatesAutoresizingMaskIntoConstraints = false
         self.ghostImageButton.translatesAutoresizingMaskIntoConstraints = false
-        self.candleImageButton.translatesAutoresizingMaskIntoConstraints = false
+        self.skullImageButton.translatesAutoresizingMaskIntoConstraints = false
         self.addImageButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.pumpkinImageButton.widthAnchor.constraint(equalTo: self.pumpkinImageButton.heightAnchor),
             self.ghostImageButton.widthAnchor.constraint(equalTo: self.ghostImageButton.heightAnchor),
-            self.candleImageButton.widthAnchor.constraint(equalTo: self.candleImageButton.heightAnchor),
+            self.skullImageButton.widthAnchor.constraint(equalTo: self.skullImageButton.heightAnchor),
             self.addImageButton.widthAnchor.constraint(equalTo: self.addImageButton.heightAnchor)
         ])
     }
