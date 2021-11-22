@@ -96,9 +96,10 @@ enum EDSKit {
         case loginPumpkin
         case signupGhost
         case emailIcon
-        case pwIcon
+        case passwordIcon
         case eyeIcon
         case signupPlus
+        case signupSkull
 
         var value: UIImage? {
             return UIImage(named: String(describing: self))
