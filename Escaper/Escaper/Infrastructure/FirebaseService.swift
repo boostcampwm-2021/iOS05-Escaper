@@ -21,6 +21,10 @@ protocol RecordNetwork: AnyObject {
     func addRecord(recordDTO: RecordDTO)
 }
 
+protocol LeaderBoardNetwork: AnyObject {
+    func queryUser(completion: @escaping (Result<[User], Error>) -> Void)
+}
+
 final class FirebaseService: RoomListNetwork {
     enum Collection: String {
         case users
@@ -130,6 +134,31 @@ extension FirebaseService: RecordNetwork {
     func addRecord(recordDTO: RecordDTO) {
         let path = self.database.collection(Collection.records.value).document("\(recordDTO.userEmail)_\(recordDTO.roomId)")
         path.setData(recordDTO.toDictionary())
+    }
+}
+
+extension FirebaseService: LeaderBoardNetwork {
+    func queryUser(completion: @escaping (Result<[User], Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                var userList = [User]()
+                for document in documents {
+                    let result = Result {
+                        try document.data(as: User.self)
+                    }
+                    switch result {
+                    case .success(let user):
+                        if let user = user {
+                            userList.append(user)
+                        }
+                    case .failure(let error):
+                        completion(.failure(error))
+                        return
+                    }
+                }
+                completion(Result.success(userList))
+            }
     }
 }
 
