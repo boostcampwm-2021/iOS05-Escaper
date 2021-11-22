@@ -72,6 +72,7 @@
 		25BB1DE8274B099000A98006 /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE7274B099000A98006 /* HorizontalLineView.swift */; };
 		25BB1DEA274B09C100A98006 /* InfoDescriptionStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE9274B09C100A98006 /* InfoDescriptionStackView.swift */; };
 		25BB1DEC274B09EA00A98006 /* InfoDescriptionDetailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DEB274B09EA00A98006 /* InfoDescriptionDetailStackView.swift */; };
+		25BB1DEE274B737D00A98006 /* StoreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DED274B737D00A98006 /* StoreDetailViewModel.swift */; };
 		25CE99D3274633BC0097247E /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE99D2274633BC0097247E /* Array+Extension.swift */; };
 		25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772765273CFBD100881845 /* DistrictSelectButton.swift */; };
 		25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */; };
@@ -159,6 +160,7 @@
 		25BB1DE7274B099000A98006 /* HorizontalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
 		25BB1DE9274B09C100A98006 /* InfoDescriptionStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDescriptionStackView.swift; sourceTree = "<group>"; };
 		25BB1DEB274B09EA00A98006 /* InfoDescriptionDetailStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDescriptionDetailStackView.swift; sourceTree = "<group>"; };
+		25BB1DED274B737D00A98006 /* StoreDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewModel.swift; sourceTree = "<group>"; };
 		25CE99D2274633BC0097247E /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3E0A921E27423679002166C6 /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				25BB1DE4274B062F00A98006 /* StoreDetailViewController.swift */,
+				25BB1DED274B737D00A98006 /* StoreDetailViewModel.swift */,
 				25BB1DE6274B079F00A98006 /* Views */,
 			);
 			path = StoreDetail;
@@ -733,6 +736,7 @@
 				1FE53402273F8ABE00867832 /* FindRoomViewController.swift in Sources */,
 				3E5902A8273B92F50045ADDE /* RecordUserView.swift in Sources */,
 				3E0A921F27423679002166C6 /* AddRecordViewModel.swift in Sources */,
+				25BB1DEE274B737D00A98006 /* StoreDetailViewModel.swift in Sources */,
 				251031C62733BCAC00BD07BF /* RatingContainerView.swift in Sources */,
 				25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */,
 				1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */,
