@@ -121,7 +121,7 @@ private extension RoomListViewController {
     enum Section {
         case main
     }
-    
+
     func configure() {
         self.configureLocationManager()
         self.configureDelegates()
