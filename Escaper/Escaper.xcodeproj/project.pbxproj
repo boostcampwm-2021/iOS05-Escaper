@@ -35,15 +35,21 @@
 		1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09D274666AD00C2AE90 /* Store.swift */; };
 		1FAAD0A8274666AD00C2AE90 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD09E274666AD00C2AE90 /* Record.swift */; };
 		1FAAD0AA2746885100C2AE90 /* StoreRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAAD0A92746885100C2AE90 /* StoreRegion.swift */; };
+		1FAAD0AC2746ADA400C2AE90 /* gangnam.json in Resources */ = {isa = PBXBuildFile; fileRef = 1FAAD0AB2746ADA400C2AE90 /* gangnam.json */; };
 		1FCDDE6C272EE0F00027AAAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
 		1FCDDE6E272EE0F00027AAAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */; };
 		1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
 		1FCDDE75272EE0F10027AAAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE74272EE0F10027AAAD /* Assets.xcassets */; };
 		1FCDDE78272EE0F10027AAAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE76272EE0F10027AAAD /* LaunchScreen.storyboard */; };
+		1FE36493274A5BB90011BF38 /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE36492274A5BB90011BF38 /* StoreListViewController.swift */; };
 		1FE53403273F8ABE00867832 /* SearchRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53401273F8ABE00867832 /* SearchRoomTableViewCell.swift */; };
 		1FE53406273FB0D300867832 /* UIView+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53405273FB0D200867832 /* UIView+RoundCorners.swift */; };
 		1FE53408273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */; };
 		1FE5340A273FB25D00867832 /* SearchRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */; };
+		1FEF941B274A828F0049D83D /* StoreOverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF941A274A828F0049D83D /* StoreOverViewTableViewCell.swift */; };
+		1FEF941D274A94F30049D83D /* StoreInformationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF941C274A94F30049D83D /* StoreInformationStackView.swift */; };
+		1FEF941E274B67460049D83D /* RecordUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A7273B92F50045ADDE /* RecordUserView.swift */; };
+		1FEF941F274B67890049D83D /* SearchRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53400273F8ABE00867832 /* SearchRoomViewController.swift */; };
 		25020598273A3300004B024E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020597273A3300004B024E /* RecordViewController.swift */; };
 		2502059A273A33A5004B024E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020599273A33A5004B024E /* MapViewController.swift */; };
 		2502059C273A33CB004B024E /* LeaderBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2502059B273A33CB004B024E /* LeaderBoardViewController.swift */; };
@@ -120,6 +126,7 @@
 		1FAAD09D274666AD00C2AE90 /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1FAAD09E274666AD00C2AE90 /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
 		1FAAD0A92746885100C2AE90 /* StoreRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRegion.swift; sourceTree = "<group>"; };
+		1FAAD0AB2746ADA400C2AE90 /* gangnam.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = gangnam.json; sourceTree = "<group>"; };
 		1FCDDE68272EE0F00027AAAD /* Escaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Escaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FCDDE6D272EE0F00027AAAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,11 +134,14 @@
 		1FCDDE74272EE0F10027AAAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FCDDE77272EE0F10027AAAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FCDDE79272EE0F10027AAAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FE36492274A5BB90011BF38 /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
 		1FE53400273F8ABE00867832 /* SearchRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoomViewController.swift; sourceTree = "<group>"; };
 		1FE53401273F8ABE00867832 /* SearchRoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoomTableViewCell.swift; sourceTree = "<group>"; };
 		1FE53405273FB0D200867832 /* UIView+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundCorners.swift"; sourceTree = "<group>"; };
 		1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+SetTextFieldColor.swift"; sourceTree = "<group>"; };
 		1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoomViewModel.swift; sourceTree = "<group>"; };
+		1FEF941A274A828F0049D83D /* StoreOverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreOverViewTableViewCell.swift; sourceTree = "<group>"; };
+		1FEF941C274A94F30049D83D /* StoreInformationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInformationStackView.swift; sourceTree = "<group>"; };
 		25020597273A3300004B024E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		25020599273A33A5004B024E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2502059B273A33CB004B024E /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +425,7 @@
 			children = (
 				25104A52274546E100DB90BF /* sinlim.json */,
 				25104A502745408D00DB90BF /* extra.json */,
+				1FAAD0AB2746ADA400C2AE90 /* gangnam.json */,
 				1FCDDE74272EE0F10027AAAD /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -443,6 +454,9 @@
 			isa = PBXGroup;
 			children = (
 				25020599273A33A5004B024E /* MapViewController.swift */,
+				1FE36492274A5BB90011BF38 /* StoreListViewController.swift */,
+				1FEF941A274A828F0049D83D /* StoreOverViewTableViewCell.swift */,
+				1FEF941C274A94F30049D83D /* StoreInformationStackView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -664,6 +678,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FAAD0AC2746ADA400C2AE90 /* gangnam.json in Resources */,
 				1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */,
 				25104A512745408E00DB90BF /* extra.json in Resources */,
 				1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */,
@@ -706,6 +721,8 @@
 				25EA50DF274B93B80030C17C /* LoginViewController.swift in Sources */,
 				25EA50DE274B93B50030C17C /* ViewType.swift in Sources */,
 				25EA50DD274B93B20030C17C /* SearchRoomViewController.swift in Sources */,
+				1FEF941F274B67890049D83D /* SearchRoomViewController.swift in Sources */,
+				1FEF941E274B67460049D83D /* RecordUserView.swift in Sources */,
 				1FE53406273FB0D300867832 /* UIView+RoundCorners.swift in Sources */,
 				25020609273CE349004B024E /* RecordDTO.swift in Sources */,
 				251031C42733AAF500BD07BF /* RoomOverviewTableViewCell.swift in Sources */,
@@ -715,6 +732,7 @@
 				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
 				3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */,
 				1F0CAED32733E00300389CFA /* RoomDTO.swift in Sources */,
+				1FEF941B274A828F0049D83D /* StoreOverViewTableViewCell.swift in Sources */,
 				25020598273A3300004B024E /* RecordViewController.swift in Sources */,
 				25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */,
 				1FCDDE70272EE0F00027AAAD /* RoomListViewController.swift in Sources */,
@@ -722,6 +740,8 @@
 				0CAEE3AC273A61B3002C1136 /* RoomDetailInfoView.swift in Sources */,
 				25772770273D525500881845 /* Helper.swift in Sources */,
 				3E4603092744F53E003F414D /* SignUpViewController.swift in Sources */,
+				3E31571C274366B900472CAD /* UserInputView.swift in Sources */,
+				3E31575A274387AE00472CAD /* ViewType.swift in Sources */,
 				1FAAD0A2274666AD00C2AE90 /* District.swift in Sources */,
 				1FAAD0A1274666AD00C2AE90 /* Room.swift in Sources */,
 				25BB1DEC274B09EA00A98006 /* InfoDescriptionDetailStackView.swift in Sources */,
@@ -733,6 +753,8 @@
 				25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */,
 				1F0CAED52733E03600389CFA /* FirebaseService.swift in Sources */,
 				1FAAD0A7274666AD00C2AE90 /* Store.swift in Sources */,
+				1FE36493274A5BB90011BF38 /* StoreListViewController.swift in Sources */,
+				3E3157192743661800472CAD /* LoginViewController.swift in Sources */,
 				25BB1DE5274B062F00A98006 /* StoreDetailViewController.swift in Sources */,
 				1F72C20E2734010700C59CC1 /* Observable.swift in Sources */,
 				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
@@ -762,6 +784,7 @@
 				1FAAD09F274666AD00C2AE90 /* RecordCard.swift in Sources */,
 				25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */,
 				1F22E652273D14D700409A96 /* TimePickerViewController.swift in Sources */,
+				1FEF941D274A94F30049D83D /* StoreInformationStackView.swift in Sources */,
 				0CAEE3A9273A3769002C1136 /* RoomDetailViewController.swift in Sources */,
 				3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */,
 				1F74F113273CEEFE00CE4D37 /* AddRecordView.swift in Sources */,
