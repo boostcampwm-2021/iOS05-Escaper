@@ -63,13 +63,13 @@ final class FirebaseService: RoomListNetwork {
                     try document.data(as: RoomDTO.self)
                 }
                 switch result {
-                case .success(let room):
-                    if let room = room {
-                        completion(.success(room))
+                case .success(let roomDTO):
+                    if let roomDTO = roomDTO {
+                        completion(.success(roomDTO))
                     }
                 case .failure(let error):
                     completion(.failure(error))
-                    return
+
                 }
             }
     }
@@ -78,23 +78,18 @@ final class FirebaseService: RoomListNetwork {
         database.collection(Collection.rooms.value)
             .getDocuments { snapshot, error in
                 guard let documents = snapshot?.documents else { return }
-                var roomDTOs = [RoomDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: RoomDTO.self)
-                    }
-                    switch result {
-                    case .success(let roomDTO):
-                        if let roomDTO = roomDTO,
-                           roomDTO.title.hasPrefix(name) {
-                            roomDTOs.append(roomDTO)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: RoomDTO.self) }
+                    .compactMap { $0 }
+                    .filter { $0.title.hasPrefix(name) }
                 }
-                completion(Result.success(roomDTOs.sorted(by: {$0.title < $1.title })))
+                switch result {
+                case .success(let recordDTOs):
+                    completion(.success(recordDTOs.filter { $0.title.hasPrefix(name) }
+                                            .sorted { $0.title < $1.title }))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
     }
 
@@ -112,22 +107,15 @@ extension FirebaseService: RecordNetwork {
             .whereField("userEmail", isEqualTo: userEmail)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
-                var recordDTOs = [RecordDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: RecordDTO.self)
-                    }
-                    switch result {
-                    case .success(let recordDTO):
-                        if let recordDTO = recordDTO {
-                            recordDTOs.append(recordDTO)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: RecordDTO.self) }.compactMap { $0 }
                 }
-                completion(.success(recordDTOs))
+                switch result {
+                case .success(let recordDTOs):
+                    completion(.success(recordDTOs))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
     }
 
@@ -142,22 +130,15 @@ extension FirebaseService: LeaderBoardNetwork {
         self.database.collection(Collection.users.value)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
-                var userList = [User]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: User.self)
-                    }
-                    switch result {
-                    case .success(let user):
-                        if let user = user {
-                            userList.append(user)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: User.self) }.compactMap { $0 }
                 }
-                completion(Result.success(userList))
+                switch result {
+                case .success(let users):
+                    completion(.success(users))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
     }
 }
@@ -169,22 +150,15 @@ private extension FirebaseService {
             .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
-                var roomList = [RoomDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: RoomDTO.self)
-                    }
-                    switch result {
-                    case .success(let room):
-                        if let room = room {
-                            roomList.append(room)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: RoomDTO.self) }.compactMap { $0 }
                 }
-                completion(Result.success(roomList))
+                switch result {
+                case .success(let roomDTOs):
+                    completion(.success(roomDTOs))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
     }
 
@@ -193,22 +167,15 @@ private extension FirebaseService {
             .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
-                var roomList = [RoomDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: RoomDTO.self)
-                    }
-                    switch result {
-                    case .success(let room):
-                        if let room = room {
-                            roomList.append(room)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: RoomDTO.self) }.compactMap { $0 }
                 }
-                completion(Result.success(roomList))
+                switch result {
+                case .success(let roomDTOs):
+                    completion(.success(roomDTOs))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
     }
 }
