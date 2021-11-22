@@ -62,7 +62,7 @@ class RecordViewController: DefaultViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel?.records.value.removeAll()
-        self.viewModel?.fetch(userEmail: "wansook0316@gmail.com")
+        self.viewModel?.fetch(userEmail: UIDevice.current.name)
     }
 
     func create() {
