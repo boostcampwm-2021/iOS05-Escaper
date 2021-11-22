@@ -27,8 +27,6 @@ class HorizontalLineView: UIView {
 private extension HorizontalLineView {
     func configure() {
         self.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.heightAnchor.constraint(equalToConstant: 1)
-        ])
+        self.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
 }

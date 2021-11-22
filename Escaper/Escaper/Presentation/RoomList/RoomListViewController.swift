@@ -60,7 +60,6 @@ extension RoomListViewController: TagScrollViewDelegate {
         case is Genre:
             guard let district = self.selectedDistrict else { return }
             self.fetchWithCurrentSelectedOption(with: district)
-
         case let sortingOption as SortingOption:
             self.viewModel?.sort(option: sortingOption)
         default:
