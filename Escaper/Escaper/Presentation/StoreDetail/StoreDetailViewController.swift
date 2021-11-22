@@ -9,9 +9,8 @@ import UIKit
 import CoreLocation
 
 class StoreDetailViewController: DefaultViewController {
-    let mock = Store(name: "이스케이프 룸 강남점", homePage: "http://www.mysteryroomescape-gn.com/", telephone: "02-536-2564", address: "서울 서초구 서초동 1308-10", region: .gangnam, geoLocation: CLLocation(latitude: CLLocationDegrees(CGFloat(37.498095)), longitude: CLLocationDegrees(CGFloat(127.027610))), district: .seochogu, roomIds: ["2001", "2002", "2003", "2004"])
-
-    var store: Store?
+    private var store: Store?
+    private var viewModel: StoreDetailViewModelInterface?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
     private var storeTitleLabel: UILabel = EDSLabel.h01B(color: .pumpkin)
     private var infoDescriptionStackView: InfoDescriptionStackView = InfoDescriptionStackView(frame: .zero)
@@ -26,12 +25,18 @@ class StoreDetailViewController: DefaultViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configure()
-        self.inject(store: mock)
+        self.bindViewModel()
+        guard let store = store else { return }
+        self.inject(store: store)
+        self.viewModel?.fetchRooms(ids: store.roomIds)
     }
 
     func create(store: Store) {
         self.store = store
-        // TODO: - dependency Injection
+        let repository = RoomListRepository(service: FirebaseService.shared)
+        let usecase = RoomListUseCase(repository: repository)
+        let viewModel = StoreDetailViewModel(usecase: usecase)
+        self.viewModel = viewModel
     }
 }
 
@@ -114,5 +119,14 @@ private extension StoreDetailViewController {
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "전화번호", content: store.telephone))
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "주소", content: store.address))
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "홈페이지", content: store.homePage))
+    }
+
+    func bindViewModel() {
+        self.viewModel?.rooms.observe(on: self, observerBlock: { rooms in
+            var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
+            snapshot.appendSections([Section.main])
+            snapshot.appendItems(rooms)
+            self.dataSource?.apply(snapshot, animatingDifferences: true)
+        })
     }
 }
