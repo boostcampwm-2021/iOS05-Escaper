@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkService {
+final class NetworkService {
     static let shared = NetworkService()
     private init() {}
 
@@ -44,7 +44,7 @@ extension NetworkService {
         case filePathError
         case responseError
 
-        public var errorDescription: String? {
+        var errorDescription: String? {
             switch self {
             case .clientError:
                 return NSLocalizedString("클라이언트 에러", comment: "Client Error")

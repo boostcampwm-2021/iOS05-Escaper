@@ -8,11 +8,11 @@
 import Foundation
 
 protocol RecordUsecaseInterface {
-    func fetchAllRecords(userEmail: String, completion: @escaping (Result<Record, Error>) -> Void)
-    func addRecord(imageUrlString: String?, userEmail: String, roomId: String, satisfaction: Rating, isSuccess: Bool, time: Int)
+    func fetchAllRecords(userEmail: String, completion: @escaping (Result<RecordCard, Error>) -> Void)
+    func addRecord(imageURLString: String, userEmail: String, roomId: String, satisfaction: Double, isSuccess: Bool, time: Int, records: [Record])
 }
 
-class RecordUsecase: RecordUsecaseInterface {
+final class RecordUsecase: RecordUsecaseInterface {
     private let roomRepository: RoomListRepositroyInterface
     private let recordRepository: RecordRepository
 
@@ -21,15 +21,15 @@ class RecordUsecase: RecordUsecaseInterface {
         self.recordRepository = recordRepository
     }
 
-    func fetchAllRecords(userEmail: String, completion: @escaping (Result<Record, Error>) -> Void) {
+    func fetchAllRecords(userEmail: String, completion: @escaping (Result<RecordCard, Error>) -> Void) {
         self.recordRepository.query(userEmail: userEmail) { result in
             switch result {
-            case .success(let recordInfos):
-                recordInfos.forEach { recordInfo in
-                    self.roomRepository.fetch(roomId: recordInfo.roomId) { result in
+            case .success(let records):
+                records.forEach { record in
+                    self.roomRepository.fetch(roomId: record.roomId) { result in
                         switch result {
                         case .success(let room):
-                            completion(.success(Record(recordInfo: recordInfo, room: room)))
+                            completion(.success(RecordCard(record: record, room: room)))
                         case .failure(let error):
                             completion(.failure(error))
                         }
@@ -41,13 +41,15 @@ class RecordUsecase: RecordUsecaseInterface {
         }
     }
 
-    func addRecord(imageUrlString: String?, userEmail: String, roomId: String, satisfaction: Rating, isSuccess: Bool, time: Int) {
-        let recordInfo = RecordInfo(imageUrlString: imageUrlString ?? RecordInfo.defaultImageUrlString,
-                                    userEmail: userEmail,
-                                    roomId: roomId,
-                                    satisfaction: satisfaction,
-                                    isSuccess: isSuccess,
-                                    time: time)
-        self.recordRepository.addRecord(recordInfo: recordInfo)
+    func addRecord(imageURLString: String, userEmail: String, roomId: String, satisfaction: Double, isSuccess: Bool, time: Int, records: [Record]) {
+        let record = Record(createdTime: Date(),
+                            userEmail: userEmail,
+                            roomId: roomId,
+                            isSuccess: isSuccess,
+                            imageURLString: imageURLString,
+                            satisfaction: satisfaction,
+                            escapingTime: time)
+        self.recordRepository.addRecord(record)
+        self.roomRepository.updateRecords(to: roomId, records: records + [record])
     }
 }

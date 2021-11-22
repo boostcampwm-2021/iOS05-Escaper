@@ -8,36 +8,7 @@
 import UIKit
 
 class RecordViewController: DefaultViewController {
-    private enum Constant {
-        static let deviceHeight = UIScreen.main.bounds.size.height
-        static let topBottomVerticalSpace = deviceHeight * 0.04
-        static let defaultVerticalSpace = deviceHeight * 0.015
-        static let collectionViewHeight = deviceHeight * 0.55
-        static let buttonHeight = deviceHeight * 0.06
-        static let longHorizontalSpace = CGFloat(120)
-        static let shortHorizontalSpace = CGFloat(60)
-    }
-
-    private enum GreetingMessage: String {
-        case level0 = "방탈출이 처음이시군요!"
-        case level1 = "방탈출 세계에 입문하신걸 축하드립니다!"
-        case level2 = "조금만 더 하면 나도 방탈출 고수!"
-        case level3 = "이정도면, 왠만한 방은 거의 탈출해보셨겠는걸요?"
-
-        var value: String {
-            return self.rawValue
-        }
-    }
-
-    private enum Section: Int {
-        case card = 0
-
-        var index: Int {
-            return self.rawValue
-        }
-    }
-
-    private typealias Datasource = UICollectionViewDiffableDataSource<Section, Record>
+    private typealias Datasource = UICollectionViewDiffableDataSource<Section, RecordCard>
 
     private var viewModel: RecordViewModel?
     private var datasource: Datasource?
@@ -91,7 +62,7 @@ class RecordViewController: DefaultViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel?.records.value.removeAll()
-        self.viewModel?.fetch(userEmail: "kessler.myah@hotmail.com")
+        self.viewModel?.fetch(userEmail: "wansook0316@gmail.com")
     }
 
     func create() {
@@ -103,8 +74,8 @@ class RecordViewController: DefaultViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.records.observe(on: self) { [weak self] result in
-            self?.configureRecordCollectionViewData(records: result)
+        self.viewModel?.records.observe(on: self) { [weak self] results in
+            self?.configureRecordCollectionViewData(recordCards: results)
         }
     }
 
@@ -161,6 +132,35 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
 }
 
 private extension RecordViewController {
+    enum Constant {
+        static let deviceHeight = UIScreen.main.bounds.size.height
+        static let topBottomVerticalSpace = deviceHeight * 0.04
+        static let defaultVerticalSpace = deviceHeight * 0.015
+        static let collectionViewHeight = deviceHeight * 0.55
+        static let buttonHeight = deviceHeight * 0.06
+        static let longHorizontalSpace = CGFloat(120)
+        static let shortHorizontalSpace = CGFloat(60)
+    }
+
+    enum GreetingMessage: String {
+        case level0 = "방탈출이 처음이시군요!"
+        case level1 = "방탈출 세계에 입문하신걸 축하드립니다!"
+        case level2 = "조금만 더 하면 나도 방탈출 고수!"
+        case level3 = "이정도면, 왠만한 방은 거의 탈출해보셨겠는걸요?"
+
+        var value: String {
+            return self.rawValue
+        }
+    }
+
+    enum Section: Int {
+        case card = 0
+
+        var index: Int {
+            return self.rawValue
+        }
+    }
+
     func configure() {
         self.configureRecordCollectionView()
     }
@@ -175,27 +175,27 @@ private extension RecordViewController {
 
     func configureRecordCollectionView() {
         self.recordCollectionView.delegate = self
-        self.datasource = Datasource(collectionView: self.recordCollectionView) { (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell in
+        self.datasource = Datasource(collectionView: self.recordCollectionView) { (collectionView, indexPath, recordCard) -> UICollectionViewCell in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCollectionViewCell.identifier, for: indexPath) as? RecordCollectionViewCell else { return UICollectionViewCell() }
-            cell.update(record: itemIdentifier)
+            cell.update(recordCard: recordCard)
             return cell
         }
         self.recordCollectionView.register(RecordCollectionViewCell.self, forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
         self.addButton.addTarget(self, action: #selector(self.addButtonTapped), for: .touchUpInside)
     }
 
-    func configureRecordCollectionViewData(records: [Record]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Record>()
+    func configureRecordCollectionViewData(recordCards: [RecordCard]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, RecordCard>()
         snapshot.appendSections([Section.card])
-        snapshot.appendItems(records, toSection: Section.card)
+        snapshot.appendItems(recordCards, toSection: Section.card)
         self.datasource?.apply(snapshot, animatingDifferences: false)
-        if records.count > 1 {
+        if recordCards.count > 1 {
             let indexPath = IndexPath(item: 1, section: Section.card.index)
             if let cell = self.recordCollectionView.cellForItem(at: indexPath) {
                 animateZoomforCellremove(zoomCell: cell)
             }
         }
-        configureRecordSummary(count: records.count)
+        configureRecordSummary(count: recordCards.count)
     }
 
     func configureRecordSummary(count: Int) {

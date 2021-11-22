@@ -10,21 +10,6 @@ import UIKit
 final class RoomOverviewTableViewCell: UITableViewCell {
     static let identifier = String(describing: RoomOverviewTableViewCell.self)
 
-    enum Constant {
-        static let cornerRadius = CGFloat(15)
-        static let imageLength = CGFloat(50)
-        static let verticalSpace = CGFloat(5)
-        static let horizontalSpace = CGFloat(20)
-        static let contentSideSpace = CGFloat(24)
-        static let ratingContainerWidth = CGFloat(100)
-        static let ratingContainerHeight = CGFloat(30)
-        static let ratingVerticalSpace = CGFloat(8)
-        static let imageYAnchorSpace = CGFloat(8)
-        static let titleYAnchorSpace = CGFloat(20)
-        static let titleSpace = CGFloat(20)
-        static let distanceSpace = CGFloat(4)
-    }
-
     private let genreImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
@@ -50,11 +35,14 @@ final class RoomOverviewTableViewCell: UITableViewCell {
     }
 
     func update(_ room: Room) {
-        guard let genre = room.genres.first else { return }
-        self.genreImageView.image = UIImage(named: genre.previewImageAssetName)
-        self.titleLabel.text = room.name
-        self.ratingContainerView.update(level: room.level, satisfaction: room.satisfaction)
-        self.distanceLabel.text = room.distance < 1000 ? "\(Int(room.distance))m" : "\((room.distance / 100).rounded() / 10)km"
+        self.genreImageView.image = UIImage(named: room.genre.previewImageAssetName)
+        self.titleLabel.text = room.title
+        self.ratingContainerView.update(difficulty: room.difficulty, satisfaction: room.averageSatisfaction)
+        // TODO: - Measurement 사용하기: Measurement.init(value: room.distance, unit: UnitLength.kilometers)
+        self.distanceLabel.text = Helper.measureDistance(room.distance)
+        self.accessibilityLabel = "테마 이름 \(room.title), 테마 종류 \(room.genre.name), 난이도 \(room.difficulty)점, 만족도 \(room.averageSatisfaction)점, 거리 " + Helper.measureDistance(room.distance)
+        self.accessibilityTraits = .button
+        self.accessibilityHint = "위 아래로 스와이프해서 다양한 방탈출 정보를 확인 할 수 있고 더블 탭을 하면 방 세부 정보를 확인 할 수 있어요"
     }
 
     override func prepareForReuse() {
@@ -76,6 +64,21 @@ final class RoomOverviewTableViewCell: UITableViewCell {
 }
 
 private extension RoomOverviewTableViewCell {
+    enum Constant {
+        static let cornerRadius = CGFloat(15)
+        static let imageLength = CGFloat(50)
+        static let verticalSpace = CGFloat(5)
+        static let horizontalSpace = CGFloat(20)
+        static let contentSideSpace = CGFloat(24)
+        static let ratingContainerWidth = CGFloat(100)
+        static let ratingContainerHeight = CGFloat(30)
+        static let ratingVerticalSpace = CGFloat(8)
+        static let imageYAnchorSpace = CGFloat(8)
+        static let titleYAnchorSpace = CGFloat(20)
+        static let titleSpace = CGFloat(20)
+        static let distanceSpace = CGFloat(4)
+    }
+    
     func configure() {
         self.configureCell()
         self.configureGenreImageViewLayout()

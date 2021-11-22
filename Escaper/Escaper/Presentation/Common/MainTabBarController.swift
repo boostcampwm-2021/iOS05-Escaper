@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+final class MainTabBarController: UITabBarController {
     enum Constant {
         static let itemInset = CGFloat(10)
     }
@@ -21,6 +21,11 @@ class MainTabBarController: UITabBarController {
 
 private extension MainTabBarController {
     enum TabBarItemConfig: String {
+        case home = "홈"
+        case record = "기록"
+        case map = "지도"
+        case leaderBoard = "리더보드"
+
         var title: String {
             return self.rawValue
         }
@@ -30,11 +35,6 @@ private extension MainTabBarController {
         var selectedImage: UIImage? {
             return UIImage(named: String(describing: self) + "Selected")
         }
-
-        case home = "홈"
-        case record = "기록"
-        case map = "지도"
-        case leaderBoard = "리더보드"
     }
 
     func configureTabBar() {
@@ -46,19 +46,22 @@ private extension MainTabBarController {
         let homeViewController = RoomListViewController()
         homeViewController.tabBarItem = homeBarItem
         homeViewController.create()
-        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
-        let navigationAppearance: UINavigationBarAppearance = {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = EDSColor.gloomyBrown.value
-            return appearance
+        let homeNavigationController: UINavigationController = {
+            let navigationController = UINavigationController(rootViewController: homeViewController)
+            let navigationAppearance: UINavigationBarAppearance = {
+                let appearance = UINavigationBarAppearance()
+                appearance.backgroundColor = EDSColor.bloodyBlack.value
+                return appearance
+            }()
+            navigationController.navigationBar.standardAppearance = navigationAppearance
+            navigationController.navigationBar.tintColor = EDSColor.skullLightWhite.value
+            navigationController.navigationBar.topItem?.title = ""
+            if #available(iOS 15.0, *) {
+                navigationController.navigationBar.compactScrollEdgeAppearance = navigationAppearance
+                navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
+            }
+            return navigationController
         }()
-        homeViewController.navigationController?.navigationBar.standardAppearance = navigationAppearance
-        homeViewController.navigationController?.navigationBar.tintColor = EDSColor.skullLightWhite.value
-        homeViewController.navigationController?.navigationBar.barTintColor = EDSColor.skullLightWhite.value
-        if #available(iOS 15.0, *) {
-            homeViewController.navigationController?.navigationBar.compactScrollEdgeAppearance = navigationAppearance
-            homeViewController.navigationController?.navigationBar.scrollEdgeAppearance = navigationAppearance
-        }
         let recordBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.record.title,
             unselected: TabBarItemConfig.record.unselectedImage,
@@ -99,6 +102,7 @@ private extension MainTabBarController {
             return appearance
         }()
         self.tabBar.standardAppearance = tabBarAppearance
+        self.tabBar.backgroundColor = EDSColor.gloomyBrown.value
         self.tabBar.tintColor = EDSColor.skullLightWhite.value
         self.tabBar.barTintColor = EDSColor.skullLightWhite.value
     }

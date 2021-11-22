@@ -82,6 +82,7 @@ enum EDSKit {
         case skullLightWhite
         case skullWhite
         case skullGrey
+        case zombiePurple
 
         var value: UIColor? {
             return UIColor(named: String(describing: self))
@@ -89,13 +90,19 @@ enum EDSKit {
     }
 
     enum Image {
-        var value: UIImage? {
-            return UIImage(named: String(describing: self))
-        }
-
         case chevronDown
         case recordCard
         case plus
+        case loginPumpkin
+        case signupGhost
+        case emailIcon
+        case pwIcon
+        case eyeIcon
+        case signupPlus
+
+        var value: UIImage? {
+            return UIImage(named: String(describing: self))
+        }
     }
 }
 

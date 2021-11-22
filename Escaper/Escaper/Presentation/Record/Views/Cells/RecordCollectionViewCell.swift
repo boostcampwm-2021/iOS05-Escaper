@@ -10,17 +10,7 @@ import UIKit
 final class RecordCollectionViewCell: UICollectionViewCell {
     static let identifier = String(describing: RecordCollectionViewCell.self)
 
-    enum Constant {
-        static var defaultHorizontalSpace = CGFloat(50)
-        static var longHorizontalSpace = CGFloat(180)
-        static var middleHorizontalSpace = CGFloat(120)
-        static var shortHorizontalSpace = CGFloat(50)
-        static let longVerticalSpace = CGFloat(30)
-        static let middleVerticalSpace = CGFloat(15)
-        static let shortVerticalSpace = CGFloat(10)
-    }
-
-    private let backgroundImageView: UIImageView = UIImageView(image: UIImage(named: UtilityImage.recordCard.name))
+    private let backgroundImageView: UIImageView = UIImageView(image: EDSImage.recordCard.value)
     private let recordHeadView: RecordHeadView = RecordHeadView()
     private let recordUserView: RecordUserView = RecordUserView()
     private let recordStarView: RecordStarView = RecordStarView()
@@ -45,11 +35,11 @@ final class RecordCollectionViewCell: UICollectionViewCell {
         self.configureLayout()
     }
 
-    func update(record: Record) {
-        self.recordHeadView.update(imageURLString: record.imageUrlString, title: record.roomName, place: record.storeName)
-        self.recordUserView.update(nickname: record.username, result: record.isSuccess)
-        self.recordStarView.update(satisfaction: record.satisfaction, difficulty: record.difficulty)
-        self.recordResultView.update(playerRank: record.rank, numberOfPlayers: record.numberOfTotalPlayers, time: record.time)
+    func update(recordCard: RecordCard) {
+        self.recordHeadView.update(imageURLString: recordCard.imageURLString, title: recordCard.roomTitle, storeName: recordCard.storeName)
+        self.recordUserView.update(nickname: recordCard.username, result: recordCard.isSuccess)
+        self.recordStarView.update(satisfaction: Rating(rawValue: Int(recordCard.satisfaction))!, difficulty: Rating(rawValue: recordCard.difficulty)!)
+        self.recordResultView.update(playerRank: recordCard.rank, numberOfPlayers: recordCard.numberOfTotalPlayers, time: recordCard.time)
     }
 
     override func prepareForReuse() {
@@ -60,7 +50,17 @@ final class RecordCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension RecordCollectionViewCell {
+private extension RecordCollectionViewCell {
+    enum Constant {
+        static var defaultHorizontalSpace = CGFloat(50)
+        static var longHorizontalSpace = CGFloat(180)
+        static var middleHorizontalSpace = CGFloat(120)
+        static var shortHorizontalSpace = CGFloat(50)
+        static let longVerticalSpace = CGFloat(30)
+        static let middleVerticalSpace = CGFloat(15)
+        static let shortVerticalSpace = CGFloat(10)
+    }
+
     func configureLayout() {
         self.configureViewLayout()
         self.configureBackgroundImageViewLayout()

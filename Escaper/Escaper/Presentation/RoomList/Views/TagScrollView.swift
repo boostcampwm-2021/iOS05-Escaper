@@ -12,12 +12,6 @@ protocol TagScrollViewDelegate: AnyObject {
 }
 
 final class TagScrollView: UIScrollView {
-    enum Constant {
-        static let tagSpace = CGFloat(8)
-        static let tagElementExtraSpace = CGFloat(16)
-        static let extraViewSpace = CGFloat(12)
-    }
-
     weak var tagDelegate: TagScrollViewDelegate?
 
     private(set) var selectedButton: TagButton?
@@ -57,6 +51,12 @@ final class TagScrollView: UIScrollView {
 }
 
 private extension TagScrollView {
+    enum Constant {
+        static let tagSpace = CGFloat(8)
+        static let tagElementExtraSpace = CGFloat(16)
+        static let extraViewSpace = CGFloat(12)
+    }
+
     func configureLayout() {
         self.stackView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(stackView)

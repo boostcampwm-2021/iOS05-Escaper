@@ -10,18 +10,8 @@ import FirebaseStorage
 import UIKit
 
 class ImageCacheManager {
-    typealias UrlString = String
-    typealias URLCompletion = (Result<UrlString, Error>) -> Void
+    typealias URLCompletion = (Result<String, Error>) -> Void
     typealias DataCompletion = (Result<Data, Error>) -> Void
-
-    enum ImageType: String {
-        case users
-        case records
-
-        var name: String {
-            return String(describing: self)
-        }
-    }
 
     static let shared = ImageCacheManager()
 
@@ -36,14 +26,14 @@ class ImageCacheManager {
 
     private init() {}
 
-    func uploadRecord(image: UIImage, userEmail: String, roomId: String, completion: @escaping URLCompletion) {
+    func uploadRecord(image: UIImage? = nil, userEmail: String, roomId: String, completion: @escaping URLCompletion) {
         let filename = "\(userEmail)_\(roomId)"
         self.upload(image: image, type: .records, filename: filename) { result in
             completion(result)
         }
     }
 
-    func uploadUser(image: UIImage, userEmail: String, completion: @escaping URLCompletion) {
+    func uploadUser(image: UIImage? = nil, userEmail: String, completion: @escaping URLCompletion) {
         let filename = "\(userEmail)"
         self.upload(image: image, type: .users, filename: filename) { result in
             completion(result)
@@ -77,9 +67,29 @@ class ImageCacheManager {
 }
 
 private extension ImageCacheManager {
-    func upload(image: UIImage, type: ImageType, filename: String, completion: @escaping (Result<UrlString, Error>) -> Void) {
+    enum Constant {
+        static let imageCompressRatio = CGFloat.zero
+    }
+
+    enum ImageType: String {
+        case users = "gs://escaper-67244.appspot.com/users/"
+        case records = "gs://escaper-67244.appspot.com/records/"
+
+        var name: String {
+            return String(describing: self)
+        }
+        var defaultURL: String {
+            return self.rawValue + "default.png"
+        }
+    }
+
+    func upload(image: UIImage?, type: ImageType, filename: String, completion: @escaping URLCompletion) {
         let filePath = "\(type.name)/\(filename)"
-        guard let data = image.jpegData(compressionQuality: 0.2) else { return }
+        guard let image = image,
+              let data = image.jpegData(compressionQuality: Constant.imageCompressRatio) else {
+                  completion(.success(type.defaultURL))
+                  return
+              }
         let storageReference = self.storage.reference()
         storageReference.child(filePath).putData(data, metadata: self.metadata) { (metadata, error) in
             if let error = error {
