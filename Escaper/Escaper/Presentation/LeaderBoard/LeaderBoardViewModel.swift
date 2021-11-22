@@ -23,10 +23,10 @@ final class DefaultLeadeBoardViewModel: LeaderBoardViewModelInterface {
     }
 
     func fetch() {
-        self.usecase.fetch { result in
+        self.usecase.fetch { [weak self] result in
             switch result {
             case .success(let users):
-                self.users.value = users.sorted {$0.score > $1.score}
+                self? .users.value = users.sorted {$0.score > $1.score}
             case .failure(let error):
                 print(error)
             }
