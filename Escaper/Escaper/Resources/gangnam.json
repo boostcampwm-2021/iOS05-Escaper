@@ -1,0 +1,235 @@
+{
+  "stores": [
+    {
+      "storeName": "키이스케이프 강남점",
+      "telephone": "010-7456-6082",
+      "homepage": "https://www.keyescape.com/web/home.php",
+      "address": "서울 강남구 역삼동 817-21",
+      "rooms": [
+        {
+          "title": "월야애담",
+          "genre": "로맨스",
+          "difficulty": 3
+        },
+        {
+          "title": "살랑살랑 연구소",
+          "genre": "감성",
+          "difficulty": 3
+        },
+        {
+          "title": "그카지말라캤자나",
+          "genre": "코미디",
+          "difficulty": 3
+        }
+      ]
+    },
+    {
+      "storeName": "마스터키 강남점",
+      "telephone": "050-7957-7430",
+      "homepage": "https://www.master-key.co.kr/home",
+      "address": "서울 강남구 봉은사로6길 26",
+      "rooms": [
+        {
+          "title": "이자카야 츠이오쿠",
+          "genre": "감성",
+          "difficulty": 2
+        },
+        {
+          "title": "히로인",
+          "genre": "스릴러",
+          "difficulty": 3
+        },
+        {
+          "title": "메르헨 수호대",
+          "genre": "모험",
+          "difficulty": 4
+        },
+        {
+          "title": "도시괴담 Part.1 The Day of Horror",
+          "genre": "공포",
+          "difficulty": 3
+        },
+        {
+          "title": "토끼와 거북이",
+          "genre": "코미디",
+          "difficulty": 2
+        }
+      ]
+    },
+    {
+      "storeName": "키이스케이프 강남더오름점",
+      "telephone": "010-5450-6082",
+      "homepage": "https://keyescape.co.kr/web/home.php?go=main",
+      "address": "서울 강남구 테헤란로6길 30",
+      "rooms": [
+        {
+          "title": "네드",
+          "genre": "?",
+          "difficulty": 4
+        },
+        {
+          "title": "엔제리오",
+          "genre": "?",
+          "difficulty": 4
+        }
+      ]
+    },
+    {
+      "storeName": "비트포비아 강남던전",
+      "telephone": "02-555-4360",
+      "homepage": "https://www.xphobia.net/",
+      "address": "서울 강남구 강남대로84길 33",
+      "rooms": [
+        {
+          "title": "Lost Kingdom: 잊혀진 전설",
+          "genre": "모험",
+          "difficulty": 3
+        },
+        {
+          "title": "강남목욕탕",
+          "genre": "코미디",
+          "difficulty": 2
+        },
+        {
+          "title": "대호시장 살인사건",
+          "genre": "추리",
+          "difficulty": 4
+        },
+        {
+          "title": "마음을 그려드립니다",
+          "genre": "드라마",
+          "difficulty": 3
+        }
+      ]
+    },
+    {
+      "storeName": "제로월드 강남점",
+      "telephone": "02-599-1661",
+      "homepage": "https://zerogangnam.com/subpage.php?sd=3&sc=3_1",
+      "address": "서울 서초구 서초대로73길 40",
+      "rooms": [
+        {
+          "title": "아이엠",
+          "genre": "스릴러",
+          "difficulty": 4
+        },
+        {
+          "title": "어느 겨울밤2",
+          "genre": "판타지",
+          "difficulty": 3
+        },
+        {
+          "title": "콜러",
+          "genre": "공포",
+          "difficulty": 5
+        },
+        {
+          "title": "나비효과",
+          "genre": "SF",
+          "difficulty": 3
+        },
+        {
+          "title": "링",
+          "genre": "공포",
+          "difficulty": 3
+        },
+        {
+          "title": "제로호텔 (Lite ver.)",
+          "genre": "스릴러",
+          "difficulty": 4
+        },
+        {
+          "title": "DONE",
+          "genre": "잠입",
+          "difficulty": 3
+        },
+        {
+          "title": "포레스트(FORRESRT)",
+          "genre": "공포",
+          "difficulty": 4
+        }
+      ]
+    },
+    {
+      "storeName": "넥스트에디션 강남신논현점",
+      "telephone": "050-7457-6272",
+      "homepage": "https://www.nextedition.co.kr/",
+      "address": "서울 서초구 사평대로56길 14",
+      "rooms": [
+        {
+          "title": "조선피자몰",
+          "genre": "?",
+          "difficulty": 2
+        },
+        {
+          "title": "인터프리터",
+          "genre": "드라마",
+          "difficulty": 1
+        },
+        {
+          "title": "어시스턴트",
+          "genre": "판타지",
+          "difficulty": 4
+        },
+        {
+          "title": "메가스팀",
+          "genre": "SF",
+          "difficulty": 2
+        },
+        {
+          "title": "이웃집 또털어",
+          "genre": "코미디",
+          "difficulty": 5
+        },
+        {
+          "title": "트와이스 어 데이",
+          "genre": "로맨스",
+          "difficulty": 3
+        },
+        {
+          "title": "서치",
+          "genre": "?",
+          "difficulty": 3
+        },
+        {
+          "title": "이상한 나라로 출두요",
+          "genre": "야외",
+          "difficulty": 4
+        }
+      ]
+    },
+    {
+      "storeName": "넥스트에디션 강남점",
+      "telephone": "050-7600-3650",
+      "homepage": "https://www.nextedition.co.kr/",
+      "address": "서울 서초구 강남대로79길 59",
+      "rooms": [
+        {
+          "title": "MEMORY - Episode 1",
+          "genre": "스릴러",
+          "difficulty": 2
+        },
+        {
+          "title": "완전한사랑",
+          "genre": "드라마",
+          "difficulty": 4
+        },
+        {
+          "title": "흐린날",
+          "genre": "드라마",
+          "difficulty": 3
+        },
+        {
+          "title": "카르텔",
+          "genre": "?",
+          "difficulty": 4
+        },
+        {
+          "title": "Journey",
+          "genre": "드라마",
+          "difficulty": 3
+        }
+      ]
+    }
+  ]
+}
