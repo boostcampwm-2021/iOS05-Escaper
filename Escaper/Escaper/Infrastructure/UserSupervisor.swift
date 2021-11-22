@@ -12,7 +12,7 @@ class UserSupervisor {
 
     private var email: String = ""
 
-    init() {}
+    private init() {}
 
     var isLogined: Bool {
         return self.email.isEmpty
