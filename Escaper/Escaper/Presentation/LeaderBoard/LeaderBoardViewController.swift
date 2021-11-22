@@ -91,23 +91,26 @@ private extension LeaderBoardViewController {
     }
 
     func update() {
+        self.viewModel?.fetch()
         self.updateTopRankView()
         self.updateStackView()
     }
 
+    //TODO: 옵셔널 처리 필요
     func updateTopRankView() {
-        self.topRankView.update(users: Array(self.viewModel.prefix(3)))
+        self.topRankView.update(users: self.viewModel?.topThreeUser ?? [])
     }
 
+    //TODO: 옵셔널 처리 필요
     func updateStackView() {
-        for (rank, user) in self.viewModel.prefix(10).enumerated() {
+        for (rank, user) in self.viewModel!.topTenUser.enumerated() {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: 60).isActive = true
             rankView.layer.cornerRadius = 30
             rankView.update(user, rank: rank)
             rankView.isAccessibilityElement = true
-            rankView.accessibilityLabel = "전체 \(self.viewModel.count)명 중 \(rank + 1)등 \(user.name)님 \(user.score)점"
+            rankView.accessibilityLabel = "전체 \(self.viewModel!.count)명 중 \(rank + 1)등 \(user.name)님 \(user.score)점"
             self.userRankStackView.addArrangedSubview(rankView)
         }
     }
