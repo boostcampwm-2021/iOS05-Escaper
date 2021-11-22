@@ -12,13 +12,19 @@ class StoreDetailViewController: DefaultViewController {
     let mock = Store(name: "이스케이프 룸 강남점", homePage: "http://www.mysteryroomescape-gn.com/", telephone: "02-536-2564", address: "서울 서초구 서초동 1308-10", region: .gangnam, geoLocation: CLLocation(latitude: CLLocationDegrees(CGFloat(37.498095)), longitude: CLLocationDegrees(CGFloat(127.027610))), district: .seochogu, roomIds: ["2001", "2002", "2003", "2004"])
 
     var store: Store?
+    private var dataSource: UITableViewDiffableDataSource<Section, Room>?
     private var storeTitleLabel: UILabel = EDSLabel.h01B(color: .pumpkin)
     private var infoDescriptionStackView: InfoDescriptionStackView = InfoDescriptionStackView(frame: .zero)
+    private var roomOverViewTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.rowHeight = Constant.cellHeight
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.create(store: mock) // TODO: - 외부 주입
-
         self.configure()
         self.inject(store: mock)
     }
@@ -29,15 +35,36 @@ class StoreDetailViewController: DefaultViewController {
     }
 }
 
+extension StoreDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        let roomDetailViewController = RoomDetailViewController()
+        roomDetailViewController.room = room
+        self.navigationController?.pushViewController(roomDetailViewController, animated: true)
+    }
+}
+
 private extension StoreDetailViewController {
     enum Constant {
         static let sideSpace = CGFloat(20)
         static let topSpace = CGFloat(10)
+        static let cellHeight = CGFloat(96)
+    }
+
+    enum Section {
+        case main
     }
 
     func configure() {
+        self.configureDelegates()
         self.configureStoreTitleLabelLayout()
         self.configureInfoDescriptionStackViewLayout()
+        self.configureRoomOverViewTableViewLayout()
+        self.configureRoomOverViewTableView()
+    }
+
+    func configureDelegates() {
+        self.roomOverViewTableView.delegate = self
     }
 
     func configureStoreTitleLabelLayout() {
@@ -57,6 +84,26 @@ private extension StoreDetailViewController {
             self.infoDescriptionStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Constant.sideSpace),
             self.infoDescriptionStackView.topAnchor.constraint(equalTo: self.storeTitleLabel.bottomAnchor, constant: Constant.topSpace)
         ])
+    }
+
+    func configureRoomOverViewTableViewLayout() {
+        self.roomOverViewTableView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.roomOverViewTableView)
+        NSLayoutConstraint.activate([
+            self.roomOverViewTableView.topAnchor.constraint(equalTo: self.infoDescriptionStackView.bottomAnchor, constant: Constant.topSpace),
+            self.roomOverViewTableView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.roomOverViewTableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            self.roomOverViewTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+
+    func configureRoomOverViewTableView() {
+        self.roomOverViewTableView.register(RoomOverviewTableViewCell.self, forCellReuseIdentifier: RoomOverviewTableViewCell.identifier)
+        self.dataSource = UITableViewDiffableDataSource<Section, Room>(tableView: self.roomOverViewTableView) { (tableView: UITableView, _: IndexPath, room: Room) -> UITableViewCell? in
+            let cell = tableView.dequeueReusableCell(withIdentifier: RoomOverviewTableViewCell.identifier) as? RoomOverviewTableViewCell
+            cell?.update(room)
+            return cell
+        }
     }
 
     func inject(store: Store) {
