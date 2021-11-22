@@ -45,7 +45,6 @@ private extension InfoDescriptionDetailStackView {
     func configure() {
         self.configureStackView()
         self.configureTitleLabelLayout()
-        self.configureContentLabelLayout()
         self.addArrangedSubview(self.infoTitleLabel)
         self.addArrangedSubview(self.infoContentLabel)
     }
