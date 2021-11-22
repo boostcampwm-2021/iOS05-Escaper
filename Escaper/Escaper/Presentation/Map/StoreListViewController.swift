@@ -55,7 +55,7 @@ class StoreListViewController: DefaultViewController {
         self.view.roundCorners(corners: [.topLeft, .topRight], radius: 20)
     }
 
-    @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
+    @objc func viewMoveGesutre(_ recognizer: UIPanGestureRecognizer) {
         let translation = recognizer.translation(in: self.view)
         let velocity = recognizer.velocity(in: self.view)
         let positionY = self.view.frame.minY
@@ -87,6 +87,7 @@ private extension StoreListViewController {
         self.configureGabberViewLayout()
         self.configureStoreListTableViewLayout()
         self.configureStoreListTableView()
+        self.configureViewMoverGesture()
         self.mockInjection()
     }
 
@@ -119,6 +120,11 @@ private extension StoreListViewController {
             cell?.update(store)
             return cell
         }
+    }
+
+    func configureViewMoverGesture() {
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.viewMoveGesutre(_:)))
+        self.view.addGestureRecognizer(gesture)
     }
 
     func mockInjection() {
