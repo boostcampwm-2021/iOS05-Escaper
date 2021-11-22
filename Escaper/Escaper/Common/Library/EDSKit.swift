@@ -100,6 +100,8 @@ enum EDSKit {
         case eyeIcon
         case signupPlus
         case signupSkull
+        case genreIcon
+        case distanceIcon
 
         var value: UIImage? {
             return UIImage(named: String(describing: self))
