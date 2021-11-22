@@ -29,6 +29,12 @@ protocol StoreNetwork: AnyObject {
     func queryStore(name: String, completion: @escaping (Result<[StoreDTO], Error>) -> Void)
 }
 
+protocol UserNetwork: AnyObject {
+    func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func confirmUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func addUser(user: User)
+}
+
 final class FirebaseService: RoomListNetwork {
     enum Collection: String {
         case users
@@ -129,23 +135,6 @@ extension FirebaseService: RecordNetwork {
     }
 }
 
-extension FirebaseService: LeaderBoardNetwork {
-    func queryUser(completion: @escaping (Result<[User], Error>) -> Void) {
-        self.database.collection(Collection.users.value)
-            .getDocuments { snapshot, _ in
-                guard let documents = snapshot?.documents else { return }
-                let result = Result {
-                    try documents.map { try $0.data(as: User.self) }.compactMap { $0 }
-                }
-                switch result {
-                case .success(let users):
-                    completion(.success(users))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-    }
-}
 
 private extension FirebaseService {
     func query(by genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
@@ -206,5 +195,57 @@ extension FirebaseService: StoreNetwork {
                 }
                 completion(Result.success(storeDTOs))
             }
+    }
+}
+
+extension FirebaseService: UserNetwork {
+    func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .whereField("email", isEqualTo: email)
+            .getDocuments { snapshot, _ in
+                if snapshot?.documents.count == 0 {
+                    completion(Result.success(false))
+                    return
+                }
+                guard let document = snapshot?.documents.first else { return }
+                let result = Result {
+                    try document.data(as: User.self)
+                }
+                switch result {
+                case .success:
+                    completion(Result.success(true))
+                case .failure(let error):
+                    completion(.failure(error))
+                    return
+                }
+            }
+    }
+
+    func confirmUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .whereField("email", isEqualTo: email)
+            .whereField("password", isEqualTo: password)
+            .getDocuments { snapshot, _  in
+                if snapshot?.documents.count == 0 {
+                    completion(Result.success(false))
+                    return
+                }
+                guard let document = snapshot?.documents.first else { return }
+                let result = Result {
+                    try document.data(as: User.self)
+                }
+                switch result {
+                case .success:
+                    completion(Result.success(true))
+                case .failure(let error):
+                    completion(.failure(error))
+                    return
+                }
+            }
+    }
+
+    func addUser(user: User) {
+        let path = self.database.collection(Collection.users.value).document("\(user.name)")
+        path.setData(user.toDictionary())
     }
 }
