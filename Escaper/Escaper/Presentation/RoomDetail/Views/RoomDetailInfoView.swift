@@ -133,7 +133,6 @@ private extension RoomDetailInfoView {
         ])
     }
 
-//TODO: dd
     func configureGenreLabelLayout() {
         self.genreLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.genreLabel)
