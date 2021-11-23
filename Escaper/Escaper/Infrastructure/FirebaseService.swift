@@ -23,6 +23,7 @@ protocol RecordNetwork: AnyObject {
 
 protocol LeaderBoardNetwork: AnyObject {
     func queryUser(completion: @escaping (Result<[User], Error>) -> Void)
+}
 
 protocol StoreNetwork: AnyObject {
     func queryStore(name: String, completion: @escaping (Result<[StoreDTO], Error>) -> Void)
