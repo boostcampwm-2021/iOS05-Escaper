@@ -9,7 +9,11 @@ import UIKit
 
 class UserInputView: UIView {
     var textField: UserInputTextField?
-    private var guideWordsLabel: UILabel = UILabel()
+    var guideWordsLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = EDSColor.bloodyBurgundy.value
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
