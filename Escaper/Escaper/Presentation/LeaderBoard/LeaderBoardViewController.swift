@@ -11,7 +11,7 @@ final class LeaderBoardViewController: DefaultViewController {
     private var viewModel: LeaderBoardViewModelInterface?
     private let scrollView = UIScrollView()
     private let titleLabel: UILabel = {
-        let label = EDSLabel.h02B(text: "리더보드", color: .skullLightWhite)
+        let label = EDSLabel.h01B(text: "리더보드", color: .skullWhite)
         label.accessibilityTraits = .header
         label.accessibilityHint = "리더보드화면은 스크롤로 되어있습니다. 상단에 1위부터 3위까지 하단에 1위부터 10위까지 유저 정보가 있습니다."
         return label

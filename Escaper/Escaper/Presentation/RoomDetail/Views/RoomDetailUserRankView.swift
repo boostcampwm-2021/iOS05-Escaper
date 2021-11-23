@@ -12,7 +12,7 @@ final class RoomDetailUserRankView: UIView {
 
     private let rankLabel: UILabel = {
         let label = EDSLabel.b01B(color: .bloodyBlack)
-        label.textAlignment = .left
+        label.textAlignment = .right
         return label
     }()
     private let imageView: UIImageView = {
@@ -64,11 +64,11 @@ final class RoomDetailUserRankView: UIView {
 
 private extension RoomDetailUserRankView {
     enum Constant {
-        static let userImageSize: CGFloat = 50
-        static let sideSpace: CGFloat = 32
-        static let gapSpace: CGFloat = 10
-        static let rankSize: CGFloat = 8
-        static let titleLabelSize: CGFloat = 100
+        static let userImageSize = CGFloat(50)
+        static let leftSideSpace = CGFloat(40)
+        static let rightSideSpace = CGFloat(32)
+        static let gapSpace = CGFloat(8)
+        static let titleLabelSize = CGFloat(100)
     }
 
     func configureLayout() {
@@ -83,8 +83,7 @@ private extension RoomDetailUserRankView {
         self.addSubview(self.rankLabel)
         NSLayoutConstraint.activate([
             self.rankLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.rankLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.sideSpace),
-            self.rankLabel.widthAnchor.constraint(equalToConstant: Constant.rankSize)
+            self.rankLabel.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.leftSideSpace)
         ])
     }
 
@@ -115,7 +114,7 @@ private extension RoomDetailUserRankView {
         self.addSubview(self.timeLabel)
         NSLayoutConstraint.activate([
             self.timeLabel.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor),
-            self.timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.sideSpace)
+            self.timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.rightSideSpace)
         ])
     }
 
