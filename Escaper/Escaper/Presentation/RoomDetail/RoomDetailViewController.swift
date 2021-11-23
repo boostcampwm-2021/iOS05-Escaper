@@ -46,7 +46,7 @@ private extension RoomDetailViewController {
         static let longVerticalSpace: CGFloat = 24
         static let verticalSpace: CGFloat = 16
         static let horizontalSpace: CGFloat = 20
-        static let DetailInfoHeight: CGFloat = 160
+        static let DetailInfoHeight: CGFloat = 180
         static let DetailInfoSideSpace: CGFloat = 60
     }
 
@@ -106,6 +106,7 @@ private extension RoomDetailViewController {
         NSLayoutConstraint.activate([
             self.roomDetailInfoVeiw.topAnchor.constraint(equalTo: self.storeNameLabel.bottomAnchor, constant: Constant.verticalSpace),
             self.roomDetailInfoVeiw.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.DetailInfoSideSpace),
+            self.roomDetailInfoVeiw.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -Constant.DetailInfoSideSpace),
             self.roomDetailInfoVeiw.heightAnchor.constraint(equalToConstant: Constant.DetailInfoHeight)
         ])
     }
