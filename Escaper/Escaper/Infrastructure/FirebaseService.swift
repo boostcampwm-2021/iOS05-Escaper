@@ -195,22 +195,16 @@ extension FirebaseService: StoreNetwork {
         database.collection(Collection.stores.value)
             .getDocuments { snapshot, error in
                 guard let documents = snapshot?.documents else { return }
-                var storeDTOs = [StoreDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: StoreDTO.self)
-                    }
-                    switch result {
-                    case .success(let storeDTO):
-                        if let storeDTO = storeDTO, storeDTO.name.contains(name) {
-                            storeDTOs.append(storeDTO)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: StoreDTO.self) }.compactMap { $0 }
                 }
-                completion(Result.success(storeDTOs))
+                switch result {
+                case .success(let storeDTOs):
+                    completion(.success(storeDTOs.filter { $0.name.contains(name) }))
+                case .failure(let error):
+                    completion(.failure(error))
+                    return
+                }
             }
     }
 }
