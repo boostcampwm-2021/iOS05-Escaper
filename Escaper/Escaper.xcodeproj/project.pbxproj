@@ -13,6 +13,9 @@
 		0CEA7EDC274B7412008194AD /* LeaderBoardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F06844E27315D6300E2C789 /* GoogleService-Info.plist */; };
+		1F6DC242274C7E2D0063C632 /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC241274C7E2D0063C632 /* StoreRepository.swift */; };
+		1F6DC244274C7E820063C632 /* StoreRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */; };
+		1F6DC246274C81AF0063C632 /* StoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC245274C81AF0063C632 /* StoreUseCase.swift */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
 		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
 		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
@@ -164,6 +167,9 @@
 		1F0CAED42733E03600389CFA /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		1F0CAED62733E04F00389CFA /* RoomListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListRepository.swift; sourceTree = "<group>"; };
 		1F22E651273D14D700409A96 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
+		1F6DC241274C7E2D0063C632 /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
+		1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepositoryInterface.swift; sourceTree = "<group>"; };
+		1F6DC245274C81AF0063C632 /* StoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUseCase.swift; sourceTree = "<group>"; };
 		1F72C20D2734010700C59CC1 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1F74F10D273CEEC700CE4D37 /* AddRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		1F74F112273CEEFE00CE4D37 /* AddRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
@@ -445,6 +451,7 @@
 				25020604273CE1FC004B024E /* RecordRepository.swift */,
 				1F0CAED62733E04F00389CFA /* RoomListRepository.swift */,
 				0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */,
+				1F6DC241274C7E2D0063C632 /* StoreRepository.swift */,
 				25772767273D0D0A00881845 /* ImageCacheManager.swift */,
 				2577276C273D18EB00881845 /* NetworkService.swift */,
 				25EA50E3274BB61F0030C17C /* UserSupervisor.swift */,
@@ -585,6 +592,7 @@
 				25020602273CE1E1004B024E /* RecordUsecase.swift */,
 				0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */,
 				3E77D55E274BC8E70042133B /* UserUseCase.swift */,
+				1F6DC245274C81AF0063C632 /* StoreUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -604,6 +612,7 @@
 				0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */,
 				25772762273CE87F00881845 /* RecordRepositoryInterface.swift */,
 				3E77D560274BC9550042133B /* UserRepositoryInterface.swift */,
+				1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -795,6 +804,7 @@
 				25EA50E6274BD2320030C17C /* RecordDefaultGuideView.swift in Sources */,
 				1FEF946F274BB3CC0049D83D /* DataInjection.swift in Sources */,
 				1FEF9470274BB3CC0049D83D /* AppDelegate.swift in Sources */,
+				1F6DC246274C81AF0063C632 /* StoreUseCase.swift in Sources */,
 				1FEF9471274BB3CC0049D83D /* SceneDelegate.swift in Sources */,
 				1FEF9472274BB3CC0049D83D /* Observable.swift in Sources */,
 				1FEF9473274BB3CC0049D83D /* RatingImage.swift in Sources */,
@@ -829,10 +839,12 @@
 				1FEF9490274BB3CC0049D83D /* MapViewController.swift in Sources */,
 				1FEF9491274BB3CC0049D83D /* StoreListViewController.swift in Sources */,
 				1FEF9492274BB3CC0049D83D /* StoreOverViewTableViewCell.swift in Sources */,
+				1F6DC244274C7E820063C632 /* StoreRepositoryInterface.swift in Sources */,
 				1FEF9493274BB3CC0049D83D /* StoreInformationStackView.swift in Sources */,
 				1FEF9494274BB3CC0049D83D /* RecordViewController.swift in Sources */,
 				1FEF9495274BB3CC0049D83D /* RecordViewModel.swift in Sources */,
 				1FEF9496274BB3CC0049D83D /* RecordCollectionViewCell.swift in Sources */,
+				1F6DC242274C7E2D0063C632 /* StoreRepository.swift in Sources */,
 				1FEF9497274BB3CC0049D83D /* RecordHeadView.swift in Sources */,
 				1FEF9498274BB3CC0049D83D /* RecordUserView.swift in Sources */,
 				1FEF9499274BB3CC0049D83D /* RecordStarView.swift in Sources */,
