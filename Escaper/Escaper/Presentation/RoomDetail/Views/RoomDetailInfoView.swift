@@ -12,6 +12,8 @@ final class RoomDetailInfoView: UIView {
     private let levelRatingView = RatingView()
     private let satisfactionLabel = EDSLabel.b01B(text: "만족도", color: .skullLightWhite)
     private let satisfactionRatingView = RatingView()
+    private let genreTitleLabel = EDSLabel.b01B(text: "장르", color: .skullLightWhite)
+    private let genreLabel = EDSLabel.b02R(text: "장르가 없습니다.", color: .skullLightWhite)
     private let homepageTitleLabel = EDSLabel.b01B(text: "홈페이지", color: .skullLightWhite)
     private let homepageLabel: UILabel = {
         let label = EDSLabel.b02R(text: "홈페이지가 없습니다.", color: .skullLightWhite)
@@ -53,10 +55,12 @@ private extension RoomDetailInfoView {
     func configureLayout() {
         self.configureLevelLabelLayout()
         self.configureSatisfactionLabelLayout()
+        self.configureGenreTitleLabelLayout()
         self.configureHomepageTitleLabelLayout()
         self.configurePhoneNumberTitleLabelLayout()
         self.configureLevelRatingViewLayout()
         self.configureSatisfactionRatingViewLayout()
+        self.configureGenreLabelLayout()
         self.configureHomepageLabelLayout()
         self.configurePhoneNumberLabelLayout()
     }
@@ -79,12 +83,21 @@ private extension RoomDetailInfoView {
         ])
     }
 
+    func configureGenreTitleLabelLayout() {
+        self.genreTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.genreTitleLabel)
+        NSLayoutConstraint.activate([
+            self.genreTitleLabel.leadingAnchor.constraint(equalTo: self.satisfactionLabel.leadingAnchor),
+            self.genreTitleLabel.topAnchor.constraint(equalTo: self.satisfactionLabel.bottomAnchor, constant: Constant.sideSpace)
+        ])
+    }
+
     func configureHomepageTitleLabelLayout() {
         self.homepageTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.homepageTitleLabel)
         NSLayoutConstraint.activate([
-            self.homepageTitleLabel.leadingAnchor.constraint(equalTo: self.satisfactionLabel.leadingAnchor),
-            self.homepageTitleLabel.topAnchor.constraint(equalTo: self.satisfactionLabel.bottomAnchor, constant: Constant.sideSpace)
+            self.homepageTitleLabel.leadingAnchor.constraint(equalTo: self.genreTitleLabel.leadingAnchor),
+            self.homepageTitleLabel.topAnchor.constraint(equalTo: self.genreTitleLabel.bottomAnchor, constant: Constant.sideSpace)
         ])
     }
 
@@ -119,12 +132,23 @@ private extension RoomDetailInfoView {
         ])
     }
 
+//TODO: dd
+    func configureGenreLabelLayout() {
+        self.genreLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.genreLabel)
+        NSLayoutConstraint.activate([
+            self.genreLabel.centerYAnchor.constraint(equalTo: self.genreTitleLabel.centerYAnchor),
+            self.genreLabel.leadingAnchor.constraint(equalTo: self.satisfactionRatingView.leadingAnchor),
+            self.genreLabel.widthAnchor.constraint(equalToConstant: Constant.titleLabelSize)
+        ])
+    }
+
     func configureHomepageLabelLayout() {
         self.homepageLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.homepageLabel)
         NSLayoutConstraint.activate([
             self.homepageLabel.centerYAnchor.constraint(equalTo: self.homepageTitleLabel.centerYAnchor),
-            self.homepageLabel.leadingAnchor.constraint(equalTo: self.satisfactionRatingView.leadingAnchor),
+            self.homepageLabel.leadingAnchor.constraint(equalTo: self.genreLabel.leadingAnchor),
             self.homepageLabel.widthAnchor.constraint(equalToConstant: Constant.titleLabelSize)
         ])
     }
