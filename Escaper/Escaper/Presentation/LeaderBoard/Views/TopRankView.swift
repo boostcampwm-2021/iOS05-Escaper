@@ -10,7 +10,7 @@ import UIKit
 final class TopRankView: UIView {
     private let crownImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Crown")
+        imageView.image = EDSImage.crown.value
         imageView.isHidden = true
         return imageView
     }()
