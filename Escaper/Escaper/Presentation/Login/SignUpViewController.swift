@@ -20,11 +20,34 @@ class SignUpViewController: DefaultViewController {
         static let signupButtonHeight = CGFloat(45)
     }
 
+    private var viewModel: SignUpViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.create()
         self.configure()
         self.configureLayout()
         self.pumpkinImageButtonTapped()
+        self.bindViewModel()
+    }
+
+    func create() {
+        let userRepository = UserRepository(service: FirebaseService.shared)
+        let userUsecase = UserUseCase(userRepository: userRepository)
+        let viewModel = SignUpViewModel(usecase: userUsecase)
+        self.viewModel = viewModel
+    }
+
+    func bindViewModel() {
+        self.viewModel?.emailMessage.observe(on: self) { [weak self] text in
+            self?.emailInputView.guideWordsLabel.text = text
+        }
+        self.viewModel?.passwordMessage.observe(on: self) { [weak self] text in
+            self?.passwordInputView.guideWordsLabel.text = text
+        }
+        self.viewModel?.passwordCheckMessage.observe(on: self) { [weak self] text in
+            self?.passwordCheckInputView.guideWordsLabel.text = text
+        }
     }
 
     private let imagePickerController = UIImagePickerController()
@@ -88,9 +111,10 @@ class SignUpViewController: DefaultViewController {
         let button = UIButton()
         button.setTitle("회원가입", for: .normal)
         button.setTitleColor(EDSColor.skullLightWhite.value, for: .normal)
-        button.backgroundColor = EDSColor.bloodyBurgundy.value
         button.layer.cornerRadius = CGFloat(20)
         button.layer.masksToBounds = true
+        button.backgroundColor = EDSColor.gloomyPurple.value
+        button.isEnabled = false
         return button
     }()
 
@@ -125,6 +149,34 @@ class SignUpViewController: DefaultViewController {
         self.present(self.imagePickerController, animated: true, completion: nil)
         self.addImageButton.layer.borderWidth = 4
     }
+
+    @objc func signupButtonTapped() {
+        ImageCacheManager.shared.uploadUser(image: self.imageView.image, userEmail: (self.emailInputView.textField?.text)!) { result in
+            switch result {
+            case .success(let urlString):
+                self.viewModel?.queryUser(email: (self.emailInputView.textField?.text)!) { isExist in
+                    if isExist {
+                        self.designateSignupButtonState()
+                    } else {
+                        self.viewModel?.addUser(email: (self.emailInputView.textField?.text)!, password: (self.passwordInputView.textField?.text)!, urlString: urlString)
+                        self.dismiss(animated: true)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func designateSignupButtonState() {
+        if self.viewModel!.isSignupButtonEnabled() {
+            self.signupButton.backgroundColor = EDSColor.bloodyBurgundy.value
+            self.signupButton.isEnabled = true
+        } else {
+            self.signupButton.backgroundColor = EDSColor.gloomyPurple.value
+            self.signupButton.isEnabled = false
+        }
+    }
 }
 
 extension SignUpViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -144,22 +196,21 @@ extension SignUpViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField {
         case self.emailInputView.textField:
-            print("1")
-            print(textField.text)
+            self.viewModel?.checkEmail(text: textField.text!)
         case self.passwordInputView.textField:
-            print("2")
-            print(textField.text)
+            self.viewModel?.checkPassword(text: textField.text!)
         case self.passwordCheckInputView.textField:
-            print("3")
-            print(textField.text)
+            self.viewModel?.checkDiscordance(text1: (self.passwordInputView.textField?.text)!, text2: textField.text!)
         default:
             print("what?")
         }
+        self.designateSignupButtonState()
     }
 }
 
 extension SignUpViewController {
     func configure() {
+        self.injectDelegate()
         self.configureImageStackView()
         self.configureAddTarget()
         self.configureImagePickerController()
@@ -177,6 +228,12 @@ extension SignUpViewController {
         self.configureSignupButtonLayout()
     }
 
+    func injectDelegate() {
+        self.emailInputView.injectDelegate(self)
+        self.passwordInputView.injectDelegate(self)
+        self.passwordCheckInputView.injectDelegate(self)
+    }
+
     func configureImageStackView() {
         self.imageStackView.addArrangedSubview(self.pumpkinImageButton)
         self.imageStackView.addArrangedSubview(self.ghostImageButton)
@@ -186,10 +243,11 @@ extension SignUpViewController {
 
     func configureAddTarget() {
         self.cancelButton.addTarget(self, action: #selector(self.cancelButtonTapped), for: .touchUpInside)
-        self.pumpkinImageButton.addTarget(self, action: #selector(pumpkinImageButtonTapped), for: .touchUpInside)
-        self.ghostImageButton.addTarget(self, action: #selector(ghostImageButtonTapped), for: .touchUpInside)
-        self.skullImageButton.addTarget(self, action: #selector(skullImageButtonTapped), for: .touchUpInside)
-        self.addImageButton.addTarget(self, action: #selector(addImageButtonTapped), for: .touchUpInside)
+        self.pumpkinImageButton.addTarget(self, action: #selector(self.pumpkinImageButtonTapped), for: .touchUpInside)
+        self.ghostImageButton.addTarget(self, action: #selector(self.ghostImageButtonTapped), for: .touchUpInside)
+        self.skullImageButton.addTarget(self, action: #selector(self.skullImageButtonTapped), for: .touchUpInside)
+        self.addImageButton.addTarget(self, action: #selector(self.addImageButtonTapped), for: .touchUpInside)
+        self.signupButton.addTarget(self, action: #selector(self.signupButtonTapped), for: .touchUpInside)
     }
 
     func configureImagePickerController() {
