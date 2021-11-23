@@ -131,9 +131,9 @@ private extension StoreListViewController {
     func mockInjection() {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Store>()
         let mockStores = [Store(name: "이스케이프 룸 강남점", homePage: "", telephone: "", address: "", region: .gangnam,
-                            geoLocation: CLLocation(), district: .gangnamgu, roomIds: ["", "", "", ""]),
+                                geoLocation: CLLocation(), district: .gangnamgu, roomIds: ["", "", "", ""], distance: 0),
                       Store(name: "키이스케이프 강남점", homePage: "", telephone: "", address: "", region: .gangnam,
-                                          geoLocation: CLLocation(), district: .gangnamgu, roomIds: ["", "", ""])
+                            geoLocation: CLLocation(), district: .gangnamgu, roomIds: ["", "", ""], distance: 0)
         ]
         snapshot.appendSections([Section.main])
         snapshot.appendItems(mockStores)

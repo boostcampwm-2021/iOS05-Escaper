@@ -41,6 +41,7 @@ struct StoreDTO: Codable {
                      region: region,
                      geoLocation: self.geoLocation.clLocation,
                      district: district,
-                     roomIds: self.roomIds)
+                     roomIds: self.roomIds,
+                     distance: 0)
     }
 }
