@@ -74,14 +74,14 @@ enum EDSKit {
         case bloodyDarkBurgundy
         case bloodyRed
         case charcoal
+        case gloomyBrown
         case gloomyPink
         case gloomyPurple
         case gloomyRed
-        case gloomyBrown
         case pumpkin
+        case skullGrey
         case skullLightWhite
         case skullWhite
-        case skullGrey
         case zombiePurple
 
         var value: UIColor? {
@@ -91,18 +91,19 @@ enum EDSKit {
 
     enum Image {
         case chevronDown
-        case recordCard
-        case plus
-        case loginPumpkin
-        case signupGhost
+        case crown
+        case distanceIcon
         case emailIcon
-        case passwordIcon
         case eyeIcon
+        case genreIcon
+        case loginPumpkin
+        case mappin
+        case passwordIcon
+        case plus
+        case recordCard
+        case signupGhost
         case signupPlus
         case signupSkull
-        case genreIcon
-        case distanceIcon
-        case mappin
 
         var value: UIImage? {
             return self == .mappin ? UIImage(systemName: "mappin.and.ellipse") : UIImage(named: String(describing: self))
