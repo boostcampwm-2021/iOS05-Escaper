@@ -19,10 +19,30 @@ class LoginViewController: DefaultViewController {
         static let loginButtonHeight = CGFloat(45)
     }
 
+    private var viewModel: LoginViewModel?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.create()
         self.configure()
         self.configureLayout()
+        self.bindViewModel()
+    }
+
+    func create() {
+        let userRepository = UserRepository(service: FirebaseService.shared)
+        let userUsecase = UserUseCase(userRepository: userRepository)
+        let viewModel = LoginViewModel(usecase: userUsecase)
+        self.viewModel = viewModel
+    }
+
+    func bindViewModel() {
+        self.viewModel?.emailMessage.observe(on: self) { [weak self] text in
+            self?.emailInputView.guideWordsLabel.text = self?.viewModel?.emailMessage.value
+        }
+        self.viewModel?.passwordMessage.observe(on: self) { [weak self] text in
+            self?.passwordInputView.guideWordsLabel.text = self?.viewModel?.passwordMessage.value
+        }
     }
 
     private var pumpkinImageView: UIImageView = {
@@ -60,23 +80,37 @@ class LoginViewController: DefaultViewController {
         return stackView
     }()
 
+    @objc func loginButtonTapped() {
+        self.viewModel?.confirmUser(email: (self.emailInputView.textField?.text)!, password: (self.passwordInputView.textField?.text)!) { isConfirmed in
+            if isConfirmed {
+                print("로그인 성공")
+                // 로그인 성공
+            } else {
+                print("로그인 실패")
+                self.designateSignupButtonState()
+            }
+        }
+    }
+
     @objc func signupButtonTapped() {
         self.present(SignUpViewController(), animated: true, completion: nil)
+    }
+
+    func designateSignupButtonState() {
+        if self.viewModel!.isLoginButtonEnabled() {
+            self.loginButton.backgroundColor = EDSColor.pumpkin.value
+            self.loginButton.isEnabled = true
+        } else {
+            self.loginButton.backgroundColor = EDSColor.gloomyPurple.value
+            self.loginButton.isEnabled = false
+        }
     }
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        switch textField {
-        case self.emailInputView.textField:
-            print("1")
-            print(textField.text)
-        case self.passwordInputView.textField:
-            print("2")
-            print(textField.text)
-        default:
-            print("what?")
-        }
+        self.viewModel?.startEditing()
+        self.designateSignupButtonState()
     }
 }
 
@@ -85,6 +119,7 @@ extension LoginViewController {
         self.configureStackView()
         self.emailInputView.injectDelegate(self)
         self.passwordInputView.injectDelegate(self)
+        self.loginButton.addTarget(self, action: #selector(self.loginButtonTapped), for: .touchUpInside)
         self.signupButton.addTarget(self, action: #selector(self.signupButtonTapped), for: .touchUpInside)
     }
 
