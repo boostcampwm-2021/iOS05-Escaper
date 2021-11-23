@@ -42,7 +42,6 @@ final class RoomListViewController: DefaultViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = true
     }
 
@@ -101,6 +100,7 @@ extension RoomListViewController: UITableViewDelegate {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         let detailViewController = RoomDetailViewController()
         detailViewController.room = room
+        detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
