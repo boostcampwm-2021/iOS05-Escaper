@@ -35,11 +35,6 @@ final class RoomDetailViewController: DefaultViewController {
         self.roomDetailInfoVeiw.update(room: room)
         self.updateStackView(records: room.records)
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-    }
 }
 
 private extension RoomDetailViewController {
