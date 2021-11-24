@@ -93,6 +93,7 @@ enum EDSKit {
         case bloodyRed
         case charcoal
         case gloomyBrown
+        case gloomyLightBrown
         case gloomyPink
         case gloomyPurple
         case gloomyRed
