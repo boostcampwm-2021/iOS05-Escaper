@@ -44,8 +44,8 @@ final class RoomDetailUserRankView: UIView {
     func update(_ user: User, rank: Int) {
         self.rankLabel.text = "\(rank + 1)"
         self.titleLabel.text = user.name
-        self.timeLabel.text = "\(user.score)pt"
-        self.backgroundColor = rank < 3 ? Self.rankColor[rank] : .clear
+        self.timeLabel.text = "\(user.score) pts"
+        self.backgroundColor = rank < 3 ? Self.rankColor[rank] : EDSColor.gloomyBrown.value
         self.titleLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
         self.rankLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
         self.timeLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
