@@ -20,8 +20,8 @@ final class RoomDetailUserRankView: UIView {
         imageView.layer.masksToBounds = true
         return imageView
     }()
-    private let titleLabel = EDSLabel.b01B(color: .bloodyBlack)
-    private let timeLabel = EDSLabel.b01R(color: .bloodyBlack)
+    private let titleLabel = EDSLabel.b02B(color: .bloodyBlack)
+    private let timeLabel = EDSLabel.b02L(color: .bloodyBlack)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
