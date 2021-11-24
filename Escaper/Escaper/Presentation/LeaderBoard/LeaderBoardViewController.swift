@@ -21,7 +21,7 @@ final class LeaderBoardViewController: DefaultViewController {
     private let userRankStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = 13
         stackView.distribution = .fill
         return stackView
     }()
@@ -107,7 +107,7 @@ private extension LeaderBoardViewController {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            rankView.layer.cornerRadius = 30
+            rankView.layer.cornerRadius = 10
             rankView.update(user, rank: rank)
             rankView.isAccessibilityElement = true
             rankView.accessibilityLabel = "\(rank + 1)등 \(user.name)님 \(user.score)점"

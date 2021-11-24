@@ -145,7 +145,7 @@ private extension RoomDetailViewController {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: Constant.rankViewHeight).isActive = true
-            rankView.layer.cornerRadius = Constant.rankViewHeight/2
+            rankView.layer.cornerRadius = 10
             rankView.update(record, rank: rank)
             self.userRankStackView.addArrangedSubview(rankView)
         }
