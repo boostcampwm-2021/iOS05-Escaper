@@ -100,6 +100,30 @@ extension MapViewController: UISearchBarDelegate {
     }
 }
 
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseIdentifier = "StoreAnnotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseIdentifier)
+        } else {
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = EDSImage.keyMarker.value
+        return annotationView
+    }
+
+    func mapView(_ mapVopiew: MKMapView, didSelect view: MKAnnotationView) {
+        guard let annotation = view.annotation as? StoreAnnotation,
+                  !annotation.isKind(of: MKUserLocation.self) else { return }
+        view.isSelected = false
+        let storeDetailViewController = StoreDetailViewController()
+        storeDetailViewController.create(store: annotation.store)
+        storeDetailViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(storeDetailViewController, animated: true)
+    }
+}
+
 private extension MapViewController {
     func configure() {
         self.configureMapViewLayout()
@@ -150,11 +174,15 @@ private extension MapViewController {
 
     func configureDelegates() {
         self.searchBar.delegate = self
+        self.mapView.delegate = self
     }
 
     func bindViewModel() {
         self.viewModel?.stores.observe(on: self, observerBlock: { [weak self] stores in
             self?.delegate?.transfer(stores)
+            self?.mapView.addAnnotations(stores.map { StoreAnnotation(store: $0) })
+            guard let nearestStore = stores.first else { return }
+            self?.mapView.setCenter(nearestStore.geoLocation.coordinate, animated: true)
         })
     }
 
