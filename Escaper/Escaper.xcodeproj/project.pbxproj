@@ -16,6 +16,8 @@
 		1F6DC242274C7E2D0063C632 /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC241274C7E2D0063C632 /* StoreRepository.swift */; };
 		1F6DC244274C7E820063C632 /* StoreRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */; };
 		1F6DC246274C81AF0063C632 /* StoreUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC245274C81AF0063C632 /* StoreUseCase.swift */; };
+		1F6DC248274CAD310063C632 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC247274CAD310063C632 /* MapViewModel.swift */; };
+		1F6DC24A274D213B0063C632 /* StoreAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC249274D213B0063C632 /* StoreAnnotation.swift */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
 		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
 		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
@@ -170,6 +172,8 @@
 		1F6DC241274C7E2D0063C632 /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepositoryInterface.swift; sourceTree = "<group>"; };
 		1F6DC245274C81AF0063C632 /* StoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUseCase.swift; sourceTree = "<group>"; };
+		1F6DC247274CAD310063C632 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		1F6DC249274D213B0063C632 /* StoreAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAnnotation.swift; sourceTree = "<group>"; };
 		1F72C20D2734010700C59CC1 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		1F74F10D273CEEC700CE4D37 /* AddRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordViewController.swift; sourceTree = "<group>"; };
 		1F74F112273CEEFE00CE4D37 /* AddRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecordView.swift; sourceTree = "<group>"; };
@@ -527,6 +531,8 @@
 			isa = PBXGroup;
 			children = (
 				25020599273A33A5004B024E /* MapViewController.swift */,
+				1F6DC247274CAD310063C632 /* MapViewModel.swift */,
+				1F6DC249274D213B0063C632 /* StoreAnnotation.swift */,
 				1FE36492274A5BB90011BF38 /* StoreListViewController.swift */,
 				1FEF941A274A828F0049D83D /* StoreOverViewTableViewCell.swift */,
 				1FEF941C274A94F30049D83D /* StoreInformationStackView.swift */,
@@ -840,6 +846,7 @@
 				1FEF9491274BB3CC0049D83D /* StoreListViewController.swift in Sources */,
 				1FEF9492274BB3CC0049D83D /* StoreOverViewTableViewCell.swift in Sources */,
 				1F6DC244274C7E820063C632 /* StoreRepositoryInterface.swift in Sources */,
+				1F6DC248274CAD310063C632 /* MapViewModel.swift in Sources */,
 				1FEF9493274BB3CC0049D83D /* StoreInformationStackView.swift in Sources */,
 				1FEF9494274BB3CC0049D83D /* RecordViewController.swift in Sources */,
 				1FEF9495274BB3CC0049D83D /* RecordViewModel.swift in Sources */,
@@ -863,6 +870,7 @@
 				25EA50EC274CA4BC0030C17C /* RecordGuideView.swift in Sources */,
 				1FEF94A6274BB3CC0049D83D /* RecordRepositoryInterface.swift in Sources */,
 				1FEF94A7274BB3CC0049D83D /* Tagable.swift in Sources */,
+				1F6DC24A274D213B0063C632 /* StoreAnnotation.swift in Sources */,
 				1FEF94A8274BB3CC0049D83D /* District.swift in Sources */,
 				1FEF94A9274BB3CC0049D83D /* Genre.swift in Sources */,
 				1FEF94AA274BB3CC0049D83D /* GeoLocation.swift in Sources */,
