@@ -20,8 +20,7 @@ final class UserRepository: UserRepositoryInterface {
             case .success(let isOverlaped):
                 if isOverlaped {
                     completion(.success(true))
-                }
-                else {
+                } else {
                     completion(.success(false))
                 }
             case .failure(let error):

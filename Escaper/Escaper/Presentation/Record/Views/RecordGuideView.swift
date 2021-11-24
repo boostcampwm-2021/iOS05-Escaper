@@ -102,4 +102,3 @@ private extension RecordGuideView {
         ])
     }
 }
-
