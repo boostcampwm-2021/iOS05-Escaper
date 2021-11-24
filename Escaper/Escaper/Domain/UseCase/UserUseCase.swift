@@ -26,8 +26,7 @@ final class UserUseCase: UserUseCaseInterface {
             case .success(let isOverlaped):
                 if isOverlaped {
                     completion(.success(true))
-                }
-                else {
+                } else {
                     completion(.success(false))
                 }
             case .failure(let error):
