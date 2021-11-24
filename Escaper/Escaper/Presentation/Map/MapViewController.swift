@@ -8,7 +8,14 @@
 import UIKit
 import MapKit
 
+protocol StoreListDelegate: AnyObject {
+    func transfer(_ stores: [Store])
+}
+
 final class MapViewController: DefaultViewController {
+    private weak var delegate: StoreListDelegate?
+    private weak var childViewController: StoreListViewController?
+    private var viewModel: MapViewModelInterface?
     private var locationManager: CLLocationManager?
     private var mapView: MKMapView = {
         let mapView = MKMapView()
@@ -31,23 +38,65 @@ final class MapViewController: DefaultViewController {
         self.configure()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.addBottomSheetView()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     func create() {
-        // 의존성 주입
+        let storeRepository = StoreRepository(service: FirebaseService.shared)
+        let usecase = StoreUseCase(repository: storeRepository)
+        let viewModel = MapViewModel(usecase: usecase)
+        self.viewModel = viewModel
     }
 
     func addBottomSheetView() {
         let storeListViewController = StoreListViewController()
+        self.childViewController = storeListViewController
         self.addChild(storeListViewController)
         self.view.addSubview(storeListViewController.view)
+        self.delegate = storeListViewController
         storeListViewController.didMove(toParent: self)
         storeListViewController.view.frame = CGRect(x: 0, y: self.view.frame.maxY,
                                                     width: self.view.frame.width,
                                                     height: self.view.frame.height)
+    }
+
+    func removeBottomSheetView() {
+        UIView.animate(withDuration: 0.6) { [weak self] in
+            guard let self = self else { return }
+            self.childViewController?.view.frame = CGRect(x: 0, y: self.view.frame.height,
+                                                          width: self.view.frame.width, height: self.view.frame.height)
+        } completion: { _ in
+            self.childViewController?.willMove(toParent: nil)
+            self.childViewController?.view.removeFromSuperview()
+            self.childViewController?.removeFromParent()
+            self.childViewController = nil
+        }
+    }
+
+    @objc func mapViewTapped() {
+        self.searchBar.endEditing(true)
+    }
+}
+
+extension MapViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard self.childViewController != nil else { return }
+        self.removeBottomSheetView()
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let storeName = searchBar.searchTextField.text else { return }
+        self.viewModel?.query(name: storeName)
+        self.searchBar.endEditing(true)
+        guard self.childViewController == nil else { return }
+        self.addBottomSheetView()
     }
 }
 
@@ -57,6 +106,9 @@ private extension MapViewController {
         self.configureSearchBarLayout()
         self.configureLocationManager()
         self.configureCurrentLocationInMapView()
+        self.configureDelegates()
+        self.bindViewModel()
+        self.configureTapGesture()
     }
 
     func configureMapViewLayout() {
@@ -94,5 +146,20 @@ private extension MapViewController {
                                         latitudinalMeters: regionRadius,
                                         longitudinalMeters: regionRadius)
         self.mapView.setRegion(region, animated: true)
+    }
+
+    func configureDelegates() {
+        self.searchBar.delegate = self
+    }
+
+    func bindViewModel() {
+        self.viewModel?.stores.observe(on: self, observerBlock: { [weak self] stores in
+            self?.delegate?.transfer(stores)
+        })
+    }
+
+    func configureTapGesture() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.mapViewTapped))
+        self.mapView.addGestureRecognizer(gesture)
     }
 }
