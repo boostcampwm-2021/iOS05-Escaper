@@ -135,6 +135,23 @@ extension FirebaseService: RecordNetwork {
     }
 }
 
+extension FirebaseService: LeaderBoardNetwork {
+    func queryUser(completion: @escaping (Result<[User], Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                let result = Result {
+                    try documents.map { try $0.data(as: User.self) }.compactMap { $0 }
+                }
+                switch result {
+                case .success(let users):
+                    completion(.success(users))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+}
 
 private extension FirebaseService {
     func query(by genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
@@ -203,8 +220,8 @@ extension FirebaseService: UserNetwork {
         self.database.collection(Collection.users.value)
             .whereField("email", isEqualTo: email)
             .getDocuments { snapshot, _ in
-                if snapshot?.documents.count == 0 {
-                    completion(Result.success(false))
+                if snapshot?.documents.isEmpty == true {
+                    completion(.success(false))
                     return
                 }
                 guard let document = snapshot?.documents.first else { return }
@@ -213,10 +230,9 @@ extension FirebaseService: UserNetwork {
                 }
                 switch result {
                 case .success:
-                    completion(Result.success(true))
+                    completion(.success(true))
                 case .failure(let error):
                     completion(.failure(error))
-                    return
                 }
             }
     }
@@ -226,8 +242,8 @@ extension FirebaseService: UserNetwork {
             .whereField("email", isEqualTo: email)
             .whereField("password", isEqualTo: password)
             .getDocuments { snapshot, _  in
-                if snapshot?.documents.count == 0 {
-                    completion(Result.success(false))
+                if snapshot?.documents.isEmpty == true {
+                    completion(.success(false))
                     return
                 }
                 guard let document = snapshot?.documents.first else { return }
@@ -236,10 +252,9 @@ extension FirebaseService: UserNetwork {
                 }
                 switch result {
                 case .success:
-                    completion(Result.success(true))
+                    completion(.success(true))
                 case .failure(let error):
                     completion(.failure(error))
-                    return
                 }
             }
     }

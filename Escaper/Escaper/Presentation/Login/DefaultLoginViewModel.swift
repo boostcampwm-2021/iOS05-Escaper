@@ -7,15 +7,35 @@
 
 import Foundation
 
-class LoginViewModel {
-    private let usecase: UserUseCase
+protocol LoginViewModelProperty {
+    var usecase: UserUseCase { get set }
+    var emailMessage: Observable<String> { get set }
+    var passwordMessage: Observable<String> { get set }
+}
+
+protocol LoginViewModelConfirm {
+    func confirmUser(email: String, password: String, completion: @escaping (Bool) -> Void)
+}
+
+protocol LoginViewModelCheckButton {
+    func isLoginButtonEnabled() -> Bool
+}
+
+protocol LoginViewModelEditable {
+    func startEditing()
+}
+
+protocol LoginViewModel: LoginViewModelProperty, LoginViewModelConfirm, LoginViewModelCheckButton, LoginViewModelEditable { }
+
+class DefaultLoginViewModel: LoginViewModel {
+    var usecase: UserUseCase
     var emailMessage: Observable<String>
     var passwordMessage: Observable<String>
 
     init(usecase: UserUseCase) {
         self.usecase = usecase
         self.emailMessage = Observable("")
-        self.passwordMessage = Observable(" ")
+        self.passwordMessage = Observable("")
     }
 
     func confirmUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
@@ -25,8 +45,8 @@ class LoginViewModel {
                 if isConfirmed {
                     completion(true)
                 } else {
-                    self.emailMessage.value = MessageType.notConfirmedError.value
-                    self.passwordMessage.value = MessageType.notConfirmedError.value
+                    self.emailMessage.value = Validator.notConfirmedErrorString
+                    self.passwordMessage.value = Validator.notConfirmedErrorString
                     completion(false)
                 }
             case .failure(let error):

@@ -34,7 +34,7 @@ class SignUpViewController: DefaultViewController {
     func create() {
         let userRepository = UserRepository(service: FirebaseService.shared)
         let userUsecase = UserUseCase(userRepository: userRepository)
-        let viewModel = SignUpViewModel(usecase: userUsecase)
+        let viewModel = DefaultSignUpViewModel(usecase: userUsecase)
         self.viewModel = viewModel
     }
 
@@ -202,7 +202,7 @@ extension SignUpViewController: UITextFieldDelegate {
         case self.passwordCheckInputView.textField:
             self.viewModel?.checkDiscordance(text1: (self.passwordInputView.textField?.text)!, text2: textField.text!)
         default:
-            print("what?")
+            break
         }
         self.designateSignupButtonState()
     }

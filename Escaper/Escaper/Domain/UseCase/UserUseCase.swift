@@ -19,10 +19,10 @@ final class UserUseCase {
             switch result {
             case .success(let isOverlaped):
                 if isOverlaped {
-                    completion(Result.success(true))
+                    completion(.success(true))
                 }
                 else {
-                    completion(Result.success(false))
+                    completion(.success(false))
                 }
             case .failure(let error):
                 print(error)
@@ -35,10 +35,10 @@ final class UserUseCase {
             switch result {
             case .success(let isOverlaped):
                 if isOverlaped {
-                    completion(Result.success(true))
+                    completion(.success(true))
                 }
                 else {
-                    completion(Result.success(false))
+                    completion(.success(false))
                 }
             case .failure(let error):
                 print(error)
