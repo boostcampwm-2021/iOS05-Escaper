@@ -61,7 +61,7 @@ class StoreOverViewTableViewCell: UITableViewCell {
         self.storeTitleLabel.text = store.name
         self.regionStackView.setTitle(store.region.krName)
         self.genreStackView.setTitle("\(store.roomIds.count)개 테마")
-        self.distanceStackView.setTitle("456m") // TODO: Update
+        self.distanceStackView.setTitle("\(Helper.measureDistance(store.distance))") 
     }
 }
 
