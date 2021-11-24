@@ -78,6 +78,23 @@ private extension MainTabBarController {
         let mapViewController = MapViewController()
         mapViewController.tabBarItem = mapBarItem
         mapViewController.create()
+
+        let mapNavigationController: UINavigationController = {
+            let navigationController = UINavigationController(rootViewController: mapViewController)
+            let navigationAppearance: UINavigationBarAppearance = {
+                let appearance = UINavigationBarAppearance()
+                appearance.backgroundColor = EDSColor.bloodyBlack.value
+                return appearance
+            }()
+            navigationController.navigationBar.standardAppearance = navigationAppearance
+            navigationController.navigationBar.tintColor = EDSColor.skullLightWhite.value
+            navigationController.navigationBar.topItem?.title = ""
+            if #available(iOS 15.0, *) {
+                navigationController.navigationBar.compactScrollEdgeAppearance = navigationAppearance
+                navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
+            }
+            return navigationController
+        }()
         let leaderBoardBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.leaderBoard.title,
             unselected: TabBarItemConfig.leaderBoard.unselectedImage,
@@ -89,7 +106,7 @@ private extension MainTabBarController {
         let viewControllers = [
             homeNavigationController,
             recordViewController,
-            mapViewController,
+            mapNavigationController,
             leaderBoardViewController
         ]
         self.viewControllers = viewControllers
