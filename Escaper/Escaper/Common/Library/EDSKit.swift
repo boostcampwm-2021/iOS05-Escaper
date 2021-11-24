@@ -66,6 +66,24 @@ enum EDSKit {
             label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
             return label
         }
+
+        static func b01L(text: String = "", color: Color) -> UILabel {
+            let label = Label.makeLabel(text: text, color: color)
+            label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+            return label
+        }
+
+        static func b02L(text: String = "", color: Color) -> UILabel {
+            let label = Label.makeLabel(text: text, color: color)
+            label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+            return label
+        }
+
+        static func b03L(text: String = "", color: Color) -> UILabel {
+            let label = Label.makeLabel(text: text, color: color)
+            label.font = UIFont.systemFont(ofSize: 10, weight: .light)
+            return label
+        }
     }
 
     enum Color {
@@ -104,6 +122,11 @@ enum EDSKit {
         case signupGhost
         case signupPlus
         case signupSkull
+        case genreIcon
+        case distanceIcon
+        case mappin
+        case recordCandle
+        case recordBook
 
         var value: UIImage? {
             return self == .mappin ? UIImage(systemName: "mappin.and.ellipse") : UIImage(named: String(describing: self))
