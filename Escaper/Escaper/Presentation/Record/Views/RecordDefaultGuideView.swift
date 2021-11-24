@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol RecordDefaultGuideViewDelegate: AnyObject {
+    func loginButtonTouched()
+    func signUpButtonTouched()
+}
+
 final class RecordDefaultGuideView: RecordGuideView {
+    weak var delegate: RecordDefaultGuideViewDelegate?
+
     private var guideStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -68,7 +75,6 @@ private extension RecordDefaultGuideView {
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.loginButton)
         NSLayoutConstraint.activate([
-//            self.loginButton.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: Constant.bigVerticalSpace),
             self.loginButton.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
             self.loginButton.widthAnchor.constraint(equalTo: self.backgroundImageView.widthAnchor, multiplier: Constant.buttonWidthRatio),
             self.loginButton.heightAnchor.constraint(equalTo: self.backgroundImageView.heightAnchor, multiplier: Constant.buttonHeightRatio)
@@ -90,7 +96,7 @@ private extension RecordDefaultGuideView {
     }
 
     func configureSignupButton() {
-        self.signupButton.addTarget(self, action: #selector(signUpButtonTouched(sender:)), for: .touchUpInside)
+        self.signupButton.addTarget(self, action: #selector(self.signUpButtonTouched(sender:)), for: .touchUpInside)
     }
 
     func configureStackView() {
@@ -99,10 +105,10 @@ private extension RecordDefaultGuideView {
     }
 
     @objc func loginButtonTouched(sender: UIButton) {
-        print("login")
+        self.delegate?.loginButtonTouched()
     }
 
     @objc func signUpButtonTouched(sender: UIButton) {
-        print("signup")
+        self.delegate?.signUpButtonTouched()
     }
 }
