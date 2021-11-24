@@ -79,7 +79,7 @@ private extension ImageCacheManager {
             return String(describing: self)
         }
         var defaultURL: String {
-            return self.rawValue + "default.png"
+            return self.rawValue + "\(self.name)_default.png"
         }
     }
 
