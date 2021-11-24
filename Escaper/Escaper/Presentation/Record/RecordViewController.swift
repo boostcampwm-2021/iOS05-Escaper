@@ -155,6 +155,16 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension RecordViewController: RecordDefaultGuideViewDelegate {
+    func loginButtonTouched() {
+        // TODO: - LoginViewController Show
+    }
+
+    func signUpButtonTouched() {
+        // TODO: - SignUpViewController Show
+    }
+}
+
 private extension RecordViewController {
     enum Constant {
         static let deviceHeight = UIScreen.main.bounds.size.height
@@ -303,6 +313,7 @@ private extension RecordViewController {
     }
 
     func configureRecordDefaultGuideViewConstraint() {
+        self.recordDefaultGuideView.delegate = self
         self.recordDefaultGuideView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.recordDefaultGuideView)
         NSLayoutConstraint.activate([
