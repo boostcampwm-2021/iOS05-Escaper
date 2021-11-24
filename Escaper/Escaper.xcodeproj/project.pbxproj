@@ -121,6 +121,11 @@
 		3E3157192743661800472CAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3157182743661800472CAD /* LoginViewController.swift */; };
 		3E31571C274366B900472CAD /* UserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E31571B274366B900472CAD /* UserInputView.swift */; };
 		3E31575A274387AE00472CAD /* TextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E315759274387AE00472CAD /* TextFieldType.swift */; };
+		25EA50E6274BD2320030C17C /* RecordDefaultGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA50E5274BD2320030C17C /* RecordDefaultGuideView.swift */; };
+		25EA50E8274BD2470030C17C /* RecordEmptyGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA50E7274BD2470030C17C /* RecordEmptyGuideView.swift */; };
+		25EA50EC274CA4BC0030C17C /* RecordGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA50EB274CA4BC0030C17C /* RecordGuideView.swift */; };
+		25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */; };
+		3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2BDEA02732C2FB0081A749 /* Tagable.swift */; };
 		3E4378C927325241001ED120 /* TagScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378C827325241001ED120 /* TagScrollView.swift */; };
 		3E4378CB27329028001ED120 /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CA27329028001ED120 /* TagButton.swift */; };
 		3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CC2732914B001ED120 /* DefaultViewController.swift */; };
@@ -137,6 +142,9 @@
 		3E77D563274C840B0042133B /* DefaultSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D562274C840B0042133B /* DefaultSignUpViewModel.swift */; };
 		3E77D567274C89240042133B /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D566274C89240042133B /* Validator.swift */; };
 		3E77D569274CC1BC0042133B /* DefaultLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D568274CC1BC0042133B /* DefaultLoginViewModel.swift */; };
+		3E5902AA273B9C850045ADDE /* RecordStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A9273B9C850045ADDE /* RecordStarView.swift */; };
+		3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AB273BA1DC0045ADDE /* RecordResultView.swift */; };
+		3E5902AE273BF0630045ADDE /* RecordHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AD273BF0630045ADDE /* RecordHeadView.swift */; };
 		3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EED222D273CDA150084D290 /* RecordViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -217,6 +225,9 @@
 		25BB1DED274B737D00A98006 /* StoreDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewModel.swift; sourceTree = "<group>"; };
 		25CE99D2274633BC0097247E /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		25EA50E3274BB61F0030C17C /* UserSupervisor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSupervisor.swift; sourceTree = "<group>"; };
+		25EA50E5274BD2320030C17C /* RecordDefaultGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDefaultGuideView.swift; sourceTree = "<group>"; };
+		25EA50E7274BD2470030C17C /* RecordEmptyGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordEmptyGuideView.swift; sourceTree = "<group>"; };
+		25EA50EB274CA4BC0030C17C /* RecordGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordGuideView.swift; sourceTree = "<group>"; };
 		25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3E0A921E27423679002166C6 /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
 		3E2BDEA02732C2FB0081A749 /* Tagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tagable.swift; sourceTree = "<group>"; };
@@ -656,6 +667,9 @@
 		3E5902A1273AA1BB0045ADDE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				25EA50EB274CA4BC0030C17C /* RecordGuideView.swift */,
+				25EA50E5274BD2320030C17C /* RecordDefaultGuideView.swift */,
+				25EA50E7274BD2470030C17C /* RecordEmptyGuideView.swift */,
 				3E5902A4273AA2450045ADDE /* Cells */,
 			);
 			path = Views;
@@ -778,6 +792,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FEF946E274BB3CC0049D83D /* InjectionDTOs.swift in Sources */,
+				25EA50E6274BD2320030C17C /* RecordDefaultGuideView.swift in Sources */,
 				1FEF946F274BB3CC0049D83D /* DataInjection.swift in Sources */,
 				1FEF9470274BB3CC0049D83D /* AppDelegate.swift in Sources */,
 				1FEF9471274BB3CC0049D83D /* SceneDelegate.swift in Sources */,
@@ -833,6 +848,7 @@
 				1FEF94A3274BB3CC0049D83D /* TopRankView.swift in Sources */,
 				1FEF94A4274BB3CC0049D83D /* RankView.swift in Sources */,
 				1FEF94A5274BB3CC0049D83D /* RoomListRepositoryInterface.swift in Sources */,
+				25EA50EC274CA4BC0030C17C /* RecordGuideView.swift in Sources */,
 				1FEF94A6274BB3CC0049D83D /* RecordRepositoryInterface.swift in Sources */,
 				1FEF94A7274BB3CC0049D83D /* Tagable.swift in Sources */,
 				1FEF94A8274BB3CC0049D83D /* District.swift in Sources */,
@@ -867,6 +883,16 @@
 				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
 				3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */,
 				3E77D55F274BC8E70042133B /* UserUseCase.swift in Sources */,
+				25EA50E2274B93C80030C17C /* AddRecordViewModel.swift in Sources */,
+				25EA50E1274B93C50030C17C /* RecordUserView.swift in Sources */,
+				25EA50E0274B93BC0030C17C /* UserInputView.swift in Sources */,
+				25EA50DF274B93B80030C17C /* LoginViewController.swift in Sources */,
+				25EA50DE274B93B50030C17C /* ViewType.swift in Sources */,
+				25EA50DD274B93B20030C17C /* SearchRoomViewController.swift in Sources */,
+				25772764273CE87F00881845 /* RecordRepositoryInterface.swift in Sources */,
+				3E5902AA273B9C850045ADDE /* RecordStarView.swift in Sources */,
+				3E4378C927325241001ED120 /* TagScrollView.swift in Sources */,
+				3EED222E273CDA150084D290 /* RecordViewModel.swift in Sources */,
 				25772763273CE87F00881845 /* RoomListRepositoryInterface.swift in Sources */,
 				2551336C2731093B00A92CF3 /* RoomListViewModel.swift in Sources */,
 				25772770273D525500881845 /* Helper.swift in Sources */,
@@ -891,6 +917,13 @@
 				2577276D273D18EB00881845 /* NetworkService.swift in Sources */,
 				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
 				3E77D563274C840B0042133B /* DefaultSignUpViewModel.swift in Sources */,
+				25BB1DEC274B09EA00A98006 /* InfoDescriptionDetailStackView.swift in Sources */,
+				25BB1DEE274B737D00A98006 /* StoreDetailViewModel.swift in Sources */,
+				25CE99D4274634F20097247E /* DistrictSelectButton.swift in Sources */,
+				25BB1DE5274B062F00A98006 /* StoreDetailViewController.swift in Sources */,
+				3E2BDEA12732C2FB0081A749 /* Tagable.swift in Sources */,
+				2577276D273D18EB00881845 /* NetworkService.swift in Sources */,
+				3E4378CD2732914B001ED120 /* DefaultViewController.swift in Sources */,
 				3E5902AE273BF0630045ADDE /* RecordHeadView.swift in Sources */,
 				2551336A273108A800A92CF3 /* RoomListUseCase.swift in Sources */,
 				3E4603072744D514003F414D /* UserInputTextField.swift in Sources */,
@@ -898,11 +931,13 @@
 				25CE99D3274633BC0097247E /* Array+Extension.swift in Sources */,
 				2513CACF2735192F00A574C7 /* EDSKit.swift in Sources */,
 				25BB1DEA274B09C100A98006 /* InfoDescriptionStackView.swift in Sources */,
+				25EA50E4274BB61F0030C17C /* UserSupervisor.swift in Sources */,
 				25F92C5F273A2AC3005E4A21 /* MainTabBarController.swift in Sources */,
 				3E5902AC273BA1DC0045ADDE /* RecordResultView.swift in Sources */,
 				25BB1DE8274B099000A98006 /* HorizontalLineView.swift in Sources */,
 				25772768273D0D0A00881845 /* ImageCacheManager.swift in Sources */,
 				3E5902A6273AA3190045ADDE /* RecordCollectionViewCell.swift in Sources */,
+				25EA50E8274BD2470030C17C /* RecordEmptyGuideView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
