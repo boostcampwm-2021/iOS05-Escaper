@@ -115,11 +115,11 @@ private extension MainTabBarController {
     func configureSubViewControllers() {
         let tabBarAppearance: UITabBarAppearance = {
             let appearance = UITabBarAppearance()
-            appearance.backgroundColor = EDSColor.gloomyBrown.value
+            appearance.backgroundColor = EDSColor.gloomyLightBrown.value
             return appearance
         }()
         self.tabBar.standardAppearance = tabBarAppearance
-        self.tabBar.backgroundColor = EDSColor.gloomyBrown.value
+        self.tabBar.backgroundColor = EDSColor.gloomyLightBrown.value
         self.tabBar.tintColor = EDSColor.skullLightWhite.value
         self.tabBar.barTintColor = EDSColor.skullLightWhite.value
     }
