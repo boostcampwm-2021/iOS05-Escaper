@@ -115,7 +115,7 @@ private extension StoreDetailViewController {
         self.storeTitleLabel.text = store.name
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "위치", content: store.region.krName))
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "테마 개수", content: "\(store.roomIds.count)개"))
-        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "거리", content: "100m"))
+        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "거리", content: "\(Helper.measureDistance(store.distance))"))
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "전화번호", content: store.telephone))
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "주소", content: store.address))
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "홈페이지", content: store.homePage))
