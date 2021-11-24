@@ -115,16 +115,17 @@ enum EDSKit {
         case emailIcon
         case eyeIcon
         case genreIcon
+        case keyMarker
         case loginPumpkin
         case mappin
         case passwordIcon
         case plus
+        case recordBook
         case recordCard
+        case recordCandle
         case signupGhost
         case signupPlus
         case signupSkull
-        case recordCandle
-        case recordBook
 
         var value: UIImage? {
             return self == .mappin ? UIImage(systemName: "mappin.and.ellipse") : UIImage(named: String(describing: self))
