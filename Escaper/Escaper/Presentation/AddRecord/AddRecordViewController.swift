@@ -12,7 +12,7 @@ protocol AddRecordViewControllerDelegate: AnyObject {
 }
 
 final class AddRecordViewController: DefaultViewController {
-    weak var delegate: AddRecordViewControllerDelegate?
+    private weak var delegate: AddRecordViewControllerDelegate?
 
     private var viewModel: (AddRecordViewModelInput & AddRecordViewModelOutput)?
     private let titleLabel: UILabel = EDSLabel.h02B(text: "기록 추가", color: .skullLightWhite)

@@ -122,9 +122,6 @@ enum EDSKit {
         case signupGhost
         case signupPlus
         case signupSkull
-        case genreIcon
-        case distanceIcon
-        case mappin
         case recordCandle
         case recordBook
 
