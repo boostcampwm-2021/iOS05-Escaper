@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum RecordUsecaseTemporaryError: Error {
+    case recordEmpty
+}
+
 protocol RecordUsecaseInterface {
     func fetchAllRecords(userEmail: String, completion: @escaping (Result<RecordCard, Error>) -> Void)
     func addRecord(imageURLString: String, userEmail: String, roomId: String, satisfaction: Double, isSuccess: Bool, time: Int, records: [Record])
@@ -25,6 +29,10 @@ final class RecordUsecase: RecordUsecaseInterface {
         self.recordRepository.query(userEmail: userEmail) { result in
             switch result {
             case .success(let records):
+                if records.isEmpty {
+                    completion(.failure(RecordUsecaseTemporaryError.recordEmpty))
+                    return
+                }
                 records.forEach { record in
                     self.roomRepository.fetch(roomId: record.roomId) { result in
                         switch result {
