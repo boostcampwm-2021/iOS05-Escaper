@@ -34,6 +34,7 @@ final class RoomDetailViewController: DefaultViewController {
         self.update(room: room)
         self.roomDetailInfoVeiw.update(room: room)
         self.updateStackView(records: room.records)
+        self.navigationController?.navigationBar.topItem?.title = ""
     }
 }
 
