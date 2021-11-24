@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreLocation
 
 class StoreListViewController: DefaultViewController {
     private var dataSource: UITableViewDiffableDataSource<Section, Store>?
@@ -41,7 +40,7 @@ class StoreListViewController: DefaultViewController {
             guard let self = self else { return }
             let frame = self.view.frame
             let yComponent = self.maximumTopSpacing
-            self.view.frame = CGRect(x: 0, y: yComponent, width: frame.width, height: frame.height - 100)
+            self.view.frame = CGRect(x: 0, y: yComponent, width: frame.width, height: frame.height)
         })
     }
 
@@ -79,6 +78,25 @@ class StoreListViewController: DefaultViewController {
     }
 }
 
+extension StoreListViewController: StoreListDelegate {
+    func transfer(_ stores: [Store]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, Store>()
+        snapShot.appendSections([.main])
+        snapShot.appendItems(stores)
+        self.dataSource?.apply(snapShot, animatingDifferences: true)
+    }
+}
+
+extension StoreListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let selectedStore = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        let storeDetailViewController = StoreDetailViewController()
+        storeDetailViewController.create(store: selectedStore)
+        storeDetailViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(storeDetailViewController, animated: true)
+    }
+}
+
 private extension StoreListViewController {
     enum Section {
         case main
@@ -89,7 +107,6 @@ private extension StoreListViewController {
         self.configureStoreListTableViewLayout()
         self.configureStoreListTableView()
         self.configureViewMoverGesture()
-        self.mockInjection()
     }
 
     func configureGabberViewLayout() {
@@ -108,13 +125,14 @@ private extension StoreListViewController {
         self.view.addSubview(self.storeListTableView)
         NSLayoutConstraint.activate([
             self.storeListTableView.topAnchor.constraint(equalTo: self.grabberView.bottomAnchor, constant: 20),
-            self.storeListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.storeListTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             self.storeListTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.storeListTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
 
     func configureStoreListTableView() {
+        self.storeListTableView.delegate = self
         self.storeListTableView.register(StoreOverViewTableViewCell.self, forCellReuseIdentifier: StoreOverViewTableViewCell.identifier)
         self.dataSource = UITableViewDiffableDataSource<Section, Store>(tableView: self.storeListTableView) { (tableView, _, store) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: StoreOverViewTableViewCell.identifier) as? StoreOverViewTableViewCell
@@ -126,17 +144,5 @@ private extension StoreListViewController {
     func configureViewMoverGesture() {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.viewMoveGesutre(_:)))
         self.view.addGestureRecognizer(gesture)
-    }
-
-    func mockInjection() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Store>()
-        let mockStores = [Store(name: "이스케이프 룸 강남점", homePage: "", telephone: "", address: "", region: .gangnam,
-                                geoLocation: CLLocation(), district: .gangnamgu, roomIds: ["", "", "", ""], distance: 0),
-                      Store(name: "키이스케이프 강남점", homePage: "", telephone: "", address: "", region: .gangnam,
-                            geoLocation: CLLocation(), district: .gangnamgu, roomIds: ["", "", ""], distance: 0)
-        ]
-        snapshot.appendSections([Section.main])
-        snapshot.appendItems(mockStores)
-        self.dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
