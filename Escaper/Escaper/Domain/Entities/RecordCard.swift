@@ -30,7 +30,6 @@ struct RecordCard: Hashable {
         self.satisfaction = record.satisfaction
         self.difficulty = room.difficulty
         self.numberOfTotalPlayers = room.records.count
-        // TODO: - 확인할 것
         self.rank = Helper.binarySearch(value: record.escapingTime, sortedValues: room.records.map({ $0.escapingTime }).sorted()) ?? room.records.count
         self.time = record.escapingTime
     }
