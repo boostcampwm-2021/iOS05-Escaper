@@ -7,8 +7,32 @@
 
 import Foundation
 
-class SignUpViewModel {
-    private let usecase: UserUseCase
+protocol SignUpViewModelProperty {
+    var usecase: UserUseCase { get }
+    var emailMessage: Observable<String> { get set }
+    var passwordMessage: Observable<String> { get set }
+    var passwordCheckMessage: Observable<String> { get set }
+}
+
+protocol SignUpViewModelCheck {
+    func checkEmail(text: String)
+    func checkPassword(text: String)
+    func checkDiscordance(text1: String, text2: String)
+}
+
+protocol SignUpViewModelEnableButton {
+    func isSignupButtonEnabled() -> Bool
+}
+
+protocol SignUpViewModelUser {
+    func queryUser(email: String, completion: @escaping (Bool) -> Void)
+    func addUser(email: String, password: String, urlString: String)
+}
+
+protocol SignUpViewModel: SignUpViewModelProperty, SignUpViewModelCheck, SignUpViewModelEnableButton, SignUpViewModelUser { }
+
+class DefaultSignUpViewModel: SignUpViewModel {
+    internal var usecase: UserUseCase
     var emailMessage: Observable<String>
     var passwordMessage: Observable<String>
     var passwordCheckMessage: Observable<String>
@@ -21,15 +45,15 @@ class SignUpViewModel {
     }
 
     func checkEmail(text: String) {
-        self.emailMessage.value = Validater.checkNumberOfDigits(text: text)
+        self.emailMessage.value = Validator.checkNumberOfDigits(text: text)
     }
 
     func checkPassword(text: String) {
-        self.passwordMessage.value = Validater.checkNumberOfDigits(text: text)
+        self.passwordMessage.value = Validator.checkNumberOfDigits(text: text)
     }
 
     func checkDiscordance(text1: String, text2: String) {
-        self.passwordCheckMessage.value = Validater.checkDiscordance(text1: text1, text2: text2)
+        self.passwordCheckMessage.value = Validator.checkDiscordance(text1: text1, text2: text2)
     }
 
     func isSignupButtonEnabled() -> Bool {
@@ -41,7 +65,7 @@ class SignUpViewModel {
             switch result {
             case .success(let isExist):
                 if isExist {
-                    self.emailMessage.value = MessageType.alreadyExistError.value
+                    self.emailMessage.value = Validator.alreadyExistErrorString
                     completion(true)
                 } else {
                     completion(false)

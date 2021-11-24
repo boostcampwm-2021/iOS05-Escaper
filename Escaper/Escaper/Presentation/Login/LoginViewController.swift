@@ -32,7 +32,7 @@ class LoginViewController: DefaultViewController {
     func create() {
         let userRepository = UserRepository(service: FirebaseService.shared)
         let userUsecase = UserUseCase(userRepository: userRepository)
-        let viewModel = LoginViewModel(usecase: userUsecase)
+        let viewModel = DefaultLoginViewModel(usecase: userUsecase)
         self.viewModel = viewModel
     }
 
@@ -97,7 +97,8 @@ class LoginViewController: DefaultViewController {
     }
 
     func designateSignupButtonState() {
-        if self.viewModel!.isLoginButtonEnabled() {
+        guard let viewModel = self.viewModel else { return }
+        if viewModel.isLoginButtonEnabled() {
             self.loginButton.backgroundColor = EDSColor.pumpkin.value
             self.loginButton.isEnabled = true
         } else {

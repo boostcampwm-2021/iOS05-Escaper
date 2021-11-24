@@ -19,12 +19,13 @@ final class UserRepository: UserRepositoryInterface {
             switch result {
             case .success(let isOverlaped):
                 if isOverlaped {
-                    completion(Result.success(true))
+                    completion(.success(true))
                 }
                 else {
-                    completion(Result.success(false))
+                    completion(.success(false))
                 }
             case .failure(let error):
+                completion(.failure(error))
                 print(error)
             }
         }
@@ -35,12 +36,13 @@ final class UserRepository: UserRepositoryInterface {
             switch result {
             case .success(let isOverlaped):
                 if isOverlaped {
-                    completion(Result.success(true))
+                    completion(.success(true))
                 }
                 else {
-                    completion(Result.success(false))
+                    completion(.success(false))
                 }
             case .failure(let error):
+                completion(.failure(error))
                 print(error)
             }
         }
