@@ -157,11 +157,25 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
 
 extension RecordViewController: RecordDefaultGuideViewDelegate {
     func loginButtonTouched() {
-        // TODO: - LoginViewController Show
+        let loginViewController = LoginViewController()
+        loginViewController.create(delegate: self)
+        self.present(loginViewController, animated: true)
     }
 
     func signUpButtonTouched() {
-        // TODO: - SignUpViewController Show
+        let signUpViewController = SignUpViewController()
+        signUpViewController.create(delegate: self)
+        self.present(signUpViewController, animated: true)
+    }
+}
+
+extension RecordViewController: LoginViewControllerDelegate, SignUpViewControllerDelegate {
+    func loginSuccessed() {
+        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+    }
+
+    func signUpSuccessed() {
+        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
     }
 }
 

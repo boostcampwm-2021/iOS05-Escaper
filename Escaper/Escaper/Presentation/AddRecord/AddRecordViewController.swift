@@ -54,7 +54,7 @@ final class AddRecordViewController: DefaultViewController {
     }
 
     @objc func saveRecordButtonTapped() {
-        let userEmail = "wansook0316@gmail.com"
+        let userEmail = UserSupervisor.shared.email
         guard let roomId = self.viewModel?.roomId else { return }
         let image = self.recordView.fetchSelectedImage()
         ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in

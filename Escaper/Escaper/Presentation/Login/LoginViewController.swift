@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate: AnyObject {
+    func loginSuccessed()
+}
+
 class LoginViewController: DefaultViewController {
     enum Constant {
         static let shortHorizontalSpace = CGFloat(30)
@@ -16,24 +20,27 @@ class LoginViewController: DefaultViewController {
         static let middleVerticalSpace = CGFloat(60)
         static let longVerticalSpace = CGFloat(75)
         static let textFieldHeight = CGFloat(60)
+        static let defaultSpace = CGFloat(15)
         static let loginButtonHeight = CGFloat(45)
     }
+
+    private weak var delegate: LoginViewControllerDelegate?
 
     private var viewModel: LoginViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.create()
         self.configure()
         self.configureLayout()
         self.bindViewModel()
     }
 
-    func create() {
+    func create(delegate: LoginViewControllerDelegate) {
         let userRepository = UserRepository(service: FirebaseService.shared)
         let userUsecase = UserUseCase(userRepository: userRepository)
         let viewModel = DefaultLoginViewModel(usecase: userUsecase)
         self.viewModel = viewModel
+        self.delegate = delegate
     }
 
     func bindViewModel() {
@@ -45,6 +52,13 @@ class LoginViewController: DefaultViewController {
         }
     }
 
+    private var cancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("취소", for: .normal)
+        button.setTitleColor(EDSColor.bloodyBurgundy.value, for: .normal)
+        button.backgroundColor = .clear
+        return button
+    }()
     private var pumpkinImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = EDSImage.loginPumpkin.value
@@ -66,13 +80,7 @@ class LoginViewController: DefaultViewController {
         button.layer.masksToBounds = true
         return button
     }()
-    private var guideLabel: UILabel = EDSLabel.b02R(text: "계정이 없으신가요?", color: EDSColor.skullLightWhite)
-    private var signupButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("회원가입", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        return button
-    }()
+
     private var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillProportionally
@@ -80,20 +88,26 @@ class LoginViewController: DefaultViewController {
         return stackView
     }()
 
-    @objc func loginButtonTapped() {
-        self.viewModel?.confirmUser(email: (self.emailInputView.textField?.text)!, password: (self.passwordInputView.textField?.text)!) { isConfirmed in
-            if isConfirmed {
-                print("로그인 성공")
-                // 로그인 성공
-            } else {
-                print("로그인 실패")
-                self.designateSignupButtonState()
-            }
-        }
+    @objc func cancelButtonTapped() {
+        self.dismiss(animated: true)
     }
 
-    @objc func signupButtonTapped() {
-        self.present(SignUpViewController(), animated: true, completion: nil)
+    @objc func loginButtonTapped() {
+        guard let email = self.emailInputView.textField?.text,
+              let password = self.passwordInputView.textField?.text else { return }
+        self.viewModel?.confirmUser(email: email, password: password) { result in
+            switch result {
+            case .success(let user):
+                let imageURLString = user.imageURL
+                UserSupervisor.shared.login(email: email, imageURLString: imageURLString)
+                self.delegate?.loginSuccessed()
+                self.dismiss(animated: true)
+            case .failure(.notExist):
+                self.designateSignupButtonState()
+            case .failure(.networkUnconneted):
+                print(UserError.networkUnconneted)
+            }
+        }
     }
 
     func designateSignupButtonState() {
@@ -117,25 +131,28 @@ extension LoginViewController: UITextFieldDelegate {
 
 extension LoginViewController {
     func configure() {
-        self.configureStackView()
         self.emailInputView.injectDelegate(self)
         self.passwordInputView.injectDelegate(self)
+        self.cancelButton.addTarget(self, action: #selector(self.cancelButtonTapped), for: .touchUpInside)
         self.loginButton.addTarget(self, action: #selector(self.loginButtonTapped), for: .touchUpInside)
-        self.signupButton.addTarget(self, action: #selector(self.signupButtonTapped), for: .touchUpInside)
     }
 
     func configureLayout() {
+        self.configureCancelButtonLayout()
         self.configurePumpkinImageViewLayout()
         self.configureLoginLabelLayout()
         self.configureEmailInputViewLayout()
         self.configurePasswordInputViewLayout()
-        self.configureStackViewLayout()
         self.configureLoginButtonLayout()
     }
 
-    func configureStackView() {
-        self.stackView.addArrangedSubview(self.guideLabel)
-        self.stackView.addArrangedSubview(self.signupButton)
+    func configureCancelButtonLayout() {
+        self.cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.cancelButton)
+        NSLayoutConstraint.activate([
+            self.cancelButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: Constant.defaultSpace),
+            self.cancelButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.defaultSpace)
+        ])
     }
 
     func configurePumpkinImageViewLayout() {
@@ -181,20 +198,11 @@ extension LoginViewController {
         ])
     }
 
-    func configureStackViewLayout() {
-        self.stackView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(self.stackView)
-        NSLayoutConstraint.activate([
-            self.stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -Constant.longVerticalSpace),
-            self.stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        ])
-    }
-
     func configureLoginButtonLayout() {
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.loginButton)
         NSLayoutConstraint.activate([
-            self.loginButton.bottomAnchor.constraint(equalTo: self.stackView.topAnchor, constant: -Constant.shortVerticalSpace),
+            self.loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -Constant.middleVerticalSpace),
             self.loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.longHorizontalSpace),
             self.loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.longHorizontalSpace),
             self.loginButton.heightAnchor.constraint(equalToConstant: Constant.loginButtonHeight)
