@@ -45,12 +45,12 @@ final class RoomDetailInfoView: UIView {
 
 private extension RoomDetailInfoView {
     enum Constant {
-        static let titleLabelSize: CGFloat = 150
-        static let ratingViewHeight: CGFloat = 12
-        static let ratingViewWidth: CGFloat = 72
-        static let ratingViewAnchorY: CGFloat = 1
-        static let sideSpace: CGFloat = 16
-        static let gapSapce: CGFloat = 48
+        static let titleLabelSize = CGFloat(150)
+        static let ratingViewHeight = CGFloat(12)
+        static let ratingViewWidth = CGFloat(72)
+        static let ratingViewAnchorY = CGFloat(1)
+        static let sideSpace = CGFloat(16)
+        static let gapSapce = CGFloat(48)
     }
 
     func configureLayout() {

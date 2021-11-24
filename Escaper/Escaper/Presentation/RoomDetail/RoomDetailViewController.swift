@@ -39,15 +39,15 @@ final class RoomDetailViewController: DefaultViewController {
 
 private extension RoomDetailViewController {
     enum Constant {
-        static let stackViewSpace: CGFloat = 10
-        static let rankViewHeight: CGFloat = 60
-        static let genreImageSize: CGFloat = 180
-        static let shortVerticalSpace: CGFloat = 4
-        static let longVerticalSpace: CGFloat = 24
-        static let verticalSpace: CGFloat = 16
-        static let horizontalSpace: CGFloat = 20
-        static let DetailInfoHeight: CGFloat = 180
-        static let DetailInfoSideSpace: CGFloat = 60
+        static let stackViewSpace = CGFloat(10)
+        static let rankViewHeight = CGFloat(60)
+        static let genreImageSize = CGFloat(180)
+        static let shortVerticalSpace = CGFloat(4)
+        static let longVerticalSpace = CGFloat(24)
+        static let verticalSpace = CGFloat(16)
+        static let horizontalSpace = CGFloat(20)
+        static let DetailInfoHeight = CGFloat(180)
+        static let DetailInfoSideSpace = CGFloat(60)
     }
 
     func configureLayout() {
