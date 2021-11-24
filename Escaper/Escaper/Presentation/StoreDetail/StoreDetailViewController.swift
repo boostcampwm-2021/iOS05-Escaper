@@ -29,6 +29,7 @@ class StoreDetailViewController: DefaultViewController {
         guard let store = store else { return }
         self.inject(store: store)
         self.viewModel?.fetchRooms(ids: store.roomIds)
+        self.navigationController?.navigationBar.topItem?.title = ""
     }
 
     func create(store: Store) {
