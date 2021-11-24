@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SignUpViewControllerDelegate: AnyObject {
+    func signUpSuccessed()
+}
+
 class SignUpViewController: DefaultViewController {
     enum Constant {
         static let shortHorizontalSpace = CGFloat(30)
@@ -20,22 +24,24 @@ class SignUpViewController: DefaultViewController {
         static let signupButtonHeight = CGFloat(45)
     }
 
+    private weak var delegate: SignUpViewControllerDelegate?
+
     private var viewModel: SignUpViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.create()
         self.configure()
         self.configureLayout()
         self.pumpkinImageButtonTapped()
         self.bindViewModel()
     }
 
-    func create() {
+    func create(delegate: SignUpViewControllerDelegate) {
         let userRepository = UserRepository(service: FirebaseService.shared)
         let userUsecase = UserUseCase(userRepository: userRepository)
         let viewModel = DefaultSignUpViewModel(usecase: userUsecase)
         self.viewModel = viewModel
+        self.delegate = delegate
     }
 
     func bindViewModel() {
@@ -151,14 +157,18 @@ class SignUpViewController: DefaultViewController {
     }
 
     @objc func signupButtonTapped() {
-        ImageCacheManager.shared.uploadUser(image: self.imageView.image, userEmail: (self.emailInputView.textField?.text)!) { result in
+        guard let email = self.emailInputView.textField?.text,
+              let password = self.passwordInputView.textField?.text else { return }
+        ImageCacheManager.shared.uploadUser(image: self.imageView.image, userEmail: email) { result in
             switch result {
             case .success(let urlString):
-                self.viewModel?.queryUser(email: (self.emailInputView.textField?.text)!) { isExist in
+                self.viewModel?.queryUser(email: email) { isExist in
                     if isExist {
                         self.designateSignupButtonState()
                     } else {
-                        self.viewModel?.addUser(email: (self.emailInputView.textField?.text)!, password: (self.passwordInputView.textField?.text)!, urlString: urlString)
+                        self.viewModel?.addUser(email: email, password: password, urlString: urlString)
+                        UserSupervisor.shared.login(email: email, imageURLString: urlString)
+                        self.delegate?.signUpSuccessed()
                         self.dismiss(animated: true)
                     }
                 }

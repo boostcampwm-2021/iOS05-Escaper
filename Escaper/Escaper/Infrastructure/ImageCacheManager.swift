@@ -41,29 +41,29 @@ class ImageCacheManager {
     }
 
     func download(urlString: String, completion: @escaping DataCompletion) {
-            var filePath = URL(fileURLWithPath: cachePath)
-            guard let fileName = urlString.components(separatedBy: "/").last else { return }
-            filePath.appendPathComponent(fileName)
-            if !fileManager.fileExists(atPath: filePath.path) {
-                self.storage.reference(forURL: urlString).downloadURL { url, error in
-                    guard let url = url else { return }
-                    NetworkService.shared.downloadImage(from: url) { [weak self] result in
-                        guard let self = self else { return }
-                        switch result {
-                        case .success(let localURL):
-                            try? self.fileManager.moveItem(at: localURL, to: filePath)
-                            guard let data = try? Data(contentsOf: filePath) else { return }
-                            completion(.success(data))
-                        case .failure(let error):
-                            completion(.failure(error))
-                        }
+        var filePath = URL(fileURLWithPath: cachePath)
+        guard let fileName = urlString.components(separatedBy: "/").last else { return }
+        filePath.appendPathComponent(fileName)
+        if !fileManager.fileExists(atPath: filePath.path) {
+            self.storage.reference(forURL: urlString).downloadURL { url, error in
+                guard let url = url else { return }
+                NetworkService.shared.downloadImage(from: url) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let localURL):
+                        try? self.fileManager.moveItem(at: localURL, to: filePath)
+                        guard let data = try? Data(contentsOf: filePath) else { return }
+                        completion(.success(data))
+                    case .failure(let error):
+                        completion(.failure(error))
                     }
                 }
-            } else {
-                guard let data = try? Data(contentsOf: filePath) else { return }
-                completion(.success(data))
             }
+        } else {
+            guard let data = try? Data(contentsOf: filePath) else { return }
+            completion(.success(data))
         }
+    }
 }
 
 private extension ImageCacheManager {

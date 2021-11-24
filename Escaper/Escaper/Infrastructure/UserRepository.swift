@@ -30,19 +30,15 @@ final class UserRepository: UserRepositoryInterface {
         }
     }
 
-    func confirm(userEmail: String, userPassword: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func confirm(userEmail: String, userPassword: String, completion: @escaping (Result<User, UserError>) -> Void) {
         self.service.confirmUser(email: userEmail, password: userPassword) { result in
             switch result {
-            case .success(let isOverlaped):
-                if isOverlaped {
-                    completion(.success(true))
-                }
-                else {
-                    completion(.success(false))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-                print(error)
+            case .success(let user):
+                completion(.success(user))
+            case .failure(.notExist):
+                completion(.failure(.notExist))
+            case .failure(.networkUnconneted):
+                completion(.failure(.networkUnconneted))
             }
         }
     }

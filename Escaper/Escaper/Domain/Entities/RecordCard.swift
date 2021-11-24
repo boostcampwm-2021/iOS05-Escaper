@@ -10,7 +10,7 @@ import Foundation
 struct RecordCard: Hashable {
     var username: String
     var createdTime: Date
-    var imageURLString: String
+    var recordImageURLString: String
     var roomTitle: String
     var storeName: String
     var isSuccess: Bool
@@ -23,7 +23,7 @@ struct RecordCard: Hashable {
     init(record: Record, room: Room) {
         self.username = Helper.parseUsername(email: record.userEmail) ?? "Unknown"
         self.createdTime = record.createdTime
-        self.imageURLString = record.imageURLString
+        self.recordImageURLString = record.imageURLString
         self.roomTitle = room.title
         self.storeName = room.storeName
         self.isSuccess = record.isSuccess

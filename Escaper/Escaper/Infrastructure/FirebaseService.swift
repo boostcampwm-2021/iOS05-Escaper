@@ -31,7 +31,7 @@ protocol StoreNetwork: AnyObject {
 
 protocol UserNetwork: AnyObject {
     func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void)
-    func confirmUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func confirmUser(email: String, password: String, completion: @escaping (Result<User, UserError>) -> Void)
     func addUser(user: User)
 }
 
@@ -231,13 +231,13 @@ extension FirebaseService: UserNetwork {
             }
     }
 
-    func confirmUser(email: String, password: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func confirmUser(email: String, password: String, completion: @escaping (Result<User, UserError>) -> Void) {
         self.database.collection(Collection.users.value)
             .whereField("email", isEqualTo: email)
             .whereField("password", isEqualTo: password)
             .getDocuments { snapshot, _  in
                 if snapshot?.documents.isEmpty == true {
-                    completion(.success(false))
+                    completion(.failure(.notExist))
                     return
                 }
                 guard let document = snapshot?.documents.first else { return }
@@ -245,10 +245,12 @@ extension FirebaseService: UserNetwork {
                     try document.data(as: User.self)
                 }
                 switch result {
-                case .success:
-                    completion(.success(true))
-                case .failure(let error):
-                    completion(.failure(error))
+                case .success(let user):
+                    if let user = user {
+                        completion(.success(user))
+                    }
+                case .failure:
+                    completion(.failure(.networkUnconneted))
                 }
             }
     }

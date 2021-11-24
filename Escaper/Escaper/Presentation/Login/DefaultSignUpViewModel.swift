@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SignUpViewModelProperty {
-    var usecase: UserUseCase { get }
+    var usecase: UserUseCaseInterface { get }
     var emailMessage: Observable<String> { get set }
     var passwordMessage: Observable<String> { get set }
     var passwordCheckMessage: Observable<String> { get set }
@@ -32,7 +32,7 @@ protocol SignUpViewModelUser {
 protocol SignUpViewModel: SignUpViewModelProperty, SignUpViewModelCheck, SignUpViewModelEnableButton, SignUpViewModelUser { }
 
 class DefaultSignUpViewModel: SignUpViewModel {
-    internal var usecase: UserUseCase
+    internal var usecase: UserUseCaseInterface
     var emailMessage: Observable<String>
     var passwordMessage: Observable<String>
     var passwordCheckMessage: Observable<String>

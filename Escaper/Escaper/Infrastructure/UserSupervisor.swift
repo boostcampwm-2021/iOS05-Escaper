@@ -11,6 +11,7 @@ class UserSupervisor {
     static let shared = UserSupervisor()
 
     private(set) var email: String = ""
+    private(set) var imageURLString: String = ""
 
     private init() {}
 
@@ -18,11 +19,13 @@ class UserSupervisor {
         return !self.email.isEmpty
     }
 
-    func login(email: String) {
+    func login(email: String, imageURLString: String) {
         self.email = email
+        self.imageURLString = imageURLString
     }
 
     func logout() {
         self.email = ""
+        self.imageURLString = ""
     }
 }

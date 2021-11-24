@@ -8,13 +8,13 @@
 import Foundation
 
 protocol LoginViewModelProperty {
-    var usecase: UserUseCase { get set }
+    var usecase: UserUseCaseInterface { get set }
     var emailMessage: Observable<String> { get set }
     var passwordMessage: Observable<String> { get set }
 }
 
 protocol LoginViewModelConfirm {
-    func confirmUser(email: String, password: String, completion: @escaping (Bool) -> Void)
+    func confirmUser(email: String, password: String, completion: @escaping (Result<User, UserError>) -> Void)
 }
 
 protocol LoginViewModelCheckButton {
@@ -28,7 +28,7 @@ protocol LoginViewModelEditable {
 protocol LoginViewModel: LoginViewModelProperty, LoginViewModelConfirm, LoginViewModelCheckButton, LoginViewModelEditable { }
 
 class DefaultLoginViewModel: LoginViewModel {
-    var usecase: UserUseCase
+    var usecase: UserUseCaseInterface
     var emailMessage: Observable<String>
     var passwordMessage: Observable<String>
 
@@ -38,19 +38,17 @@ class DefaultLoginViewModel: LoginViewModel {
         self.passwordMessage = Observable("")
     }
 
-    func confirmUser(email: String, password: String, completion: @escaping (Bool) -> Void) {
+    func confirmUser(email: String, password: String, completion: @escaping (Result<User, UserError>) -> Void) {
         self.usecase.confirm(userEmail: email, userPassword: password) { result in
             switch result {
-            case .success(let isConfirmed):
-                if isConfirmed {
-                    completion(true)
-                } else {
-                    self.emailMessage.value = Validator.notConfirmedErrorString
-                    self.passwordMessage.value = Validator.notConfirmedErrorString
-                    completion(false)
-                }
-            case .failure(let error):
-                print(error)
+            case .success(let user):
+                completion(.success(user))
+            case .failure(.notExist):
+                self.emailMessage.value = Validator.notConfirmedErrorString
+                self.passwordMessage.value = Validator.notConfirmedErrorString
+                completion(.failure(.notExist))
+            case .failure(.networkUnconneted):
+                completion(.failure(.networkUnconneted))
             }
         }
     }
