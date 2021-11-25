@@ -13,15 +13,13 @@ protocol SignUpViewControllerDelegate: AnyObject {
 
 class SignUpViewController: DefaultViewController {
     enum Constant {
-        static let shortHorizontalSpace = CGFloat(30)
-        static let middleHorizontalSpace = CGFloat(60)
-        static let longHorizontalSpace = CGFloat(110)
-        static let shortVerticalSpace = CGFloat(20)
-        static let middleVerticalSpace = CGFloat(60)
-        static let longVerticalSpace = CGFloat(75)
-        static let textFieldHeight = CGFloat(60)
+        static let middleVerticalSpace = CGFloat(40)
+        static let signupButtonHeight = CGFloat(50)
         static let defaultSpace = CGFloat(15)
-        static let signupButtonHeight = CGFloat(45)
+        static let loginButtonHeight = CGFloat(50)
+        static let inputViewWidthRatio = CGFloat(0.8)
+        static let inputViewHeightRatio = CGFloat(0.1)
+        static let middleWidthRatio = CGFloat(0.6)
     }
 
     private weak var delegate: SignUpViewControllerDelegate?
@@ -84,28 +82,28 @@ class SignUpViewController: DefaultViewController {
     }()
     private var pumpkinImageButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "loginPumpkin"), for: .normal)
+        button.setImage(EDSImage.loginPumpkin.value, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
         return button
     }()
     private var ghostImageButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "signupGhost"), for: .normal)
+        button.setImage(EDSImage.signupGhost.value, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
         return button
     }()
     private var skullImageButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "signupSkull"), for: .normal)
+        button.setImage(EDSImage.signupSkull.value, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
         return button
     }()
     private var addImageButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "signupPlus"), for: .normal)
+        button.setImage(EDSImage.signupPlus.value, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
         return button
@@ -117,7 +115,7 @@ class SignUpViewController: DefaultViewController {
         let button = UIButton()
         button.setTitle("회원가입", for: .normal)
         button.setTitleColor(EDSColor.skullLightWhite.value, for: .normal)
-        button.layer.cornerRadius = CGFloat(20)
+        button.layer.cornerRadius = CGFloat(15)
         button.layer.masksToBounds = true
         button.backgroundColor = EDSColor.gloomyPurple.value
         button.isEnabled = false
@@ -159,7 +157,8 @@ class SignUpViewController: DefaultViewController {
     @objc func signupButtonTapped() {
         guard let email = self.emailInputView.textField?.text,
               let password = self.passwordInputView.textField?.text else { return }
-        ImageCacheManager.shared.uploadUser(image: self.imageView.image, userEmail: email) { result in
+
+        ImageCacheManager.shared.uploadUser(image: userImage(), userEmail: email) { result in
             switch result {
             case .success(let urlString):
                 self.viewModel?.queryUser(email: email) { isExist in
@@ -186,6 +185,24 @@ class SignUpViewController: DefaultViewController {
             self.signupButton.backgroundColor = EDSColor.gloomyPurple.value
             self.signupButton.isEnabled = false
         }
+    }
+
+    func userImage() -> UIImage {
+        var userImage: UIImage?
+        switch self.imageView.image {
+        case EDSImage.loginPumpkin.value:
+            userImage = EDSImage.comedyPreview.value
+        case EDSImage.signupGhost.value:
+            userImage = EDSImage.romancePreview.value
+        case EDSImage.signupSkull.value:
+            userImage = EDSImage.fearPreview.value
+        case EDSImage.signupPlus.value:
+            userImage = imageView.image
+        default:
+            break
+        }
+        guard let image = userImage else { return UIImage() }
+        return image
     }
 }
 
@@ -280,8 +297,8 @@ extension SignUpViewController {
         self.view.addSubview(self.imageView)
         NSLayoutConstraint.activate([
             self.imageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: Constant.middleVerticalSpace),
-            self.imageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.longHorizontalSpace),
-            self.imageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.longHorizontalSpace),
+            self.imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.imageView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.45),
             self.imageView.heightAnchor.constraint(equalTo: self.imageView.widthAnchor)
         ])
     }
@@ -290,9 +307,8 @@ extension SignUpViewController {
         self.signupLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.signupLabel)
         NSLayoutConstraint.activate([
-            self.signupLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Constant.shortVerticalSpace),
-            self.signupLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.longHorizontalSpace),
-            self.signupLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.longHorizontalSpace)
+            self.signupLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
+            self.signupLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
 
@@ -300,10 +316,10 @@ extension SignUpViewController {
         self.imageStackView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.imageStackView)
         NSLayoutConstraint.activate([
-            self.imageStackView.topAnchor.constraint(equalTo: self.signupLabel.bottomAnchor, constant: Constant.shortVerticalSpace),
-            self.imageStackView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.middleHorizontalSpace),
-            self.imageStackView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.middleHorizontalSpace),
-            self.imageStackView.heightAnchor.constraint(equalToConstant: Constant.textFieldHeight)
+            self.imageStackView.topAnchor.constraint(equalTo: self.signupLabel.bottomAnchor, constant: Constant.middleVerticalSpace),
+            self.imageStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.imageStackView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.08),
+            self.imageStackView.widthAnchor.constraint(equalTo: self.imageStackView.heightAnchor, multiplier: 4, constant: 45)
         ])
     }
 
@@ -324,10 +340,10 @@ extension SignUpViewController {
         self.emailInputView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.emailInputView)
         NSLayoutConstraint.activate([
-            self.emailInputView.topAnchor.constraint(equalTo: self.imageStackView.bottomAnchor, constant: Constant.longVerticalSpace),
-            self.emailInputView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.shortHorizontalSpace),
-            self.emailInputView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.shortHorizontalSpace),
-            self.emailInputView.heightAnchor.constraint(equalToConstant: Constant.textFieldHeight)
+            self.emailInputView.topAnchor.constraint(equalTo: self.imageStackView.bottomAnchor, constant: Constant.middleVerticalSpace),
+            self.emailInputView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.emailInputView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: Constant.inputViewHeightRatio),
+            self.emailInputView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.inputViewWidthRatio)
         ])
     }
 
@@ -335,10 +351,10 @@ extension SignUpViewController {
         self.passwordInputView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.passwordInputView)
         NSLayoutConstraint.activate([
-            self.passwordInputView.topAnchor.constraint(equalTo: self.emailInputView.bottomAnchor, constant: Constant.shortVerticalSpace),
-            self.passwordInputView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.shortHorizontalSpace),
-            self.passwordInputView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.shortHorizontalSpace),
-            self.passwordInputView.heightAnchor.constraint(equalToConstant: Constant.textFieldHeight)
+            self.passwordInputView.topAnchor.constraint(equalTo: self.emailInputView.bottomAnchor),
+            self.passwordInputView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.passwordInputView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: Constant.inputViewHeightRatio),
+            self.passwordInputView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.inputViewWidthRatio)
         ])
     }
 
@@ -346,10 +362,10 @@ extension SignUpViewController {
         self.passwordCheckInputView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.passwordCheckInputView)
         NSLayoutConstraint.activate([
-            self.passwordCheckInputView.topAnchor.constraint(equalTo: self.passwordInputView.bottomAnchor, constant: Constant.shortVerticalSpace),
-            self.passwordCheckInputView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.shortHorizontalSpace),
-            self.passwordCheckInputView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.shortHorizontalSpace),
-            self.passwordCheckInputView.heightAnchor.constraint(equalToConstant: Constant.textFieldHeight)
+            self.passwordCheckInputView.topAnchor.constraint(equalTo: self.passwordInputView.bottomAnchor),
+            self.passwordCheckInputView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.passwordCheckInputView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: Constant.inputViewHeightRatio),
+            self.passwordCheckInputView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.inputViewWidthRatio)
         ])
     }
 
@@ -357,9 +373,9 @@ extension SignUpViewController {
         self.signupButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.signupButton)
         NSLayoutConstraint.activate([
-            self.signupButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -Constant.longVerticalSpace),
-            self.signupButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.longHorizontalSpace),
-            self.signupButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.longHorizontalSpace),
+            self.signupButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100),
+            self.signupButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.signupButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.middleWidthRatio),
             self.signupButton.heightAnchor.constraint(equalToConstant: Constant.signupButtonHeight)
         ])
     }
