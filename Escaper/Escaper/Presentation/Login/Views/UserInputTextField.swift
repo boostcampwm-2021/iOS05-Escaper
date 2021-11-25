@@ -84,13 +84,13 @@ extension UserInputTextField {
         switch viewType {
         case .email:
             self.imageView.image = EDSImage.emailIcon.value
-            self.attributedPlaceholder = NSAttributedString(string: "이메일", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any])
+            self.attributedPlaceholder = NSAttributedString(string: "이메일", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)])
         case .password:
             self.imageView.image = EDSImage.passwordIcon.value
-            self.attributedPlaceholder = NSAttributedString(string: "비밀번호", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any])
+            self.attributedPlaceholder = NSAttributedString(string: "비밀번호", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)])
         case .passwordCheck:
             self.imageView.image = EDSImage.passwordIcon.value
-            self.attributedPlaceholder = NSAttributedString(string: "비밀번호 확인", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any])
+            self.attributedPlaceholder = NSAttributedString(string: "비밀번호 확인", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)])
         }
     }
 
