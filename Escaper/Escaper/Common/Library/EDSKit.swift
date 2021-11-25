@@ -110,10 +110,12 @@ enum EDSKit {
 
     enum Image {
         case chevronDown
+        case comedyPreview
         case crown
         case distanceIcon
         case emailIcon
         case eyeIcon
+        case fearPreview
         case genreIcon
         case keyMarker
         case loginPumpkin
@@ -123,6 +125,7 @@ enum EDSKit {
         case recordBook
         case recordCard
         case recordCandle
+        case romancePreview
         case signupGhost
         case signupPlus
         case signupSkull
