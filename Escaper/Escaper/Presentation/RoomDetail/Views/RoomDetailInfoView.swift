@@ -37,9 +37,6 @@ final class RoomDetailInfoView: UIView {
         self.levelRatingView.fill(rating: Rating(rawValue: room.difficulty)!)
         self.satisfactionRatingView.fill(rating: Rating(rawValue: Int(room.averageSatisfaction))!)
         self.genreLabel.text = room.genre.name
-        // TODO: - StoreUsecase 추가하여 Store 정보를 가져와서 반영해야 함
-//        self.homepageLabel.text = room.homepage
-//        self.phoneNumberLabel.text = room.telephone
     }
 }
 
