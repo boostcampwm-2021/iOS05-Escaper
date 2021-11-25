@@ -196,10 +196,8 @@ class SignUpViewController: DefaultViewController {
             userImage = EDSImage.romancePreview.value
         case EDSImage.signupSkull.value:
             userImage = EDSImage.fearPreview.value
-        case EDSImage.signupPlus.value:
-            userImage = imageView.image
         default:
-            break
+            userImage = imageView.image
         }
         guard let image = userImage else { return UIImage() }
         return image
