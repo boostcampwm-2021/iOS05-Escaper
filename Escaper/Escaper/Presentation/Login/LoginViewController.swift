@@ -14,6 +14,7 @@ protocol LoginViewControllerDelegate: AnyObject {
 class LoginViewController: DefaultViewController {
     enum Constant {
         static let shortVerticalSpace = CGFloat(20)
+        static let middleVerticalSpace = CGFloat(40)
         static let longVerticalSpace = CGFloat(75)
         static let defaultSpace = CGFloat(15)
         static let loginButtonHeight = CGFloat(50)
@@ -177,7 +178,7 @@ extension LoginViewController {
         self.emailInputView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.emailInputView)
         NSLayoutConstraint.activate([
-            self.emailInputView.topAnchor.constraint(equalTo: self.loginLabel.bottomAnchor, constant: Constant.longVerticalSpace),
+            self.emailInputView.topAnchor.constraint(equalTo: self.loginLabel.bottomAnchor, constant: Constant.middleVerticalSpace),
             self.emailInputView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.emailInputView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.inputViewWidthRatio),
             self.emailInputView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: Constant.inputViewHeightRatio)
