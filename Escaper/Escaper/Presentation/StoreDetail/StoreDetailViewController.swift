@@ -13,7 +13,7 @@ class StoreDetailViewController: DefaultViewController {
     private var viewModel: StoreDetailViewModelInterface?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
     private var storeTitleLabel: UILabel = EDSLabel.h01B(color: .pumpkin)
-    private var infoDescriptionStackView: InfoDescriptionStackView = InfoDescriptionStackView(frame: .zero)
+    private var infoDescriptionStackView = InfoDescriptionStackView(frame: .zero)
     private var roomOverViewTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
