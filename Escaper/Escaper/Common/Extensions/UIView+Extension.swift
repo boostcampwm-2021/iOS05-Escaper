@@ -1,5 +1,5 @@
 //
-//  UIView+ScaledSize.swift
+//  UIView+Extension.swift
 //  Escaper
 //
 //  Created by TakHyun Jung on 2021/11/13.
