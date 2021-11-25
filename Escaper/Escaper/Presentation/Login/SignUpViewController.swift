@@ -373,7 +373,7 @@ extension SignUpViewController {
         self.signupButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.signupButton)
         NSLayoutConstraint.activate([
-            self.signupButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100),
+            self.signupButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -70),
             self.signupButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.signupButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.middleWidthRatio),
             self.signupButton.heightAnchor.constraint(equalToConstant: Constant.signupButtonHeight)
