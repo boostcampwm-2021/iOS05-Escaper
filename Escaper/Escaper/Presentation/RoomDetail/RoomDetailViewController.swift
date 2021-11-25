@@ -15,7 +15,13 @@ final class RoomDetailViewController: DefaultViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private let titleLabel = EDSLabel.h01B(color: .skullLightWhite)
+    private let titleLabel: UILabel = {
+        let label = EDSLabel.h01B(color: .skullLightWhite)
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+
     private let storeNameLabel = EDSLabel.b01R(color: .skullGrey)
     private let descriptionLabel: UILabel = {
         let label = EDSLabel.b01R(color: .skullLightWhite)
@@ -95,8 +101,9 @@ private extension RoomDetailViewController {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([
-            self.titleLabel.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor),
-            self.titleLabel.topAnchor.constraint(equalTo: self.genreImageView.bottomAnchor, constant: Constant.longVerticalSpace)
+            self.titleLabel.topAnchor.constraint(equalTo: self.genreImageView.bottomAnchor, constant: Constant.longVerticalSpace),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.horizontalSpace),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -Constant.horizontalSpace)
         ])
     }
 
