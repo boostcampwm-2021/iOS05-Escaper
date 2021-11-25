@@ -35,12 +35,17 @@ protocol UserNetwork: AnyObject {
     func addUser(user: User)
 }
 
+protocol FeedbackNetwork: AnyObject {
+    func addFeedback(feedbackDTO: FeedbackDTO)
+}
+
 final class FirebaseService: RoomListNetwork {
     enum Collection: String {
         case users
         case rooms
         case records
         case stores
+        case feedbacks
 
         var value: String {
             return self.rawValue
@@ -258,5 +263,12 @@ extension FirebaseService: UserNetwork {
     func addUser(user: User) {
         let path = self.database.collection(Collection.users.value).document("\(user.name)")
         path.setData(user.toDictionary())
+    }
+}
+
+extension FirebaseService: FeedbackNetwork {
+    func addFeedback(feedbackDTO: FeedbackDTO) {
+        let path = self.database.collection(Collection.feedbacks.value).document()
+        path.setData(feedbackDTO.toDictionary())
     }
 }
