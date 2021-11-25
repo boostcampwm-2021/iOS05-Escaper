@@ -10,6 +10,7 @@
 		0CEE8B32274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F06844E27315D6300E2C789 /* GoogleService-Info.plist */; };
+		1F43615B274FE8CA00331C6F /* RatingTempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingTempView.swift */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
 		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
 		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
@@ -68,7 +69,6 @@
 		3EBB5AA0274E35C000715F89 /* RecordDefaultGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA50E5274BD2320030C17C /* RecordDefaultGuideView.swift */; };
 		3EBB5AA1274E35C000715F89 /* RecordEmptyGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA50E7274BD2470030C17C /* RecordEmptyGuideView.swift */; };
 		3EBB5AA2274E35C000715F89 /* RecordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A5273AA3190045ADDE /* RecordCollectionViewCell.swift */; };
-		3EBB5AA3274E35C000715F89 /* RecordHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AD273BF0630045ADDE /* RecordHeadView.swift */; };
 		3EBB5AA4274E35C000715F89 /* RecordUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A7273B92F50045ADDE /* RecordUserView.swift */; };
 		3EBB5AA5274E35C000715F89 /* RecordStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902A9273B9C850045ADDE /* RecordStarView.swift */; };
 		3EBB5AA6274E35C000715F89 /* RecordResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5902AB273BA1DC0045ADDE /* RecordResultView.swift */; };
@@ -149,6 +149,7 @@
 		1F0CAED42733E03600389CFA /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		1F0CAED62733E04F00389CFA /* RoomListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListRepository.swift; sourceTree = "<group>"; };
 		1F22E651273D14D700409A96 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
+		1F43615A274FE8CA00331C6F /* RatingTempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTempView.swift; sourceTree = "<group>"; };
 		1F6DC241274C7E2D0063C632 /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepositoryInterface.swift; sourceTree = "<group>"; };
 		1F6DC245274C81AF0063C632 /* StoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUseCase.swift; sourceTree = "<group>"; };
@@ -246,7 +247,6 @@
 		3E5902A7273B92F50045ADDE /* RecordUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordUserView.swift; sourceTree = "<group>"; };
 		3E5902A9273B9C850045ADDE /* RecordStarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordStarView.swift; sourceTree = "<group>"; };
 		3E5902AB273BA1DC0045ADDE /* RecordResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordResultView.swift; sourceTree = "<group>"; };
-		3E5902AD273BF0630045ADDE /* RecordHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordHeadView.swift; sourceTree = "<group>"; };
 		3E77D55C274BC41E0042133B /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		3E77D55E274BC8E70042133B /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		3E77D560274BC9550042133B /* UserRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryInterface.swift; sourceTree = "<group>"; };
@@ -394,6 +394,7 @@
 				25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */,
 				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
 				251031BB27339C0200BD07BF /* RatingView.swift */,
+				1F43615A274FE8CA00331C6F /* RatingTempView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -719,7 +720,6 @@
 			isa = PBXGroup;
 			children = (
 				3E5902A5273AA3190045ADDE /* RecordCollectionViewCell.swift */,
-				3E5902AD273BF0630045ADDE /* RecordHeadView.swift */,
 				3E5902A7273B92F50045ADDE /* RecordUserView.swift */,
 				3E5902A9273B9C850045ADDE /* RecordStarView.swift */,
 				3E5902AB273BA1DC0045ADDE /* RecordResultView.swift */,
@@ -848,6 +848,7 @@
 				3EBB5ADE274E35CB00715F89 /* StoreDetailViewModel.swift in Sources */,
 				3EBB5ADF274E35CB00715F89 /* HorizontalLineView.swift in Sources */,
 				3EBB5AE0274E35CB00715F89 /* StoreDTO.swift in Sources */,
+				1F43615B274FE8CA00331C6F /* RatingTempView.swift in Sources */,
 				3EBB5A7E274E35C000715F89 /* InjectionDTOs.swift in Sources */,
 				3EBB5A7F274E35C000715F89 /* DataInjection.swift in Sources */,
 				3EBB5A80274E35C000715F89 /* AppDelegate.swift in Sources */,
@@ -889,7 +890,6 @@
 				3EBB5AA0274E35C000715F89 /* RecordDefaultGuideView.swift in Sources */,
 				3EBB5AA1274E35C000715F89 /* RecordEmptyGuideView.swift in Sources */,
 				3EBB5AA2274E35C000715F89 /* RecordCollectionViewCell.swift in Sources */,
-				3EBB5AA3274E35C000715F89 /* RecordHeadView.swift in Sources */,
 				3EBB5AA4274E35C000715F89 /* RecordUserView.swift in Sources */,
 				3EBB5AA5274E35C000715F89 /* RecordStarView.swift in Sources */,
 				3EBB5AA6274E35C000715F89 /* RecordResultView.swift in Sources */,
@@ -1088,18 +1088,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Escaper/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다.(필수권한)";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다.(필수권한)";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다. (필수권한)";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "기록을 추가하기 위해 권한이 필요합니다. (필수권한)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.boostcamp.Escaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1119,18 +1120,19 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Escaper/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다.(필수권한)";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다.(필수권한)";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다. (필수권한)";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "기록을 추가하기 위해 권한이 필요합니다. (필수권한)";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2;
+				MARKETING_VERSION = 0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.boostcamp.Escaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
