@@ -1,0 +1,646 @@
+{
+  "stores": [
+    {
+      "storeName": "머더파커 건대점",
+      "telephone": "02-497-2999",
+      "homepage": "http://www.mdpk.co.kr/",
+      "address": "서울 광진구 아차산로 213",
+      "rooms": [
+        {
+          "title": "음대출신 김수학",
+          "genre": "음악",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "버클리음대 출신, 지금은 망해가는 작은 악기사를 운영중인 우리 아빠 김수학. 아저씨들이랑 고스톱 치러 간다고 나한테 가게를 잠깐 보고 있으라고 했다. 아빠가 오시기 전에 오천원만 훔쳐서 PC방 가야지."
+        },
+        {
+          "title": "파커4",
+          "genre": "범죄",
+          "difficulty": 5,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 80,
+          "description": "살인마 파커에게 잡혀 온 네 명의 사람. 당신은 이 곳을 탈출해 파커에게서 벗어나야한다."
+        },
+        {
+          "title": "우리 꼰대 진분홍",
+          "genre": "잠입",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "할아버지댁에 심부름을 갔다가 집으로 향하던 중... ‘어라? 내 폰 어딨지?’ 헐... 휴대폰을 두고 와버렸다. 친구들한테 카톡으로 할아버지 꼰대라고 엄청 해놨는데... 폰 잠금도 안 해두고 말이다. 할아버지가 집에 오시기 전에 빨리 폰을 찾아 나와야 한다."
+        },
+        {
+          "title": "여행",
+          "genre": "모험",
+          "difficulty": 3,
+          "activity": "많음",
+          "maxParty": 3,
+          "timeLimit": 70,
+          "description": "허구헌 날 술만 마시고, 늦게 들어오고, 집안일은 나 몰라라하는 남편. 이제 더이상은 못 참겠다. 기필코 오늘은 떠날거야."
+        },
+        {
+          "title": "꽁노리",
+          "genre": "스릴러",
+          "difficulty": 2,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "이따 병후니랑 지후니랑 꽁을 차기로 햇따."
+        },
+        {
+          "title": "어은꿈이진루다",
+          "genre": "코미디",
+          "difficulty": 3,
+          "activity": "많음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "나는 방탈출 제작자. 테마 오픈이 코앞이라 오늘도 재촉전화가 왔다. 하...어떡하지? 문제가 생각이 안 난다. 일단 집에 가서 한숨 자고 생각해볼까?"
+        }
+      ]
+    },
+    {
+      "storeName": "넥스트에디션 건대점",
+      "telephone": "050-7417-6000",
+      "homepage": "https://www.nextedition.co.kr/",
+      "address": "서울 광진구 자양동 17-5",
+      "rooms": [
+        {
+          "title": "몬스터 : 10800",
+          "genre": "판타지",
+          "difficulty": 4,
+          "activity": "많음",
+          "maxParty": 4,
+          "timeLimit": 70,
+          "description": "\"내 안에 몬스터가 깨어나고 있어\" 순간의 잘못된 선택이 커다란 악마를 만들어 냈다. 1분 1초, 급박함과 긴장감 속에 서서히 닥쳐오는 재앙. 내 손으로 만든 이 괴물은 내 손으로 직접 처리하겠어. 끝을 모를 어둠 속에서, 점점 커져만 가는 몬스터를 막을 수 있을 것인가!"
+        },
+        {
+          "title": "이불 밖은 위험해",
+          "genre": "감성",
+          "difficulty": 2,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "…"
+        },
+        {
+          "title": "B아파트 13동 1313호",
+          "genre": "공포",
+          "difficulty": 3,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "미스테리 동호회 \"블랙홀\"의 특별회원인 당신 오늘밤 \"블랙홀\"의 첫 전국 정모가 열린다 모임 장소는 일가족이 살해 했다는 저주받은 아파트 일가족이 살해 당한 후 이사오는 사람마다 하루도 버티지 못하고 도망나온다는 저주받은 B아파트 13동 1313호아파트 당신은 이곳에서 무사히 살아 나갈수 있을것인가."
+        },
+        {
+          "title": "다시 봄",
+          "genre": "감성",
+          "difficulty": 4,
+          "activity": "많음",
+          "maxParty": 4,
+          "timeLimit": 80,
+          "description": "이건 아주 진부한 이야기입니다."
+        },
+        {
+          "title": "썸",
+          "genre": "로맨스",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "친구라기엔 너무 가깝고, 연인이라기엔 조금은 먼 우리. 우리는.. 어떤 사이일까?"
+        },
+        {
+          "title": "SOUL CHASER - 실종",
+          "genre": "야외",
+          "difficulty": 4,
+          "activity": "많음",
+          "maxParty": 2,
+          "timeLimit": 90,
+          "description": "소울 체이서란, 이승에서 떠나지 못한 영혼들을 추적하여 찾아내는 자들이다. 이번 영혼에게는 어떠한 사연이 있는 것일까? * 야외에서 진행되는 테마입니다."
+        }
+      ]
+    },
+    {
+      "storeName": "넥스트에디션 건대2호점",
+      "telephone": "050-7417-8580",
+      "homepage": "https://www.nextedition.co.kr/",
+      "address": "서울 광진구 아차산로 192",
+      "rooms": [
+        {
+          "title": "커튼콜",
+          "genre": "판타지",
+          "difficulty": 3,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "오늘도 우리 인형극장을 찾아주셔서 감사합니다. 인형들과 함께하는 신나거나 감동적인 이야기들. 오늘은 과연 어떤 이야기가 여러분을 기다리고 있을까요? 바로 지금, 오늘 이야기의 화려한 막이 올라갑니다!"
+        },
+        {
+          "title": "빛을 구해줘",
+          "genre": "판타지",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "저희 빛의 요정들은 태양의 빛을 행성들에게 전달하는 역할을 하고 있어요. 오늘도 많은 분들이 견학 신청을 해주셨군요! 자, 그럼 지금부터 저희 요정들과 함께 빛이 만들어지는 과정을 살펴보도록 할까요?"
+        },
+        {
+          "title": "동화나라 수비대",
+          "genre": "모험",
+          "difficulty": 5,
+          "activity": "보통",
+          "maxParty": 4,
+          "timeLimit": 80,
+          "description": "귀여운 동화들로 이루어진 동화나라. 정체 모를 악당의 등장으로, 동화나라의 동화들이 엉망이 되고 있다! 이전과는 다른 이름, 다른 모습으로 동화나라를 찾은 여러분! 원작과 달라진 동화의 내용들을 원래대로 되돌려 놓아야만 한다! 동화나라 친구들의 평화와 안녕을 위해! 동화나라 수비대! 출동!!"
+        },
+        {
+          "title": "어제, 그리고 오늘",
+          "genre": "드라마",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "어제와 다른 오늘을 살아갑니다 이불밖은 위험해의 속편입니다. 세계관이 연결되어 있어서 전작을 하시고 진행하시는것을 추천드립니다. :D (전작을 하시지 않아도 플레이 하시는데 지장은 없습니다!)"
+        }
+      ]
+    },
+    {
+      "storeName": "마스터키 건대점",
+      "telephone": "02-462-5655",
+      "homepage": "http://www.master-key.co.kr/",
+      "address": "서울 광진구 자양동 24-2",
+      "rooms": [
+        {
+          "title": "딜리버",
+          "genre": "스릴러",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "택배왔습니다."
+        },
+        {
+          "title": "디데이",
+          "genre": "드라마",
+          "difficulty": 4,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 70,
+          "description": "시나리오 쓰고 자빠졌네"
+        },
+        {
+          "title": "36.5 마온술사의 정원",
+          "genre": "감성",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "상처입고 얼어붙은 마음을 녹여주는 그곳, 36.5 마온술사의 정원. 여기서 그대를 기다리고 있겠습니다."
+        }
+      ]
+    },
+    {
+      "storeName": "비밀의화원 포레스트점",
+      "telephone": "050-71369-4440",
+      "homepage": "http://www.secretgardenescape.com/",
+      "address": "서울 광진구 화양동 8-8",
+      "rooms": [
+        {
+          "title": "새벽 베이커리",
+          "genre": "감성",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "새벽 2시부터 5시에만 오픈하는 신비로운 빵을 만드는 베이커리가 있다는데...?"
+        },
+        {
+          "title": "라스트 잡",
+          "genre": "야외",
+          "difficulty": 4,
+          "activity": "많음",
+          "maxParty": 4,
+          "timeLimit": 90,
+          "description": "당신들은 포레전자에 다니고 있는 사원들이다. 그런데 회사가 예고도 없이 몇 주전부터 폐업절차에 들어 가게 되고... 다들 정신이 없는 와중에 한 직원의 와 달라는 연락을 받게 된다. 스펙타클하게 펼쳐지는 그들의 마지막 업무, 라스트 잡이 시작된다"
+        },
+        {
+          "title": "너의 성인식",
+          "genre": "드라마",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "#어른이되자 #그대여뭘망설이나요 #예쁜성인식장 평생 한 번뿐인, 잊을 수 없는 그 날.내가 성인이 되는 날."
+        },
+        {
+          "title": "스물아홉",
+          "genre": "드라마",
+          "difficulty": 4,
+          "activity": "적음",
+          "maxParty": 2,
+          "timeLimit": 45,
+          "description": "나는 분명 가능성 있는 사람이라고 생각해왔어. 그런데 언제나 그게 다였어. 항상 작은 불씨만을 가진 것에만 만족하며 살아왔달까. 큰 불길로 번지지 못한 채 계속..."
+        }
+      ]
+    },
+    {
+      "storeName": "비밀의화원 건대점",
+      "telephone": "02-499-1119",
+      "homepage": "http://www.secretgardenescape.com/",
+      "address": "서울 광진구 아차산로 235",
+      "rooms": [
+        {
+          "title": "비밀의 선물",
+          "genre": "감성",
+          "difficulty": 3,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "아내가 집으로 돌아오기 한시간 전.그녀를 위한 선물을 준비하자!"
+        },
+        {
+          "title": "우리의 전 사랑",
+          "genre": "드라마",
+          "difficulty": 2,
+          "activity": "보통",
+          "maxParty": 2,
+          "timeLimit": 60,
+          "description": "자니...?"
+        },
+        {
+          "title": "레드림 컴퍼니",
+          "genre": "19금",
+          "difficulty": 3,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "지옥에 있는 회사, 레드림 컴퍼니에 다니고 있는 서큐버스 서대리.이번 달 실적이 유난히 저조해서 불안해 하고 있는 와중에 대표가 갑자기 호출을 했다. 서대리는 과연 이 위기를 잘 극복할 수 있을것인가.."
+        },
+        {
+          "title": "안녕",
+          "genre": "공포",
+          "difficulty": 3,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "과로로 쓰러진 당신, 입원 도중 정신을 잃고 낯선 곳에 갇혔다. 여기가 어디지!?"
+        },
+        {
+          "title": "우끼끼",
+          "genre": "코미디",
+          "difficulty": 4,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "눈을 떠보니 원숭이들의 세상이다! 영문도 모른채 몽키행성의 족장 킹몽키에 의해 몽키행성으로 납치된 당신은 킹몽키가 자리를 비우는 단 한시간 동안 무사히 지구로 돌아갈 방법을 찾아야한다!"
+        },
+        {
+          "title": "핑크슈즈",
+          "genre": "스릴러",
+          "difficulty": 4,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "어느 날, 전학을 간 후 소식이 끊긴 친구 소영이에게 연락이 왔다."
+        }
+      ]
+    },
+    {
+      "storeName": "엑스케이프 건대점",
+      "telephone": "02-463-9366",
+      "homepage": "http://xcape.co.kr/",
+      "address": "서울 광진구 화양동 50-2",
+      "rooms": [
+        {
+          "title": "기묘한 날개짓",
+          "genre": "추리",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "연이은 여대생들의 실종. 유력한 용의자로 곤충학자인 B교수가 떠오르지만 그의 연구실 앞 CCTV에는 여대생들이 멀쩡히 걸어 나오는 모습이 포착되며 B교수는 용의선상에서 빠져나간다. 그러나, 분명 B교수에게 무언가 있음을 직감하고 엑스파일러들은 수사에 돌입하는데.."
+        },
+        {
+          "title": "이도공간",
+          "genre": "판타지",
+          "difficulty": 2,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "꿈인가? 현실인가? 더욱 깊은 곳으로 이끄는 소리가 들리면 나는 새가 되어 꿈속을 배회한다. 모든 것이 낯설고, 모든 것이 익숙하다. 나는 누구인가? 나를 부르는 당신은 누구인가?"
+        },
+        {
+          "title": "필연의 수감동",
+          "genre": "추리",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "15명을 살해하고 검거된 살인마 장성필. 그는 교도소 치하의 정신병원에 수감된다. 그리고 얼마 뒤, 자신의 방에서 시체로 발견되는데.."
+        },
+        {
+          "title": "핑퐁핑퐁",
+          "genre": "아케이드",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "어느 획기적인 게임에 테스터로 참여하게 된 당신. 너무나도 특별한 이 게임에 곧 빠져들게 되는데!"
+        },
+        {
+          "title": "숨바꼭질",
+          "genre": "스릴러",
+          "difficulty": 4,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "딸이 사라졌어요 어린 딸이 사라졌다는 제보. 딸을 잃은 엄마는 세상을 잃은 슬픔에 빠진다. 모녀의 집은 최근 연이은 강도사건으로 떠들썩한 동네. 그러던 중 범인으로 추정되는 자의 침입 흔적이 모녀의 집에서 발견된다."
+        },
+        {
+          "title": "501동사람들",
+          "genre": "추리",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 70,
+          "description": "1993년 부산의 목련아파트. 참사를 막기 위해 현재의 엑스파일러가 1993년 당일로 돌아가 비극을 막으려 한다. 왜, 무엇 때문에 그 일은 발생한 것인가! 과연 엑스파일러는 주민들을 구할 수 있을 것인가."
+        }
+      ]
+    },
+    {
+      "storeName": "엑스크라임 건대점",
+      "telephone": "02-464-8788",
+      "homepage": "http://x-crime.com/",
+      "address": "서울 광진구 아차산로29길 38",
+      "rooms": [
+        {
+          "title": "청림맨션",
+          "genre": "미스테리",
+          "difficulty": 2,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "1984년, 홍콩의 오래된 맨션. 젊은 부부와 홀어머니가 이사왔다. 그로부터 3주 뒤, 부부 중 아내의 모습이 보이지 않는다. 그들의 집 앞에서 풍기는 정체모를 냄새와 남편의 의심스러운 변명. 아내는 어디로 사라진걸까-"
+        },
+        {
+          "title": "베다바리",
+          "genre": "드라마",
+          "difficulty": 4,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 70,
+          "description": "답답한 도심을 떠나 저가 국내 관광 패키지 상품을 구매한 당신. 인적 없는 낯선 구설역 앞에 도착한 당신과 일행들은 시간에 맞춰 픽업 온, 관광 패키지에서 준비한 승합차에 올라탔다. 승합차 안에서 가이드가 건네준 박카스를 나눠 마신 후 깊은 잠에 들게 되었는데…"
+        }
+      ]
+    },
+    {
+      "storeName": "에픽플랜 건대점",
+      "telephone": "070-4151-3267",
+      "homepage": "https://www.epicplan.co.kr/",
+      "address": "서울 광진구 능동로 141",
+      "rooms": [
+        {
+          "title": "출생",
+          "genre": "판타지",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 75,
+          "description": "차사님, 삼신할매께서 새로운 생명을 점지하셨습니다. 신수의 도움을 받아 새로운 생명의 탄생을 이끌어 주시옵소서."
+        },
+        {
+          "title": "에이전트 스노우",
+          "genre": "드라마",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 65,
+          "description": "아이들의 꿈과 순수한 동심을 지키기 위해 임무를 수행중인 에이전트 스노우! 호호호, 오늘도 어김없이 아이들에게 선물을 주러 떠나볼까? 아이들이 선물을 받고 기뻐할 생각에 신이 나는군! 아니, 잠깐!! 선물이 사라졌다고...? 도대체 누가 이런 짓을 벌인거지? 큰일이군..시간에 맞춰 선물을 전달해줘야 할 텐데.."
+        }
+      ]
+    },
+    {
+      "storeName": "더메이즈 건대점",
+      "telephone": "02-464-2577",
+      "homepage": "http://www.themazegd.co.kr/",
+      "address": "서울 광진구 자양동 10-1",
+      "rooms": [
+        {
+          "title": "락커룸",
+          "genre": "추리",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "결승전 마지막 원정경기를 앞두고 훈련이 끝난 후 락커룸에서 준비를 하다가 깜빡 잠이 들어버렸다. 락커룸은 이용 시간이 끝나면 모든 문이 모두 잠겨버리는데... 한 시간 안에 탈출하지 못한다면 원정경기장으로 떠나는 비행기를 타지 못할 것이며, 마지막 경기에도 출전하지 못할 것이다. 분명 전에 관리자들이 자신들만 공유하는 방식으로 모든 문을 이용할 수 있다는 걸 들었었는데 생각이 잘 안 난다 우리 팀과 연관이 많다는 것만 기억날 뿐……. 우리 팀 역사를 통틀어 이 영광스러운 두 번째 우승 기회를 놓치고 싶지 않다."
+        },
+        {
+          "title": "몬테",
+          "genre": "범죄",
+          "difficulty": 4,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "1845년, 장차 선장이 될 예정이었던 나는 사랑하는 약혼자와의 결혼을 목전에 두었으나 나의 약혼자를 마음에 두고 있었던 악당의 의해 살인 누명을 뒤집어쓰고 이 어둡고 컴컴한 지하 감옥에 투옥된다. 그렇게 투옥된 지 벌써 6년...... 모든 것을 포기하고 남아 있던 복수심마저 꺼져버리려던 그 때 늙은 신부는 나에게 탈출 방법을 알려주고는 죽어버린다. 간수들의 움직임, 감옥의 위치 그리고 조금씩 만들었던 비밀스러운 도구들까지... 드디어 오늘, 모든 준비가 끝났다. 나는 자정이 되는 순간 이 곳을 탈출할 것이다!"
+        },
+        {
+          "title": "남영동 1984",
+          "genre": "역사",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "국민들의 일거수일투족을 감시하고, 검열하는 군부 독재가 온 나라를 지배하고 있던 1984년 어느 날, 민주화운동을 하고 있던 우리들은 경찰에 연행되고 만다. 처음부터 이 정도 일들은 각오해왔고, 한두 번 연행된 것도 아니었기에 별 일 아닐 것이라 생각했다. 하지만 정체 모를 수상한 사람들에게 어딘가로 끌려가게 되고, 눈이 가려진 채 도착한 곳은 남영동 대공 분실 408호. 불순분자들을 축출해낸다는 명목으로 고문을 하던 곳이었다. 앞으로 남은 1시간. 그 시간이 지나면 수사관들에게 온갖 고문을 당하고 거짓 진술을 강요받을 것이다. 그 순간, 우리들은 민주화운동을 해오던 선배들에게 전설처럼 전해져왔던 대공 분실 비밀탈출구에 대한 이야기를 떠올려냈고 탈출하기로 결심한다!"
+        },
+        {
+          "title": "(나쁜) 아기돼지 삼형제",
+          "genre": "코미디",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "옛날 옛날에 아기 돼지 삼형제가 살았습니다. 삼형제는 자신 만의 집을 지었고, 그 집을 이용해 자신들을 잡으러 온 나쁜 늑대를 잡아버렸어요. 그 뒤로 몇 년 후, 의기양양해진 삼형제들은 점점 사악해져만 갔고, 하나 둘 동네에 사는 늑대들을 괴롭혀서 쫓아내기 시작했어요. 늑대마을이 점차 황폐해져 가자 착한 늑대는 돼지들과 단판을 짓기 위해, 삼형제의 집으로 찾아갔습니다. 집에는 아무도 없었고, 문도 살짝 열려 있었어요. 착한 늑대가 집안으로 한 발 내딛는 순간! 그만 문이 쾅하고 닫히고 말았습니다. 함정이란 걸 알아챘지만, 모든 문은 잠긴 후였어요. 우리의 착한 늑대는 나쁜 아기 돼지 삼형제의 집을 무사히 탈출 할 수 있을까요?"
+        },
+        {
+          "title": "광해",
+          "genre": "역사",
+          "difficulty": 5,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "붕당정치로 인해 나라가 혼란하고 왕위를 둘러싼 권력 다툼이 끊이질 않던 광해군 8년. 자신의 목숨을 노리는 자들에 대한 두려움으로 인해 왕은 점점 불안해져만 갔고, 그런 불안감을 해소하기 위해 \"허균\"에게 자신을 대신할 대역을 찾을 것을 지시한다. 대역을 세운 덕분에 왕은 아무도 모르는 비밀 처소에 몸을 숨기고 조금씩 마음을 추스를 수 있었다. 이런 생활이 계속 되는 듯 했으나, 오래 지나지 않아 적대 세력에게 비밀 처소가 발각된다. 자객들이 한 시간 이후에 처소를 노릴 거라는 급보를 받은 왕은 한 번도 사용한 적 없는 비밀 문을 통해 아무도 모르게 탈출하기로 한다. 과연 나는 이곳을 탈출해 왕으로 남을 수 있을 것인가!"
+        }
+      ]
+    },
+    {
+      "storeName": "마스터키 프라임 건대점",
+      "telephone": "070-4239-8880",
+      "homepage": "http://www.master-key.co.kr/",
+      "address": "서울 광진구 동일로20길 72",
+      "rooms": [
+        {
+          "title": "리그 오브 디저트",
+          "genre": "판타지",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "디저트랜드에 오신 것을 환영합니다"
+        },
+        {
+          "title": "와트와 숨겨진 시간",
+          "genre": "모험",
+          "difficulty": 3,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "숨겨진 시간이 눈앞에 펼쳐진다!"
+        },
+        {
+          "title": "디코이",
+          "genre": "미스테리",
+          "difficulty": 5,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "인생은 비극이다"
+        }
+      ]
+    },
+    {
+      "storeName": "마스터키 건대로데오점",
+      "telephone": "02-466-1113",
+      "homepage": "http://www.master-key.co.kr/",
+      "address": "서울 광진구 동일로20길 98",
+      "rooms": [
+        {
+          "title": "사악한 악마와 달콤한 공장",
+          "genre": "판타지",
+          "difficulty": 1,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "무시무시하고 사악하기로 소문난 악마! 오늘은 악마가 또 무슨 일을 꾸미고 있는 걸까요?"
+        },
+        {
+          "title": "선고",
+          "genre": "드라마",
+          "difficulty": 2,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "이건 전부 네 잘못이야."
+        },
+        {
+          "title": "찰리",
+          "genre": "드라마",
+          "difficulty": 2,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "당신 주변의, 혹은 당신의 이야기"
+        },
+        {
+          "title": "뱀파이어 헌터",
+          "genre": "모험",
+          "difficulty": 4,
+          "activity": "많음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "드디어, 오랫동안 찾아 헤매던 뱀파이어의 서식지를 알아냈다. 오늘 밤, 내가 너를 영면의 세계로 인도할 것이다. Rest In Peace."
+        }
+      ]
+    },
+    {
+      "storeName": "넥스트에디션 건대 보네르관",
+      "telephone": "010-6668-7451",
+      "homepage": "https://www.nextedition.co.kr/",
+      "address": "서울 광진구 화양동 9-19",
+      "rooms": [
+        {
+          "title": "세렌디피티 : 뜻 밖의 행운",
+          "genre": "감성",
+          "difficulty": 4,
+          "activity": "많음",
+          "maxParty": 4,
+          "timeLimit": 100,
+          "description": "나는 오늘, 잃어버린 꿈을 찾기위해서 사직서를 내려합니다."
+        }
+      ]
+    },
+    {
+      "storeName": "트루이스케이프룸 건대점",
+      "telephone": "02-462-2250",
+      "homepage": "http://www.t-escape.com/",
+      "address": "서울 광진구 화양동 15-54",
+      "rooms": [
+        {
+          "title": "마션",
+          "genre": "SF",
+          "difficulty": 4,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "팀원들과 우주탐사를 나선 당신... 원인불명의 폭팔사고로 인해 산소가 부족하고 60분안에 비상탈출을 해야 한다... 과연 당신의 운명은?"
+        },
+        {
+          "title": "쇼퍼홀릭",
+          "genre": "범죄",
+          "difficulty": 4,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "세계적으로 25개만 생산하는 가방을 갖고싶은 당신... 하지만 신용카드는 이미 한도초과... 특수장비로 설계된 가방의 보안을 뚫고 가방을 손에쥘 수 있을지…"
+        },
+        {
+          "title": "조커의 방",
+          "genre": "범죄",
+          "difficulty": 3,
+          "activity": "적음",
+          "maxParty": 3,
+          "timeLimit": 60,
+          "description": "어느날 조커의 초대를 받고 조커의 방에 찾아간 당신... 조커가 미리 준비해놓은 함정에 빠져버렸다... 과연 살아서 돌아올 수 있을까?"
+        },
+        {
+          "title": "블러드 트레인",
+          "genre": "스릴러",
+          "difficulty": 4,
+          "activity": "적음",
+          "maxParty": 4,
+          "timeLimit": 60,
+          "description": "부다페스트로 향하는 야간열차 안에 들어선 당신, 우연의 일치인지 그 곳에서 예기치 못한 사건 속에 빠져 들게 되는데... 살인범의 기차탈선 작전을 저지하라."
+        }
+      ]
+    },
+    {
+      "storeName": "포인트나인 건대점",
+      "telephone": "010-2961-5027",
+      "homepage": "https://point-nine.com/",
+      "address": "서울 광진구 화양동 11-7",
+      "rooms": [
+        {
+          "title": "RETURN (리턴)",
+          "genre": "드라마",
+          "difficulty": 3,
+          "activity": "보통",
+          "maxParty": 3,
+          "timeLimit": 65,
+          "description": "가까운 미래, 화려한 밤, 그리고 빛의 도시. 이곳에서 마스크 상점을 운영하는 Zho 부부. 이들은 평소 훌륭한 인품과 좋은 금실로 모든 이웃에게 존경받지만, 수 년째 생기지 않는 아이로 인해 남모를 걱정을 안고 살아왔다. 그러던 어느날, 구석진 골목길에 버려진 한 여자아이를 발견한 부부는 아이의 부모를 찾아주려 꽤 오랜 시간을 애썼으나 뜻대로 되지 않았다. 그들은 결국 이것을 신의 가호이자 부부의 운명으로 받아들이게 되고, 누구보다 기쁜 마음으로 아이를 입양하며 부모로서의 책임을 다한다. 불쌍히 버려졌던 아이는 Kolk라는 새 이름을 가지고 다시 태어나 부부의 딸로서 여느 가족과 다를 바 없이 평범하게 자랄 수 있었다. 그러나 최근 들어 온 세상 곳곳에서 사람들이 사라지기 시작했다. 알 수 없는 사건들이 오랜 시간 반복되자, 심상치 않음을 느낀 부부는 Kolk에게 편지 한 통을 남긴다."
+        },
+        {
+          "title": "ALBA (알바)",
+          "genre": "잠입",
+          "difficulty": 4,
+          "activity": "많음",
+          "maxParty": 3,
+          "timeLimit": 75,
+          "description": "빛이 있는 곳엔 어둠도 있는 법. 구원자의 통치체제에도 반하는 무리가 있었으니 도심에서 떨어진 지역에 반정부군이 어느새 형성되었다. 반정부군 소속의 임원 Brian. 그는 평소에는 도심의 마을에서 의료 목적으로 신체 개조를 해주는 On & Off Plastic Surgery를 운영하고 있다. 대외적으로는 정부군과도 협력하며 기술적인 부분을 지원하고 있지만, 이는 다 첩보활동을 위한 것. 그는 정부의 여러 비밀정보들을 취합하며 반정부군으로 돌아갈 날을 기다리고 있다. 그리고 이 가게에서 아르바이트를 하고 있는 Vincent와 Kevin. 둘은 일을 하다 보니 사장님 Brian이 반정부군 소속임을 알게 되었고, 반정부군에 들어가고 싶어 넌지시 얘기를 꺼내보지만 위험한 일이라며 늘 거절당하고 만다. 오늘도 평소와 다를 것 없는 출근길. 하지만 웬일인지 사장님에게 연락이 한 통 와있다."
+        }
+      ]
+    }
+  ]
+}
