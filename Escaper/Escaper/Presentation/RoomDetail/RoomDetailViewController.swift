@@ -30,7 +30,7 @@ final class RoomDetailViewController: DefaultViewController {
         label.lineBreakMode = .byTruncatingTail
         return label
     }()
-    private let roomDetailInfoVeiw = RoomDetailInfoView()
+    private let roomDetailInfoView = RoomDetailInfoView()
     private let rankTitleLabel = EDSLabel.h01B(text: "TOP 3", color: .skullLightWhite)
     private let userRankStackView: UIStackView = {
         let stackView = UIStackView()
@@ -45,7 +45,7 @@ final class RoomDetailViewController: DefaultViewController {
         guard let room = room else { return }
         self.configureLayout()
         self.update(room: room)
-        self.roomDetailInfoVeiw.update(room: room)
+        self.roomDetailInfoView.update(room: room)
         self.updateStackView(records: room.records)
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: EDSImage.share.value, style: .plain, target: self, action: #selector(self.shareButtonTouched))
@@ -127,13 +127,13 @@ private extension RoomDetailViewController {
     }
 
     func configureRoomDetailInfoViewLayout() {
-        self.roomDetailInfoVeiw.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.roomDetailInfoVeiw)
+        self.roomDetailInfoView.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.roomDetailInfoView)
         NSLayoutConstraint.activate([
-            self.roomDetailInfoVeiw.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: Constant.longVerticalSpace),
-            self.roomDetailInfoVeiw.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.horizontalSpace),
-            self.roomDetailInfoVeiw.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -Constant.horizontalSpace),
-            self.roomDetailInfoVeiw.heightAnchor.constraint(equalToConstant: Constant.DetailInfoHeight)
+            self.roomDetailInfoView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: Constant.longVerticalSpace),
+            self.roomDetailInfoView.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.horizontalSpace),
+            self.roomDetailInfoView.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -Constant.horizontalSpace),
+            self.roomDetailInfoView.heightAnchor.constraint(equalToConstant: Constant.DetailInfoHeight)
         ])
     }
 
@@ -141,8 +141,8 @@ private extension RoomDetailViewController {
         self.rankTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.rankTitleLabel)
         NSLayoutConstraint.activate([
-            self.rankTitleLabel.topAnchor.constraint(equalTo: self.roomDetailInfoVeiw.bottomAnchor, constant: Constant.verticalSpace),
-            self.rankTitleLabel.leadingAnchor.constraint(equalTo: self.roomDetailInfoVeiw.leadingAnchor)
+            self.rankTitleLabel.topAnchor.constraint(equalTo: self.roomDetailInfoView.bottomAnchor, constant: Constant.verticalSpace),
+            self.rankTitleLabel.leadingAnchor.constraint(equalTo: self.roomDetailInfoView.leadingAnchor)
         ])
     }
 
