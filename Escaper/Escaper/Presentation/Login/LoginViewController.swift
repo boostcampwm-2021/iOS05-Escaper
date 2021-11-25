@@ -136,7 +136,6 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == self.passwordInputView.textField {
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.frame.origin = CGPoint(x: 0, y: 0)
                 self.view.transform = CGAffineTransform(translationX: 0, y: -self.emailInputView.frame.height)
             })
         }
