@@ -22,8 +22,10 @@ final class RoomDetailInfoView: UIView {
     }
 
     func update(room: Room) {
+        self.leftInfoView.inject(view: InfoDescriptionRatingStackView(title: "난이도", rating: Rating(rawValue: room.difficulty) ?? Rating.zero))
         self.leftInfoView.inject(view: InfoDescriptionDetailStackView(title: "장르", content: room.genre.name))
         self.leftInfoView.inject(view: InfoDescriptionDetailStackView(title: "활동성", content: room.activity))
+        self.rightInfoView.inject(view: InfoDescriptionRatingStackView(title: "만족도", rating: Rating(rawValue: Int(room.averageSatisfaction)) ?? Rating.zero))
         self.rightInfoView.inject(view: InfoDescriptionDetailStackView(title: "제한 시간", content: "\(room.timeLimit)분"))
         self.rightInfoView.inject(view: InfoDescriptionDetailStackView(title: "최대 인원", content: "\(room.maxParty)인"))
     }
