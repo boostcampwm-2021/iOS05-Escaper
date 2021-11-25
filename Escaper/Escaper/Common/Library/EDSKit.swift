@@ -126,6 +126,7 @@ enum EDSKit {
         case recordCard
         case recordCandle
         case romancePreview
+        case share
         case signupGhost
         case signupPlus
         case signupSkull
