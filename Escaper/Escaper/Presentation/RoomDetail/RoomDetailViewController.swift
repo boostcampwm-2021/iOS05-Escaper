@@ -17,6 +17,13 @@ final class RoomDetailViewController: DefaultViewController {
     }()
     private let titleLabel = EDSLabel.h01B(color: .skullLightWhite)
     private let storeNameLabel = EDSLabel.b01R(color: .skullGrey)
+    private let descriptionLabel: UILabel = {
+        let label = EDSLabel.b01R(color: .skullLightWhite)
+        label.numberOfLines = 4
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
     private let roomDetailInfoVeiw = RoomDetailInfoView()
     private let rankTitleLabel = EDSLabel.h01B(text: "이 방의 TOP3!", color: .skullLightWhite)
     private let userRankStackView: UIStackView = {
@@ -43,7 +50,7 @@ private extension RoomDetailViewController {
         static let stackViewSpace = CGFloat(10)
         static let rankViewHeight = CGFloat(60)
         static let genreImageSize = CGFloat(180)
-        static let shortVerticalSpace = CGFloat(4)
+        static let shortVerticalSpace = CGFloat(8)
         static let longVerticalSpace = CGFloat(24)
         static let verticalSpace = CGFloat(16)
         static let horizontalSpace = CGFloat(20)
@@ -56,6 +63,7 @@ private extension RoomDetailViewController {
         self.configureGenreImageViewLayout()
         self.configureTitleLabelLayout()
         self.configureStoreNameLabelLayout()
+        self.configureDescriptionLabelLayout()
         self.configureRoomDetailInfoViewLayout()
         self.configureRankTitleLabelLayout()
         self.configureRankStackViewLayout()
@@ -101,11 +109,21 @@ private extension RoomDetailViewController {
         ])
     }
 
+    func configureDescriptionLabelLayout() {
+        self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.descriptionLabel)
+        NSLayoutConstraint.activate([
+            self.descriptionLabel.centerXAnchor.constraint(equalTo: self.storeNameLabel.centerXAnchor),
+            self.descriptionLabel.widthAnchor.constraint(equalTo: self.genreImageView.widthAnchor, multiplier: 1.2),
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.storeNameLabel.bottomAnchor, constant: Constant.shortVerticalSpace)
+        ])
+    }
+
     func configureRoomDetailInfoViewLayout() {
         self.roomDetailInfoVeiw.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.roomDetailInfoVeiw)
         NSLayoutConstraint.activate([
-            self.roomDetailInfoVeiw.topAnchor.constraint(equalTo: self.storeNameLabel.bottomAnchor, constant: Constant.verticalSpace),
+            self.roomDetailInfoVeiw.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: Constant.verticalSpace),
             self.roomDetailInfoVeiw.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.DetailInfoSideSpace),
             self.roomDetailInfoVeiw.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -Constant.DetailInfoSideSpace),
             self.roomDetailInfoVeiw.heightAnchor.constraint(equalToConstant: Constant.DetailInfoHeight)
@@ -136,6 +154,7 @@ private extension RoomDetailViewController {
         self.genreImageView.image = UIImage(named: room.genre.detailImageAssetName)
         self.titleLabel.text = room.title
         self.storeNameLabel.text = room.storeName
+        self.descriptionLabel.text = room.description
         self.genreImageView.isAccessibilityElement = true
         self.genreImageView.accessibilityLabel = "테마 종류 \(room.genre.name)"
     }
