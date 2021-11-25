@@ -43,8 +43,8 @@ final class RatingView: UIView {
 
 private extension RatingView {
     enum Image {
-        static let filled = UIImage(named: RatingImage.starFilled.name)
-        static let unfilled = UIImage(named: RatingImage.starUnfilled.name)
+        static let filled = EDSImage.starfilled.value
+        static let unfilled = EDSImage.starunfilled.value
     }
 
     func configureLayout() {
@@ -61,7 +61,7 @@ private extension RatingView {
     func configureZeroRating() {
         (0..<Rating.maxRating).forEach { _ in
             let starImageView = UIImageView()
-            starImageView.image = UIImage(named: RatingImage.starUnfilled.name)
+            starImageView.image = EDSImage.starunfilled.value
             self.stackView.addArrangedSubview(starImageView)
         }
     }
