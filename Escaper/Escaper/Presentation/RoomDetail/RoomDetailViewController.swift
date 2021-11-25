@@ -42,7 +42,7 @@ final class RoomDetailViewController: DefaultViewController {
         self.roomDetailInfoVeiw.update(room: room)
         self.updateStackView(records: room.records)
         self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(self.shareButtonTouched))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: EDSImage.share.value, style: .plain, target: self, action: #selector(self.shareButtonTouched))
     }
 }
 
