@@ -11,9 +11,28 @@ final class RecordCollectionViewCell: UICollectionViewCell {
     static let identifier = String(describing: RecordCollectionViewCell.self)
 
     private let backgroundImageView: UIImageView = UIImageView(image: EDSImage.recordCard.value)
-    private let recordHeadView: RecordHeadView = RecordHeadView()
+    private let selfyImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = EDSImage.plus.value
+        imageView.backgroundColor = EDSColor.charcoal.value
+        imageView.layer.cornerRadius = 25
+        imageView.layer.masksToBounds = true
+        return imageView
+    }()
+    private let roomTitleLabel = EDSLabel.h03B(color: .charcoal)
+    private let storeTitleLabel = EDSLabel.b01B(color: .charcoal)
+    private let titlesStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.spacing = 10
+        return stackView
+    }()
     private let recordUserView: RecordUserView = RecordUserView()
+    private let starDashView = UIView()
     private let recordStarView: RecordStarView = RecordStarView()
+    private let resultDashView = UIView()
     private let recordResultView: RecordResultView = RecordResultView()
     private let shareButton: UIButton = {
         let button = UIButton()
@@ -35,15 +54,22 @@ final class RecordCollectionViewCell: UICollectionViewCell {
         self.configureLayout()
     }
 
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.starDashView.addDashedBorder()
+        self.resultDashView.addDashedBorder()
+    }
+
     func update(recordCard: RecordCard) {
-        self.recordHeadView.update(imageURLString: recordCard.recordImageURLString, title: recordCard.roomTitle, storeName: recordCard.storeName)
+        self.updateSelfy(imageURLString: recordCard.recordImageURLString)
+        self.roomTitleLabel.text = recordCard.roomTitle
+        self.storeTitleLabel.text = recordCard.storeName
         self.recordUserView.update(nickname: recordCard.username, result: recordCard.isSuccess)
-        self.recordStarView.update(satisfaction: Rating(rawValue: Int(recordCard.satisfaction))!, difficulty: Rating(rawValue: recordCard.difficulty)!)
+        self.recordStarView.update(satisfaction: recordCard.satisfaction, difficulty: Double(recordCard.difficulty))
         self.recordResultView.update(playerRank: recordCard.rank, numberOfPlayers: recordCard.numberOfTotalPlayers, time: recordCard.time)
     }
 
     override func prepareForReuse() {
-        self.recordHeadView.prepareForReuse()
         self.recordUserView.prepareForReuse()
         self.recordStarView.prepareForReuse()
         self.recordResultView.prepareForReuse()
@@ -56,7 +82,7 @@ private extension RecordCollectionViewCell {
         static var longHorizontalSpace = CGFloat(180)
         static var middleHorizontalSpace = CGFloat(120)
         static var shortHorizontalSpace = CGFloat(50)
-        static let longVerticalSpace = CGFloat(30)
+        static let longVerticalSpace = CGFloat(20)
         static let middleVerticalSpace = CGFloat(15)
         static let shortVerticalSpace = CGFloat(10)
     }
@@ -64,11 +90,15 @@ private extension RecordCollectionViewCell {
     func configureLayout() {
         self.configureViewLayout()
         self.configureBackgroundImageViewLayout()
-        self.configureRecordHeadViewLayout()
+        self.configureSelfyImageViewLayout()
+        self.configureAddArrangeSubViews()
+        self.configureTitlesStackViewLayout()
         self.configureRecordUserViewLayout()
+        self.configureStarDashViewLayout()
         self.configureRecordStarViewLayout()
+        self.configureResultDashViewLayout()
         self.configureRecordResultViewLayout()
-        self.configureShareButtonLayout()
+        //        self.configureShareButtonLayout()
     }
 
     func configureViewLayout() {
@@ -77,7 +107,7 @@ private extension RecordCollectionViewCell {
 
     func configureBackgroundImageViewLayout() {
         self.backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.backgroundImageView)
+        self.contentView.addSubview(self.backgroundImageView)
         NSLayoutConstraint.activate([
             self.backgroundImageView.topAnchor.constraint(equalTo: self.topAnchor),
             self.backgroundImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -86,57 +116,123 @@ private extension RecordCollectionViewCell {
         ])
     }
 
-    func configureRecordHeadViewLayout() {
-        self.recordHeadView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.recordHeadView)
+    func configureSelfyImageViewLayout() {
+        self.selfyImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(self.selfyImageView)
         NSLayoutConstraint.activate([
-            self.recordHeadView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constant.middleVerticalSpace),
-            self.recordHeadView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25),
-            self.recordHeadView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            self.selfyImageView.heightAnchor.constraint(equalTo: self.backgroundImageView.heightAnchor, multiplier: 0.2),
+            self.selfyImageView.widthAnchor.constraint(equalTo: self.selfyImageView.heightAnchor),
+            self.selfyImageView.topAnchor.constraint(equalTo: self.backgroundImageView.topAnchor, constant: 15),
+            self.selfyImageView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor)
+        ])
+    }
+
+    func configureAddArrangeSubViews() {
+        self.titlesStackView.addArrangedSubview(self.roomTitleLabel)
+        self.titlesStackView.addArrangedSubview(self.storeTitleLabel)
+    }
+
+    func configureTitlesStackViewLayout() {
+        self.titlesStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(self.titlesStackView)
+        NSLayoutConstraint.activate([
+            self.titlesStackView.topAnchor.constraint(equalTo: self.selfyImageView.bottomAnchor, constant: Constant.longVerticalSpace),
+            self.titlesStackView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
+            self.titlesStackView.widthAnchor.constraint(lessThanOrEqualTo: self.contentView.widthAnchor)
         ])
     }
 
     func configureRecordUserViewLayout() {
         self.recordUserView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.recordUserView)
+        self.contentView.addSubview(self.recordUserView)
         NSLayoutConstraint.activate([
-            self.recordUserView.topAnchor.constraint(equalTo: self.recordHeadView.bottomAnchor, constant: Constant.longVerticalSpace),
-            self.recordUserView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 35),
-            self.recordUserView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -35),
-            self.recordUserView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.14)
+            self.recordUserView.topAnchor.constraint(equalTo: self.titlesStackView.bottomAnchor, constant: Constant.longVerticalSpace),
+            self.recordUserView.widthAnchor.constraint(equalTo: self.backgroundImageView.widthAnchor, multiplier: 0.7),
+            self.recordUserView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
+            self.recordUserView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.135)
+        ])
+    }
+
+    func configureStarDashViewLayout() {
+        self.starDashView.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(self.starDashView)
+        NSLayoutConstraint.activate([
+            self.starDashView.topAnchor.constraint(equalTo: self.recordUserView.bottomAnchor, constant: Constant.middleVerticalSpace),
+            self.starDashView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
+            self.starDashView.widthAnchor.constraint(equalTo: self.backgroundImageView.widthAnchor, multiplier: 0.7),
+            self.starDashView.heightAnchor.constraint(equalToConstant: 2)
         ])
     }
 
     func configureRecordStarViewLayout() {
         self.recordStarView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.recordStarView)
+        self.contentView.addSubview(self.recordStarView)
         NSLayoutConstraint.activate([
-            self.recordStarView.topAnchor.constraint(equalTo: self.recordUserView.bottomAnchor, constant: Constant.middleVerticalSpace),
-            self.recordStarView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.defaultHorizontalSpace),
-            self.recordStarView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.defaultHorizontalSpace),
-            self.recordStarView.heightAnchor.constraint(equalToConstant: CGFloat(40))
+            self.recordStarView.topAnchor.constraint(equalTo: self.starDashView.bottomAnchor),
+            self.recordStarView.widthAnchor.constraint(equalTo: self.backgroundImageView.widthAnchor, multiplier: 0.8),
+            self.recordStarView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
+            self.recordStarView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.135)
+        ])
+    }
+
+    func configureResultDashViewLayout() {
+        self.resultDashView.translatesAutoresizingMaskIntoConstraints = false
+        self.contentView.addSubview(self.resultDashView)
+        NSLayoutConstraint.activate([
+            self.resultDashView.topAnchor.constraint(equalTo: self.recordStarView.bottomAnchor, constant: Constant.middleVerticalSpace),
+            self.resultDashView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
+            self.resultDashView.widthAnchor.constraint(equalTo: self.backgroundImageView.widthAnchor, multiplier: 0.7),
+            self.resultDashView.heightAnchor.constraint(equalToConstant: 2)
         ])
     }
 
     func configureRecordResultViewLayout() {
         self.recordResultView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.recordResultView)
+        self.contentView.addSubview(self.recordResultView)
         NSLayoutConstraint.activate([
-            self.recordResultView.topAnchor.constraint(equalTo: self.recordStarView.bottomAnchor, constant: Constant.middleVerticalSpace),
-            self.recordResultView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.defaultHorizontalSpace),
-            self.recordResultView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.defaultHorizontalSpace),
-            self.recordResultView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.18)
+            self.recordResultView.topAnchor.constraint(equalTo: self.resultDashView.bottomAnchor, constant: Constant.middleVerticalSpace),
+            self.recordResultView.widthAnchor.constraint(equalTo: self.backgroundImageView.widthAnchor, multiplier: 0.8),
+            self.recordResultView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
+            self.recordResultView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.135)
         ])
     }
 
-    func configureShareButtonLayout() {
-        self.shareButton.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.shareButton)
-        NSLayoutConstraint.activate([
-            self.shareButton.topAnchor.constraint(equalTo: self.recordResultView.bottomAnchor, constant: Constant.shortVerticalSpace),
-            self.shareButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.defaultHorizontalSpace),
-            self.shareButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.defaultHorizontalSpace),
-            self.shareButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.11)
-        ])
+    //    func configureShareButtonLayout() {
+    //        self.shareButton.translatesAutoresizingMaskIntoConstraints = false
+    //        self.contentView.addSubview(self.shareButton)
+    //        NSLayoutConstraint.activate([
+    //            self.shareButton.topAnchor.constraint(equalTo: self.recordResultView.bottomAnchor, constant: Constant.shortVerticalSpace),
+    //            self.shareButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.defaultHorizontalSpace),
+    //            self.shareButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.defaultHorizontalSpace),
+    //            self.shareButton.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.11)
+    //        ])
+    //    }
+
+    func updateSelfy(imageURLString: String) {
+        ImageCacheManager.shared.download(urlString: imageURLString) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async { [weak self] in
+                    self?.selfyImageView.image = UIImage(data: data)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
+
+extension UIView {
+
+    func addDashedBorder() {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = EDSColor.skullWhite.value?.cgColor
+        shapeLayer.lineWidth = 2
+        shapeLayer.lineDashPattern = [2, 3]
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: 0, y: 0),
+                                CGPoint(x: self.frame.width, y: 0)])
+        shapeLayer.path = path
+        layer.addSublayer(shapeLayer)
     }
 }
