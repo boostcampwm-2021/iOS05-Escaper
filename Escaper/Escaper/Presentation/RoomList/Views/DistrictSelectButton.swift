@@ -14,6 +14,7 @@ protocol DistrictSelectViewDelegate: AnyObject {
 final class DistrictSelectButton: UIButton {
     weak var delegate: DistrictSelectViewDelegate?
 
+    private(set) var selectedDistrict: District?
     private var districtLabel: UILabel = {
         let label = EDSLabel.b01B(text: "         지역 ", color: .pumpkin)
         label.textAlignment = .center
@@ -45,6 +46,7 @@ final class DistrictSelectButton: UIButton {
 
     func updateTitle(district: District) {
         self.districtLabel.text = " \(district.name) "
+        self.selectedDistrict = district
         self.infoLabel.text = "기준 "
         self.accessibilityLabel = district.name
         self.accessibilityHint = "더블 탭해서 지역구를 선택할 수 있습니다."

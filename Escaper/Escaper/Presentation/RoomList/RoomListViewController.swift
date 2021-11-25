@@ -84,7 +84,7 @@ extension RoomListViewController: TagScrollViewDelegate {
     func tagSelected(element: Tagable) {
         switch element {
         case is Genre:
-            guard let district = self.selectedDistrict else { return }
+            guard let district = self.districtSelectButton.selectedDistrict else { return }
             self.fetchWithCurrentSelectedOption(with: district)
         case let sortingOption as SortingOption:
             self.viewModel?.sort(option: sortingOption)
@@ -250,11 +250,11 @@ private extension RoomListViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.rooms.observe(on: self) { roomList in
+        self.viewModel?.rooms.observe(on: self) { [weak self] roomList in
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([Section.main])
             snapshot.appendItems(roomList)
-            self.dataSource?.apply(snapshot, animatingDifferences: true)
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
 
