@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RecordViewController: DefaultViewController {
     private typealias Datasource = UICollectionViewDiffableDataSource<Section, RecordCard>
@@ -68,6 +69,7 @@ class RecordViewController: DefaultViewController {
         self.configure()
         self.configureLayout()
         self.bindViewModel()
+//        UserSupervisor.shared.login(email: "Newtruth@gmail.com", imageURLString: "gs://escaper-67244.appspot.com/users/users_default.png")
         self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
     }
 
@@ -127,6 +129,7 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
         let roundedIndex = round(index)
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
         targetContentOffset.pointee = offset
+        self.hapticsGenerator()
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -374,5 +377,10 @@ private extension RecordViewController {
                             zoomCell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                        },
                        completion: nil)
+    }
+
+    func hapticsGenerator() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
 }
