@@ -25,6 +25,7 @@ private extension MainTabBarController {
         case record = "기록"
         case map = "지도"
         case leaderBoard = "리더보드"
+        case setting = "설정"
 
         var title: String {
             return self.rawValue
@@ -103,11 +104,20 @@ private extension MainTabBarController {
         let leaderBoardViewController = LeaderBoardViewController()
         leaderBoardViewController.tabBarItem = leaderBoardBarItem
         leaderBoardViewController.create()
+        let settingBarItem = self.makeTabBarItem(
+            title: TabBarItemConfig.setting.title,
+            unselected: TabBarItemConfig.setting.unselectedImage,
+            selected: TabBarItemConfig.setting.selectedImage
+        )
+        let settingViewController = SettingViewController()
+        settingViewController.create()
+        settingViewController.tabBarItem = settingBarItem
         let viewControllers = [
             homeNavigationController,
             recordViewController,
             mapNavigationController,
-            leaderBoardViewController
+            leaderBoardViewController,
+            settingViewController
         ]
         self.viewControllers = viewControllers
     }
