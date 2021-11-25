@@ -15,6 +15,10 @@ struct RoomDTO: Codable {
     var genre: String
     var geoLocation: GeoLocation
     var district: String
+    var activity: String
+    var description: String
+    var maxParty: Int
+    var timeLimit: Int
     var records: [RecordDTO]
 
     func toDictionary() -> [String: Any] {
@@ -26,6 +30,10 @@ struct RoomDTO: Codable {
             "genre": self.genre,
             "geoLocation": self.geoLocation.toDictionary,
             "district": self.district,
+            "activity": self.activity,
+            "description": self.description,
+            "maxParty": self.maxParty,
+            "timeLimit": self.timeLimit,
             "records": self.records.map { $0.toDictionary }
         ]
         return dictionary
@@ -44,6 +52,10 @@ struct RoomDTO: Codable {
                     genre: genre,
                     geoLocation: self.geoLocation.clLocation,
                     district: district,
+                    activity: self.activity,
+                    description: self.description,
+                    maxParty: self.maxParty,
+                    timeLimit: self.timeLimit,
                     records: self.records.map({ $0.toDomain() }),
                     distance: .zero)
     }

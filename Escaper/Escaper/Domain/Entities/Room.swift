@@ -17,6 +17,10 @@ struct Room: Hashable {
     var genre: Genre
     var geoLocation: CLLocation
     var district: District
+    var activity: String
+    var description: String
+    var maxParty: Int
+    var timeLimit: Int
     var records: [Record]
     var distance: Double
 
