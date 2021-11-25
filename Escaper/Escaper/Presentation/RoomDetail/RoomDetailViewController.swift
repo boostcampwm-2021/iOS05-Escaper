@@ -42,6 +42,7 @@ final class RoomDetailViewController: DefaultViewController {
         self.roomDetailInfoVeiw.update(room: room)
         self.updateStackView(records: room.records)
         self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(self.shareButtonTouched))
     }
 }
 
@@ -168,5 +169,12 @@ private extension RoomDetailViewController {
             rankView.update(record, rank: rank)
             self.userRankStackView.addArrangedSubview(rankView)
         }
+    }
+
+    @objc func shareButtonTouched() {
+        guard let image = self.view.transformToImage() else { return }
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [.saveToCameraRoll]
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }
