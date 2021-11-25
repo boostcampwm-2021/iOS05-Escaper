@@ -13,15 +13,13 @@ protocol LoginViewControllerDelegate: AnyObject {
 
 class LoginViewController: DefaultViewController {
     enum Constant {
-        static let shortHorizontalSpace = CGFloat(30)
-        static let middleHorizontalSpace = CGFloat(60)
-        static let longHorizontalSpace = CGFloat(90)
         static let shortVerticalSpace = CGFloat(20)
-        static let middleVerticalSpace = CGFloat(60)
         static let longVerticalSpace = CGFloat(75)
-        static let textFieldHeight = CGFloat(60)
         static let defaultSpace = CGFloat(15)
-        static let loginButtonHeight = CGFloat(45)
+        static let loginButtonHeight = CGFloat(50)
+        static let inputViewWidthRatio = CGFloat(0.8)
+        static let inputViewHeightRatio = CGFloat(0.1)
+        static let middleWidthRatio = CGFloat(0.6)
     }
 
     private weak var delegate: LoginViewControllerDelegate?
@@ -76,7 +74,7 @@ class LoginViewController: DefaultViewController {
         button.setTitle("로그인", for: .normal)
         button.setTitleColor(EDSColor.bloodyBlack.value, for: .normal)
         button.backgroundColor = EDSColor.pumpkin.value
-        button.layer.cornerRadius = CGFloat(20)
+        button.layer.cornerRadius = CGFloat(15)
         button.layer.masksToBounds = true
         return button
     }()
@@ -160,8 +158,8 @@ extension LoginViewController {
         self.view.addSubview(self.pumpkinImageView)
         NSLayoutConstraint.activate([
             self.pumpkinImageView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: Constant.longVerticalSpace),
-            self.pumpkinImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.longHorizontalSpace),
-            self.pumpkinImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.longHorizontalSpace),
+            self.pumpkinImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.pumpkinImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.middleWidthRatio),
             self.pumpkinImageView.heightAnchor.constraint(equalTo: self.pumpkinImageView.widthAnchor, multiplier: 0.9)
         ])
     }
@@ -171,8 +169,7 @@ extension LoginViewController {
         self.view.addSubview(self.loginLabel)
         NSLayoutConstraint.activate([
             self.loginLabel.topAnchor.constraint(equalTo: self.pumpkinImageView.bottomAnchor, constant: Constant.shortVerticalSpace),
-            self.loginLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.longHorizontalSpace),
-            self.loginLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.longHorizontalSpace)
+            self.loginLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
 
@@ -181,9 +178,9 @@ extension LoginViewController {
         self.view.addSubview(self.emailInputView)
         NSLayoutConstraint.activate([
             self.emailInputView.topAnchor.constraint(equalTo: self.loginLabel.bottomAnchor, constant: Constant.longVerticalSpace),
-            self.emailInputView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.shortHorizontalSpace),
-            self.emailInputView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.shortHorizontalSpace),
-            self.emailInputView.heightAnchor.constraint(equalToConstant: Constant.textFieldHeight)
+            self.emailInputView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.emailInputView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.inputViewWidthRatio),
+            self.emailInputView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: Constant.inputViewHeightRatio)
         ])
     }
 
@@ -191,10 +188,10 @@ extension LoginViewController {
         self.passwordInputView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.passwordInputView)
         NSLayoutConstraint.activate([
-            self.passwordInputView.topAnchor.constraint(equalTo: self.emailInputView.bottomAnchor, constant: Constant.shortVerticalSpace),
-            self.passwordInputView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.shortHorizontalSpace),
-            self.passwordInputView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.shortHorizontalSpace),
-            self.passwordInputView.heightAnchor.constraint(equalToConstant: Constant.textFieldHeight)
+            self.passwordInputView.topAnchor.constraint(equalTo: self.emailInputView.bottomAnchor),
+            self.passwordInputView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.passwordInputView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.inputViewWidthRatio),
+            self.passwordInputView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: Constant.inputViewHeightRatio)
         ])
     }
 
@@ -202,9 +199,9 @@ extension LoginViewController {
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.loginButton)
         NSLayoutConstraint.activate([
-            self.loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -Constant.middleVerticalSpace),
-            self.loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: Constant.longHorizontalSpace),
-            self.loginButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -Constant.longHorizontalSpace),
+            self.loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100),
+            self.loginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.loginButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.middleWidthRatio),
             self.loginButton.heightAnchor.constraint(equalToConstant: Constant.loginButtonHeight)
         ])
     }
