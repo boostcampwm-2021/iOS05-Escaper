@@ -19,6 +19,17 @@
 		25104A53274546E100DB90BF /* sinlim.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A52274546E100DB90BF /* sinlim.json */; };
 		251CA989274F72B300BA5EC5 /* hongdae.json in Resources */ = {isa = PBXBuildFile; fileRef = 251CA988274F72B200BA5EC5 /* hongdae.json */; };
 		251CA98B274F777F00BA5EC5 /* gundae.json in Resources */ = {isa = PBXBuildFile; fileRef = 251CA98A274F777F00BA5EC5 /* gundae.json */; };
+		251CA98E274F7CDE00BA5EC5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA98D274F7CDE00BA5EC5 /* SettingViewController.swift */; };
+		251CA991274F86BA00BA5EC5 /* UserLoginedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA990274F86BA00BA5EC5 /* UserLoginedView.swift */; };
+		251CA993274F86D500BA5EC5 /* FeedBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA992274F86D500BA5EC5 /* FeedBackView.swift */; };
+		251CA995274F875200BA5EC5 /* UserLogoutedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA994274F875200BA5EC5 /* UserLogoutedView.swift */; };
+		251CA997274F92C000BA5EC5 /* UserSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA996274F92C000BA5EC5 /* UserSettingView.swift */; };
+		251CA99F274FDFAC00BA5EC5 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA99E274FDFAC00BA5EC5 /* Feedback.swift */; };
+		251CA9A1274FDFE300BA5EC5 /* FeedbackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A0274FDFE300BA5EC5 /* FeedbackDTO.swift */; };
+		251CA9A3274FE04D00BA5EC5 /* FeedbackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A2274FE04D00BA5EC5 /* FeedbackUseCase.swift */; };
+		251CA9A5274FE0AF00BA5EC5 /* FeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A4274FE0AF00BA5EC5 /* FeedbackRepository.swift */; };
+		251CA9A7274FE26000BA5EC5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A6274FE26000BA5EC5 /* SettingViewModel.swift */; };
+		251CA9A9274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */; };
 		3EBB5A7E274E35C000715F89 /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
 		3EBB5A7F274E35C000715F89 /* DataInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A472744E98F00DB90BF /* DataInjection.swift */; };
 		3EBB5A80274E35C000715F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
@@ -189,6 +200,17 @@
 		2513CACE2735192F00A574C7 /* EDSKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EDSKit.swift; sourceTree = "<group>"; };
 		251CA988274F72B200BA5EC5 /* hongdae.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hongdae.json; sourceTree = "<group>"; };
 		251CA98A274F777F00BA5EC5 /* gundae.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gundae.json; sourceTree = "<group>"; };
+		251CA98D274F7CDE00BA5EC5 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		251CA990274F86BA00BA5EC5 /* UserLoginedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginedView.swift; sourceTree = "<group>"; };
+		251CA992274F86D500BA5EC5 /* FeedBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackView.swift; sourceTree = "<group>"; };
+		251CA994274F875200BA5EC5 /* UserLogoutedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogoutedView.swift; sourceTree = "<group>"; };
+		251CA996274F92C000BA5EC5 /* UserSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingView.swift; sourceTree = "<group>"; };
+		251CA99E274FDFAC00BA5EC5 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		251CA9A0274FDFE300BA5EC5 /* FeedbackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackDTO.swift; sourceTree = "<group>"; };
+		251CA9A2274FE04D00BA5EC5 /* FeedbackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackUseCase.swift; sourceTree = "<group>"; };
+		251CA9A4274FE0AF00BA5EC5 /* FeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRepository.swift; sourceTree = "<group>"; };
+		251CA9A6274FE26000BA5EC5 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRepositoryInterface.swift; sourceTree = "<group>"; };
 		25513369273108A800A92CF3 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
 		2551336B2731093B00A92CF3 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
 		25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListRepositoryInterface.swift; sourceTree = "<group>"; };
@@ -271,6 +293,7 @@
 				25020608273CE349004B024E /* RecordDTO.swift */,
 				1F0CAED22733E00300389CFA /* RoomDTO.swift */,
 				25104A4A2744ED8100DB90BF /* StoreDTO.swift */,
+				251CA9A0274FDFE300BA5EC5 /* FeedbackDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -305,6 +328,7 @@
 				1FAAD09A274666AD00C2AE90 /* GeoLocation.swift */,
 				1FAAD09B274666AD00C2AE90 /* Rating.swift */,
 				1FAAD09C274666AD00C2AE90 /* SortingOption.swift */,
+				251CA99E274FDFAC00BA5EC5 /* Feedback.swift */,
 			);
 			path = Supplementary;
 			sourceTree = "<group>";
@@ -380,6 +404,27 @@
 			path = DataInjection;
 			sourceTree = "<group>";
 		};
+		251CA98C274F7CA400BA5EC5 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				251CA9A6274FE26000BA5EC5 /* SettingViewModel.swift */,
+				251CA98D274F7CDE00BA5EC5 /* SettingViewController.swift */,
+				251CA98F274F81A400BA5EC5 /* Views */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		251CA98F274F81A400BA5EC5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				251CA996274F92C000BA5EC5 /* UserSettingView.swift */,
+				251CA990274F86BA00BA5EC5 /* UserLoginedView.swift */,
+				251CA994274F875200BA5EC5 /* UserLogoutedView.swift */,
+				251CA992274F86D500BA5EC5 /* FeedBackView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		255133532730E8DB00A92CF3 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,8 +438,8 @@
 		255133542730E8E700A92CF3 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				25BB1DE3274B060F00A98006 /* StoreDetail */,
 				251031BA2733950900BD07BF /* Common */,
+				25BB1DE3274B060F00A98006 /* StoreDetail */,
 				3E315717274365E800472CAD /* Login */,
 				2551335C2730EDA900A92CF3 /* RoomList */,
 				2551335D2730EEDB00A92CF3 /* RoomDetail */,
@@ -403,6 +448,7 @@
 				255133612730EF4500A92CF3 /* AddRecord */,
 				1FE533FF273F8ABE00867832 /* SearchRoom */,
 				2551335F2730EEEF00A92CF3 /* LeaderBoard */,
+				251CA98C274F7CA400BA5EC5 /* Setting */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -430,6 +476,7 @@
 				2577276C273D18EB00881845 /* NetworkService.swift */,
 				25EA50E3274BB61F0030C17C /* UserSupervisor.swift */,
 				3E77D55C274BC41E0042133B /* UserRepository.swift */,
+				251CA9A4274FE0AF00BA5EC5 /* FeedbackRepository.swift */,
 				1F0CAED12733DFF300389CFA /* DataMapping */,
 			);
 			path = Infrastructure;
@@ -572,6 +619,7 @@
 				0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */,
 				3E77D55E274BC8E70042133B /* UserUseCase.swift */,
 				1F6DC245274C81AF0063C632 /* StoreUseCase.swift */,
+				251CA9A2274FE04D00BA5EC5 /* FeedbackUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -592,6 +640,7 @@
 				25772762273CE87F00881845 /* RecordRepositoryInterface.swift */,
 				3E77D560274BC9550042133B /* UserRepositoryInterface.swift */,
 				1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */,
+				251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -781,6 +830,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				251CA997274F92C000BA5EC5 /* UserSettingView.swift in Sources */,
 				3EBB5AD3274E35CB00715F89 /* Observable.swift in Sources */,
 				3EBB5AD4274E35CB00715F89 /* RatingImage.swift in Sources */,
 				3EBB5AD5274E35CB00715F89 /* EDSKit.swift in Sources */,
@@ -800,6 +850,7 @@
 				3EBB5A80274E35C000715F89 /* AppDelegate.swift in Sources */,
 				3EBB5A81274E35C000715F89 /* SceneDelegate.swift in Sources */,
 				3EBB5A82274E35C000715F89 /* InfoDescriptionStackView.swift in Sources */,
+				251CA9A9274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift in Sources */,
 				3EBB5A83274E35C000715F89 /* InfoDescriptionDetailStackView.swift in Sources */,
 				3EBB5A84274E35C000715F89 /* MainTabBarController.swift in Sources */,
 				3EBB5A85274E35C000715F89 /* DefaultViewController.swift in Sources */,
@@ -816,6 +867,7 @@
 				3EBB5A90274E35C000715F89 /* TagScrollView.swift in Sources */,
 				3EBB5A91274E35C000715F89 /* TagButton.swift in Sources */,
 				3EBB5A92274E35C000715F89 /* RatingContainerView.swift in Sources */,
+				251CA98E274F7CDE00BA5EC5 /* SettingViewController.swift in Sources */,
 				3EBB5A93274E35C000715F89 /* RoomOverviewTableViewCell.swift in Sources */,
 				3EBB5A94274E35C000715F89 /* RoomDetailViewController.swift in Sources */,
 				3EBB5A95274E35C000715F89 /* RoomDetailInfoView.swift in Sources */,
@@ -823,9 +875,11 @@
 				3EBB5A97274E35C000715F89 /* MapViewController.swift in Sources */,
 				3EBB5A98274E35C000715F89 /* MapViewModel.swift in Sources */,
 				3EBB5A99274E35C000715F89 /* StoreAnnotation.swift in Sources */,
+				251CA9A7274FE26000BA5EC5 /* SettingViewModel.swift in Sources */,
 				3EBB5A9A274E35C000715F89 /* StoreListViewController.swift in Sources */,
 				3EBB5A9B274E35C000715F89 /* StoreOverViewTableViewCell.swift in Sources */,
 				3EBB5A9C274E35C000715F89 /* StoreInformationStackView.swift in Sources */,
+				251CA99F274FDFAC00BA5EC5 /* Feedback.swift in Sources */,
 				3EBB5A9D274E35C000715F89 /* RecordViewController.swift in Sources */,
 				3EBB5A9E274E35C000715F89 /* RecordViewModel.swift in Sources */,
 				3EBB5A9F274E35C000715F89 /* RecordGuideView.swift in Sources */,
@@ -847,9 +901,11 @@
 				3EBB5AAF274E35C000715F89 /* LeaderBoardViewModel.swift in Sources */,
 				3EBB5AB0274E35C000715F89 /* TopRankView.swift in Sources */,
 				3EBB5AB1274E35C000715F89 /* RankView.swift in Sources */,
+				251CA995274F875200BA5EC5 /* UserLogoutedView.swift in Sources */,
 				3EBB5AB2274E35C000715F89 /* RoomListRepositoryInterface.swift in Sources */,
 				3EBB5AB3274E35C000715F89 /* LeaderBoardRepositoryInterface.swift in Sources */,
 				3EBB5AB4274E35C000715F89 /* RecordRepositoryInterface.swift in Sources */,
+				251CA9A3274FE04D00BA5EC5 /* FeedbackUseCase.swift in Sources */,
 				3EBB5AB5274E35C000715F89 /* UserRepositoryInterface.swift in Sources */,
 				3EBB5AB6274E35C000715F89 /* StoreRepositoryInterface.swift in Sources */,
 				3EBB5AB7274E35C000715F89 /* Tagable.swift in Sources */,
@@ -857,6 +913,7 @@
 				3EBB5AB9274E35C000715F89 /* Genre.swift in Sources */,
 				3EBB5ABA274E35C000715F89 /* GeoLocation.swift in Sources */,
 				3EBB5ABB274E35C000715F89 /* Rating.swift in Sources */,
+				251CA993274F86D500BA5EC5 /* FeedBackView.swift in Sources */,
 				3EBB5ABC274E35C000715F89 /* SortingOption.swift in Sources */,
 				3EBB5ABD274E35C000715F89 /* RecordCard.swift in Sources */,
 				3EBB5ABE274E35C000715F89 /* User.swift in Sources */,
@@ -872,8 +929,11 @@
 				3EBB5AC8274E35C000715F89 /* FirebaseService.swift in Sources */,
 				3EBB5AC9274E35C000715F89 /* RecordRepository.swift in Sources */,
 				3EBB5ACA274E35C000715F89 /* RoomListRepository.swift in Sources */,
+				251CA9A1274FDFE300BA5EC5 /* FeedbackDTO.swift in Sources */,
 				3EBB5ACB274E35C000715F89 /* LeaderBoardRepository.swift in Sources */,
 				3EBB5ACC274E35C000715F89 /* StoreRepository.swift in Sources */,
+				251CA9A5274FE0AF00BA5EC5 /* FeedbackRepository.swift in Sources */,
+				251CA991274F86BA00BA5EC5 /* UserLoginedView.swift in Sources */,
 				3EBB5ACD274E35C000715F89 /* ImageCacheManager.swift in Sources */,
 				3EBB5ACE274E35C000715F89 /* NetworkService.swift in Sources */,
 				3EBB5ACF274E35C000715F89 /* UserSupervisor.swift in Sources */,
