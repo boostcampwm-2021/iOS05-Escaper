@@ -8,24 +8,13 @@
 import UIKit
 
 final class RecordResultView: UIView {
-    private let rankLabel: UILabel = EDSLabel.h03B(text: "Rank", color: .gloomyPurple)
-    private var rankResultLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = EDSColor.bloodyBlack.value
-        label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
-        return label
-    }()
-    private let timeLabel: UILabel = EDSLabel.h03B(text: "Time", color: .gloomyPurple)
-    private var timeResultLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = EDSColor.bloodyBlack.value
-        label.font = UIFont.systemFont(ofSize: 34, weight: .bold)
-        return label
-    }()
+    private let rankLabel: UILabel = EDSLabel.b01B(text: "Rank", color: .gloomyPurple)
+    private var rankResultLabel = EDSLabel.h02B(color: .bloodyBlack)
+    private let timeLabel: UILabel = EDSLabel.b01B(text: "Time", color: .gloomyPurple)
+    private var timeResultLabel =  EDSLabel.h02B(color: .bloodyBlack)
     private let rankStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .fill
         stackView.alignment = .center
         stackView.distribution = .fill
         return stackView
@@ -33,7 +22,6 @@ final class RecordResultView: UIView {
     private let timeStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .fill
         stackView.alignment = .center
         stackView.distribution = .fill
         return stackView
@@ -50,8 +38,8 @@ final class RecordResultView: UIView {
     }
 
     func update(playerRank: Int, numberOfPlayers: Int, time: Int) {
-        self.rankResultLabel.text = String(playerRank) + "/" + String(numberOfPlayers)
-        self.timeResultLabel.text = String(time/60) + ":" + String(time%60)
+        self.rankResultLabel.text = String(format: "%02d", playerRank) + "/" + String(format: "%02d", numberOfPlayers)
+        self.timeResultLabel.text = String(format: "%02d", time/60) + ":" + String(format: "%02d", time%60)
     }
 
     func prepareForReuse() {
