@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 final class MainTabBarController: UITabBarController {
     enum Constant {
@@ -14,6 +15,7 @@ final class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureDelegates()
         self.configureTabBar()
         self.configureSubViewControllers()
     }
@@ -142,5 +144,16 @@ private extension MainTabBarController {
         )
         item.imageInsets = UIEdgeInsets(top: Constant.itemInset, left: Constant.itemInset, bottom: Constant.itemInset, right: Constant.itemInset)
         return item
+    }
+}
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    private func configureDelegates() {
+        self.delegate = self
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
 }
