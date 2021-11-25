@@ -33,6 +33,11 @@ class SettingViewController: DefaultViewController {
         self.configure()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.updateUserView()
+    }
+
     func create() {
         let repository = FeedbackRepository(service: FirebaseService.shared)
         let usecase = FeedbackUsecase(repository: repository)
