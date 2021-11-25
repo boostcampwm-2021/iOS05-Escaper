@@ -14,6 +14,7 @@ protocol AddRecordViewDelegate: AnyObject {
     func updateRoom(identifer: String)
     func updateIsSuccess(_ isSuccess: Bool)
     func updateEscapingTime(time: Int)
+    func updateRating(_ value: Double)
 }
 
 final class AddRecordView: UIView {
@@ -46,7 +47,12 @@ final class AddRecordView: UIView {
     private let satisfactionLabel: UILabel = EDSLabel.b01B(text: "만족도", color: .charcoal)
     private let escapingStatusLabel = EDSLabel.b01B(text: "탈출 여부", color: .charcoal)
     private let escapingTimeLabel = EDSLabel.b01B(text: "탈출 시간", color: .charcoal)
-    private let satisFactionRatingView = RatingView()
+    private let satisFactionRatingView: RatingTempView = {
+        let rating = RatingTempView()
+        rating.fillMode = .precise
+        rating.currentRating = 3
+        return rating
+    }()
     private let escapingStatusSegmentControl: UISegmentedControl = {
         let segmentControl = UISegmentedControl(items: ["Success", "Fail"])
         segmentControl.tintColor = .clear
@@ -104,12 +110,18 @@ final class AddRecordView: UIView {
         super.init(frame: frame)
         self.configure()
         self.configureLayout()
+        self.bindStarView()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.configure()
         self.configureLayout()
+        self.bindStarView()
+    }
+
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
     }
 
     @objc func findRoomButtonTouched() {
@@ -124,6 +136,12 @@ final class AddRecordView: UIView {
         let currentColor = self.escapingStatusSegmentControl.selectedSegmentIndex == 0 ? EDSColor.pumpkin : EDSColor.bloodyRed
         self.escapingStatusSegmentControl.selectedSegmentTintColor = currentColor.value
         self.delegate?.updateIsSuccess(self.escapingStatusSegmentControl.selectedSegmentIndex == 0)
+        self.hapticsGenerator()
+    }
+
+    func hapticsGenerator() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
 
     @objc func userSelectedImageViewTapped() {
@@ -149,6 +167,12 @@ final class AddRecordView: UIView {
 
     func fetchSelectedImage() -> UIImage? {
         return self.userSelectedImageView.image == EDSImage.plus.value ? nil : self.userSelectedImageView.image
+    }
+
+    func bindStarView() {
+        self.satisFactionRatingView.didFinishTouchingCosmos = { rating in
+            self.delegate?.updateRating(rating)
+        }
     }
 }
 

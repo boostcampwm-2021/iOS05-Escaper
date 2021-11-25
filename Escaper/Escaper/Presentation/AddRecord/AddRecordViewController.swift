@@ -60,7 +60,6 @@ final class AddRecordViewController: DefaultViewController {
         ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
             switch result {
             case .success(let urlString):
-                print(urlString)
                 self?.viewModel?.post(email: userEmail, imageURLString: urlString)
                 self?.delegate?.addRecordButtonTouched()
                 self?.dismiss(animated: true)
@@ -72,6 +71,10 @@ final class AddRecordViewController: DefaultViewController {
 }
 
 extension AddRecordViewController: AddRecordViewDelegate {
+    func updateRating(_ value: Double) {
+        self.viewModel?.satisfaction = value
+    }
+
     func updateEscapingTime(time: Int) {
         self.viewModel?.time = time
         self.viewModel?.changeSaveState()
