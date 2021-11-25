@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CEE8B32274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F06844E27315D6300E2C789 /* GoogleService-Info.plist */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
@@ -141,6 +142,7 @@
 		0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardUseCase.swift; sourceTree = "<group>"; };
 		0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepositoryInterface.swift; sourceTree = "<group>"; };
 		0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepository.swift; sourceTree = "<group>"; };
+		0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDescriptionRatingStackView.swift; sourceTree = "<group>"; };
 		1F061DA7272FF896008FC519 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1F06844E27315D6300E2C789 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F0CAED22733E00300389CFA /* RoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			children = (
 				0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */,
 				0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */,
+				0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -906,6 +909,7 @@
 				3EBB5AB3274E35C000715F89 /* LeaderBoardRepositoryInterface.swift in Sources */,
 				3EBB5AB4274E35C000715F89 /* RecordRepositoryInterface.swift in Sources */,
 				251CA9A3274FE04D00BA5EC5 /* FeedbackUseCase.swift in Sources */,
+				0CEE8B32274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift in Sources */,
 				3EBB5AB5274E35C000715F89 /* UserRepositoryInterface.swift in Sources */,
 				3EBB5AB6274E35C000715F89 /* StoreRepositoryInterface.swift in Sources */,
 				3EBB5AB7274E35C000715F89 /* Tagable.swift in Sources */,
