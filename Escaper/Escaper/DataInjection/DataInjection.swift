@@ -51,6 +51,10 @@ class DataInjection {
                                           genre: room.genre,
                                           geoLocation: geoLocation,
                                           district: district,
+                                          activity: room.activity,
+                                          description: room.description,
+                                          maxParty: room.maxParty,
+                                          timeLimit: room.timeLimit,
                                           records: [])
 
                     FirebaseService.shared.addRoom(room: roomDTO)

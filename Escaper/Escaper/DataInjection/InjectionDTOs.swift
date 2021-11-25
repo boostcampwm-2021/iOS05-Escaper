@@ -19,6 +19,6 @@ struct StoreInjectionDTO: Codable {
 }
 
 struct RoomInjectionDTO: Codable {
-    let title, genre: String
-    let difficulty: Int
+    let title, genre, activity, description: String
+    let difficulty, maxParty, timeLimit: Int
 }
