@@ -13,6 +13,7 @@ protocol SignUpViewControllerDelegate: AnyObject {
 
 class SignUpViewController: DefaultViewController {
     enum Constant {
+        static let shortVerticalSpace = CGFloat(20)
         static let middleVerticalSpace = CGFloat(40)
         static let signupButtonHeight = CGFloat(50)
         static let defaultSpace = CGFloat(15)
@@ -204,6 +205,12 @@ class SignUpViewController: DefaultViewController {
         guard let image = userImage else { return UIImage() }
         return image
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+        self.view.frame.origin = CGPoint(x: 0, y: 0)
+    }
 }
 
 extension SignUpViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
@@ -232,6 +239,41 @@ extension SignUpViewController: UITextFieldDelegate {
             break
         }
         self.designateSignupButtonState()
+    }
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch textField {
+        case self.passwordInputView.textField:
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.frame.origin = CGPoint(x: 0, y: 0)
+                self.view.transform = CGAffineTransform(translationX: 0, y: -self.passwordInputView.frame.height*0.5)
+            })
+        case self.passwordCheckInputView.textField:
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.frame.origin = CGPoint(x: 0, y: 0)
+                self.view.transform = CGAffineTransform(translationX: 0, y: -self.passwordInputView.frame.height*2.6)
+            })
+        default:
+            break
+        }
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case self.emailInputView.textField:
+            self.passwordInputView.textField?.becomeFirstResponder()
+        case self.passwordInputView.textField:
+            self.passwordCheckInputView.textField?.becomeFirstResponder()
+        case self.passwordCheckInputView.textField:
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.frame.origin = CGPoint(x: 0, y: 0)
+            })
+            textField.endEditing(true)
+        default:
+            break
+        }
+        return true
     }
 }
 
@@ -373,7 +415,7 @@ extension SignUpViewController {
         self.signupButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.signupButton)
         NSLayoutConstraint.activate([
-            self.signupButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -70),
+            self.signupButton.topAnchor.constraint(equalTo: self.passwordCheckInputView.bottomAnchor),
             self.signupButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.signupButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.middleWidthRatio),
             self.signupButton.heightAnchor.constraint(equalToConstant: Constant.signupButtonHeight)

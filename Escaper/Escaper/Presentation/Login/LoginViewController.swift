@@ -119,12 +119,43 @@ class LoginViewController: DefaultViewController {
             self.loginButton.isEnabled = false
         }
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+        self.view.frame.origin = CGPoint(x: 0, y: 0)
+    }
 }
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         self.viewModel?.startEditing()
         self.designateSignupButtonState()
+    }
+
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == self.passwordInputView.textField {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.frame.origin = CGPoint(x: 0, y: 0)
+                self.view.transform = CGAffineTransform(translationX: 0, y: -self.emailInputView.frame.height)
+            })
+        }
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case self.emailInputView.textField:
+            self.passwordInputView.textField?.becomeFirstResponder()
+        case self.passwordInputView.textField:
+            textField.endEditing(true)
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.frame.origin = CGPoint(x: 0, y: 0)
+            })
+        default:
+            break
+        }
+        return true
     }
 }
 
@@ -200,7 +231,7 @@ extension LoginViewController {
         self.loginButton.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.loginButton)
         NSLayoutConstraint.activate([
-            self.loginButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100),
+            self.loginButton.topAnchor.constraint(equalTo: self.passwordInputView.bottomAnchor, constant: Constant.shortVerticalSpace),
             self.loginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.loginButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: Constant.middleWidthRatio),
             self.loginButton.heightAnchor.constraint(equalToConstant: Constant.loginButtonHeight)
