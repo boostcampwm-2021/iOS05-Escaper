@@ -25,7 +25,7 @@ final class RoomDetailViewController: DefaultViewController {
         return label
     }()
     private let roomDetailInfoVeiw = RoomDetailInfoView()
-    private let rankTitleLabel = EDSLabel.h01B(text: "이 방의 TOP3!", color: .skullLightWhite)
+    private let rankTitleLabel = EDSLabel.h01B(text: "TOP 3", color: .skullLightWhite)
     private let userRankStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -135,7 +135,7 @@ private extension RoomDetailViewController {
         self.view.addSubview(self.rankTitleLabel)
         NSLayoutConstraint.activate([
             self.rankTitleLabel.topAnchor.constraint(equalTo: self.roomDetailInfoVeiw.bottomAnchor, constant: Constant.verticalSpace),
-            self.rankTitleLabel.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor)
+            self.rankTitleLabel.leadingAnchor.constraint(equalTo: self.roomDetailInfoVeiw.leadingAnchor)
         ])
     }
 
