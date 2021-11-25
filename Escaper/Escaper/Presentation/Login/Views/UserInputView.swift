@@ -40,19 +40,8 @@ private extension UserInputView {
     }
 
     func configureLayout() {
-        self.configureGuideWordsLabelLayout()
         self.configureTextFieldLayout()
-    }
-
-    func configureGuideWordsLabelLayout() {
-        self.guideWordsLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.guideWordsLabel)
-        NSLayoutConstraint.activate([
-            self.guideWordsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.guideWordsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.guideWordsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            self.guideWordsLabel.heightAnchor.constraint(equalToConstant: 15)
-        ])
+        self.configureGuideWordsLabelLayout()
     }
 
     func configureTextFieldLayout() {
@@ -63,8 +52,20 @@ private extension UserInputView {
                 textField.topAnchor.constraint(equalTo: self.topAnchor),
                 textField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 textField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                textField.bottomAnchor.constraint(equalTo: self.guideWordsLabel.topAnchor)
+                textField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6)
             ])
         }
+    }
+
+    func configureGuideWordsLabelLayout() {
+        self.guideWordsLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.guideWordsLabel)
+        NSLayoutConstraint.activate([
+            self.guideWordsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.guideWordsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.guideWordsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.guideWordsLabel.topAnchor.constraint(equalTo: self.textField!.bottomAnchor),
+            self.guideWordsLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
+        ])
     }
 }
