@@ -55,7 +55,7 @@ private extension RoomDetailViewController {
         static let longVerticalSpace = CGFloat(24)
         static let verticalSpace = CGFloat(16)
         static let horizontalSpace = CGFloat(20)
-        static let DetailInfoHeight = CGFloat(180)
+        static let DetailInfoHeight = CGFloat(100)
     }
 
     func configureLayout() {
