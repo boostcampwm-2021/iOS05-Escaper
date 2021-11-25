@@ -22,6 +22,8 @@ final class FeedBackView: UIView {
         textView.layer.borderColor = EDSColor.gloomyPurple.value?.cgColor
         textView.layer.cornerRadius = Constant.cornerRadius
         textView.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        textView.autocorrectionType = .no
+        textView.autocapitalizationType = .none
         return textView
     }()
     private let sendButton: UIButton = {

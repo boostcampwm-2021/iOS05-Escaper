@@ -71,6 +71,8 @@ extension UserInputTextField {
     func configureTextFieldAttribute(viewType: TextFieldType) {
         self.textColor = EDSColor.skullLightWhite.value
         self.backgroundColor = EDSColor.gloomyBrown.value
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .none
         self.layer.cornerRadius = 10
         switch viewType {
         case .email:
