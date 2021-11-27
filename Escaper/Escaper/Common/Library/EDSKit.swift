@@ -132,6 +132,8 @@ enum EDSKit {
         case signupSkull
         case starfilled
         case starunfilled
+        case lockfilled
+        case lockunfilled
 
         var value: UIImage? {
             return self == .mappin ? UIImage(systemName: "mappin.and.ellipse") : UIImage(named: String(describing: self))
