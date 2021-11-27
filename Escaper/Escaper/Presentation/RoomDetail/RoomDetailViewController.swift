@@ -42,10 +42,9 @@ final class RoomDetailViewController: DefaultViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configure()
         self.configureLayout()
         self.bindViewModel()
-        self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: EDSImage.share.value, style: .plain, target: self, action: #selector(self.shareButtonTouched))
     }
 
     func create() {
@@ -70,6 +69,11 @@ private extension RoomDetailViewController {
         static let verticalSpace = CGFloat(16)
         static let horizontalSpace = CGFloat(20)
         static let DetailInfoHeight = CGFloat(100)
+    }
+
+    func configure() {
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: EDSImage.share.value, style: .plain, target: self, action: #selector(self.shareButtonTouched))
     }
 
     func configureLayout() {
