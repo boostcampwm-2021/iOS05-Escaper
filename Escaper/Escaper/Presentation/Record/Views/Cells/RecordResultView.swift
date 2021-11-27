@@ -38,7 +38,7 @@ final class RecordResultView: UIView {
     }
 
     func update(playerRank: Int, numberOfPlayers: Int, time: Int) {
-        self.rankResultLabel.text = String(format: "%02d", playerRank) + "/" + String(format: "%02d", numberOfPlayers)
+        self.rankResultLabel.text = "\(playerRank)/\(numberOfPlayers)"
         self.timeResultLabel.text = String(format: "%02d", time/60) + ":" + String(format: "%02d", time%60)
     }
 

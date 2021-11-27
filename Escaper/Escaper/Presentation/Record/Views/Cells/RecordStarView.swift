@@ -13,10 +13,11 @@ final class RecordStarView: UIView {
         label.textAlignment = .center
         return label
     }()
-    private let satisfactionRatingView: RatingTempView = {
-        let ratingView = RatingTempView()
+    private let satisfactionRatingView: RatingView = {
+        let ratingView = RatingView()
         ratingView.fillMode = .precise
         ratingView.updateOnTouch = false
+        ratingView.imageKind = .star
         return ratingView
     }()
     private let difficultyLabel: UILabel = {
@@ -24,10 +25,11 @@ final class RecordStarView: UIView {
         label.textAlignment = .center
         return label
     }()
-    private let difficultyRatingView: RatingTempView = {
-        let ratingView = RatingTempView()
+    private let difficultyRatingView: RatingView = {
+        let ratingView = RatingView()
         ratingView.fillMode = .precise
         ratingView.updateOnTouch = false
+        ratingView.imageKind = .lock
         return ratingView
     }()
     private let satisfactionVerticalStackView: UIStackView = {

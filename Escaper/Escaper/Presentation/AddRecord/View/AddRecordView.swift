@@ -43,13 +43,14 @@ final class AddRecordView: UIView {
         return button
     }()
     private let roomStoreTitleLabel = EDSLabel.b01R(text: "업체정보", color: .charcoal)
-    private let satisfactionLabel: UILabel = EDSLabel.b01B(text: "만족도", color: .charcoal)
-    private let escapingStatusLabel = EDSLabel.b01B(text: "탈출 여부", color: .charcoal)
-    private let escapingTimeLabel = EDSLabel.b01B(text: "탈출 시간", color: .charcoal)
-    private let satisFactionRatingView: RatingTempView = {
-        let rating = RatingTempView()
-        rating.fillMode = .precise
-        rating.currentRating = 3
+    private let satisfactionLabel: UILabel = EDSLabel.b02B(text: "만족도", color: .charcoal)
+    private let escapingStatusLabel = EDSLabel.b02B(text: "탈출 여부", color: .charcoal)
+    private let escapingTimeLabel = EDSLabel.b02B(text: "탈출 시간", color: .charcoal)
+    private let satisFactionRatingView: RatingView = {
+        let rating = RatingView()
+        rating.fillMode = .half
+        rating.currentRating = 0
+        rating.imageKind = .star
         return rating
     }()
     private let escapingStatusSegmentControl: UISegmentedControl = {
@@ -99,7 +100,7 @@ final class AddRecordView: UIView {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.spacing = Constant.stackViewSpacing
+        stackView.spacing = 20
         return stackView
     }()
 
@@ -176,7 +177,7 @@ final class AddRecordView: UIView {
 
 private extension AddRecordView {
     enum Constant {
-        static let stackViewSpacing = CGFloat(20)
+        static let stackViewSpacing = CGFloat(10)
     }
 
     func configure() {
@@ -188,7 +189,6 @@ private extension AddRecordView {
         self.configureRecordBackgroundImageViewLayout()
         self.configureImagePickerButtonLayout()
         self.configurArrrangeSubViews()
-        self.configureRatingViewLayout()
         self.configureEscapingtimePickerButtonLayout()
         self.configureRoomInformationStackViewLayout()
         self.configureEscapingStackViewLayout()
@@ -229,14 +229,6 @@ private extension AddRecordView {
         self.escapingStackView.addArrangedSubview(self.escapingInputStackView)
     }
 
-    func configureRatingViewLayout() {
-        self.satisFactionRatingView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.satisFactionRatingView.heightAnchor.constraint(equalToConstant: 23),
-            self.satisFactionRatingView.widthAnchor.constraint(equalToConstant: 23 * CGFloat(Rating.maxRating) + RatingView.Constant.summationOfElementSpacing)
-        ])
-    }
-
     func configureEscapingtimePickerButtonLayout() {
         self.escapingTimePickerButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -260,7 +252,8 @@ private extension AddRecordView {
         NSLayoutConstraint.activate([
             self.escapingStackView.centerXAnchor.constraint(equalTo: self.recordBackgroundImageView.centerXAnchor),
             self.escapingStackView.topAnchor.constraint(equalTo: self.roomInformationStackView.bottomAnchor, constant: 30),
-            self.escapingStackView.widthAnchor.constraint(lessThanOrEqualTo: self.recordBackgroundImageView.widthAnchor)
+            self.escapingStackView.widthAnchor.constraint(equalTo: self.recordBackgroundImageView.widthAnchor, multiplier: 0.6),
+            self.escapingStackView.heightAnchor.constraint(equalTo: self.recordBackgroundImageView.heightAnchor, multiplier: 0.2)
         ])
     }
 

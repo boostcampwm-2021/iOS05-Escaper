@@ -94,11 +94,11 @@ private extension RecordUserView {
     }
 
     enum Result: String {
-        case success
-        case fail
+        case success = "Sucess"
+        case fail = "Fail"
 
         var name: String {
-            return self.rawValue.uppercased()
+            return self.rawValue
         }
     }
 
