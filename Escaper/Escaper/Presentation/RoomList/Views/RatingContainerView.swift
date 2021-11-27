@@ -8,11 +8,26 @@
 import UIKit
 
 final class RatingContainerView: UIView {
-    private let levelLabel = EDSLabel.b03R(text: "난이도", color: .skullWhite)
+    private let difficultyLabel = EDSLabel.b03R(text: "난이도", color: .skullWhite)
     private let satisfactionLabel = EDSLabel.b03R(text: "만족도", color: .skullWhite)
-    private let levelRatingView = RatingView()
-    private let satisfactionRatingView = RatingView()
-
+    private let difficultyRatingView: RatingView = {
+        let rating = RatingView()
+        rating.fillMode = .precise
+        rating.currentRating = 0
+        rating.starSpacing = 2
+        rating.imageKind = .lock
+        rating.updateOnTouch = false
+        return rating
+    }()
+    private let satisfactionRatingView: RatingView = {
+        let rating = RatingView()
+        rating.fillMode = .precise
+        rating.currentRating = 0
+        rating.starSpacing = 2
+        rating.imageKind = .star
+        rating.updateOnTouch = false
+        return rating
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configure()
@@ -23,38 +38,42 @@ final class RatingContainerView: UIView {
         self.configure()
     }
 
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        self.difficultyRatingView.starSize = (Int(self.difficultyRatingView.frame.width) - (self.difficultyRatingView.starSpacing * 4) ) / 5
+        self.satisfactionRatingView.starSize = (Int(self.satisfactionRatingView.frame.width) - (self.satisfactionRatingView.starSpacing * 4) ) / 5
+    }
+
     func update(difficulty: Int, satisfaction: Double) {
-        self.levelRatingView.fill(rating: Rating(rawValue: difficulty)!)
-        self.satisfactionRatingView.fill(rating: Rating(rawValue: Int(satisfaction))!)
+        self.difficultyRatingView.currentRating = Double(difficulty)
+        self.satisfactionRatingView.currentRating = satisfaction
     }
 
     func prepareForReuse() {
-        self.levelRatingView.fill(rating: .zero)
-        self.satisfactionRatingView.fill(rating: .zero)
+        self.difficultyRatingView.currentRating = 0
+        self.satisfactionRatingView.currentRating = 0
     }
 }
 
 private extension RatingContainerView {
     enum Constant {
         static let labelWidth = CGFloat(30)
-        static let ratingViewHeight = CGFloat(10)
-        static let ratingViewWidth = Constant.ratingViewHeight * CGFloat(Rating.maxRating) + RatingView.Constant.summationOfElementSpacing
     }
 
     func configure() {
-        self.configureLevelLabelLayout()
+        self.configureDifficultyLabelLayout()
         self.configureSatisfactionLabelLayout()
         self.configureLevelRatingViewLayout()
         self.configureSatisfactionRatingViewLayout()
     }
 
-    func configureLevelLabelLayout() {
-        self.levelLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.levelLabel)
+    func configureDifficultyLabelLayout() {
+        self.difficultyLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.difficultyLabel)
         NSLayoutConstraint.activate([
-            self.levelLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.levelLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            self.levelLabel.widthAnchor.constraint(equalToConstant: Constant.labelWidth)
+            self.difficultyLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.difficultyLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            self.difficultyLabel.widthAnchor.constraint(equalToConstant: Constant.labelWidth)
         ])
     }
 
@@ -69,13 +88,13 @@ private extension RatingContainerView {
     }
 
     func configureLevelRatingViewLayout() {
-        self.levelRatingView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.levelRatingView)
+        self.difficultyRatingView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.difficultyRatingView)
         NSLayoutConstraint.activate([
-            self.levelRatingView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.levelRatingView.centerYAnchor.constraint(equalTo: self.levelLabel.centerYAnchor, constant: -0.5),
-            self.levelRatingView.widthAnchor.constraint(equalToConstant: Constant.ratingViewWidth),
-            self.levelRatingView.heightAnchor.constraint(equalToConstant: Constant.ratingViewHeight)
+            self.difficultyRatingView.leadingAnchor.constraint(equalTo: self.difficultyLabel.trailingAnchor, constant: 5),
+            self.difficultyRatingView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.difficultyRatingView.centerYAnchor.constraint(equalTo: self.difficultyLabel.centerYAnchor),
+            self.difficultyRatingView.heightAnchor.constraint(equalTo: self.difficultyLabel.heightAnchor)
         ])
     }
 
@@ -83,10 +102,10 @@ private extension RatingContainerView {
         self.satisfactionRatingView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(self.satisfactionRatingView)
         NSLayoutConstraint.activate([
+            self.satisfactionRatingView.leadingAnchor.constraint(equalTo: self.satisfactionLabel.trailingAnchor, constant: 5),
             self.satisfactionRatingView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.satisfactionRatingView.centerYAnchor.constraint(equalTo: self.satisfactionLabel.centerYAnchor, constant: -0.7),
-            self.satisfactionRatingView.widthAnchor.constraint(equalToConstant: Constant.ratingViewWidth),
-            self.satisfactionRatingView.heightAnchor.constraint(equalToConstant: Constant.ratingViewHeight)
+            self.satisfactionRatingView.centerYAnchor.constraint(equalTo: self.satisfactionLabel.centerYAnchor),
+            self.satisfactionRatingView.heightAnchor.constraint(equalTo: self.satisfactionLabel.heightAnchor)
         ])
     }
 }
