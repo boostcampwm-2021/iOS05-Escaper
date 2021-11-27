@@ -21,12 +21,31 @@ protocol RecordNetwork: AnyObject {
     func addRecord(recordDTO: RecordDTO)
 }
 
+protocol LeaderBoardNetwork: AnyObject {
+    func queryUser(completion: @escaping (Result<[User], Error>) -> Void)
+}
+
+protocol StoreNetwork: AnyObject {
+    func queryStore(name: String, completion: @escaping (Result<[StoreDTO], Error>) -> Void)
+}
+
+protocol UserNetwork: AnyObject {
+    func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func confirmUser(email: String, password: String, completion: @escaping (Result<User, UserError>) -> Void)
+    func addUser(user: User)
+}
+
+protocol FeedbackNetwork: AnyObject {
+    func addFeedback(feedbackDTO: FeedbackDTO)
+}
+
 final class FirebaseService: RoomListNetwork {
     enum Collection: String {
         case users
         case rooms
         case records
         case stores
+        case feedbacks
 
         var value: String {
             return self.rawValue
@@ -59,13 +78,13 @@ final class FirebaseService: RoomListNetwork {
                     try document.data(as: RoomDTO.self)
                 }
                 switch result {
-                case .success(let room):
-                    if let room = room {
-                        completion(.success(room))
+                case .success(let roomDTO):
+                    if let roomDTO = roomDTO {
+                        completion(.success(roomDTO))
                     }
                 case .failure(let error):
                     completion(.failure(error))
-                    return
+
                 }
             }
     }
@@ -74,23 +93,18 @@ final class FirebaseService: RoomListNetwork {
         database.collection(Collection.rooms.value)
             .getDocuments { snapshot, error in
                 guard let documents = snapshot?.documents else { return }
-                var roomDTOs = [RoomDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: RoomDTO.self)
-                    }
-                    switch result {
-                    case .success(let roomDTO):
-                        if let roomDTO = roomDTO,
-                           roomDTO.title.hasPrefix(name) {
-                            roomDTOs.append(roomDTO)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: RoomDTO.self) }
+                    .compactMap { $0 }
+                    .filter { $0.title.hasPrefix(name) }
                 }
-                completion(Result.success(roomDTOs.sorted(by: {$0.title < $1.title })))
+                switch result {
+                case .success(let recordDTOs):
+                    completion(.success(recordDTOs.filter { $0.title.hasPrefix(name) }
+                                            .sorted { $0.title < $1.title }))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
     }
 
@@ -108,22 +122,15 @@ extension FirebaseService: RecordNetwork {
             .whereField("userEmail", isEqualTo: userEmail)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
-                var recordDTOs = [RecordDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: RecordDTO.self)
-                    }
-                    switch result {
-                    case .success(let recordDTO):
-                        if let recordDTO = recordDTO {
-                            recordDTOs.append(recordDTO)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: RecordDTO.self) }.compactMap { $0 }
                 }
-                completion(.success(recordDTOs))
+                switch result {
+                case .success(let recordDTOs):
+                    completion(.success(recordDTOs))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
     }
 
@@ -133,6 +140,23 @@ extension FirebaseService: RecordNetwork {
     }
 }
 
+extension FirebaseService: LeaderBoardNetwork {
+    func queryUser(completion: @escaping (Result<[User], Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                let result = Result {
+                    try documents.map { try $0.data(as: User.self) }.compactMap { $0 }
+                }
+                switch result {
+                case .success(let users):
+                    completion(.success(users))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+}
 
 private extension FirebaseService {
     func query(by genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
@@ -141,22 +165,15 @@ private extension FirebaseService {
             .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
-                var roomList = [RoomDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: RoomDTO.self)
-                    }
-                    switch result {
-                    case .success(let room):
-                        if let room = room {
-                            roomList.append(room)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: RoomDTO.self) }.compactMap { $0 }
                 }
-                completion(Result.success(roomList))
+                switch result {
+                case .success(let roomDTOs):
+                    completion(.success(roomDTOs))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
     }
 
@@ -165,22 +182,93 @@ private extension FirebaseService {
             .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
-                var roomList = [RoomDTO]()
-                for document in documents {
-                    let result = Result {
-                        try document.data(as: RoomDTO.self)
-                    }
-                    switch result {
-                    case .success(let room):
-                        if let room = room {
-                            roomList.append(room)
-                        }
-                    case .failure(let error):
-                        completion(.failure(error))
-                        return
-                    }
+                let result = Result {
+                    try documents.map { try $0.data(as: RoomDTO.self) }.compactMap { $0 }
                 }
-                completion(Result.success(roomList))
+                switch result {
+                case .success(let roomDTOs):
+                    completion(.success(roomDTOs))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
+    }
+}
+
+extension FirebaseService: StoreNetwork {
+    func queryStore(name: String, completion: @escaping (Result<[StoreDTO], Error>) -> Void) {
+        database.collection(Collection.stores.value)
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents else { return }
+                let result = Result {
+                    try documents.map { try $0.data(as: StoreDTO.self) }.compactMap { $0 }
+                }
+                switch result {
+                case .success(let storeDTOs):
+                    completion(.success(storeDTOs.filter { $0.name.contains(name) }))
+                case .failure(let error):
+                    completion(.failure(error))
+                    return
+                }
+            }
+    }
+}
+
+extension FirebaseService: UserNetwork {
+    func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .whereField("email", isEqualTo: email)
+            .getDocuments { snapshot, _ in
+                if snapshot?.documents.isEmpty == true {
+                    completion(.success(false))
+                    return
+                }
+                guard let document = snapshot?.documents.first else { return }
+                let result = Result {
+                    try document.data(as: User.self)
+                }
+                switch result {
+                case .success:
+                    completion(.success(true))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+
+    func confirmUser(email: String, password: String, completion: @escaping (Result<User, UserError>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .whereField("email", isEqualTo: email)
+            .whereField("password", isEqualTo: password)
+            .getDocuments { snapshot, _  in
+                if snapshot?.documents.isEmpty == true {
+                    completion(.failure(.notExist))
+                    return
+                }
+                guard let document = snapshot?.documents.first else { return }
+                let result = Result {
+                    try document.data(as: User.self)
+                }
+                switch result {
+                case .success(let user):
+                    if let user = user {
+                        completion(.success(user))
+                    }
+                case .failure:
+                    completion(.failure(.networkUnconneted))
+                }
+            }
+    }
+
+    func addUser(user: User) {
+        let path = self.database.collection(Collection.users.value).document("\(user.name)")
+        path.setData(user.toDictionary())
+    }
+}
+
+extension FirebaseService: FeedbackNetwork {
+    func addFeedback(feedbackDTO: FeedbackDTO) {
+        let path = self.database.collection(Collection.feedbacks.value).document()
+        path.setData(feedbackDTO.toDictionary())
     }
 }

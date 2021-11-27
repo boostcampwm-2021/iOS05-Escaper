@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ViewType {
+enum TextFieldType {
     case email
     case password
     case passwordCheck

@@ -1,5 +1,5 @@
 //
-//  UIView+ScaledSize.swift
+//  UIView+Extension.swift
 //  Escaper
 //
 //  Created by TakHyun Jung on 2021/11/13.
@@ -13,5 +13,15 @@ extension UIView {
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         self.layer.mask = mask
+    }
+
+    func transformToImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.isOpaque, 0.0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        self.layer.render(in: context)
+        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

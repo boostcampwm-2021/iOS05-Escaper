@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 final class MainTabBarController: UITabBarController {
     enum Constant {
@@ -14,6 +15,7 @@ final class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureDelegates()
         self.configureTabBar()
         self.configureSubViewControllers()
     }
@@ -25,6 +27,7 @@ private extension MainTabBarController {
         case record = "기록"
         case map = "지도"
         case leaderBoard = "리더보드"
+        case setting = "설정"
 
         var title: String {
             return self.rawValue
@@ -78,6 +81,23 @@ private extension MainTabBarController {
         let mapViewController = MapViewController()
         mapViewController.tabBarItem = mapBarItem
         mapViewController.create()
+
+        let mapNavigationController: UINavigationController = {
+            let navigationController = UINavigationController(rootViewController: mapViewController)
+            let navigationAppearance: UINavigationBarAppearance = {
+                let appearance = UINavigationBarAppearance()
+                appearance.backgroundColor = EDSColor.bloodyBlack.value
+                return appearance
+            }()
+            navigationController.navigationBar.standardAppearance = navigationAppearance
+            navigationController.navigationBar.tintColor = EDSColor.skullLightWhite.value
+            navigationController.navigationBar.topItem?.title = ""
+            if #available(iOS 15.0, *) {
+                navigationController.navigationBar.compactScrollEdgeAppearance = navigationAppearance
+                navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
+            }
+            return navigationController
+        }()
         let leaderBoardBarItem = self.makeTabBarItem(
             title: TabBarItemConfig.leaderBoard.title,
             unselected: TabBarItemConfig.leaderBoard.unselectedImage,
@@ -86,11 +106,20 @@ private extension MainTabBarController {
         let leaderBoardViewController = LeaderBoardViewController()
         leaderBoardViewController.tabBarItem = leaderBoardBarItem
         leaderBoardViewController.create()
+        let settingBarItem = self.makeTabBarItem(
+            title: TabBarItemConfig.setting.title,
+            unselected: TabBarItemConfig.setting.unselectedImage,
+            selected: TabBarItemConfig.setting.selectedImage
+        )
+        let settingViewController = SettingViewController()
+        settingViewController.create()
+        settingViewController.tabBarItem = settingBarItem
         let viewControllers = [
             homeNavigationController,
             recordViewController,
-            mapViewController,
-            leaderBoardViewController
+            mapNavigationController,
+            leaderBoardViewController,
+            settingViewController
         ]
         self.viewControllers = viewControllers
     }
@@ -98,11 +127,11 @@ private extension MainTabBarController {
     func configureSubViewControllers() {
         let tabBarAppearance: UITabBarAppearance = {
             let appearance = UITabBarAppearance()
-            appearance.backgroundColor = EDSColor.gloomyBrown.value
+            appearance.backgroundColor = EDSColor.gloomyLightBrown.value
             return appearance
         }()
         self.tabBar.standardAppearance = tabBarAppearance
-        self.tabBar.backgroundColor = EDSColor.gloomyBrown.value
+        self.tabBar.backgroundColor = EDSColor.gloomyLightBrown.value
         self.tabBar.tintColor = EDSColor.skullLightWhite.value
         self.tabBar.barTintColor = EDSColor.skullLightWhite.value
     }
@@ -115,5 +144,16 @@ private extension MainTabBarController {
         )
         item.imageInsets = UIEdgeInsets(top: Constant.itemInset, left: Constant.itemInset, bottom: Constant.itemInset, right: Constant.itemInset)
         return item
+    }
+}
+
+extension MainTabBarController: UITabBarControllerDelegate {
+    private func configureDelegates() {
+        self.delegate = self
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
 }

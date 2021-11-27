@@ -9,7 +9,11 @@ import UIKit
 
 class UserInputView: UIView {
     var textField: UserInputTextField?
-    private var guideWordsLabel: UILabel = UILabel()
+    var guideWordsLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = EDSColor.bloodyBurgundy.value
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,36 +23,25 @@ class UserInputView: UIView {
         super.init(coder: coder)
     }
 
-    convenience init(viewType: ViewType) {
+    convenience init(viewType: TextFieldType) {
         self.init(frame: .zero)
         self.configure(viewType: viewType)
         self.configureLayout()
     }
 
-    func injectDelegate(delegate: LoginViewController) {
+    func injectDelegate(_ delegate: UITextFieldDelegate) {
         self.textField?.delegate = delegate
     }
 }
 
-extension UserInputView {
-    func configure(viewType: ViewType) {
+private extension UserInputView {
+    func configure(viewType: TextFieldType) {
         self.textField = UserInputTextField(viewType: viewType)
     }
 
     func configureLayout() {
-        self.configureGuideWordsLabelLayout()
         self.configureTextFieldLayout()
-    }
-
-    func configureGuideWordsLabelLayout() {
-        self.guideWordsLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(self.guideWordsLabel)
-        NSLayoutConstraint.activate([
-            self.guideWordsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.guideWordsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.guideWordsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            self.guideWordsLabel.heightAnchor.constraint(equalToConstant: 15)
-        ])
+        self.configureGuideWordsLabelLayout()
     }
 
     func configureTextFieldLayout() {
@@ -59,8 +52,20 @@ extension UserInputView {
                 textField.topAnchor.constraint(equalTo: self.topAnchor),
                 textField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 textField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                textField.bottomAnchor.constraint(equalTo: self.guideWordsLabel.topAnchor)
+                textField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6)
             ])
         }
+    }
+
+    func configureGuideWordsLabelLayout() {
+        self.guideWordsLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(self.guideWordsLabel)
+        NSLayoutConstraint.activate([
+            self.guideWordsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.guideWordsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.guideWordsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            self.guideWordsLabel.topAnchor.constraint(equalTo: self.textField!.bottomAnchor),
+            self.guideWordsLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
+        ])
     }
 }

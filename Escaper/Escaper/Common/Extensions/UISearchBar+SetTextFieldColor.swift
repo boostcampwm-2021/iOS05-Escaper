@@ -10,6 +10,7 @@ import UIKit
 extension UISearchBar {
     func setTextFieldColor(color: UIColor?) {
         guard let textField = self.value(forKey: "searchField") as? UITextField else { return }
+        textField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         switch self.searchBarStyle {
         case .minimal:
             textField.layer.backgroundColor = color?.cgColor

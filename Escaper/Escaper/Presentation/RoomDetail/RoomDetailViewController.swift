@@ -15,10 +15,23 @@ final class RoomDetailViewController: DefaultViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    private let titleLabel = EDSLabel.h01B(color: .skullLightWhite)
+    private let titleLabel: UILabel = {
+        let label = EDSLabel.h01B(color: .skullLightWhite)
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+
     private let storeNameLabel = EDSLabel.b01R(color: .skullGrey)
-    private let roomDetailInfoVeiw = RoomDetailInfoView()
-    private let rankTitleLabel = EDSLabel.h01B(text: "이 방의 TOP3!", color: .skullLightWhite)
+    private let descriptionLabel: UILabel = {
+        let label = EDSLabel.b01R(color: .skullLightWhite)
+        label.numberOfLines = 4
+        label.textAlignment = .center
+        label.lineBreakMode = .byTruncatingTail
+        return label
+    }()
+    private let roomDetailInfoView = RoomDetailInfoView()
+    private let rankTitleLabel = EDSLabel.h01B(text: "TOP 3", color: .skullLightWhite)
     private let userRankStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -32,28 +45,23 @@ final class RoomDetailViewController: DefaultViewController {
         guard let room = room else { return }
         self.configureLayout()
         self.update(room: room)
-        self.roomDetailInfoVeiw.update(room: room)
+        self.roomDetailInfoView.update(room: room)
         self.updateStackView(records: room.records)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: EDSImage.share.value, style: .plain, target: self, action: #selector(self.shareButtonTouched))
     }
 }
 
 private extension RoomDetailViewController {
     enum Constant {
-        static let stackViewSpace: CGFloat = 10
-        static let rankViewHeight: CGFloat = 60
-        static let genreImageSize: CGFloat = 180
-        static let shortVerticalSpace: CGFloat = 4
-        static let longVerticalSpace: CGFloat = 24
-        static let verticalSpace: CGFloat = 16
-        static let horizontalSpace: CGFloat = 20
-        static let DetailInfoHeight: CGFloat = 160
-        static let DetailInfoSideSpace: CGFloat = 60
+        static let stackViewSpace = CGFloat(10)
+        static let rankViewHeight = CGFloat(60)
+        static let genreImageSize = CGFloat(180)
+        static let shortVerticalSpace = CGFloat(8)
+        static let longVerticalSpace = CGFloat(24)
+        static let verticalSpace = CGFloat(16)
+        static let horizontalSpace = CGFloat(20)
+        static let DetailInfoHeight = CGFloat(100)
     }
 
     func configureLayout() {
@@ -61,6 +69,7 @@ private extension RoomDetailViewController {
         self.configureGenreImageViewLayout()
         self.configureTitleLabelLayout()
         self.configureStoreNameLabelLayout()
+        self.configureDescriptionLabelLayout()
         self.configureRoomDetailInfoViewLayout()
         self.configureRankTitleLabelLayout()
         self.configureRankStackViewLayout()
@@ -92,8 +101,9 @@ private extension RoomDetailViewController {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.titleLabel)
         NSLayoutConstraint.activate([
-            self.titleLabel.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor),
-            self.titleLabel.topAnchor.constraint(equalTo: self.genreImageView.bottomAnchor, constant: Constant.longVerticalSpace)
+            self.titleLabel.topAnchor.constraint(equalTo: self.genreImageView.bottomAnchor, constant: Constant.longVerticalSpace),
+            self.titleLabel.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.horizontalSpace),
+            self.titleLabel.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -Constant.horizontalSpace)
         ])
     }
 
@@ -106,13 +116,24 @@ private extension RoomDetailViewController {
         ])
     }
 
-    func configureRoomDetailInfoViewLayout() {
-        self.roomDetailInfoVeiw.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.roomDetailInfoVeiw)
+    func configureDescriptionLabelLayout() {
+        self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.descriptionLabel)
         NSLayoutConstraint.activate([
-            self.roomDetailInfoVeiw.topAnchor.constraint(equalTo: self.storeNameLabel.bottomAnchor, constant: Constant.verticalSpace),
-            self.roomDetailInfoVeiw.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.DetailInfoSideSpace),
-            self.roomDetailInfoVeiw.heightAnchor.constraint(equalToConstant: Constant.DetailInfoHeight)
+            self.descriptionLabel.centerXAnchor.constraint(equalTo: self.storeNameLabel.centerXAnchor),
+            self.descriptionLabel.widthAnchor.constraint(equalTo: self.genreImageView.widthAnchor, multiplier: 1.2),
+            self.descriptionLabel.topAnchor.constraint(equalTo: self.storeNameLabel.bottomAnchor, constant: Constant.shortVerticalSpace)
+        ])
+    }
+
+    func configureRoomDetailInfoViewLayout() {
+        self.roomDetailInfoView.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.roomDetailInfoView)
+        NSLayoutConstraint.activate([
+            self.roomDetailInfoView.topAnchor.constraint(equalTo: self.descriptionLabel.bottomAnchor, constant: Constant.longVerticalSpace),
+            self.roomDetailInfoView.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: Constant.horizontalSpace),
+            self.roomDetailInfoView.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -Constant.horizontalSpace),
+            self.roomDetailInfoView.heightAnchor.constraint(equalToConstant: Constant.DetailInfoHeight)
         ])
     }
 
@@ -120,8 +141,8 @@ private extension RoomDetailViewController {
         self.rankTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.rankTitleLabel)
         NSLayoutConstraint.activate([
-            self.rankTitleLabel.topAnchor.constraint(equalTo: self.roomDetailInfoVeiw.bottomAnchor, constant: Constant.verticalSpace),
-            self.rankTitleLabel.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor)
+            self.rankTitleLabel.topAnchor.constraint(equalTo: self.roomDetailInfoView.bottomAnchor, constant: Constant.verticalSpace),
+            self.rankTitleLabel.leadingAnchor.constraint(equalTo: self.roomDetailInfoView.leadingAnchor)
         ])
     }
 
@@ -140,6 +161,7 @@ private extension RoomDetailViewController {
         self.genreImageView.image = UIImage(named: room.genre.detailImageAssetName)
         self.titleLabel.text = room.title
         self.storeNameLabel.text = room.storeName
+        self.descriptionLabel.text = room.description
         self.genreImageView.isAccessibilityElement = true
         self.genreImageView.accessibilityLabel = "테마 종류 \(room.genre.name)"
     }
@@ -150,9 +172,16 @@ private extension RoomDetailViewController {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: Constant.rankViewHeight).isActive = true
-            rankView.layer.cornerRadius = Constant.rankViewHeight/2
+            rankView.layer.cornerRadius = 10
             rankView.update(record, rank: rank)
             self.userRankStackView.addArrangedSubview(rankView)
         }
+    }
+
+    @objc func shareButtonTouched() {
+        guard let image = self.view.transformToImage() else { return }
+        let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [.saveToCameraRoll]
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }

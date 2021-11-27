@@ -13,6 +13,27 @@ final class RoomListViewController: DefaultViewController {
     private var selectedDistrict: District?
     private var locationManager: CLLocationManager?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
+    private var usernameLabel: UILabel = EDSLabel.h02B(color: .pumpkin)
+    private var greetingLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        let text = "오늘은 어디를 탈출할까요?"
+        let attribtuedString = NSMutableAttributedString(string: text)
+        let rangeFull = (text as NSString).range(of: text)
+        attribtuedString.addAttribute(.foregroundColor, value: EDSColor.skullWhite.value ?? UIColor.white, range: rangeFull)
+        let rangeWhere = (text as NSString).range(of: "어디")
+        attribtuedString.addAttribute(.foregroundColor, value: EDSColor.pumpkin.value ?? UIColor.orange, range: rangeWhere)
+        label.attributedText = attribtuedString
+        return label
+    }()
+    private var greetingStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.spacing = 5
+        stackView.axis = .vertical
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        return stackView
+    }()
     private var districtSelectButton = DistrictSelectButton()
     private let genreTagScrollView: TagScrollView = {
         let tagScrollView: TagScrollView = TagScrollView()
@@ -42,8 +63,13 @@ final class RoomListViewController: DefaultViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.applyUsernameLabelText()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     func create() {
@@ -58,9 +84,8 @@ extension RoomListViewController: TagScrollViewDelegate {
     func tagSelected(element: Tagable) {
         switch element {
         case is Genre:
-            guard let district = self.selectedDistrict else { return }
+            guard let district = self.districtSelectButton.selectedDistrict else { return }
             self.fetchWithCurrentSelectedOption(with: district)
-
         case let sortingOption as SortingOption:
             self.viewModel?.sort(option: sortingOption)
         default:
@@ -102,6 +127,7 @@ extension RoomListViewController: UITableViewDelegate {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         let detailViewController = RoomDetailViewController()
         detailViewController.room = room
+        detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
@@ -113,6 +139,7 @@ private extension RoomListViewController {
         static let sideSpace = CGFloat(20)
         static let cellHeight = CGFloat(96)
         static let topVerticalSpace = CGFloat(18)
+        static let topSmallVerticalSpace = CGFloat(10)
         static let defaultVerticalSpace = CGFloat(13)
         static let defaultOutlineSpace = CGFloat(14)
         static let districtSelectButtonWidth = CGFloat(105)
@@ -122,22 +149,39 @@ private extension RoomListViewController {
     enum Section {
         case main
     }
-    
+
     func configure() {
         self.configureLocationManager()
         self.configureDelegates()
         self.configureRoomOverViewTableView()
+        self.configureGreetingStackViewLayout()
+        self.configureGreetingStackView()
         self.configureGenreTagScrollViewLayout()
         self.configureSortingOptionTagScrollViewLayout()
         self.configureRoomOverviewTableViewLayout()
         self.configureDistrictSelectButtonLayout()
     }
 
+    func configureGreetingStackViewLayout() {
+        self.greetingStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.greetingStackView)
+        NSLayoutConstraint.activate([
+            self.greetingStackView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: Constant.topSmallVerticalSpace),
+            self.greetingStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: Constant.sideSpace),
+            self.greetingStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -Constant.sideSpace)
+        ])
+    }
+
+    func configureGreetingStackView() {
+        self.greetingStackView.addArrangedSubview(self.usernameLabel)
+        self.greetingStackView.addArrangedSubview(self.greetingLabel)
+    }
+
     func configureGenreTagScrollViewLayout() {
         self.genreTagScrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.genreTagScrollView)
         NSLayoutConstraint.activate([
-            self.genreTagScrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: Constant.topVerticalSpace),
+            self.genreTagScrollView.topAnchor.constraint(equalTo: self.greetingStackView.bottomAnchor, constant: Constant.topSmallVerticalSpace),
             self.genreTagScrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             self.genreTagScrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             self.genreTagScrollView.heightAnchor.constraint(equalToConstant: Constant.tagViewHeight)
@@ -206,11 +250,11 @@ private extension RoomListViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.rooms.observe(on: self) { roomList in
+        self.viewModel?.rooms.observe(on: self) { [weak self] roomList in
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([Section.main])
             snapshot.appendItems(roomList)
-            self.dataSource?.apply(snapshot, animatingDifferences: true)
+            self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
     }
 
@@ -247,5 +291,11 @@ private extension RoomListViewController {
                 break
             }
         }
+    }
+
+    func applyUsernameLabelText() {
+        self.usernameLabel.isHidden = !UserSupervisor.shared.isLogined
+        guard let username = Helper.parseUsername(email: UserSupervisor.shared.email) else { return }
+        self.usernameLabel.text = "\(username)님,"
     }
 }

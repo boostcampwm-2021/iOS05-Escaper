@@ -12,7 +12,7 @@ final class RoomDetailUserRankView: UIView {
 
     private let rankLabel: UILabel = {
         let label = EDSLabel.b01B(color: .bloodyBlack)
-        label.textAlignment = .left
+        label.textAlignment = .right
         return label
     }()
     private let imageView: UIImageView = {
@@ -20,8 +20,8 @@ final class RoomDetailUserRankView: UIView {
         imageView.layer.masksToBounds = true
         return imageView
     }()
-    private let titleLabel = EDSLabel.b01B(color: .bloodyBlack)
-    private let timeLabel = EDSLabel.b01R(color: .bloodyBlack)
+    private let titleLabel = EDSLabel.b02B(color: .bloodyBlack)
+    private let timeLabel = EDSLabel.b02L(color: .bloodyBlack)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,8 +44,8 @@ final class RoomDetailUserRankView: UIView {
     func update(_ user: User, rank: Int) {
         self.rankLabel.text = "\(rank + 1)"
         self.titleLabel.text = user.name
-        self.timeLabel.text = "\(user.score)pt"
-        self.backgroundColor = rank < 3 ? Self.rankColor[rank] : .clear
+        self.timeLabel.text = "\(user.score) pts"
+        self.backgroundColor = rank < 3 ? Self.rankColor[rank] : EDSColor.gloomyBrown.value
         self.titleLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
         self.rankLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
         self.timeLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
@@ -64,11 +64,11 @@ final class RoomDetailUserRankView: UIView {
 
 private extension RoomDetailUserRankView {
     enum Constant {
-        static let userImageSize: CGFloat = 50
-        static let sideSpace: CGFloat = 32
-        static let gapSpace: CGFloat = 10
-        static let rankSize: CGFloat = 8
-        static let titleLabelSize: CGFloat = 100
+        static let userImageSize = CGFloat(50)
+        static let leftSideSpace = CGFloat(40)
+        static let rightSideSpace = CGFloat(32)
+        static let gapSpace = CGFloat(8)
+        static let titleLabelSize = CGFloat(100)
     }
 
     func configureLayout() {
@@ -83,8 +83,7 @@ private extension RoomDetailUserRankView {
         self.addSubview(self.rankLabel)
         NSLayoutConstraint.activate([
             self.rankLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.rankLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.sideSpace),
-            self.rankLabel.widthAnchor.constraint(equalToConstant: Constant.rankSize)
+            self.rankLabel.trailingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constant.leftSideSpace)
         ])
     }
 
@@ -115,7 +114,7 @@ private extension RoomDetailUserRankView {
         self.addSubview(self.timeLabel)
         NSLayoutConstraint.activate([
             self.timeLabel.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor),
-            self.timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.sideSpace)
+            self.timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constant.rightSideSpace)
         ])
     }
 

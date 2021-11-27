@@ -8,7 +8,6 @@
 import UIKit
 
 class UserInputTextField: UITextField {
-
     private var imageView: UIImageView = UIImageView()
     private var eyeButton: UIButton = UIButton()
 
@@ -20,7 +19,7 @@ class UserInputTextField: UITextField {
         super.init(coder: coder)
     }
 
-    convenience init(viewType: ViewType) {
+    convenience init(viewType: TextFieldType) {
         self.init(frame: .zero)
         self.configureTextField(viewType: viewType)
     }
@@ -57,7 +56,7 @@ extension UserInputTextField {
 }
 
 extension UserInputTextField {
-    func configureTextField(viewType: ViewType) {
+    func configureTextField(viewType: TextFieldType) {
         self.configureAddTarget()
         self.configureTextFieldAttribute(viewType: viewType)
         self.configureImageView(viewType: viewType)
@@ -69,9 +68,11 @@ extension UserInputTextField {
         self.eyeButton.addTarget(self, action: #selector(self.eyeButtonTouched), for: .touchUpInside)
     }
 
-    func configureTextFieldAttribute(viewType: ViewType) {
+    func configureTextFieldAttribute(viewType: TextFieldType) {
         self.textColor = EDSColor.skullLightWhite.value
         self.backgroundColor = EDSColor.gloomyBrown.value
+        self.autocorrectionType = .no
+        self.autocapitalizationType = .none
         self.layer.cornerRadius = 10
         switch viewType {
         case .email:
@@ -81,21 +82,21 @@ extension UserInputTextField {
         }
     }
 
-    func configureImageView(viewType: ViewType) {
+    func configureImageView(viewType: TextFieldType) {
         switch viewType {
         case .email:
             self.imageView.image = EDSImage.emailIcon.value
-            self.attributedPlaceholder = NSAttributedString(string: "이메일", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any])
+            self.attributedPlaceholder = NSAttributedString(string: "이메일", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)])
         case .password:
-            self.imageView.image = EDSImage.pwIcon.value
-            self.attributedPlaceholder = NSAttributedString(string: "비밀번호", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any])
+            self.imageView.image = EDSImage.passwordIcon.value
+            self.attributedPlaceholder = NSAttributedString(string: "비밀번호", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)])
         case .passwordCheck:
-            self.imageView.image = EDSImage.pwIcon.value
-            self.attributedPlaceholder = NSAttributedString(string: "비밀번호 확인", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any])
+            self.imageView.image = EDSImage.passwordIcon.value
+            self.attributedPlaceholder = NSAttributedString(string: "비밀번호 확인", attributes: [NSAttributedString.Key.foregroundColor: EDSColor.skullLightWhite.value as Any, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: .regular)])
         }
     }
 
-    func configureEyeButton(viewType: ViewType) {
+    func configureEyeButton(viewType: TextFieldType) {
         switch viewType {
         case .email:
             self.eyeButton.isHidden = true

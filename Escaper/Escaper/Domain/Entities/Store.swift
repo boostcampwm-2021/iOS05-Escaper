@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-struct Store {
+struct Store: Hashable {
     var name: String
     var homePage: String
     var telephone: String
@@ -17,4 +17,9 @@ struct Store {
     var geoLocation: CLLocation
     var district: District
     var roomIds: [String]
+    var distance: Double
+
+    mutating func updateDistance(_ distance: Double) {
+        self.distance = distance
+    }
 }

@@ -8,11 +8,10 @@
 import UIKit
 
 final class LeaderBoardViewController: DefaultViewController {
-    var viewModel = [User.init(email: "abc", name: "신희", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "완식", name: "완식", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "택현", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "영광", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "JK", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "유연석", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "a", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "호눅스", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "크롱", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "아이비", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1), User.init(email: "abc", name: "인정", password: "1", imageURL: "gs://escaper-67244.appspot.com/users/default.png", score: 1)]
-
+    private var viewModel: LeaderBoardViewModelInterface?
     private let scrollView = UIScrollView()
     private let titleLabel: UILabel = {
-        let label = EDSLabel.h02B(text: "리더보드", color: .skullLightWhite)
+        let label = EDSLabel.h01B(text: "리더보드", color: .skullWhite)
         label.accessibilityTraits = .header
         label.accessibilityHint = "리더보드화면은 스크롤로 되어있습니다. 상단에 1위부터 3위까지 하단에 1위부터 10위까지 유저 정보가 있습니다."
         return label
@@ -22,7 +21,7 @@ final class LeaderBoardViewController: DefaultViewController {
     private let userRankStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 8
+        stackView.spacing = 13
         stackView.distribution = .fill
         return stackView
     }()
@@ -31,10 +30,14 @@ final class LeaderBoardViewController: DefaultViewController {
         super.viewDidLoad()
         self.configureLayout()
         self.update()
+        self.bindViewModel()
     }
 
     func create() {
-        // 의존성 주입
+        let repository = LeaderBoardRepository(service: FirebaseService.shared)
+        let usecase = LeaderBoardUseCase(repository: repository)
+        let viewModel = DefaultLeadeBoardViewModel(usecase: usecase)
+        self.viewModel = viewModel
     }
 }
 
@@ -84,28 +87,30 @@ private extension LeaderBoardViewController {
             self.userRankStackView.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: 16),
             self.userRankStackView.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
             self.userRankStackView.topAnchor.constraint(equalTo: self.topRankView.bottomAnchor),
-            self.userRankStackView.bottomAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.bottomAnchor)
+            self.userRankStackView.bottomAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 
+    func bindViewModel() {
+        self.viewModel?.users.observe(on: self, observerBlock: { [weak self] users in
+            self?.topRankView.update(users: users.prefix(3).map {$0})
+            self?.updateStackView(users: users.prefix(10).map {$0})
+        })
+    }
+
     func update() {
-        self.updateTopRankView()
-        self.updateStackView()
+        self.viewModel?.fetch()
     }
 
-    func updateTopRankView() {
-        self.topRankView.update(users: Array(self.viewModel.prefix(3)))
-    }
-
-    func updateStackView() {
-        for (rank, user) in self.viewModel.prefix(10).enumerated() {
+    func updateStackView(users: [User]) {
+        for (rank, user) in users.enumerated() {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            rankView.layer.cornerRadius = 30
+            rankView.layer.cornerRadius = 10
             rankView.update(user, rank: rank)
             rankView.isAccessibilityElement = true
-            rankView.accessibilityLabel = "전체 \(self.viewModel.count)명 중 \(rank + 1)등 \(user.name)님 \(user.score)점"
+            rankView.accessibilityLabel = "\(rank + 1)등 \(user.name)님 \(user.score)점"
             self.userRankStackView.addArrangedSubview(rankView)
         }
     }

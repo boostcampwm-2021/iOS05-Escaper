@@ -66,6 +66,24 @@ enum EDSKit {
             label.font = UIFont.systemFont(ofSize: 10, weight: .regular)
             return label
         }
+
+        static func b01L(text: String = "", color: Color) -> UILabel {
+            let label = Label.makeLabel(text: text, color: color)
+            label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+            return label
+        }
+
+        static func b02L(text: String = "", color: Color) -> UILabel {
+            let label = Label.makeLabel(text: text, color: color)
+            label.font = UIFont.systemFont(ofSize: 12, weight: .light)
+            return label
+        }
+
+        static func b03L(text: String = "", color: Color) -> UILabel {
+            let label = Label.makeLabel(text: text, color: color)
+            label.font = UIFont.systemFont(ofSize: 10, weight: .light)
+            return label
+        }
     }
 
     enum Color {
@@ -74,14 +92,15 @@ enum EDSKit {
         case bloodyDarkBurgundy
         case bloodyRed
         case charcoal
+        case gloomyBrown
+        case gloomyLightBrown
         case gloomyPink
         case gloomyPurple
         case gloomyRed
-        case gloomyBrown
         case pumpkin
+        case skullGrey
         case skullLightWhite
         case skullWhite
-        case skullGrey
         case zombiePurple
 
         var value: UIColor? {
@@ -91,17 +110,31 @@ enum EDSKit {
 
     enum Image {
         case chevronDown
-        case recordCard
-        case plus
-        case loginPumpkin
-        case signupGhost
+        case comedyPreview
+        case crown
+        case distanceIcon
         case emailIcon
-        case pwIcon
         case eyeIcon
+        case fearPreview
+        case genreIcon
+        case keyMarker
+        case loginPumpkin
+        case mappin
+        case passwordIcon
+        case plus
+        case recordBook
+        case recordCard
+        case recordCandle
+        case romancePreview
+        case share
+        case signupGhost
         case signupPlus
+        case signupSkull
+        case starfilled
+        case starunfilled
 
         var value: UIImage? {
-            return UIImage(named: String(describing: self))
+            return self == .mappin ? UIImage(systemName: "mappin.and.ellipse") : UIImage(named: String(describing: self))
         }
     }
 }

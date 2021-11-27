@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RecordViewController: DefaultViewController {
     private typealias Datasource = UICollectionViewDiffableDataSource<Section, RecordCard>
@@ -49,7 +50,18 @@ class RecordViewController: DefaultViewController {
         button.titleLabel?.textAlignment = .center
         button.backgroundColor = EDSColor.pumpkin.value
         button.layer.cornerRadius = 10
+        button.isHidden = true
         return button
+    }()
+    private let recordDefaultGuideView: RecordDefaultGuideView = {
+        let view = RecordDefaultGuideView()
+        view.isHidden = true
+        return view
+    }()
+    private let recordEmptyGuideView: RecordEmptyGuideView = {
+        let view = RecordEmptyGuideView()
+        view.isHidden = true
+        return view
     }()
 
     override func viewDidLoad() {
@@ -57,12 +69,8 @@ class RecordViewController: DefaultViewController {
         self.configure()
         self.configureLayout()
         self.bindViewModel()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.viewModel?.records.value.removeAll()
-        self.viewModel?.fetch(userEmail: "wansook0316@gmail.com")
+//        UserSupervisor.shared.login(email: "Newtruth@gmail.com", imageURLString: "gs://escaper-67244.appspot.com/users/users_default.png")
+        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
     }
 
     func create() {
@@ -75,15 +83,33 @@ class RecordViewController: DefaultViewController {
 
     func bindViewModel() {
         self.viewModel?.records.observe(on: self) { [weak self] results in
-            self?.configureRecordCollectionViewData(recordCards: results)
+            if UserSupervisor.shared.isLogined {
+                if results.isEmpty {
+                    self?.recordDefaultGuideView.isHidden = true
+                    self?.recordEmptyGuideView.isHidden = false
+                    self?.addButton.isHidden = false
+                    self?.countingLabel.text = "💀"
+                    self?.greetingLabel.text = "기록하고, 탈출한 방의 랭커가 되어봐요!"
+                } else {
+                    self?.recordDefaultGuideView.isHidden = true
+                    self?.recordEmptyGuideView.isHidden = true
+                    self?.addButton.isHidden = false
+                    self?.applyRecordCollectionViewData(recordCards: results)
+                }
+            } else {
+                self?.recordDefaultGuideView.isHidden = false
+                self?.recordEmptyGuideView.isHidden = true
+                self?.addButton.isHidden = true
+                self?.countingLabel.text = "👻"
+                self?.greetingLabel.text = "당신의 실력은 어느 수준일까요?"
+            }
         }
     }
+}
 
-    @objc func addButtonTapped() {
-        let addRecordViewController = AddRecordViewController()
-        addRecordViewController.create()
-        addRecordViewController.modalPresentationStyle = .fullScreen
-        self.present(addRecordViewController, animated: true)
+extension RecordViewController: AddRecordViewControllerDelegate {
+    func addRecordButtonTouched() {
+        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
     }
 }
 
@@ -103,6 +129,7 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
         let roundedIndex = round(index)
         offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
         targetContentOffset.pointee = offset
+        self.hapticsGenerator()
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -128,6 +155,30 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
                 self.animateZoomforCellremove(zoomCell: nextCell)
             }
         }
+    }
+}
+
+extension RecordViewController: RecordDefaultGuideViewDelegate {
+    func loginButtonTouched() {
+        let loginViewController = LoginViewController()
+        loginViewController.create(delegate: self)
+        self.present(loginViewController, animated: true)
+    }
+
+    func signUpButtonTouched() {
+        let signUpViewController = SignUpViewController()
+        signUpViewController.create(delegate: self)
+        self.present(signUpViewController, animated: true)
+    }
+}
+
+extension RecordViewController: LoginViewControllerDelegate, SignUpViewControllerDelegate {
+    func loginSuccessed() {
+        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+    }
+
+    func signUpSuccessed() {
+        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
     }
 }
 
@@ -162,7 +213,9 @@ private extension RecordViewController {
     }
 
     func configure() {
+        self.configureAddButton()
         self.configureRecordCollectionView()
+        self.configureRecordCollectionViewDataSource()
     }
 
     func configureLayout() {
@@ -171,6 +224,8 @@ private extension RecordViewController {
         self.configureGreetingLabelLayout()
         self.configureRecordCollectionViewLayout()
         self.configureAddButtonLayout()
+        self.configureRecordDefaultGuideViewConstraint()
+        self.configureRecordEmptyGuideViewConstraint()
     }
 
     func configureRecordCollectionView() {
@@ -181,21 +236,31 @@ private extension RecordViewController {
             return cell
         }
         self.recordCollectionView.register(RecordCollectionViewCell.self, forCellWithReuseIdentifier: RecordCollectionViewCell.identifier)
+    }
+
+    func configureAddButton() {
         self.addButton.addTarget(self, action: #selector(self.addButtonTapped), for: .touchUpInside)
     }
 
-    func configureRecordCollectionViewData(recordCards: [RecordCard]) {
+    func applyRecordCollectionViewData(recordCards: [RecordCard]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, RecordCard>()
         snapshot.appendSections([Section.card])
-        snapshot.appendItems(recordCards, toSection: Section.card)
-        self.datasource?.apply(snapshot, animatingDifferences: false)
+        snapshot.appendItems(recordCards)
+        self.datasource?.apply(snapshot, animatingDifferences: true)
         if recordCards.count > 1 {
             let indexPath = IndexPath(item: 1, section: Section.card.index)
             if let cell = self.recordCollectionView.cellForItem(at: indexPath) {
                 animateZoomforCellremove(zoomCell: cell)
             }
         }
-        configureRecordSummary(count: recordCards.count)
+        self.configureRecordSummary(count: recordCards.count)
+    }
+
+    func configureRecordCollectionViewDataSource() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, RecordCard>()
+        snapshot.appendSections([Section.card])
+        snapshot.appendItems([], toSection: Section.card)
+        self.datasource?.apply(snapshot, animatingDifferences: false)
     }
 
     func configureRecordSummary(count: Int) {
@@ -264,6 +329,36 @@ private extension RecordViewController {
         ])
     }
 
+    func configureRecordDefaultGuideViewConstraint() {
+        self.recordDefaultGuideView.delegate = self
+        self.recordDefaultGuideView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.recordDefaultGuideView)
+        NSLayoutConstraint.activate([
+            self.recordDefaultGuideView.topAnchor.constraint(equalTo: self.greetingLabel.bottomAnchor, constant: Constant.defaultVerticalSpace),
+            self.recordDefaultGuideView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.recordDefaultGuideView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
+            self.recordDefaultGuideView.heightAnchor.constraint(equalTo: self.recordDefaultGuideView.widthAnchor, multiplier: 1.5)
+        ])
+    }
+
+    func configureRecordEmptyGuideViewConstraint() {
+        self.recordEmptyGuideView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.recordEmptyGuideView)
+        NSLayoutConstraint.activate([
+            self.recordEmptyGuideView.topAnchor.constraint(equalTo: self.greetingLabel.bottomAnchor, constant: Constant.defaultVerticalSpace),
+            self.recordEmptyGuideView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.recordEmptyGuideView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
+            self.recordEmptyGuideView.heightAnchor.constraint(equalTo: self.recordEmptyGuideView.widthAnchor, multiplier: 1.5)
+        ])
+    }
+
+    @objc func addButtonTapped() {
+        let addRecordViewController = AddRecordViewController()
+        addRecordViewController.create(delegateTarget: self)
+        addRecordViewController.modalPresentationStyle = .fullScreen
+        self.present(addRecordViewController, animated: true)
+    }
+
     func animateZoomforCell(zoomCell: UICollectionViewCell) {
         UIView.animate(withDuration: 0.2,
                         delay: 0,
@@ -282,5 +377,10 @@ private extension RecordViewController {
                             zoomCell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                        },
                        completion: nil)
+    }
+
+    func hapticsGenerator() {
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
 }

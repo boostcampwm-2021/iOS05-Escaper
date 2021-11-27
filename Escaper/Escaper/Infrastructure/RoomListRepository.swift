@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RoomListRepository: RoomListRepositroyInterface {
+final class RoomListRepository: RoomListRepositoryInterface {
     private let service: RoomListNetwork
 
     init(service: RoomListNetwork) {

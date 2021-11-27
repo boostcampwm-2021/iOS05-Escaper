@@ -13,13 +13,19 @@ protocol RoomListUseCaseInterface {
     func fetch(name: String, completion: @escaping (Result<[Room], Error>) -> Void)
 }
 
-final class RoomListUseCase: RoomListUseCaseInterface {
-    private let repository: RoomListRepositroyInterface
+protocol StoreDetailUseCaseInterface {
+    func fetch(ids: [String], completion: @escaping (Result<Room, Error>) -> Void)
+}
 
-    init(repository: RoomListRepositroyInterface) {
+final class RoomListUseCase {
+    private let repository: RoomListRepositoryInterface
+
+    init(repository: RoomListRepositoryInterface) {
         self.repository = repository
     }
+}
 
+extension RoomListUseCase: RoomListUseCaseInterface {
     func query(district: District, genre: Genre, completion: @escaping (Result<[Room], Error>) -> Void) {
         self.repository.query(genre: genre, district: district) { result in
             switch result {
@@ -42,6 +48,21 @@ final class RoomListUseCase: RoomListUseCaseInterface {
                 completion(.success(rooms))
             case .failure(let error):
                 completion(.failure(error))
+            }
+        }
+    }
+}
+
+extension RoomListUseCase: StoreDetailUseCaseInterface {
+    func fetch(ids: [String], completion: @escaping (Result<Room, Error>) -> Void) {
+        ids.forEach { id in
+            self.repository.fetch(roomId: id) { result in
+                switch result {
+                case .success(let room):
+                    completion(.success(room))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
             }
         }
     }

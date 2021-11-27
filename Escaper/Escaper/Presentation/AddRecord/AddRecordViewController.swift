@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol AddRecordViewControllerDelegate: AnyObject {
+    func addRecordButtonTouched()
+}
+
 final class AddRecordViewController: DefaultViewController {
+    private weak var delegate: AddRecordViewControllerDelegate?
+
     private var viewModel: (AddRecordViewModelInput & AddRecordViewModelOutput)?
     private let titleLabel: UILabel = EDSLabel.h02B(text: "기록 추가", color: .skullLightWhite)
     private let backButton: UIButton = {
@@ -22,6 +28,8 @@ final class AddRecordViewController: DefaultViewController {
         button.setTitle("저장하기", for: .normal)
         button.setTitleColor(EDSColor.bloodyBlack.value, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .heavy)
+        button.backgroundColor = EDSColor.skullGrey.value
+        button.isEnabled = false
         button.layer.cornerRadius = 10
         return button
     }()
@@ -32,11 +40,12 @@ final class AddRecordViewController: DefaultViewController {
         self.configureLayout()
     }
 
-    func create() {
+    func create(delegateTarget: AddRecordViewControllerDelegate) {
         let recordRepository = RecordRepository(service: FirebaseService.shared)
         let roomRepository = RoomListRepository(service: FirebaseService.shared)
         let usecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
         let viewModel = AddRecordViewModel(usecase: usecase)
+        self.delegate = delegateTarget
         self.viewModel = viewModel
     }
 
@@ -45,22 +54,27 @@ final class AddRecordViewController: DefaultViewController {
     }
 
     @objc func saveRecordButtonTapped() {
-        let userEmail = "wansook0316@gmail.com"
+        let userEmail = UserSupervisor.shared.email
         guard let roomId = self.viewModel?.roomId else { return }
         let image = self.recordView.fetchSelectedImage()
         ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
             switch result {
             case .success(let urlString):
                 self?.viewModel?.post(email: userEmail, imageURLString: urlString)
+                self?.delegate?.addRecordButtonTouched()
                 self?.dismiss(animated: true)
-            case .failure(let err):
-                print(err)
+            case .failure(let error):
+                print(error)
             }
         }
     }
 }
 
 extension AddRecordViewController: AddRecordViewDelegate {
+    func updateRating(_ value: Double) {
+        self.viewModel?.satisfaction = value
+    }
+
     func updateEscapingTime(time: Int) {
         self.viewModel?.time = time
         self.viewModel?.changeSaveState()
