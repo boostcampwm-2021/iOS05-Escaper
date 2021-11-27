@@ -33,6 +33,7 @@
 		251CA9A9274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */; };
 		251CA9AB27520A7300BA5EC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251CA9AA27520A7300BA5EC5 /* GoogleService-Info.plist */; };
 		251CA9AD27525C5B00BA5EC5 /* EmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */; };
+		3E2604A92752180000E07361 /* TextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2604A82752180000E07361 /* TextFieldState.swift */; };
 		3EBB5A7E274E35C000715F89 /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
 		3EBB5A7F274E35C000715F89 /* DataInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A472744E98F00DB90BF /* DataInjection.swift */; };
 		3EBB5A80274E35C000715F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
@@ -236,6 +237,7 @@
 		25EA50EB274CA4BC0030C17C /* RecordGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordGuideView.swift; sourceTree = "<group>"; };
 		25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		3E0A921E27423679002166C6 /* AddRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecordViewModel.swift; sourceTree = "<group>"; };
+		3E2604A82752180000E07361 /* TextFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldState.swift; sourceTree = "<group>"; };
 		3E2BDEA02732C2FB0081A749 /* Tagable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tagable.swift; sourceTree = "<group>"; };
 		3E3157182743661800472CAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3E31571B274366B900472CAD /* UserInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputView.swift; sourceTree = "<group>"; };
@@ -516,6 +518,7 @@
 				2577276F273D525500881845 /* Helper.swift */,
 				3E315759274387AE00472CAD /* TextFieldType.swift */,
 				3E77D566274C89240042133B /* Validator.swift */,
+				3E2604A82752180000E07361 /* TextFieldState.swift */,
 				3E8A64FC274E20E30005F788 /* Error.swift */,
 			);
 			path = Library;
@@ -893,6 +896,7 @@
 				3EBB5AA0274E35C000715F89 /* RecordDefaultGuideView.swift in Sources */,
 				3EBB5AA1274E35C000715F89 /* RecordEmptyGuideView.swift in Sources */,
 				3EBB5AA2274E35C000715F89 /* RecordCollectionViewCell.swift in Sources */,
+				3E2604A92752180000E07361 /* TextFieldState.swift in Sources */,
 				3EBB5AA4274E35C000715F89 /* RecordUserView.swift in Sources */,
 				3EBB5AA5274E35C000715F89 /* RecordStarView.swift in Sources */,
 				3EBB5AA6274E35C000715F89 /* RecordResultView.swift in Sources */,
