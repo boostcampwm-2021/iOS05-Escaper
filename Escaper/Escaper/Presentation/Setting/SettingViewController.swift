@@ -179,4 +179,3 @@ private extension SettingViewController {
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "박영광", content: "https://github.com/poisonF2"))
     }
 }
-

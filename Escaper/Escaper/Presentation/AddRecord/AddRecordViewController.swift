@@ -63,8 +63,8 @@ final class AddRecordViewController: DefaultViewController {
                 self?.viewModel?.post(email: userEmail, imageURLString: urlString)
                 self?.delegate?.addRecordButtonTouched()
                 self?.dismiss(animated: true)
-            case .failure(let err):
-                print(err)
+            case .failure(let error):
+                print(error)
             }
         }
     }
