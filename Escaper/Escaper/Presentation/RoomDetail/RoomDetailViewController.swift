@@ -180,7 +180,7 @@ private extension RoomDetailViewController {
 
     func updateStackView(records: [Record]) {
         self.rankTitleLabel.isHidden = records.isEmpty
-        for (rank, record) in records.sorted(by: { $0.escapingTime < $1.escapingTime }).prefix(3).enumerated() {
+        for (rank, record) in records.enumerated() {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: Constant.rankViewHeight).isActive = true
@@ -210,7 +210,7 @@ private extension RoomDetailViewController {
             self?.update(room: room)
             self?.roomDetailInfoView.update(room: room)
             self?.updateStackView(records: room.records)
-            for record in room.records.sorted(by: { $0.escapingTime < $1.escapingTime }).prefix(3) {
+            for record in room.records {
                 self?.viewModel?.fetch(userId: record.userEmail)
             }
         })
