@@ -242,13 +242,11 @@ extension SignUpViewController: UITextFieldDelegate {
         switch textField {
         case self.passwordInputView.textField:
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.frame.origin = CGPoint(x: 0, y: 0)
-                self.view.transform = CGAffineTransform(translationX: 0, y: -self.passwordInputView.frame.height*0.5)
+                self.view.frame.origin = CGPoint(x: 0, y: -self.passwordInputView.frame.height)
             })
         case self.passwordCheckInputView.textField:
             UIView.animate(withDuration: 0.2, animations: {
-                self.view.frame.origin = CGPoint(x: 0, y: 0)
-                self.view.transform = CGAffineTransform(translationX: 0, y: -self.passwordInputView.frame.height*2.6)
+                self.view.frame.origin = CGPoint(x: 0, y: -self.passwordInputView.frame.height*2)
             })
         default:
             break
