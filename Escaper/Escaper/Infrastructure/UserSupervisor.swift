@@ -12,6 +12,7 @@ class UserSupervisor {
 
     private(set) var email: String = ""
     private(set) var imageURLString: String = ""
+    private(set) var score: Int = 0
 
     private init() {}
 
@@ -19,9 +20,14 @@ class UserSupervisor {
         return !self.email.isEmpty
     }
 
-    func login(email: String, imageURLString: String) {
+    func login(email: String, score: Int, imageURLString: String) {
         self.email = email
         self.imageURLString = imageURLString
+        self.score = score
+    }
+
+    func add(score: Int) {
+        self.score += score
     }
 
     func logout() {

@@ -33,6 +33,7 @@ protocol UserNetwork: AnyObject {
     func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void)
     func confirmUser(email: String, password: String, completion: @escaping (Result<User, UserError>) -> Void)
     func addUser(user: User)
+    func updateScore(userEmail: String, score: Int)
 }
 
 protocol FeedbackNetwork: AnyObject {
@@ -263,6 +264,13 @@ extension FirebaseService: UserNetwork {
     func addUser(user: User) {
         let path = self.database.collection(Collection.users.value).document("\(user.name)")
         path.setData(user.toDictionary())
+    }
+
+    func updateScore(userEmail: String, score: Int) {
+        let path = self.database.collection(Collection.users.value).document(userEmail)
+        path.updateData([
+            "score": score
+        ])
     }
 }
 
