@@ -52,6 +52,7 @@ final class RoomListViewController: DefaultViewController {
         tableView.rowHeight = Constant.cellHeight
         return tableView
     }()
+    private let emptyResultView = EmptyResultView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -160,6 +161,8 @@ private extension RoomListViewController {
         self.configureSortingOptionTagScrollViewLayout()
         self.configureRoomOverviewTableViewLayout()
         self.configureDistrictSelectButtonLayout()
+        self.configureEmptyImageViewLayout()
+        self.configureEmptyImageView()
     }
 
     func configureGreetingStackViewLayout() {
@@ -199,6 +202,17 @@ private extension RoomListViewController {
         ])
     }
 
+    func configureEmptyImageViewLayout() {
+        self.emptyResultView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.emptyResultView)
+        NSLayoutConstraint.activate([
+            self.emptyResultView.centerXAnchor.constraint(equalTo: self.roomOverviewTableView.centerXAnchor),
+            self.emptyResultView.centerYAnchor.constraint(equalTo: self.roomOverviewTableView.centerYAnchor),
+            self.emptyResultView.widthAnchor.constraint(equalTo: self.roomOverviewTableView.widthAnchor, multiplier: 0.8),
+            self.emptyResultView.heightAnchor.constraint(equalTo: self.roomOverviewTableView.heightAnchor, multiplier: 0.25)
+        ])
+    }
+
     func configureRoomOverviewTableViewLayout() {
         self.roomOverviewTableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.roomOverviewTableView)
@@ -230,6 +244,10 @@ private extension RoomListViewController {
         }
     }
 
+    func configureEmptyImageView() {
+        self.emptyResultView.alpha = 0.5
+    }
+
     func configureLocationManager() {
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
@@ -255,6 +273,7 @@ private extension RoomListViewController {
             snapshot.appendSections([Section.main])
             snapshot.appendItems(roomList)
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
+            self?.emptyResultView.isHidden = roomList.isNotEmpty
         }
     }
 
