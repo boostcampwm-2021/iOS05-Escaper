@@ -8,7 +8,7 @@
 import UIKit
 
 final class RoomDetailViewController: DefaultViewController {
-    var room: Room?
+    private var viewModel: RoomDetailViewModelInterface?
     private let scrollView = UIScrollView()
     private let genreImageView: UIImageView = {
         let imageView = UIImageView()
@@ -42,13 +42,21 @@ final class RoomDetailViewController: DefaultViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let room = room else { return }
         self.configureLayout()
-        self.update(room: room)
-        self.roomDetailInfoView.update(room: room)
-        self.updateStackView(records: room.records)
+        self.bindViewModel()
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: EDSImage.share.value, style: .plain, target: self, action: #selector(self.shareButtonTouched))
+    }
+
+    func create() {
+        let repository = RoomDetailRepository(service: FirebaseService.shared)
+        let usecase = RoomDetailUseCase(repository: repository)
+        let viewModel = DefaultRoomDetailViewModel(usecase: usecase)
+        self.viewModel = viewModel
+    }
+
+    func update(roomID: String) {
+        self.viewModel?.fetch(roomID: roomID)
     }
 }
 
@@ -183,5 +191,14 @@ private extension RoomDetailViewController {
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         activityViewController.excludedActivityTypes = [.saveToCameraRoll]
         self.present(activityViewController, animated: true, completion: nil)
+    }
+
+    func bindViewModel() {
+        self.viewModel?.room.observe(on: self, observerBlock: { [weak self ] room in
+            guard let room = room else { return }
+            self?.update(room: room)
+            self?.roomDetailInfoView.update(room: room)
+            self?.updateStackView(records: room.records)
+        })
     }
 }
