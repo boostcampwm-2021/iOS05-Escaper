@@ -9,24 +9,39 @@ import Foundation
 
 protocol RoomDetailViewModelInterface {
     var room: Observable<Room?> { get }
+    var users: Observable<[User]> { get }
 
-    func fetch(roomID: String)
+    func fetch(roomId: String)
+    func fetch(userId: String)
 }
 
 final class DefaultRoomDetailViewModel: RoomDetailViewModelInterface {
     private let usecase: RoomDetailUseCaseInterface
     private(set) var room: Observable<Room?>
+    private(set) var users: Observable<[User]>
 
     init(usecase: RoomDetailUseCaseInterface) {
         self.usecase = usecase
         self.room = Observable(nil)
+        self.users = Observable([])
     }
 
-    func fetch(roomID: String) {
-        self.usecase.fetch(roomId: roomID) { [weak self] result in
+    func fetch(roomId: String) {
+        self.usecase.fetch(roomId: roomId) { [weak self] result in
             switch result {
             case .success(let room):
                 self?.room.value = room
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    func fetch(userId: String) {
+        self.usecase.fetch(userId: userId) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.users.value.append(user)
             case .failure(let error):
                 print(error)
             }

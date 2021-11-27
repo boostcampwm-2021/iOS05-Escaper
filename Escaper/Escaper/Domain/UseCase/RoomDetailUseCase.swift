@@ -9,6 +9,8 @@ import Foundation
 
 protocol RoomDetailUseCaseInterface {
     func fetch(roomId: String, completion: @escaping (Result<Room, Error>) -> Void)
+
+    func fetch(userId: String, completion: @escaping (Result<User, Error>) -> Void)
 }
 
 final class RoomDetailUseCase: RoomDetailUseCaseInterface {
@@ -23,6 +25,17 @@ final class RoomDetailUseCase: RoomDetailUseCaseInterface {
             switch result {
             case .success(let room):
                 completion(.success(room))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func fetch(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
+        self.repository.fetch(userId: userId) { result in
+            switch result {
+            case .success(let user):
+                completion(.success(user))
             case .failure(let error):
                 completion(.failure(error))
             }

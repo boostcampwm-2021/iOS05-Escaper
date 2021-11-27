@@ -54,8 +54,8 @@ final class RoomDetailViewController: DefaultViewController {
         self.viewModel = viewModel
     }
 
-    func update(roomID: String) {
-        self.viewModel?.fetch(roomID: roomID)
+    func update(roomId: String) {
+        self.viewModel?.fetch(roomId: roomId)
     }
 }
 
@@ -198,11 +198,22 @@ private extension RoomDetailViewController {
     }
 
     func bindViewModel() {
+        self.viewModel?.users.observe(on: self, observerBlock: { users in
+            for (index, user) in users.enumerated() {
+                guard let rankView = self.userRankStackView.subviews[index] as? RoomDetailUserRankView else { return }
+                rankView.update(imageURL: user.imageURL)
+            }
+        })
+
         self.viewModel?.room.observe(on: self, observerBlock: { [weak self ] room in
             guard let room = room else { return }
             self?.update(room: room)
             self?.roomDetailInfoView.update(room: room)
             self?.updateStackView(records: room.records)
+            for record in room.records.sorted(by: { $0.escapingTime < $1.escapingTime }).prefix(3) {
+                self?.viewModel?.fetch(userId: record.userEmail)
+            }
         })
+
     }
 }
