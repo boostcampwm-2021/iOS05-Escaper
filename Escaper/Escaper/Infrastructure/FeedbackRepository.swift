@@ -13,7 +13,7 @@ final class FeedbackRepository: FeedbackRepositoryInterface {
     init(service: FeedbackNetwork) {
         self.service = service
     }
-    
+
     func addFeedback(feedback: Feedback) {
         self.service.addFeedback(feedbackDTO: feedback.toDTO())
     }

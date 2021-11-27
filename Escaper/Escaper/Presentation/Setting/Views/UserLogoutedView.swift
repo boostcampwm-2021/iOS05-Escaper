@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol UserLogoutedViewDelegate: AnyObject{
+protocol UserLogoutedViewDelegate: AnyObject {
     func loginButtonTouched() // userSupervior 설정
 }
 
