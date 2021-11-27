@@ -144,6 +144,7 @@ private extension FeedBackView {
 
     @objc func sendButtonTouched(sender: UIButton) {
         guard let text = self.textView.text else { return }
+        self.textView.resignFirstResponder()
         self.textView.text = "피드백이 반영되었습니다! 감사합니다."
         self.textView.textColor = Constant.placeholderColor
         self.delegate?.feedBackSendButtonTouched(text: text)
