@@ -39,6 +39,10 @@ protocol FeedbackNetwork: AnyObject {
     func addFeedback(feedbackDTO: FeedbackDTO)
 }
 
+protocol RoomDetailNetwork: AnyObject {
+    func queryUser(userId: String, completion: @escaping (Result<User, Error>) -> Void)
+}
+
 final class FirebaseService: RoomListNetwork {
     enum Collection: String {
         case users
@@ -270,5 +274,26 @@ extension FirebaseService: FeedbackNetwork {
     func addFeedback(feedbackDTO: FeedbackDTO) {
         let path = self.database.collection(Collection.feedbacks.value).document()
         path.setData(feedbackDTO.toDictionary())
+    }
+}
+
+extension FirebaseService: RoomDetailNetwork {
+    func queryUser(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .whereField("email", isEqualTo: userId)
+            .getDocuments { snapshot, _ in
+                guard let document = snapshot?.documents.first else { return }
+                let result = Result {
+                    try document.data(as: User.self)
+                }
+                switch result {
+                case .success(let user):
+                    if let user = user {
+                        completion(.success(user))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
     }
 }

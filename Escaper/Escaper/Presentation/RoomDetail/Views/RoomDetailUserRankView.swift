@@ -33,9 +33,21 @@ final class RoomDetailUserRankView: UIView {
         self.configureLayout()
     }
 
+    func update(imageURL: String) {
+        ImageCacheManager.shared.download(urlString: imageURL) { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self?.imageView.image = UIImage(data: data)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
     func update(_ record: Record, rank: Int) {
         self.rankLabel.text = "\(rank + 1)"
-        self.imageView.image = UIImage(named: "romancePreview")
         self.titleLabel.text = Helper.parseUsername(email: record.userEmail)
         self.timeLabel.text = self.timeToString(time: record.escapingTime)
         self.backgroundColor = rank < 3 ? Self.rankColor[rank] : UIColor.clear

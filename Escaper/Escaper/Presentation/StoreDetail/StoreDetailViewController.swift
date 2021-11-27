@@ -46,7 +46,7 @@ extension StoreDetailViewController: UITableViewDelegate {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         let roomDetailViewController = RoomDetailViewController()
         roomDetailViewController.create()
-        roomDetailViewController.update(roomID: room.roomId)
+        roomDetailViewController.update(roomId: room.roomId)
         self.navigationController?.pushViewController(roomDetailViewController, animated: true)
     }
 }

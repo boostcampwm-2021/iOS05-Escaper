@@ -127,7 +127,7 @@ extension RoomListViewController: UITableViewDelegate {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         let detailViewController = RoomDetailViewController()
         detailViewController.create()
-        detailViewController.update(roomID: room.roomId)
+        detailViewController.update(roomId: room.roomId)
         detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }

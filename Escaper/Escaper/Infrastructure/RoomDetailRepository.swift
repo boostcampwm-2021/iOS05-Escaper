@@ -8,9 +8,9 @@
 import Foundation
 
 final class RoomDetailRepository: RoomDetailRepositoryInterface {
-    private let service: RoomListNetwork
+    private let service: RoomListNetwork & RoomDetailNetwork
 
-    init(service: RoomListNetwork) {
+    init(service: RoomListNetwork & RoomDetailNetwork) {
         self.service = service
     }
 
@@ -19,6 +19,17 @@ final class RoomDetailRepository: RoomDetailRepositoryInterface {
             switch result {
             case .success(let roomDTO):
                 completion(.success(roomDTO.toDomain()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func fetch(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
+        self.service.queryUser(userId: userId) { result in
+            switch result {
+            case .success(let user):
+                completion(.success(user))
             case .failure(let error):
                 completion(.failure(error))
             }
