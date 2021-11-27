@@ -62,6 +62,7 @@ extension UserInputTextField {
         self.configureImageView(viewType: viewType)
         self.configureEyeButton(viewType: viewType)
         self.configureTextFieldComponent()
+        self.layer.borderColor = EDSColor.skullWhite.value?.cgColor
     }
 
     func configureAddTarget() {
