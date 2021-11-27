@@ -13,6 +13,10 @@ protocol UserUseCaseInterface {
     func add(user: User)
 }
 
+protocol UpdateUserUscCaseInterface {
+    func updateScore(userEmail: String, score: Int)
+}
+
 final class UserUseCase: UserUseCaseInterface {
     private let repository: UserRepositoryInterface
 
@@ -50,5 +54,11 @@ final class UserUseCase: UserUseCaseInterface {
 
     func add(user: User) {
         self.repository.add(user: user)
+    }
+}
+
+extension UserUseCase: UpdateUserUscCaseInterface {
+    func updateScore(userEmail: String, score: Int) {
+        self.repository.updateScore(userEmail: userEmail, score: score)
     }
 }

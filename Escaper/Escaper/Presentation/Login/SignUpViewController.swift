@@ -166,7 +166,7 @@ class SignUpViewController: DefaultViewController {
                         self.designateSignupButtonState()
                     } else {
                         self.viewModel?.addUser(email: email, password: password, urlString: urlString)
-                        UserSupervisor.shared.login(email: email, imageURLString: urlString)
+                        UserSupervisor.shared.login(email: email, score: .zero, imageURLString: urlString)
                         self.delegate?.signUpSuccessed()
                         self.dismiss(animated: true)
                     }

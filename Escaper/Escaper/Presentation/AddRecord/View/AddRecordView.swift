@@ -11,7 +11,6 @@ protocol AddRecordViewDelegate: AnyObject {
     func findRoomTitleButtonTapped()
     func userImageViewTapped()
     func escapingTimePickerButtonTapped()
-    func updateRoom(identifer: String)
     func updateIsSuccess(_ isSuccess: Bool)
     func updateEscapingTime(time: Int)
     func updateRating(_ value: Double)
@@ -152,7 +151,6 @@ final class AddRecordView: UIView {
         self.findRoomTitleButton.setTitle(room.title, for: .normal)
         self.findRoomTitleButton.setImage(nil, for: .normal)
         self.roomStoreTitleLabel.text = room.storeName
-        self.delegate?.updateRoom(identifer: room.roomId)
     }
 
     func updateTimePicker(hour: Int, minutes: Int, seconds: Int) {

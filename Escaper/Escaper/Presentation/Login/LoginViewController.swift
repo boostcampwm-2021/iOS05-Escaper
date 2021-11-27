@@ -98,7 +98,7 @@ class LoginViewController: DefaultViewController {
             switch result {
             case .success(let user):
                 let imageURLString = user.imageURL
-                UserSupervisor.shared.login(email: email, imageURLString: imageURLString)
+                UserSupervisor.shared.login(email: email, score: user.score, imageURLString: imageURLString)
                 self.delegate?.loginSuccessed()
                 self.dismiss(animated: true)
             case .failure(.notExist):

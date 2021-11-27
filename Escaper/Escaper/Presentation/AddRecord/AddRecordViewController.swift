@@ -43,8 +43,10 @@ final class AddRecordViewController: DefaultViewController {
     func create(delegateTarget: AddRecordViewControllerDelegate) {
         let recordRepository = RecordRepository(service: FirebaseService.shared)
         let roomRepository = RoomListRepository(service: FirebaseService.shared)
-        let usecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
-        let viewModel = AddRecordViewModel(usecase: usecase)
+        let userRepository = UserRepository(service: FirebaseService.shared)
+        let recordUsecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
+        let userUsecase = UserUseCase(userRepository: userRepository)
+        let viewModel = AddRecordViewModel(recordUsecase: recordUsecase, userUsecase: userUsecase)
         self.delegate = delegateTarget
         self.viewModel = viewModel
     }
@@ -55,7 +57,7 @@ final class AddRecordViewController: DefaultViewController {
 
     @objc func saveRecordButtonTapped() {
         let userEmail = UserSupervisor.shared.email
-        guard let roomId = self.viewModel?.roomId else { return }
+        guard let roomId = self.viewModel?.room?.roomId else { return }
         let image = self.recordView.fetchSelectedImage()
         ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
             switch result {
@@ -77,11 +79,6 @@ extension AddRecordViewController: AddRecordViewDelegate {
 
     func updateEscapingTime(time: Int) {
         self.viewModel?.time = time
-        self.viewModel?.changeSaveState()
-    }
-
-    func updateRoom(identifer: String) {
-        self.viewModel?.roomId = identifer
         self.viewModel?.changeSaveState()
     }
 
@@ -120,7 +117,8 @@ extension AddRecordViewController: TimePickerDelegate {
 extension AddRecordViewController: RoomInformationTransferable {
     func transfer(room: Room) {
         self.recordView.updateRoomInformation(room)
-        self.viewModel?.records = room.records
+        self.viewModel?.room = room
+        self.viewModel?.changeSaveState()
     }
 }
 

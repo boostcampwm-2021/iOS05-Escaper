@@ -46,4 +46,8 @@ final class UserRepository: UserRepositoryInterface {
     func add(user: User) {
         self.service.addUser(user: user)
     }
+
+    func updateScore(userEmail: String, score: Int) {
+        self.service.updateScore(userEmail: userEmail, score: score)
+    }
 }

@@ -12,7 +12,7 @@ protocol AddRecordViewModelInput {
 }
 
 protocol AddRecordViewModelOutput {
-    var roomId: String { get set }
+    var room: Room? { get set }
     var satisfaction: Double { get set }
     var isSuccess: Bool { get set }
     var time: Int { get set }
@@ -23,17 +23,19 @@ protocol AddRecordViewModelOutput {
 }
 
 final class AddRecordViewModel: AddRecordViewModelInput, AddRecordViewModelOutput {
-    private let usecase: RecordUsecaseInterface
-    var roomId: String
+    private let recordUsecase: RecordUsecaseInterface
+    private let userUsecase: UpdateUserUscCaseInterface
+    var room: Room?
     var satisfaction: Double
     var isSuccess: Bool
     var time: Int
     var records: [Record]
     var state: Observable<Bool>
 
-    init(usecase: RecordUsecaseInterface) {
-        self.usecase = usecase
-        self.roomId = ""
+    init(recordUsecase: RecordUsecaseInterface, userUsecase: UpdateUserUscCaseInterface) {
+        self.recordUsecase = recordUsecase
+        self.userUsecase = userUsecase
+        self.room = nil
         self.satisfaction = .zero
         self.isSuccess = true
         self.time = .zero
@@ -42,13 +44,25 @@ final class AddRecordViewModel: AddRecordViewModelInput, AddRecordViewModelOutpu
     }
 
     func changeSaveState() {
-        self.state.value = !self.roomId.isEmpty && self.time != 0
+        self.state.value = self.room != nil && self.time != 0
+    }
+
+    func calculateScore() -> Int? {
+        guard let timeLimit = self.room?.timeLimit,
+              let diffculty = self.room?.difficulty,
+              self.time != .zero else { return nil }
+        let score = Int((self.isSuccess ? 1 : 0) * (1 - Double(self.time)/Double(timeLimit*60)) * 100 * Double(diffculty) + 50.0)
+        return score
     }
 
     func post(email: String, imageURLString: String) {
-        self.usecase.addRecord(imageURLString: imageURLString,
+        guard let score = self.calculateScore(),
+              let roomId = self.room?.roomId else { return }
+        UserSupervisor.shared.add(score: score)
+        self.userUsecase.updateScore(userEmail: email, score: UserSupervisor.shared.score)
+        self.recordUsecase.addRecord(imageURLString: imageURLString,
                                userEmail: email,
-                               roomId: self.roomId,
+                               roomId: roomId,
                                satisfaction: self.satisfaction,
                                isSuccess: self.isSuccess,
                                time: self.time,
