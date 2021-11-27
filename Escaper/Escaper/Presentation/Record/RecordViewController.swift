@@ -53,13 +53,13 @@ class RecordViewController: DefaultViewController {
         button.isHidden = true
         return button
     }()
-    private let recordDefaultGuideView: RecordDefaultGuideView = {
-        let view = RecordDefaultGuideView()
+    private let recordEmptyGuideView: RecordEmptyGuideView = {
+        let view = RecordEmptyGuideView()
         view.isHidden = true
         return view
     }()
-    private let recordEmptyGuideView: RecordEmptyGuideView = {
-        let view = RecordEmptyGuideView()
+    private let recordDefaultGuideView: RecordDefaultGuideView = {
+        let view = RecordDefaultGuideView()
         view.isHidden = true
         return view
     }()
@@ -69,8 +69,21 @@ class RecordViewController: DefaultViewController {
         self.configure()
         self.configureLayout()
         self.bindViewModel()
-//        UserSupervisor.shared.login(email: "Newtruth@gmail.com", imageURLString: "gs://escaper-67244.appspot.com/users/users_default.png")
-        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UserSupervisor.shared.isLogined {
+            self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+        } else {
+            self.recordDefaultGuideView.isHidden = false
+            self.recordEmptyGuideView.isHidden = true
+            self.addButton.isHidden = true
+            self.countingLabel.text = "👻"
+            self.greetingLabel.text = "당신의 실력은 어느 수준일까요?"
+            self.viewModel?.records.value = []
+            self.applyRecordCollectionViewData(recordCards: [], animated: false)
+        }
     }
 
     func create() {
@@ -83,25 +96,20 @@ class RecordViewController: DefaultViewController {
 
     func bindViewModel() {
         self.viewModel?.records.observe(on: self) { [weak self] results in
-            if UserSupervisor.shared.isLogined {
-                if results.isEmpty {
-                    self?.recordDefaultGuideView.isHidden = true
-                    self?.recordEmptyGuideView.isHidden = false
-                    self?.addButton.isHidden = false
-                    self?.countingLabel.text = "💀"
-                    self?.greetingLabel.text = "기록하고, 탈출한 방의 랭커가 되어봐요!"
-                } else {
-                    self?.recordDefaultGuideView.isHidden = true
-                    self?.recordEmptyGuideView.isHidden = true
-                    self?.addButton.isHidden = false
-                    self?.applyRecordCollectionViewData(recordCards: results)
-                }
+            guard UserSupervisor.shared.isLogined else { return }
+            if results.isEmpty {
+                self?.recordDefaultGuideView.isHidden = true
+                self?.recordEmptyGuideView.isHidden = false
+                self?.addButton.isHidden = false
+                self?.countingLabel.text = "💀"
+                self?.greetingLabel.text = "기록하고, 탈출한 방의 랭커가 되어봐요!"
+                self?.applyRecordCollectionViewData(recordCards: results, animated: false)
             } else {
-                self?.recordDefaultGuideView.isHidden = false
+                self?.recordDefaultGuideView.isHidden = true
                 self?.recordEmptyGuideView.isHidden = true
-                self?.addButton.isHidden = true
-                self?.countingLabel.text = "👻"
-                self?.greetingLabel.text = "당신의 실력은 어느 수준일까요?"
+                self?.addButton.isHidden = false
+                self?.applyRecordCollectionViewData(recordCards: results, animated: true)
+                self?.configureRecordSummary(count: results.count)
             }
         }
     }
@@ -110,6 +118,7 @@ class RecordViewController: DefaultViewController {
 extension RecordViewController: AddRecordViewControllerDelegate {
     func addRecordButtonTouched() {
         self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+        self.recordCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
     }
 }
 
@@ -226,6 +235,7 @@ private extension RecordViewController {
         self.configureAddButtonLayout()
         self.configureRecordDefaultGuideViewConstraint()
         self.configureRecordEmptyGuideViewConstraint()
+
     }
 
     func configureRecordCollectionView() {
@@ -242,18 +252,18 @@ private extension RecordViewController {
         self.addButton.addTarget(self, action: #selector(self.addButtonTapped), for: .touchUpInside)
     }
 
-    func applyRecordCollectionViewData(recordCards: [RecordCard]) {
+    func applyRecordCollectionViewData(recordCards: [RecordCard], animated: Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, RecordCard>()
         snapshot.appendSections([Section.card])
         snapshot.appendItems(recordCards)
-        self.datasource?.apply(snapshot, animatingDifferences: true)
+        self.datasource?.apply(snapshot, animatingDifferences: animated)
         if recordCards.count > 1 {
             let indexPath = IndexPath(item: 1, section: Section.card.index)
             if let cell = self.recordCollectionView.cellForItem(at: indexPath) {
                 animateZoomforCellremove(zoomCell: cell)
             }
         }
-        self.configureRecordSummary(count: recordCards.count)
+
     }
 
     func configureRecordCollectionViewDataSource() {

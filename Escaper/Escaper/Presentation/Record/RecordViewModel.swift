@@ -27,10 +27,10 @@ final class DefaultRecordViewModel: RecordViewModel {
     }
 
     func fetch(userEmail: String) {
-        self.records.value.removeAll()
         self.useCase?.fetchAllRecords(userEmail: userEmail) { result in
             switch result {
             case .success(let record):
+                guard !self.records.value.contains(record) else { return }
                 let records = self.records.value + [record]
                 self.records.value = records.sorted(by: { $0.createdTime > $1.createdTime })
             case .failure(let error):
