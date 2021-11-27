@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		0CEE8B32274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
-		1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F06844E27315D6300E2C789 /* GoogleService-Info.plist */; };
 		1F43615B274FE8CA00331C6F /* RatingTempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingTempView.swift */; };
+		1F6CD16E2751F18400C079A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CD16D2751F18400C079A9 /* GoogleService-Info.plist */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
 		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
 		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
@@ -144,12 +144,12 @@
 		0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepository.swift; sourceTree = "<group>"; };
 		0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDescriptionRatingStackView.swift; sourceTree = "<group>"; };
 		1F061DA7272FF896008FC519 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		1F06844E27315D6300E2C789 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F0CAED22733E00300389CFA /* RoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
 		1F0CAED42733E03600389CFA /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		1F0CAED62733E04F00389CFA /* RoomListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListRepository.swift; sourceTree = "<group>"; };
 		1F22E651273D14D700409A96 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		1F43615A274FE8CA00331C6F /* RatingTempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTempView.swift; sourceTree = "<group>"; };
+		1F6CD16D2751F18400C079A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F6DC241274C7E2D0063C632 /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepositoryInterface.swift; sourceTree = "<group>"; };
 		1F6DC245274C81AF0063C632 /* StoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUseCase.swift; sourceTree = "<group>"; };
@@ -358,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				1FCDDE79272EE0F10027AAAD /* Info.plist */,
-				1F06844E27315D6300E2C789 /* GoogleService-Info.plist */,
+				1F6CD16D2751F18400C079A9 /* GoogleService-Info.plist */,
 				25104A442744E8EC00DB90BF /* DataInjection */,
 				255133532730E8DB00A92CF3 /* Application */,
 				2551335A2730EC5B00A92CF3 /* Resources */,
@@ -796,9 +796,9 @@
 			files = (
 				1FAAD0AC2746ADA400C2AE90 /* gangnam.json in Resources */,
 				1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */,
+				1F6CD16E2751F18400C079A9 /* GoogleService-Info.plist in Resources */,
 				251CA989274F72B300BA5EC5 /* hongdae.json in Resources */,
 				25104A512745408E00DB90BF /* extra.json in Resources */,
-				1F06844F27315D6300E2C789 /* GoogleService-Info.plist in Resources */,
 				1FCDDE78272EE0F10027AAAD /* LaunchScreen.storyboard in Resources */,
 				1FCDDE75272EE0F10027AAAD /* Assets.xcassets in Resources */,
 				25104A53274546E100DB90BF /* sinlim.json in Resources */,
@@ -1101,7 +1101,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.boostcamp.Escaper;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.escaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1133,7 +1133,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.boostcamp.Escaper;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.codesquad.escaper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
