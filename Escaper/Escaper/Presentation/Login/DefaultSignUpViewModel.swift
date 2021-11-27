@@ -45,15 +45,27 @@ class DefaultSignUpViewModel: SignUpViewModel {
     }
 
     func checkEmail(text: String) {
-        self.emailMessage.value = Validator.checkEmailFormat(text: text)
+        if Validator.checkEmailFormat(text: text) {
+            self.emailMessage.value = TextFieldState.normal.value
+        } else {
+            self.emailMessage.value = TextFieldState.emailFormatError.value
+        }
     }
 
     func checkPassword(text: String) {
-        self.passwordMessage.value = Validator.checkNumberOfDigits(text: text)
+        if Validator.checkNumberOfDigits(text: text) {
+            self.passwordMessage.value = TextFieldState.normal.value
+        } else {
+            self.passwordMessage.value = TextFieldState.numberOfDigitsError.value
+        }
     }
 
     func checkDiscordance(text1: String, text2: String) {
-        self.passwordCheckMessage.value = Validator.checkDiscordance(text1: text1, text2: text2)
+        if Validator.checkDiscordance(text1: text1, text2: text2) {
+            self.passwordCheckMessage.value = TextFieldState.normal.value
+        } else {
+            self.passwordCheckMessage.value = TextFieldState.discordanceError.value
+        }
     }
 
     func isSignupButtonEnabled() -> Bool {
@@ -65,7 +77,7 @@ class DefaultSignUpViewModel: SignUpViewModel {
             switch result {
             case .success(let isExist):
                 if isExist {
-                    self.emailMessage.value = Validator.alreadyExistErrorString
+                    self.emailMessage.value = TextFieldState.alreadyExistError.value
                     completion(true)
                 } else {
                     completion(false)
