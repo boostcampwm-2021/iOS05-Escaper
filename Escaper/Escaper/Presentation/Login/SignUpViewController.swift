@@ -67,6 +67,7 @@ class SignUpViewController: DefaultViewController {
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 30
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     private var signupLabel: UILabel = {
@@ -86,6 +87,7 @@ class SignUpViewController: DefaultViewController {
         button.setImage(EDSImage.loginPumpkin.value, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
+        button.contentMode = .scaleAspectFit
         return button
     }()
     private var ghostImageButton: UIButton = {
@@ -93,6 +95,7 @@ class SignUpViewController: DefaultViewController {
         button.setImage(EDSImage.signupGhost.value, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
+        button.contentMode = .scaleAspectFit
         return button
     }()
     private var skullImageButton: UIButton = {
@@ -100,6 +103,7 @@ class SignUpViewController: DefaultViewController {
         button.setImage(EDSImage.signupSkull.value, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.borderColor = EDSColor.pumpkin.value?.cgColor
+        button.contentMode = .scaleAspectFit
         return button
     }()
     private var addImageButton: UIButton = {
