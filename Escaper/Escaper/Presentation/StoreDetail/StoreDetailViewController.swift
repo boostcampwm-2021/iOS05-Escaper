@@ -45,7 +45,8 @@ extension StoreDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         let roomDetailViewController = RoomDetailViewController()
-        roomDetailViewController.room = room
+        roomDetailViewController.create()
+        roomDetailViewController.update(roomID: room.roomId)
         self.navigationController?.pushViewController(roomDetailViewController, animated: true)
     }
 }

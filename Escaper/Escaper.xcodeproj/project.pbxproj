@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0CEE8B32274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */; };
+		0CEE8B342752103300E6C6EA /* RoomDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B332752103300E6C6EA /* RoomDetailViewModel.swift */; };
+		0CEE8B362752113F00E6C6EA /* RoomDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B352752113F00E6C6EA /* RoomDetailUseCase.swift */; };
+		0CEE8B382752127B00E6C6EA /* RoomDetailRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B372752127B00E6C6EA /* RoomDetailRepositoryInterface.swift */; };
+		0CEE8B3A275212FF00E6C6EA /* RoomDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F43615B274FE8CA00331C6F /* RatingTempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingTempView.swift */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
@@ -146,6 +150,10 @@
 		0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepositoryInterface.swift; sourceTree = "<group>"; };
 		0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepository.swift; sourceTree = "<group>"; };
 		0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDescriptionRatingStackView.swift; sourceTree = "<group>"; };
+		0CEE8B332752103300E6C6EA /* RoomDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewModel.swift; sourceTree = "<group>"; };
+		0CEE8B352752113F00E6C6EA /* RoomDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailUseCase.swift; sourceTree = "<group>"; };
+		0CEE8B372752127B00E6C6EA /* RoomDetailRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailRepositoryInterface.swift; sourceTree = "<group>"; };
+		0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailRepository.swift; sourceTree = "<group>"; };
 		1F061DA7272FF896008FC519 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1F0CAED22733E00300389CFA /* RoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
 		1F0CAED42733E03600389CFA /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -477,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				1F0CAED42733E03600389CFA /* FirebaseService.swift */,
+				0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */,
 				25020604273CE1FC004B024E /* RecordRepository.swift */,
 				1F0CAED62733E04F00389CFA /* RoomListRepository.swift */,
 				0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */,
@@ -552,6 +561,7 @@
 			isa = PBXGroup;
 			children = (
 				0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */,
+				0CEE8B332752103300E6C6EA /* RoomDetailViewModel.swift */,
 				0CAEE3AA273A618A002C1136 /* Views */,
 			);
 			path = RoomDetail;
@@ -631,6 +641,7 @@
 				3E77D55E274BC8E70042133B /* UserUseCase.swift */,
 				1F6DC245274C81AF0063C632 /* StoreUseCase.swift */,
 				251CA9A2274FE04D00BA5EC5 /* FeedbackUseCase.swift */,
+				0CEE8B352752113F00E6C6EA /* RoomDetailUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -652,6 +663,7 @@
 				3E77D560274BC9550042133B /* UserRepositoryInterface.swift */,
 				1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */,
 				251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */,
+				0CEE8B372752127B00E6C6EA /* RoomDetailRepositoryInterface.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -872,6 +884,7 @@
 				3EBB5A8A274E35C000715F89 /* DefaultSignUpViewModel.swift in Sources */,
 				3EBB5A8B274E35C000715F89 /* UserInputView.swift in Sources */,
 				3EBB5A8C274E35C000715F89 /* UserInputTextField.swift in Sources */,
+				0CEE8B342752103300E6C6EA /* RoomDetailViewModel.swift in Sources */,
 				3EBB5A8D274E35C000715F89 /* RoomListViewController.swift in Sources */,
 				3EBB5A8E274E35C000715F89 /* RoomListViewModel.swift in Sources */,
 				3EBB5A8F274E35C000715F89 /* DistrictSelectButton.swift in Sources */,
@@ -905,6 +918,7 @@
 				3EBB5AA8274E35C000715F89 /* AddRecordViewModel.swift in Sources */,
 				3EBB5AA9274E35C000715F89 /* TimePickerViewController.swift in Sources */,
 				3EBB5AAA274E35C000715F89 /* AddRecordView.swift in Sources */,
+				0CEE8B382752127B00E6C6EA /* RoomDetailRepositoryInterface.swift in Sources */,
 				3EBB5AAB274E35C000715F89 /* SearchRoomViewController.swift in Sources */,
 				3EBB5AAC274E35C000715F89 /* SearchRoomViewModel.swift in Sources */,
 				3EBB5AAD274E35C000715F89 /* SearchRoomTableViewCell.swift in Sources */,
@@ -947,8 +961,10 @@
 				3EBB5ACC274E35C000715F89 /* StoreRepository.swift in Sources */,
 				251CA9A5274FE0AF00BA5EC5 /* FeedbackRepository.swift in Sources */,
 				251CA991274F86BA00BA5EC5 /* UserLoginedView.swift in Sources */,
+				0CEE8B362752113F00E6C6EA /* RoomDetailUseCase.swift in Sources */,
 				3EBB5ACD274E35C000715F89 /* ImageCacheManager.swift in Sources */,
 				3EBB5ACE274E35C000715F89 /* NetworkService.swift in Sources */,
+				0CEE8B3A275212FF00E6C6EA /* RoomDetailRepository.swift in Sources */,
 				3EBB5ACF274E35C000715F89 /* UserSupervisor.swift in Sources */,
 				3EBB5AD0274E35C000715F89 /* UserRepository.swift in Sources */,
 				3EBB5AD1274E35C000715F89 /* RecordDTO.swift in Sources */,
