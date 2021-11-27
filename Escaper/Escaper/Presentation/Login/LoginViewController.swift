@@ -21,6 +21,7 @@ class LoginViewController: DefaultViewController {
         static let inputViewWidthRatio = CGFloat(0.8)
         static let inputViewHeightRatio = CGFloat(0.1)
         static let middleWidthRatio = CGFloat(0.6)
+        static let textFieldBorderWidth = CGFloat(0.7)
     }
 
     private weak var delegate: LoginViewControllerDelegate?
@@ -124,6 +125,7 @@ class LoginViewController: DefaultViewController {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
         self.view.frame.origin = CGPoint(x: 0, y: 0)
+        self.modifyTextFieldBorder(index: 0)
     }
 }
 
@@ -134,10 +136,16 @@ extension LoginViewController: UITextFieldDelegate {
     }
 
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == self.passwordInputView.textField {
+        switch textField {
+        case self.emailInputView.textField:
+            self.modifyTextFieldBorder(index: 1)
+        case self.passwordInputView.textField:
+            self.modifyTextFieldBorder(index: 2)
             UIView.animate(withDuration: 0.2, animations: {
                 self.view.frame.origin = CGPoint(x: 0, y: -self.emailInputView.frame.height)
             })
+        default:
+            break
         }
         return true
     }
@@ -149,12 +157,29 @@ extension LoginViewController: UITextFieldDelegate {
         case self.passwordInputView.textField:
             textField.endEditing(true)
             UIView.animate(withDuration: 0.2, animations: {
+                self.modifyTextFieldBorder(index: 0)
                 self.view.frame.origin = CGPoint(x: 0, y: 0)
             })
         default:
             break
         }
         return true
+    }
+
+    func modifyTextFieldBorder(index: Int) {
+        switch index {
+        case 0:
+            self.emailInputView.textField?.layer.borderWidth = 0
+            self.passwordInputView.textField?.layer.borderWidth = 0
+        case 1:
+            self.emailInputView.textField?.layer.borderWidth = Constant.textFieldBorderWidth
+            self.passwordInputView.textField?.layer.borderWidth = 0
+        case 2:
+            self.emailInputView.textField?.layer.borderWidth = 0
+            self.passwordInputView.textField?.layer.borderWidth = Constant.textFieldBorderWidth
+        default:
+            break
+        }
     }
 }
 
