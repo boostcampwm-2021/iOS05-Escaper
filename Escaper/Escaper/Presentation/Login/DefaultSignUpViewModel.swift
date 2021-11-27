@@ -45,7 +45,7 @@ class DefaultSignUpViewModel: SignUpViewModel {
     }
 
     func checkEmail(text: String) {
-        self.emailMessage.value = Validator.checkNumberOfDigits(text: text)
+        self.emailMessage.value = Validator.checkEmailFormat(text: text)
     }
 
     func checkPassword(text: String) {
