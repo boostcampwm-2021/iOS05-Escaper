@@ -74,6 +74,7 @@ extension UserInputTextField {
         self.autocorrectionType = .no
         self.autocapitalizationType = .none
         self.layer.cornerRadius = 10
+        self.textContentType = .oneTimeCode
         switch viewType {
         case .email:
             self.isSecureTextEntry = false
