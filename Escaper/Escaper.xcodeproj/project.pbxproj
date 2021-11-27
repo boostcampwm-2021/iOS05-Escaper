@@ -14,6 +14,8 @@
 		0CEE8B3A275212FF00E6C6EA /* RoomDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F43615B274FE8CA00331C6F /* RatingTempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingTempView.swift */; };
+		1F43615B274FE8CA00331C6F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingView.swift */; };
+		1F6CD16E2751F18400C079A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CD16D2751F18400C079A9 /* GoogleService-Info.plist */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
 		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
 		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
@@ -47,7 +49,6 @@
 		3EBB5A83274E35C000715F89 /* InfoDescriptionDetailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DEB274B09EA00A98006 /* InfoDescriptionDetailStackView.swift */; };
 		3EBB5A84274E35C000715F89 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */; };
 		3EBB5A85274E35C000715F89 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CC2732914B001ED120 /* DefaultViewController.swift */; };
-		3EBB5A86274E35C000715F89 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031BB27339C0200BD07BF /* RatingView.swift */; };
 		3EBB5A87274E35C000715F89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3157182743661800472CAD /* LoginViewController.swift */; };
 		3EBB5A88274E35C000715F89 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603082744F53E003F414D /* SignUpViewController.swift */; };
 		3EBB5A89274E35C000715F89 /* DefaultLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D568274CC1BC0042133B /* DefaultLoginViewModel.swift */; };
@@ -160,6 +161,8 @@
 		1F0CAED62733E04F00389CFA /* RoomListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListRepository.swift; sourceTree = "<group>"; };
 		1F22E651273D14D700409A96 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		1F43615A274FE8CA00331C6F /* RatingTempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTempView.swift; sourceTree = "<group>"; };
+		1F43615A274FE8CA00331C6F /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		1F6CD16D2751F18400C079A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F6DC241274C7E2D0063C632 /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepositoryInterface.swift; sourceTree = "<group>"; };
 		1F6DC245274C81AF0063C632 /* StoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUseCase.swift; sourceTree = "<group>"; };
@@ -201,7 +204,6 @@
 		25020602273CE1E1004B024E /* RecordUsecase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordUsecase.swift; sourceTree = "<group>"; };
 		25020604273CE1FC004B024E /* RecordRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
 		25020608273CE349004B024E /* RecordDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDTO.swift; sourceTree = "<group>"; };
-		251031BB27339C0200BD07BF /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		251031C12733A5B500BD07BF /* RatingImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingImage.swift; sourceTree = "<group>"; };
 		251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomOverviewTableViewCell.swift; sourceTree = "<group>"; };
 		251031C52733BCAC00BD07BF /* RatingContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingContainerView.swift; sourceTree = "<group>"; };
@@ -406,8 +408,7 @@
 			children = (
 				25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */,
 				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
-				251031BB27339C0200BD07BF /* RatingView.swift */,
-				1F43615A274FE8CA00331C6F /* RatingTempView.swift */,
+				1F43615A274FE8CA00331C6F /* RatingView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -867,7 +868,7 @@
 				3EBB5ADE274E35CB00715F89 /* StoreDetailViewModel.swift in Sources */,
 				3EBB5ADF274E35CB00715F89 /* HorizontalLineView.swift in Sources */,
 				3EBB5AE0274E35CB00715F89 /* StoreDTO.swift in Sources */,
-				1F43615B274FE8CA00331C6F /* RatingTempView.swift in Sources */,
+				1F43615B274FE8CA00331C6F /* RatingView.swift in Sources */,
 				3EBB5A7E274E35C000715F89 /* InjectionDTOs.swift in Sources */,
 				3EBB5A7F274E35C000715F89 /* DataInjection.swift in Sources */,
 				3EBB5A80274E35C000715F89 /* AppDelegate.swift in Sources */,
@@ -877,7 +878,6 @@
 				3EBB5A83274E35C000715F89 /* InfoDescriptionDetailStackView.swift in Sources */,
 				3EBB5A84274E35C000715F89 /* MainTabBarController.swift in Sources */,
 				3EBB5A85274E35C000715F89 /* DefaultViewController.swift in Sources */,
-				3EBB5A86274E35C000715F89 /* RatingView.swift in Sources */,
 				3EBB5A87274E35C000715F89 /* LoginViewController.swift in Sources */,
 				3EBB5A88274E35C000715F89 /* SignUpViewController.swift in Sources */,
 				3EBB5A89274E35C000715F89 /* DefaultLoginViewModel.swift in Sources */,
