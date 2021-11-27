@@ -10,7 +10,6 @@
 		0CEE8B32274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F43615B274FE8CA00331C6F /* RatingTempView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingTempView.swift */; };
-		1F6CD16E2751F18400C079A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CD16D2751F18400C079A9 /* GoogleService-Info.plist */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
 		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
 		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
@@ -32,6 +31,8 @@
 		251CA9A5274FE0AF00BA5EC5 /* FeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A4274FE0AF00BA5EC5 /* FeedbackRepository.swift */; };
 		251CA9A7274FE26000BA5EC5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A6274FE26000BA5EC5 /* SettingViewModel.swift */; };
 		251CA9A9274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */; };
+		251CA9AB27520A7300BA5EC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251CA9AA27520A7300BA5EC5 /* GoogleService-Info.plist */; };
+		251CA9AD27525C5B00BA5EC5 /* EmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */; };
 		3EBB5A7E274E35C000715F89 /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
 		3EBB5A7F274E35C000715F89 /* DataInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A472744E98F00DB90BF /* DataInjection.swift */; };
 		3EBB5A80274E35C000715F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
@@ -149,7 +150,6 @@
 		1F0CAED62733E04F00389CFA /* RoomListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListRepository.swift; sourceTree = "<group>"; };
 		1F22E651273D14D700409A96 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		1F43615A274FE8CA00331C6F /* RatingTempView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingTempView.swift; sourceTree = "<group>"; };
-		1F6CD16D2751F18400C079A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F6DC241274C7E2D0063C632 /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepositoryInterface.swift; sourceTree = "<group>"; };
 		1F6DC245274C81AF0063C632 /* StoreUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreUseCase.swift; sourceTree = "<group>"; };
@@ -214,6 +214,8 @@
 		251CA9A4274FE0AF00BA5EC5 /* FeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRepository.swift; sourceTree = "<group>"; };
 		251CA9A6274FE26000BA5EC5 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRepositoryInterface.swift; sourceTree = "<group>"; };
+		251CA9AA27520A7300BA5EC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResultView.swift; sourceTree = "<group>"; };
 		25513369273108A800A92CF3 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
 		2551336B2731093B00A92CF3 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
 		25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListRepositoryInterface.swift; sourceTree = "<group>"; };
@@ -357,8 +359,8 @@
 		1FCDDE6A272EE0F00027AAAD /* Escaper */ = {
 			isa = PBXGroup;
 			children = (
+				251CA9AA27520A7300BA5EC5 /* GoogleService-Info.plist */,
 				1FCDDE79272EE0F10027AAAD /* Info.plist */,
-				1F6CD16D2751F18400C079A9 /* GoogleService-Info.plist */,
 				25104A442744E8EC00DB90BF /* DataInjection */,
 				255133532730E8DB00A92CF3 /* Application */,
 				2551335A2730EC5B00A92CF3 /* Resources */,
@@ -603,6 +605,7 @@
 				3E4378CA27329028001ED120 /* TagButton.swift */,
 				251031C52733BCAC00BD07BF /* RatingContainerView.swift */,
 				255133642730F07000A92CF3 /* Cell */,
+				251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -796,7 +799,7 @@
 			files = (
 				1FAAD0AC2746ADA400C2AE90 /* gangnam.json in Resources */,
 				1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */,
-				1F6CD16E2751F18400C079A9 /* GoogleService-Info.plist in Resources */,
+				251CA9AB27520A7300BA5EC5 /* GoogleService-Info.plist in Resources */,
 				251CA989274F72B300BA5EC5 /* hongdae.json in Resources */,
 				25104A512745408E00DB90BF /* extra.json in Resources */,
 				1FCDDE78272EE0F10027AAAD /* LaunchScreen.storyboard in Resources */,
@@ -906,6 +909,7 @@
 				3EBB5AB1274E35C000715F89 /* RankView.swift in Sources */,
 				251CA995274F875200BA5EC5 /* UserLogoutedView.swift in Sources */,
 				3EBB5AB2274E35C000715F89 /* RoomListRepositoryInterface.swift in Sources */,
+				251CA9AD27525C5B00BA5EC5 /* EmptyResultView.swift in Sources */,
 				3EBB5AB3274E35C000715F89 /* LeaderBoardRepositoryInterface.swift in Sources */,
 				3EBB5AB4274E35C000715F89 /* RecordRepositoryInterface.swift in Sources */,
 				251CA9A3274FE04D00BA5EC5 /* FeedbackUseCase.swift in Sources */,
