@@ -22,6 +22,11 @@ class StoreListViewController: DefaultViewController {
         tableView.rowHeight = 100
         return tableView
     }()
+    private var emptyResultView: EmptyResultView = {
+        let emptyResultView = EmptyResultView()
+        emptyResultView.injectContentLabelText(text: "검색 결과가 없어요. 다른 업체를 검색해주세요.")
+        return emptyResultView
+    }()
     var minimumTopSpacing: CGFloat {
         return UIScreen.main.bounds.height * 0.15
     }
@@ -36,12 +41,6 @@ class StoreListViewController: DefaultViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 0.6, animations: { [weak self] in
-            guard let self = self else { return }
-            let frame = self.view.frame
-            let yComponent = self.maximumTopSpacing
-            self.view.frame = CGRect(x: 0, y: yComponent, width: frame.width, height: frame.height)
-        })
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -60,30 +59,39 @@ class StoreListViewController: DefaultViewController {
         let translation = recognizer.translation(in: self.view)
         let velocity = recognizer.velocity(in: self.view)
         let positionY = self.view.frame.minY
+        guard let tabBarHeight = self.tabBarController?.tabBar.frame.height else { return }
         if (positionY + translation.y >= minimumTopSpacing) && (positionY + translation.y <= maximumTopSpacing) {
-            self.view.frame = CGRect(x: 0, y: positionY + translation.y, width: view.frame.width, height: view.frame.height)
+            self.view.frame = CGRect(x: 0, y: positionY + translation.y, width: self.view.frame.width, height: UIScreen.main.bounds.height)
             recognizer.setTranslation(CGPoint.zero, in: self.view)
         }
         guard recognizer.state == .ended else { return }
         UIView.animate(withDuration: 0.6, delay: 0.0, options: [.allowUserInteraction], animations: {
             if  velocity.y >= 0 {
-                self.view.frame = CGRect(x: 0, y: self.maximumTopSpacing, width: self.view.frame.width, height: self.view.frame.height)
+                self.view.frame = CGRect(x: 0, y: self.maximumTopSpacing, width: self.view.frame.width, height: UIScreen.main.bounds.height)
             } else {
-                self.view.frame = CGRect(x: 0, y: self.minimumTopSpacing, width: self.view.frame.width, height: self.view.frame.height)
+                self.view.frame = CGRect(x: 0, y: self.minimumTopSpacing, width: self.view.frame.width, height: UIScreen.main.bounds.height)
             }
         }, completion: { [weak self] _ in
-            guard velocity.y < 0 else { return }
-            self?.storeListTableView.isScrollEnabled = true
+            guard let self = self else { return }
+            let yComponent = velocity.y >= 0 ? self.maximumTopSpacing : self.minimumTopSpacing
+            let height = UIScreen.main.bounds.height - yComponent - tabBarHeight
+            self.view.frame = CGRect(x: 0, y: yComponent, width: self.view.frame.width, height: height)
         })
     }
 }
 
 extension StoreListViewController: StoreListDelegate {
     func transfer(_ stores: [Store]) {
-        var snapShot = NSDiffableDataSourceSnapshot<Section, Store>()
-        snapShot.appendSections([.main])
-        snapShot.appendItems(stores)
-        self.dataSource?.apply(snapShot, animatingDifferences: true)
+        guard let tabBarHeight = self.tabBarController?.tabBar.frame.height else { return }
+        let yComponent = stores.isEmpty ? self.minimumTopSpacing : self.maximumTopSpacing
+        let height = UIScreen.main.bounds.height - yComponent - tabBarHeight
+        self.emptyResultView.isHidden = stores.isNotEmpty
+        UIView.animate(withDuration: 0.6, animations: { [weak self] in
+            guard let self = self else { return }
+            let frame = self.view.frame
+            self.view.frame = CGRect(x: 0, y: yComponent, width: frame.width, height: height)
+        })
+        self.updateDataSource(stores: stores)
     }
 }
 
@@ -106,6 +114,7 @@ private extension StoreListViewController {
         self.configureGabberViewLayout()
         self.configureStoreListTableViewLayout()
         self.configureStoreListTableView()
+        self.configureEmptyResultViewLayout()
         self.configureViewMoverGesture()
     }
 
@@ -125,7 +134,7 @@ private extension StoreListViewController {
         self.view.addSubview(self.storeListTableView)
         NSLayoutConstraint.activate([
             self.storeListTableView.topAnchor.constraint(equalTo: self.grabberView.bottomAnchor, constant: 20),
-            self.storeListTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            self.storeListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.storeListTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.storeListTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
@@ -141,8 +150,26 @@ private extension StoreListViewController {
         }
     }
 
+    func configureEmptyResultViewLayout() {
+        self.emptyResultView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.emptyResultView)
+        NSLayoutConstraint.activate([
+            self.emptyResultView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.emptyResultView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.emptyResultView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.8),
+            self.emptyResultView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.25)
+        ])
+    }
+
     func configureViewMoverGesture() {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.viewMoveGesutre(_:)))
         self.view.addGestureRecognizer(gesture)
+    }
+
+    func updateDataSource(stores: [Store]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, Store>()
+        snapShot.appendSections([.main])
+        snapShot.appendItems(stores)
+        self.dataSource?.apply(snapShot, animatingDifferences: true)
     }
 }
