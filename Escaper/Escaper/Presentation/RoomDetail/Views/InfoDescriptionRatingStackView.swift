@@ -57,8 +57,6 @@ private extension InfoDescriptionRatingStackView {
     }
 
     func configureStackView() {
-        self.isLayoutMarginsRelativeArrangement = true
-        self.layoutMargins.right = 20
         self.axis = .horizontal
     }
 
