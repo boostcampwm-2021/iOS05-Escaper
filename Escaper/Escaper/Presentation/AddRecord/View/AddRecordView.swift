@@ -64,7 +64,8 @@ final class AddRecordView: UIView {
     }()
     private let escapingTimePickerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("00 : 00 : 00", for: .normal)
+        button.isEnabled = false
+        button.setTitle("00 : 00", for: .normal)
         button.setTitleColor(EDSColor.charcoal.value, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: .bold)
         button.backgroundColor = EDSColor.skullWhite.value
@@ -123,11 +124,7 @@ final class AddRecordView: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-<<<<<<< HEAD
-        self.satisFactionRatingView.starSize = (Int(satisFactionRatingView.frame.width) - (satisFactionRatingView.starSpacing * 4) ) / 5
-=======
         self.satisFactionRatingView.starSize = (Int(self.satisFactionRatingView.frame.width) - self.satisFactionRatingView.starSpacing * 4) / 5 - 5
->>>>>>> Chore: 신촌 db 추가 및 오타 수정
     }
 
     @objc func findRoomButtonTouched() {
@@ -158,12 +155,13 @@ final class AddRecordView: UIView {
         self.findRoomTitleButton.setTitle(room.title, for: .normal)
         self.findRoomTitleButton.setImage(nil, for: .normal)
         self.roomStoreTitleLabel.text = room.storeName
+        self.escapingTimePickerButton.isEnabled = true
     }
 
-    func updateTimePicker(hour: Int, minutes: Int, seconds: Int) {
-        let timeString = "\(String(format: "%02d", hour)) : \(String(format: "%02d", minutes)) : \(String(format: "%02d", seconds))"
+    func updateTimePicker(minutes: Int, seconds: Int) {
+        let timeString = "\(String(format: "%02d", minutes)) : \(String(format: "%02d", seconds))"
         self.escapingTimePickerButton.setTitle(timeString, for: .normal)
-        self.delegate?.updateEscapingTime(time: hour*3600 + minutes*60 + seconds)
+        self.delegate?.updateEscapingTime(time: minutes*60 + seconds)
     }
 
     func updateUserSelectedImage(_ image: UIImage) {

@@ -8,13 +8,13 @@
 import UIKit
 
 protocol TimePickerDelegate: AnyObject {
-    func updateTime(hour: Int, minutes: Int, seconds: Int)
+    func updateTime(minutes: Int, seconds: Int)
 }
 
 final class TimePickerViewController: UIViewController {
     weak var delegate: TimePickerDelegate?
+    var timeLimit: Int?
 
-    private var hour: Int = 0
     private var minutes: Int = 0
     private var seconds: Int = 0
     private let containerView: UIView = {
@@ -65,14 +65,14 @@ final class TimePickerViewController: UIViewController {
     }
 
     @objc func confirmButtonTapped() {
-        self.delegate?.updateTime(hour: self.hour, minutes: self.minutes, seconds: self.seconds)
+        self.delegate?.updateTime(minutes: self.minutes, seconds: self.seconds)
         self.dismiss(animated: true)
     }
 
     @objc func clearViewTapped(_ sender: UITapGestureRecognizer) {
         let tappedPoint = sender.location(in: self.containerView)
         guard self.containerView.hitTest(tappedPoint, with: nil) == nil else { return }
-        self.delegate?.updateTime(hour: self.hour, minutes: self.minutes, seconds: self.seconds)
+        self.delegate?.updateTime(minutes: self.minutes, seconds: self.seconds)
         self.dismiss(animated: true)
     }
 }
@@ -140,14 +140,16 @@ private extension TimePickerViewController {
 
 extension TimePickerViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return 2
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+
+        guard let timeLimit = self.timeLimit else { return .zero }
         switch component {
         case 0:
-            return 3
-        case 1, 2:
+            return timeLimit
+        case 1:
             return 60
         default:
             return 0
@@ -161,10 +163,8 @@ extension TimePickerViewController: UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch component {
         case 0:
-            hour = row
-        case 1:
             minutes = row
-        case 2:
+        case 1:
             seconds = row
         default:
             break
@@ -175,10 +175,8 @@ extension TimePickerViewController: UIPickerViewDelegate, UIPickerViewDataSource
         guard let color = EDSColor.skullWhite.value else { return NSAttributedString() }
         switch component {
         case 0:
-            return NSAttributedString(string: "\(row) 시간", attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .bold)])
-        case 1:
             return NSAttributedString(string: "\(row) 분", attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .bold)])
-        case 2:
+        case 1:
             return NSAttributedString(string: "\(row) 초", attributes: [NSAttributedString.Key.foregroundColor: color, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12, weight: .bold)])
         default:
             return  NSAttributedString()
