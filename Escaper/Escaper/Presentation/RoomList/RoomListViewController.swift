@@ -52,7 +52,11 @@ final class RoomListViewController: DefaultViewController {
         tableView.rowHeight = Constant.cellHeight
         return tableView
     }()
-    private let emptyResultView = EmptyResultView()
+    private var emptyResultView: EmptyResultView = {
+        let emptyResultView = EmptyResultView()
+        emptyResultView.injectContentLabelText(text: "검색 결과가 없어요. 다른 지역을 선택해주세요.")
+        return emptyResultView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
