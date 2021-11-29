@@ -14,7 +14,7 @@ class EmptyResultView: UIView {
         return imageView
     }()
     private let contentLabel: UILabel = {
-        let label = EDSLabel.b01R(text: "검색 결과가 없어요. 다른 지역을 선택해주세요.", color: .skullWhite)
+        let label = EDSLabel.b01R(color: .skullWhite)
         label.textAlignment = .center
         return label
     }()
@@ -27,6 +27,10 @@ class EmptyResultView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.configure()
+    }
+
+    func injectContentLabelText(text: String) {
+        self.contentLabel.text = text
     }
 }
 
