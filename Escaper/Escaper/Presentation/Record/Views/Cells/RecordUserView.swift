@@ -29,7 +29,6 @@ final class RecordUserView: UIView {
     private let resultLabel: UILabel = {
         let label = EDSLabel.b03R(color: .bloodyBlack)
         label.textAlignment = .center
-        label.layer.cornerRadius = CGFloat(12)
         label.layer.masksToBounds = true
         label.textColor = EDSColor.gloomyBrown.value
         return label
@@ -68,6 +67,7 @@ final class RecordUserView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         self.userImageView.layer.cornerRadius = self.userImageView.bounds.width/2
+        self.resultLabel.layer.cornerRadius = self.resultLabel.bounds.height / 2
     }
 
     func update(nickname: String, result: Bool) {
