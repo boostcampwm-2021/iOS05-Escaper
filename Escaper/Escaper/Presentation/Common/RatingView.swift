@@ -1,5 +1,5 @@
 //
-//  RatingTempView.swift
+//  RatingView.swift
 //  Escaper
 //
 //  Created by TakHyun Jung on 2021/11/25.
@@ -22,16 +22,16 @@ class RatingView: UIView {
             case .filled(let kind):
                 switch kind {
                 case .star:
-                    return EDSImage.starfilled.value
+                    return EDSImage.starFilled.value
                 case .lock:
-                    return EDSImage.lockfilled.value
+                    return EDSImage.lockFilled.value
                 }
             case .unfilled(let kind):
                 switch kind {
                 case .star:
-                    return EDSImage.starunfilled.value
+                    return EDSImage.starUnfilled.value
                 case .lock:
-                    return EDSImage.lockunfilled.value
+                    return EDSImage.lockUnfilled.value
                 }
             }
         }
@@ -118,9 +118,8 @@ class RatingView: UIView {
             rating += 0.45
         }
         rating = self.displayedRatingFromPreciseRating(rating)
-        let minTouchRating = 0.5  // 최소 별 터치수
+        let minTouchRating = 0.5
         rating = max(minTouchRating, rating)
-
         return rating
     }
 
