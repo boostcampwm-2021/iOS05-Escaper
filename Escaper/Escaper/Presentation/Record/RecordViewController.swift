@@ -74,6 +74,10 @@ class RecordViewController: DefaultViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if UserSupervisor.shared.isLogined {
+            guard let userName = Helper.parseUsername(email: UserSupervisor.shared.email), let records = self.viewModel?.records.value else { return }
+            if !records.allSatisfy({ $0.username == userName }) {
+                self.viewModel?.records.value = []
+            }
             self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
         } else {
             self.recordDefaultGuideView.isHidden = false
@@ -81,8 +85,6 @@ class RecordViewController: DefaultViewController {
             self.addButton.isHidden = true
             self.countingLabel.text = "👻"
             self.greetingLabel.text = "당신의 실력은 어느 수준일까요?"
-            self.viewModel?.records.value = []
-            self.applyRecordCollectionViewData(recordCards: [], animated: false)
         }
     }
 
@@ -117,7 +119,8 @@ class RecordViewController: DefaultViewController {
 
 extension RecordViewController: AddRecordViewControllerDelegate {
     func addRecordButtonTouched() {
-        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+        // TODO: ViewWillAppear와 두번 호출 문제 발생 
+        //        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
         if self.recordCollectionView.numberOfItems(inSection: .zero) != .zero {
             self.recordCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
         }
@@ -265,7 +268,6 @@ private extension RecordViewController {
                 animateZoomforCellremove(zoomCell: cell)
             }
         }
-
     }
 
     func configureRecordCollectionViewDataSource() {
