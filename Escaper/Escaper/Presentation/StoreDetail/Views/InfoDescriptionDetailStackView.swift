@@ -26,20 +26,45 @@ class InfoDescriptionDetailStackView: UIStackView {
         self.configure()
     }
 
-    convenience init(title: String, content: String) {
+    convenience init(title: String, content: String, shouldOpen: Bool = false) {
         self.init(frame: .zero)
         self.inject(title: title, content: content)
+        if shouldOpen {
+            let gestureRecognizer = UITapGestureRecognizer()
+            gestureRecognizer.delegate = self
+            self.infoContentLabel.addGestureRecognizer(gestureRecognizer)
+            self.infoContentLabel.textColor = UIColor.systemBlue
+            self.infoContentLabel.isUserInteractionEnabled = true
+        }
     }
+}
 
-    func inject(title: String, content: String) {
-        self.infoTitleLabel.text = title
-        self.infoContentLabel.text = content
+extension InfoDescriptionDetailStackView: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard let text = self.infoContentLabel.text else { return true }
+        if Validator.checkUrlFormat(text: text) {
+            guard let url = URL(string: text) else { return true }
+            UIApplication.shared.open(url, options: [:])
+            return true
+        }
+        if Validator.checkTelephoneFormat(text: text) {
+            var urlComponents = URLComponents(string: text)
+            urlComponents?.scheme = "tel"
+            guard let url = urlComponents?.url else { return true }
+            UIApplication.shared.open(url, options: [:])
+        }
+        return true
     }
 }
 
 private extension InfoDescriptionDetailStackView {
     enum Constant {
         static let infoTitleWidth = CGFloat(70)
+    }
+
+    func inject(title: String, content: String) {
+        self.infoTitleLabel.text = title
+        self.infoContentLabel.text = content
     }
 
     func configure() {
@@ -53,6 +78,7 @@ private extension InfoDescriptionDetailStackView {
         self.alignment = .fill
         self.distribution = .fill
         self.axis = .horizontal
+        self.isUserInteractionEnabled = true
     }
 
     func configureTitleLabelLayout() {

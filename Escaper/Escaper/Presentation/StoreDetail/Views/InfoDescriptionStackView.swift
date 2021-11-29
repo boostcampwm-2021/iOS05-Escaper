@@ -40,5 +40,6 @@ private extension InfoDescriptionStackView {
         self.spacing = Constant.verticalSpace
         self.addArrangedSubview(HorizontalLineView(color: EDSColor.gloomyPurple.value))
         self.addArrangedSubview(HorizontalLineView(color: EDSColor.gloomyPurple.value))
+        self.isUserInteractionEnabled = true
     }
 }
