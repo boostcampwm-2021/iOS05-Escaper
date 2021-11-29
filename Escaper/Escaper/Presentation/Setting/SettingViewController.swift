@@ -173,9 +173,9 @@ private extension SettingViewController {
     }
 
     func configureDeveloperInfoDesctiptionStackView() {
-        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "최완식", content: "https://github.com/wansook0316"))
-        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "노신희", content: "https://github.com/shinhee-rebecca"))
-        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "정택현", content: "https://github.com/jeffoio"))
-        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "박영광", content: "https://github.com/poisonF2"))
+        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "최완식", content: "https://github.com/wansook0316", shouldOpen: true))
+        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "노신희", content: "https://github.com/shinhee-rebecca", shouldOpen: true))
+        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "정택현", content: "https://github.com/jeffoio", shouldOpen: true))
+        self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "박영광", content: "https://github.com/poisonF2", shouldOpen: true))
     }
 }
