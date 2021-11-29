@@ -8,9 +8,13 @@
 import UIKit
 
 class EmptyResultView: UIView {
-    private let imageView: UIImageView = UIImageView(image: UIImage(named: Genre.fear.detailImageAssetName))
+    private let imageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: Genre.romance.detailImageAssetName))
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
     private let contentLabel: UILabel = {
-        let label = EDSLabel.b01B(text: "검색 결과가 없어요. 다른 지역을 선택해주세요.", color: .skullWhite)
+        let label = EDSLabel.b01R(text: "검색 결과가 없어요. 다른 지역을 선택해주세요.", color: .skullWhite)
         label.textAlignment = .center
         return label
     }()
