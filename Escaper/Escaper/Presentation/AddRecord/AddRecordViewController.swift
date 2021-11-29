@@ -103,14 +103,15 @@ extension AddRecordViewController: AddRecordViewDelegate {
 
     func escapingTimePickerButtonTapped() {
         let timePickerController = TimePickerViewController()
+        timePickerController.timeLimit = self.viewModel?.room?.timeLimit
         timePickerController.delegate = self
         self.present(timePickerController, animated: true)
     }
 }
 
 extension AddRecordViewController: TimePickerDelegate {
-    func updateTime(hour: Int, minutes: Int, seconds: Int) {
-        self.recordView.updateTimePicker(hour: hour, minutes: minutes, seconds: seconds)
+    func updateTime(minutes: Int, seconds: Int) {
+        self.recordView.updateTimePicker(minutes: minutes, seconds: seconds)
     }
 }
 
