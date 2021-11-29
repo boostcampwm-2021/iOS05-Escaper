@@ -73,8 +73,9 @@ extension SearchRoomViewController: UISearchBarDelegate {
 extension SearchRoomViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedRoom = self.dataSource?.itemIdentifier(for: indexPath) else { return }
-        self.roomTransferDelegate?.transfer(room: selectedRoom)
-        self.dismiss(animated: true)
+        self.dismiss(animated: true) {
+            self.roomTransferDelegate?.transfer(room: selectedRoom)
+        }
     }
 }
 

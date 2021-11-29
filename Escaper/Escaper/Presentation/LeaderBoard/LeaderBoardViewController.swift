@@ -118,7 +118,7 @@ private extension LeaderBoardViewController {
     }
 
     func updateStackView(users: [User]) {
-        self.userRankStackView.arrangedSubviews.forEach{ $0.removeFromSuperview() }
+        self.userRankStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for (rank, user) in users.enumerated() {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
