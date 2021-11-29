@@ -55,6 +55,7 @@ final class RoomListViewController: DefaultViewController {
     private var emptyResultView: EmptyResultView = {
         let emptyResultView = EmptyResultView()
         emptyResultView.injectContentLabelText(text: "검색 결과가 없어요. 다른 지역을 선택해주세요.")
+        emptyResultView.alpha = 0.5
         return emptyResultView
     }()
 
@@ -167,7 +168,6 @@ private extension RoomListViewController {
         self.configureRoomOverviewTableViewLayout()
         self.configureDistrictSelectButtonLayout()
         self.configureEmptyImageViewLayout()
-        self.configureEmptyImageView()
     }
 
     func configureGreetingStackViewLayout() {
@@ -247,10 +247,6 @@ private extension RoomListViewController {
             cell?.update(room)
             return cell
         }
-    }
-
-    func configureEmptyImageView() {
-        self.emptyResultView.alpha = 0.5
     }
 
     func configureLocationManager() {

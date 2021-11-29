@@ -25,6 +25,7 @@ class StoreListViewController: DefaultViewController {
     private var emptyResultView: EmptyResultView = {
         let emptyResultView = EmptyResultView()
         emptyResultView.injectContentLabelText(text: "검색 결과가 없어요. 다른 업체를 검색해주세요.")
+        emptyResultView.alpha = 0.5
         return emptyResultView
     }()
     var minimumTopSpacing: CGFloat {
