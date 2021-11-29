@@ -25,6 +25,15 @@ final class LeaderBoardViewController: DefaultViewController {
         stackView.distribution = .fill
         return stackView
     }()
+    private let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        let text = "당겨서 새로고침"
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(.foregroundColor, value: EDSColor.skullWhite.value ?? UIColor.white, range: (text as NSString).range(of: text))
+        refreshControl.attributedTitle = attributedString
+        refreshControl.tintColor = EDSColor.skullWhite.value
+        return refreshControl
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,25 +56,26 @@ private extension LeaderBoardViewController {
         self.configureScrollViewLayout()
         self.configureTopRankViewLayout()
         self.configureUserRankStackViewLayout()
+        self.configureRefreshControl()
+    }
+
+    func configureTitleLabelLayout() {
+        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.titleLabel)
+        NSLayoutConstraint.activate([
+            self.titleLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor)
+        ])
     }
 
     func configureScrollViewLayout() {
         self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.scrollView)
         NSLayoutConstraint.activate([
-            self.scrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-            self.scrollView.frameLayoutGuide.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            self.scrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            self.scrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
-
-    func configureTitleLabelLayout() {
-        self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.titleLabel)
-        NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.topAnchor, constant: 16),
-            self.titleLabel.centerXAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.centerXAnchor)
+            self.scrollView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.scrollView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10),
+            self.scrollView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            self.scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
@@ -73,7 +83,7 @@ private extension LeaderBoardViewController {
         self.topRankView.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.addSubview(self.topRankView)
         NSLayoutConstraint.activate([
-            self.topRankView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
+            self.topRankView.topAnchor.constraint(equalTo: self.scrollView.contentLayoutGuide.topAnchor),
             self.topRankView.leadingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.leadingAnchor, constant: 16),
             self.topRankView.trailingAnchor.constraint(equalTo: self.scrollView.frameLayoutGuide.trailingAnchor, constant: -16),
             self.topRankView.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7)
@@ -91,6 +101,11 @@ private extension LeaderBoardViewController {
         ])
     }
 
+    func configureRefreshControl() {
+        self.refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
+        self.scrollView.insertSubview(self.refreshControl, at: .zero)
+    }
+
     func bindViewModel() {
         self.viewModel?.users.observe(on: self, observerBlock: { [weak self] users in
             self?.topRankView.update(users: users.prefix(3).map {$0})
@@ -103,6 +118,7 @@ private extension LeaderBoardViewController {
     }
 
     func updateStackView(users: [User]) {
+        self.userRankStackView.arrangedSubviews.forEach{ $0.removeFromSuperview() }
         for (rank, user) in users.enumerated() {
             let rankView = RoomDetailUserRankView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
@@ -113,5 +129,10 @@ private extension LeaderBoardViewController {
             rankView.accessibilityLabel = "\(rank + 1)등 \(user.name)님 \(user.score)점"
             self.userRankStackView.addArrangedSubview(rankView)
         }
+    }
+
+    @objc func refresh(sender: UIRefreshControl) {
+        self.update()
+        self.refreshControl.endRefreshing()
     }
 }
