@@ -33,4 +33,8 @@ struct RecordCard: Hashable {
         self.rank = Helper.binarySearch(value: record.escapingTime, sortedValues: room.records.map({ $0.escapingTime }).sorted()) ?? room.records.count
         self.time = record.escapingTime
     }
+
+    static func == (lhs: RecordCard, rhs: RecordCard) -> Bool {
+        return lhs.username == rhs.username && lhs.storeName == rhs.storeName && lhs.roomTitle == rhs.roomTitle
+    }
 }
