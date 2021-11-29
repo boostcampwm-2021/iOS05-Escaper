@@ -28,7 +28,6 @@ class StoreDetailViewModel: StoreDetailViewModelInterface {
             case .success(let room):
                 self.rooms.value.append(room)
             case .failure(let error):
-                // TODO: - Error catch
                 print(error)
             }
         }
