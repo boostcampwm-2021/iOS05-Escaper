@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lockfilled.png",
+      "filename" : "lockUnfilled.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "lockfilled@2x.png",
+      "filename" : "lockUnfilled@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "lockfilled@3x.png",
+      "filename" : "lockUnfilled@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
