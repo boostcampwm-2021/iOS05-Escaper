@@ -42,7 +42,7 @@ private extension RoomDetailInfoView {
         self.addSubview(self.leftInfoView)
         NSLayoutConstraint.activate([
             self.leftInfoView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
+            self.leftInfoView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
         ])
     }
 
