@@ -114,12 +114,18 @@ extension AddRecordViewController: TimePickerDelegate {
         self.recordView.updateTimePicker(minutes: minutes, seconds: seconds)
     }
 }
-
+// TODO: alert
 extension AddRecordViewController: RoomInformationTransferable {
     func transfer(room: Room) {
-        self.recordView.updateRoomInformation(room)
-        self.viewModel?.room = room
-        self.viewModel?.changeSaveState()
+        guard let isVisited = self.viewModel?.updateRoom(room) else { return }
+        if isVisited {
+            self.recordView.updateRoomInformation(room)
+        } else {
+            let alert = UIAlertController(title: "경고", message: "이미 다녀온 테마입니다.", preferredStyle: .alert)
+            let defaultAction = UIAlertAction(title: "OK", style: .destructive)
+            alert.addAction(defaultAction)
+            self.present(alert, animated: false, completion: nil)
+        }
     }
 }
 
