@@ -30,7 +30,9 @@ final class UserLoginedView: UserSettingView {
             case .success(let data):
                 let image = UIImage(data: data)
                 guard let username = Helper.parseUsername(email: UserSupervisor.shared.email) else { return }
-                super.inject(image: image, title: username)
+                DispatchQueue.main.async {
+                    super.inject(image: image, title: username)
+                }
             case .failure(let error):
                 print(error)
             }
