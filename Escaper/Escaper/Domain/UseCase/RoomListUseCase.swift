@@ -58,7 +58,9 @@ extension RoomListUseCase: StoreDetailUseCaseInterface {
         ids.forEach { id in
             self.repository.fetch(roomId: id) { result in
                 switch result {
-                case .success(let room):
+                case .success(var room):
+                    guard let location = CLLocationManager().location else { return }
+                    room.updateDistance(location.distance(from: room.geoLocation))
                     completion(.success(room))
                 case .failure(let error):
                     completion(.failure(error))
