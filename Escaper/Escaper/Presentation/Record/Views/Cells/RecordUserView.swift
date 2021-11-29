@@ -84,6 +84,8 @@ final class RecordUserView: UIView {
     func prepareForReuse() {
         self.nicknameLabel.text = ""
         self.resultLabel.text = ""
+        // TODO: 셀 Reuse 이미지 업데이트 문제
+//        self.userImageView.image = nil
     }
 }
 
@@ -94,7 +96,7 @@ private extension RecordUserView {
     }
 
     enum Result: String {
-        case success = "Sucess"
+        case success = "Success"
         case fail = "Fail"
 
         var name: String {
