@@ -34,6 +34,7 @@ final class InfoDescriptionRatingStackView: UIStackView {
     }
 
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
         self.ratingView.starSize = (Int(self.ratingView.frame.width) - self.ratingView.starSpacing * 4) / 5 - 5
     }
 
@@ -51,7 +52,6 @@ private extension InfoDescriptionRatingStackView {
     func configure() {
         self.configureStackView()
         self.configureTitleLabelLayout()
-        self.configureRatingView()
         self.addArrangedSubview(self.titleLabel)
         self.addArrangedSubview(self.ratingView)
     }
@@ -63,12 +63,5 @@ private extension InfoDescriptionRatingStackView {
     func configureTitleLabelLayout() {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.widthAnchor.constraint(equalToConstant: Constant.infoTitleWidth).isActive = true
-    }
-
-    func configureRatingView() {
-        self.ratingView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.ratingView.heightAnchor.constraint(equalTo: self.ratingView.widthAnchor, multiplier: 1/6)
-        ])
     }
 }

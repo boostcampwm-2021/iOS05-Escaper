@@ -66,14 +66,12 @@ class RatingView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.update()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-
-    func configure(fillMode: FillMode, image: EDSImage) {
-        self.fillMode = fillMode
+        self.update()
     }
 
     func update() {

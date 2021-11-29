@@ -48,9 +48,10 @@ final class AddRecordView: UIView {
     private let escapingTimeLabel = EDSLabel.b02B(text: "탈출 시간", color: .charcoal)
     private let satisFactionRatingView: RatingView = {
         let rating = RatingView()
-        rating.fillMode = .half
-        rating.currentRating = 0
+        rating.fillMode = .precise
         rating.imageKind = .star
+        rating.currentRating = 0
+        rating.updateOnTouch = true
         return rating
     }()
     private let escapingStatusSegmentControl: UISegmentedControl = {
@@ -122,6 +123,7 @@ final class AddRecordView: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+        self.satisFactionRatingView.starSize = (Int(satisFactionRatingView.frame.width) - (satisFactionRatingView.starSpacing * 4) ) / 5
     }
 
     @objc func findRoomButtonTouched() {
@@ -252,7 +254,7 @@ private extension AddRecordView {
         NSLayoutConstraint.activate([
             self.escapingStackView.centerXAnchor.constraint(equalTo: self.recordBackgroundImageView.centerXAnchor),
             self.escapingStackView.topAnchor.constraint(equalTo: self.roomInformationStackView.bottomAnchor, constant: 30),
-            self.escapingStackView.widthAnchor.constraint(equalTo: self.recordBackgroundImageView.widthAnchor, multiplier: 0.6),
+            self.escapingStackView.widthAnchor.constraint(equalTo: self.recordBackgroundImageView.widthAnchor, multiplier: 0.7),
             self.escapingStackView.heightAnchor.constraint(equalTo: self.recordBackgroundImageView.heightAnchor, multiplier: 0.2)
         ])
     }
