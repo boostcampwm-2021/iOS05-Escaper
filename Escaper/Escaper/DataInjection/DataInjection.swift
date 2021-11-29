@@ -64,7 +64,7 @@ class DataInjection {
                                         homePage: storeInjectionDTO.homepage,
                                         telephone: storeInjectionDTO.telephone,
                                         address: storeInjectionDTO.address,
-                                        region: storeRegion.engName,
+                                        region: storeRegion.krName,
                                         geoLocation: geoLocation,
                                         district: district,
                                         roomIds: roomIds)
