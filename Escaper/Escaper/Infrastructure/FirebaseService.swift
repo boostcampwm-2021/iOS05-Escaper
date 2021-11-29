@@ -266,7 +266,7 @@ extension FirebaseService: UserNetwork {
     }
 
     func addUser(user: User) {
-        let path = self.database.collection(Collection.users.value).document("\(user.name)")
+        let path = self.database.collection(Collection.users.value).document("\(user.email)")
         path.setData(user.toDictionary())
     }
 
