@@ -608,8 +608,8 @@
 				3E4378C827325241001ED120 /* TagScrollView.swift */,
 				3E4378CA27329028001ED120 /* TagButton.swift */,
 				251031C52733BCAC00BD07BF /* RatingContainerView.swift */,
-				255133642730F07000A92CF3 /* Cell */,
 				251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */,
+				255133642730F07000A92CF3 /* Cell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
