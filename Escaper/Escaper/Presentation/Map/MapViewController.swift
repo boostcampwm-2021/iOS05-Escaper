@@ -63,8 +63,7 @@ final class MapViewController: DefaultViewController {
         self.delegate = storeListViewController
         storeListViewController.didMove(toParent: self)
         storeListViewController.view.frame = CGRect(x: 0, y: self.view.frame.maxY,
-                                                    width: self.view.frame.width,
-                                                    height: self.view.frame.height)
+                                                    width: self.view.frame.width, height: self.view.frame.height)
     }
 
     func removeBottomSheetView() {
@@ -86,6 +85,10 @@ final class MapViewController: DefaultViewController {
 }
 
 extension MapViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        guard self.childViewController != nil else { return }
+        self.removeBottomSheetView()
+    }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard self.childViewController != nil else { return }
         self.removeBottomSheetView()
@@ -96,12 +99,14 @@ extension MapViewController: UISearchBarDelegate {
         self.viewModel?.query(name: storeName)
         self.searchBar.endEditing(true)
         guard self.childViewController == nil else { return }
+        self.mapView.removeAnnotations(self.mapView.annotations)
         self.addBottomSheetView()
     }
 }
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !annotation.isKind(of: MKUserLocation.self) else { return nil }
         let reuseIdentifier = "StoreAnnotation"
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "reuseIdentifier")
         if annotationView == nil {
