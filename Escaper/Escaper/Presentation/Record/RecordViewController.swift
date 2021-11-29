@@ -118,7 +118,9 @@ class RecordViewController: DefaultViewController {
 extension RecordViewController: AddRecordViewControllerDelegate {
     func addRecordButtonTouched() {
         self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
-        self.recordCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
+        if self.recordCollectionView.numberOfItems(inSection: .zero) != .zero {
+            self.recordCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
+        }
     }
 }
 
