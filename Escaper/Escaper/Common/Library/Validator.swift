@@ -9,7 +9,7 @@ import Foundation
 
 enum Validator {
     static func checkEmailFormat(text: String) -> Bool {
-        Validator.checkWithRegex(text: text, pattern: "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$")
+        return Validator.checkWithRegex(text: text, pattern: "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}$")
     }
 
     static func checkUrlFormat(text: String) -> Bool {
@@ -22,17 +22,11 @@ enum Validator {
     }
 
     static func checkNumberOfDigits(text: String) -> Bool {
-        if text.count < 8 {
-            return false
-        }
-        return true
+        return text.count >= 8
     }
 
     static func checkDiscordance(text1: String, text2: String) -> Bool {
-        if text1 != text2 {
-            return false
-        }
-        return true
+        return text1 == text2
     }
 }
 
@@ -40,12 +34,7 @@ private extension Validator {
     static func checkWithRegex(text: String, pattern: String) -> Bool {
         let range = NSRange(location: 0, length: text.count)
         if let idRegex = try? NSRegularExpression(pattern: pattern) {
-            let isMatched = idRegex.matches(in: text, options: [], range: range)
-            if isMatched == [] {
-                return false
-            } else {
-                return true
-            }
+            return idRegex.matches(in: text, options: [], range: range).isNotEmpty
         }
         return true
     }
