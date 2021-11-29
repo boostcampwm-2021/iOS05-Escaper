@@ -44,8 +44,8 @@ class DefaultLoginViewModel: LoginViewModel {
             case .success(let user):
                 completion(.success(user))
             case .failure(.notExist):
-                self.emailMessage.value = TextFieldState.notConfirmedError.value
-                self.passwordMessage.value = TextFieldState.notConfirmedError.value
+                self.emailMessage.value = ValidateTextFieldState.notConfirmedError.value
+                self.passwordMessage.value = ValidateTextFieldState.notConfirmedError.value
                 completion(.failure(.notExist))
             case .failure(.networkUnconneted):
                 completion(.failure(.networkUnconneted))
