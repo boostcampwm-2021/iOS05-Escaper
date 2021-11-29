@@ -199,7 +199,6 @@ private extension RoomDetailViewController {
 
     func bindViewModel() {
         self.viewModel?.users.observe(on: self) { [weak self] users in
-            guard self?.viewModel?.room.value?.records.count == users.count else { return }
             for (index, user) in users.enumerated() {
                 guard let rankView = self?.userRankStackView.subviews[index] as? RoomDetailUserRankView else { return }
                 rankView.update(imageURL: user.imageURL)

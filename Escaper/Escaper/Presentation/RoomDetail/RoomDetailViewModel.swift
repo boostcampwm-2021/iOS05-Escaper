@@ -12,18 +12,20 @@ protocol RoomDetailViewModelInterface {
     var users: Observable<[User]> { get }
 
     func fetch(roomId: String)
-    func fetch(userId: String)
+    func fetch(userId: String, at index: Int)
 }
 
 final class DefaultRoomDetailViewModel: RoomDetailViewModelInterface {
     private let usecase: RoomDetailUseCaseInterface
     private(set) var room: Observable<Room?>
     private(set) var users: Observable<[User]>
+    private var usersBuffer: [User?]
 
     init(usecase: RoomDetailUseCaseInterface) {
         self.usecase = usecase
         self.room = Observable(nil)
         self.users = Observable([])
+        self.usersBuffer = [nil, nil, nil]
     }
 
     func fetch(roomId: String) {
@@ -31,8 +33,8 @@ final class DefaultRoomDetailViewModel: RoomDetailViewModelInterface {
             switch result {
             case .success(let room):
                 self?.room.value = room
-                self?.room.value?.records.forEach {
-                    self?.fetch(userId: $0.userEmail)
+                for (index, record) in room.records.enumerated() {
+                    self?.fetch(userId: record.userEmail, at: index)
                 }
             case .failure(let error):
                 print(error)
@@ -40,11 +42,15 @@ final class DefaultRoomDetailViewModel: RoomDetailViewModelInterface {
         }
     }
 
-    func fetch(userId: String) {
+    func fetch(userId: String, at index: Int) {
         self.usecase.fetch(userId: userId) { [weak self] result in
             switch result {
             case .success(let user):
-                self?.users.value.append(user)
+                self?.usersBuffer[index] = user
+                if let usersBuffer = self?.usersBuffer.compactMap({ $0 }),
+                   usersBuffer.count == self?.room.value?.records.count {
+                    self?.users.value = usersBuffer
+                }
             case .failure(let error):
                 print(error)
             }
