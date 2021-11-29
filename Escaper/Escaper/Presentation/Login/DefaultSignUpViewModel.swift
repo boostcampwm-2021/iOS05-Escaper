@@ -46,25 +46,25 @@ class DefaultSignUpViewModel: SignUpViewModel {
 
     func checkEmail(text: String) {
         if Validator.checkEmailFormat(text: text) {
-            self.emailMessage.value = TextFieldState.normal.value
+            self.emailMessage.value = ValidateTextFieldState.normal.value
         } else {
-            self.emailMessage.value = TextFieldState.emailFormatError.value
+            self.emailMessage.value = ValidateTextFieldState.emailFormatError.value
         }
     }
 
     func checkPassword(text: String) {
         if Validator.checkNumberOfDigits(text: text) {
-            self.passwordMessage.value = TextFieldState.normal.value
+            self.passwordMessage.value = ValidateTextFieldState.normal.value
         } else {
-            self.passwordMessage.value = TextFieldState.numberOfDigitsError.value
+            self.passwordMessage.value = ValidateTextFieldState.numberOfDigitsError.value
         }
     }
 
     func checkDiscordance(text1: String, text2: String) {
         if Validator.checkDiscordance(text1: text1, text2: text2) {
-            self.passwordCheckMessage.value = TextFieldState.normal.value
+            self.passwordCheckMessage.value = ValidateTextFieldState.normal.value
         } else {
-            self.passwordCheckMessage.value = TextFieldState.discordanceError.value
+            self.passwordCheckMessage.value = ValidateTextFieldState.discordanceError.value
         }
     }
 
@@ -77,7 +77,7 @@ class DefaultSignUpViewModel: SignUpViewModel {
             switch result {
             case .success(let isExist):
                 if isExist {
-                    self.emailMessage.value = TextFieldState.alreadyExistError.value
+                    self.emailMessage.value = ValidateTextFieldState.alreadyExistError.value
                     completion(true)
                 } else {
                     completion(false)

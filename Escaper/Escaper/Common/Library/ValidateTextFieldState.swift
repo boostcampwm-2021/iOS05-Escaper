@@ -1,5 +1,5 @@
 //
-//  TextFieldState.swift
+//  ValidateTextFieldState.swift
 //  Escaper
 //
 //  Created by shinheeRo on 2021/11/27.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TextFieldState: String {
+enum ValidateTextFieldState: String {
     case normal = ""
     case emailFormatError = "이메일 형식이 올바르지 않습니다."
     case numberOfDigitsError = "8자리 이상 입력해주세요."
