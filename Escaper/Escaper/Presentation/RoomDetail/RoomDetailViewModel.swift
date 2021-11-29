@@ -29,12 +29,11 @@ final class DefaultRoomDetailViewModel: RoomDetailViewModelInterface {
     func fetch(roomId: String) {
         self.usecase.fetch(roomId: roomId) { [weak self] result in
             switch result {
-            case .success(var room):
-                room.records = room.records
-                    .sorted(by: { $0.escapingTime < $1.escapingTime })
-                    .prefix(3)
-                    .map { $0 }
+            case .success(let room):
                 self?.room.value = room
+                self?.room.value?.records.forEach {
+                    self?.fetch(userId: $0.userEmail)
+                }
             case .failure(let error):
                 print(error)
             }

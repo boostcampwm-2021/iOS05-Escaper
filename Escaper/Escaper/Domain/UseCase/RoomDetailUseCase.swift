@@ -23,7 +23,11 @@ final class RoomDetailUseCase: RoomDetailUseCaseInterface {
     func fetch(roomId: String, completion: @escaping (Result<Room, Error>) -> Void) {
         self.repository.fetch(roomId: roomId) { result in
             switch result {
-            case .success(let room):
+            case .success(var room):
+                room.records = room.records
+                    .sorted { $0.escapingTime < $1.escapingTime }
+                    .prefix(3)
+                    .map { $0 }
                 completion(.success(room))
             case .failure(let error):
                 completion(.failure(error))
