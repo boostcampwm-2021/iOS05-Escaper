@@ -13,6 +13,7 @@
 		0CEE8B382752127B00E6C6EA /* RoomDetailRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B372752127B00E6C6EA /* RoomDetailRepositoryInterface.swift */; };
 		0CEE8B3A275212FF00E6C6EA /* RoomDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */; };
 		0CEE8B3C2754B37200E6C6EA /* daehakro.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3B2754B37200E6C6EA /* daehakro.json */; };
+		0CEE8B3E2754F66900E6C6EA /* sinchon.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3D2754F66900E6C6EA /* sinchon.json */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F43615B274FE8CA00331C6F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingView.swift */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
@@ -153,6 +154,7 @@
 		0CEE8B372752127B00E6C6EA /* RoomDetailRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailRepositoryInterface.swift; sourceTree = "<group>"; };
 		0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailRepository.swift; sourceTree = "<group>"; };
 		0CEE8B3B2754B37200E6C6EA /* daehakro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = daehakro.json; sourceTree = "<group>"; };
+		0CEE8B3D2754F66900E6C6EA /* sinchon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sinchon.json; sourceTree = "<group>"; };
 		1F061DA7272FF896008FC519 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1F0CAED22733E00300389CFA /* RoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
 		1F0CAED42733E03600389CFA /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 				25104A502745408D00DB90BF /* extra.json */,
 				1FAAD0AB2746ADA400C2AE90 /* gangnam.json */,
 				0CEE8B3B2754B37200E6C6EA /* daehakro.json */,
+				0CEE8B3D2754F66900E6C6EA /* sinchon.json */,
 				1FCDDE74272EE0F10027AAAD /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -810,6 +813,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FAAD0AC2746ADA400C2AE90 /* gangnam.json in Resources */,
+				0CEE8B3E2754F66900E6C6EA /* sinchon.json in Resources */,
 				1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */,
 				251CA9AB27520A7300BA5EC5 /* GoogleService-Info.plist in Resources */,
 				251CA989274F72B300BA5EC5 /* hongdae.json in Resources */,
