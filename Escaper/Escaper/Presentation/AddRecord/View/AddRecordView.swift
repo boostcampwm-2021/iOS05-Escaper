@@ -123,7 +123,11 @@ final class AddRecordView: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+<<<<<<< HEAD
         self.satisFactionRatingView.starSize = (Int(satisFactionRatingView.frame.width) - (satisFactionRatingView.starSpacing * 4) ) / 5
+=======
+        self.satisFactionRatingView.starSize = (Int(self.satisFactionRatingView.frame.width) - self.satisFactionRatingView.starSpacing * 4) / 5 - 5
+>>>>>>> Chore: 신촌 db 추가 및 오타 수정
     }
 
     @objc func findRoomButtonTouched() {

@@ -11,7 +11,7 @@ enum StoreRegion: String {
     case hongdae = "홍대"
     case gangnam = "강남"
     case gundae = "건대"
-    case sinchon = "신천"
+    case sinchon = "신촌"
     case daehakro = "대학로"
     case gangbuk = "강북"
     case sinlim = "신림"
