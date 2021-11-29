@@ -18,6 +18,7 @@ protocol AddRecordViewModelOutput {
     var time: Int { get set }
     var records: [Record] { get set }
     var state: Observable<Bool> { get }
+    func updateRoom(_ room: Room) -> Bool
 
     func changeSaveState()
 }
@@ -41,6 +42,17 @@ final class AddRecordViewModel: AddRecordViewModelInput, AddRecordViewModelOutpu
         self.time = .zero
         self.records = []
         self.state = Observable(false)
+    }
+
+    func updateRoom(_ room: Room) -> Bool {
+        let userEmail = UserSupervisor.shared.email
+        let visited = room.records.contains { record in
+            record.userEmail == userEmail
+        }
+        self.room = visited ? nil : room
+        self.records = self.room?.records ?? []
+        self.changeSaveState()
+        return !visited
     }
 
     func changeSaveState() {
