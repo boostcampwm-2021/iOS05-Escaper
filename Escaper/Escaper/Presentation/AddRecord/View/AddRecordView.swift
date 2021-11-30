@@ -58,14 +58,15 @@ final class AddRecordView: UIView {
         let segmentControl = UISegmentedControl(items: ["Success", "Fail"])
         segmentControl.tintColor = .clear
         segmentControl.layer.backgroundColor = EDSColor.skullLightWhite.value!.cgColor
-        segmentControl.selectedSegmentIndex = 0
-        segmentControl.selectedSegmentTintColor = EDSColor.pumpkin.value
+        segmentControl.selectedSegmentIndex = 1
+        segmentControl.selectedSegmentTintColor = EDSColor.bloodyRed.value
         return segmentControl
     }()
     private let escapingTimePickerButton: UIButton = {
         let button = UIButton()
         button.isEnabled = false
         button.setTitle("00 : 00", for: .normal)
+        button.setTitle("None", for: .disabled)
         button.setTitleColor(EDSColor.charcoal.value, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 10, weight: .bold)
         button.backgroundColor = EDSColor.skullWhite.value
@@ -135,10 +136,12 @@ final class AddRecordView: UIView {
         self.delegate?.escapingTimePickerButtonTapped()
     }
 
-    @objc func escapingStatusSegmentControlChanged() {
-        let currentColor = self.escapingStatusSegmentControl.selectedSegmentIndex == 0 ? EDSColor.pumpkin : EDSColor.bloodyRed
-        self.escapingStatusSegmentControl.selectedSegmentTintColor = currentColor.value
-        self.delegate?.updateIsSuccess(self.escapingStatusSegmentControl.selectedSegmentIndex == 0)
+    @objc func escapingStatusSegmentControlChanged(sender: UISegmentedControl) {
+        let isSuccess = sender.selectedSegmentIndex == 0
+        let currentColor = isSuccess ? EDSColor.pumpkin : EDSColor.bloodyRed
+        sender.selectedSegmentTintColor = currentColor.value
+        self.escapingTimePickerButton.isEnabled = isSuccess && self.findRoomTitleButton.currentImage == nil
+        self.delegate?.updateIsSuccess(isSuccess)
         self.hapticsGenerator()
     }
 
@@ -155,7 +158,7 @@ final class AddRecordView: UIView {
         self.findRoomTitleButton.setTitle(room.title, for: .normal)
         self.findRoomTitleButton.setImage(nil, for: .normal)
         self.roomStoreTitleLabel.text = room.storeName
-        self.escapingTimePickerButton.isEnabled = true
+        self.escapingTimePickerButton.isEnabled = self.escapingStatusSegmentControl.selectedSegmentIndex == 0
     }
 
     func updateTimePicker(minutes: Int, seconds: Int) {
