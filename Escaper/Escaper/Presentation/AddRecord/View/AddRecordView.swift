@@ -246,7 +246,8 @@ private extension AddRecordView {
         NSLayoutConstraint.activate([
             self.roomInformationStackView.topAnchor.constraint(equalTo: self.userSelectedImageView.bottomAnchor, constant: 30),
             self.roomInformationStackView.centerXAnchor.constraint(equalTo: self.recordBackgroundImageView.centerXAnchor),
-            self.roomInformationStackView.widthAnchor.constraint(lessThanOrEqualTo: self.recordBackgroundImageView.widthAnchor)
+            self.roomInformationStackView.widthAnchor.constraint(equalTo: self.recordBackgroundImageView.widthAnchor, multiplier: 0.7),
+            self.roomInformationStackView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
