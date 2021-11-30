@@ -45,6 +45,7 @@ final class DistrictSelectButton: UIButton {
     }
 
     func updateTitle(district: District) {
+        guard district != .none else { return }
         self.districtLabel.text = " \(district.name) "
         self.selectedDistrict = district
         self.infoLabel.text = "기준 "

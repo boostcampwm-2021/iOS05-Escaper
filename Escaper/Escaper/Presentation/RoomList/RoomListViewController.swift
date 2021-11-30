@@ -90,7 +90,7 @@ extension RoomListViewController: TagScrollViewDelegate {
     func tagSelected(element: Tagable) {
         switch element {
         case is Genre:
-            guard let district = self.districtSelectButton.selectedDistrict else { return }
+            let district = self.districtSelectButton.selectedDistrict ?? .none
             self.fetchWithCurrentSelectedOption(with: district)
         case let sortingOption as SortingOption:
             self.viewModel?.sort(option: sortingOption)
@@ -284,8 +284,8 @@ private extension RoomListViewController {
         let locale = Locale(identifier: Constant.localeIdentifier)
         geocoder.reverseGeocodeLocation(location, preferredLocale: locale) {  placeMarks, _ in
             guard let address: [CLPlacemark] = placeMarks,
-                  let locality = address.last?.locality,
-                  let district = District.init(rawValue: locality) else { return }
+                  let locality = address.last?.locality else { return }
+            let district = District.init(rawValue: locality) ?? .none
             completion(district)
         }
     }

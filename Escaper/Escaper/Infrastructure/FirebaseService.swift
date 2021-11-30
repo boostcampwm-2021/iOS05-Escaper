@@ -165,8 +165,54 @@ extension FirebaseService: LeaderBoardNetwork {
 
 private extension FirebaseService {
     func query(by genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
+        switch district {
+        case .none:
+            self.database.collection(Collection.rooms.value)
+                .whereField("genre", isEqualTo: genre.name)
+                .getDocuments { snapshot, _ in
+                    guard let documents = snapshot?.documents else { return }
+                    let result = Result {
+                        try documents.map { try $0.data(as: RoomDTO.self) }.compactMap { $0 }
+                    }
+                    switch result {
+                    case .success(let roomDTOs):
+                        completion(.success(roomDTOs))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+        default:
+            self.database.collection(Collection.rooms.value)
+                .whereField("genre", isEqualTo: genre.name)
+                .whereField("district", isEqualTo: district.name)
+                .getDocuments { snapshot, _ in
+                    guard let documents = snapshot?.documents else { return }
+                    let result = Result {
+                        try documents.map { try $0.data(as: RoomDTO.self) }.compactMap { $0 }
+                    }
+                    switch result {
+                    case .success(let roomDTOs):
+                        completion(.success(roomDTOs))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+        }
+    }
+
+
+
+    func query(district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
+        switch district {
+        case .none:
+            self.queryRoomAll(completion: completion)
+        default:
+            self.queryRoombyDistrict(district: district, completion: completion)
+        }
+    }
+
+    func queryRoombyDistrict(district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
         self.database.collection(Collection.rooms.value)
-            .whereField("genre", isEqualTo: genre.name)
             .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
@@ -182,9 +228,8 @@ private extension FirebaseService {
             }
     }
 
-    func query(district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
+    func queryRoomAll(completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
         self.database.collection(Collection.rooms.value)
-            .whereField("district", isEqualTo: district.name)
             .getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
                 let result = Result {
@@ -198,6 +243,7 @@ private extension FirebaseService {
                 }
             }
     }
+
 }
 
 extension FirebaseService: StoreNetwork {
