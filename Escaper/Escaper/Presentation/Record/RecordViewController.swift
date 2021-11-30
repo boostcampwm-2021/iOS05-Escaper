@@ -77,6 +77,7 @@ class RecordViewController: DefaultViewController {
             guard let userName = Helper.parseUsername(email: UserSupervisor.shared.email), let records = self.viewModel?.records.value else { return }
             if !records.allSatisfy({ $0.username == userName }) {
                 self.viewModel?.records.value = []
+                self.applyRecordCollectionViewData(recordCards: [], animated: false)
             }
             self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
         } else {
@@ -85,6 +86,8 @@ class RecordViewController: DefaultViewController {
             self.addButton.isHidden = true
             self.countingLabel.text = "👻"
             self.greetingLabel.text = "당신의 실력은 어느 수준일까요?"
+            self.viewModel?.records.value = []
+            self.applyRecordCollectionViewData(recordCards: [], animated: false)
         }
     }
 
@@ -113,6 +116,9 @@ class RecordViewController: DefaultViewController {
                 self?.applyRecordCollectionViewData(recordCards: results, animated: true)
                 self?.configureRecordSummary(count: results.count)
             }
+            if self?.recordCollectionView.numberOfItems(inSection: .zero) != .zero {
+                self?.recordCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
+            }
         }
     }
 }
@@ -121,9 +127,9 @@ extension RecordViewController: AddRecordViewControllerDelegate {
     func addRecordButtonTouched() {
         // TODO: ViewWillAppear와 두번 호출 문제 발생 
         //        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
-        if self.recordCollectionView.numberOfItems(inSection: .zero) != .zero {
-            self.recordCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
-        }
+//        if self.recordCollectionView.numberOfItems(inSection: .zero) != .zero {
+//            self.recordCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
+//        }
     }
 }
 
