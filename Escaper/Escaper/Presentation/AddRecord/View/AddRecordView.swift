@@ -48,9 +48,9 @@ final class AddRecordView: UIView {
     private let escapingTimeLabel = EDSLabel.b02B(text: "탈출 시간", color: .charcoal)
     private let satisFactionRatingView: RatingView = {
         let rating = RatingView()
-        rating.fillMode = .precise
+        rating.fillMode = .half
         rating.imageKind = .star
-        rating.currentRating = 0
+        rating.currentRating = 0.5
         rating.updateOnTouch = true
         return rating
     }()
