@@ -38,7 +38,7 @@ final class AddRecordViewModel: AddRecordViewModelInput, AddRecordViewModelOutpu
         self.userUsecase = userUsecase
         self.room = nil
         self.satisfaction = .zero
-        self.isSuccess = true
+        self.isSuccess = false
         self.time = .zero
         self.records = []
         self.state = Observable(false)
@@ -56,13 +56,16 @@ final class AddRecordViewModel: AddRecordViewModelInput, AddRecordViewModelOutpu
     }
 
     func changeSaveState() {
-        self.state.value = self.room != nil && self.time != 0
+        if self.isSuccess {
+            self.state.value = self.room != nil && self.time != 0
+        } else {
+            self.state.value = self.room != nil
+        }
     }
 
     func calculateScore() -> Int? {
         guard let timeLimit = self.room?.timeLimit,
-              let diffculty = self.room?.difficulty,
-              self.time != .zero else { return nil }
+              let diffculty = self.room?.difficulty else { return nil }
         let score = Int((self.isSuccess ? 1 : 0) * (1 - Double(self.time)/Double(timeLimit*60)) * 100 * Double(diffculty) + 50.0)
         return score
     }
