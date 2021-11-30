@@ -163,7 +163,7 @@ class SignUpViewController: DefaultViewController {
     @objc func signupButtonTapped() {
         guard let email = self.emailInputView.textField?.text,
               let password = self.passwordInputView.textField?.text else { return }
-        ImageCacheManager.shared.uploadUser(image: userImage(), userEmail: email) { result in
+        ImageUploader.shared.uploadUser(image: userImage(), userEmail: email) { result in
             switch result {
             case .success(let urlString):
                 self.viewModel?.queryUser(email: email) { isExist in

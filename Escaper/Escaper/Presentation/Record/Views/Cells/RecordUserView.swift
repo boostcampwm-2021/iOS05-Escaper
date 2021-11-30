@@ -12,16 +12,6 @@ final class RecordUserView: UIView {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = CGFloat(20)
         imageView.layer.masksToBounds = true
-        ImageCacheManager.shared.download(urlString: UserSupervisor.shared.imageURLString) { result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    imageView.image = UIImage(data: data)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
         return imageView
     }()
     private let participantLabel: UILabel = EDSLabel.b02R(text: "참가자", color: .gloomyPurple)
@@ -79,13 +69,22 @@ final class RecordUserView: UIView {
         case false:
             self.resultLabel.backgroundColor = EDSColor.bloodyRed.value
         }
+        ImageCacheManager.shared.download(urlString: UserSupervisor.shared.imageURLString) { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.userImageView.image = UIImage(data: data)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 
     func prepareForReuse() {
         self.nicknameLabel.text = ""
         self.resultLabel.text = ""
-        // TODO: 셀 Reuse 이미지 업데이트 문제
-//        self.userImageView.image = nil
+        self.userImageView.image = nil
     }
 }
 
