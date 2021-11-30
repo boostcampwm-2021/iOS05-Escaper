@@ -59,7 +59,7 @@ final class AddRecordViewController: DefaultViewController {
         let userEmail = UserSupervisor.shared.email
         guard let roomId = self.viewModel?.room?.roomId else { return }
         let image = self.recordView.fetchSelectedImage()
-        ImageCacheManager.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
+        ImageUploader.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
             switch result {
             case .success(let urlString):
                 self?.viewModel?.post(email: userEmail, imageURLString: urlString)
