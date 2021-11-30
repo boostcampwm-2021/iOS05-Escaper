@@ -10,6 +10,7 @@ import UIKit
 typealias EDSColor = EDSKit.Color
 typealias EDSLabel = EDSKit.Label
 typealias EDSImage = EDSKit.Image
+typealias EDSSystemImage = EDSKit.SystemImage
 
 enum EDSKit {
     enum Label {
@@ -118,8 +119,9 @@ enum EDSKit {
         case fearPreview
         case genreIcon
         case keyMarker
+        case lockFilled
+        case lockUnfilled
         case loginPumpkin
-        case mappin
         case passwordIcon
         case plus
         case recordBook
@@ -132,11 +134,18 @@ enum EDSKit {
         case signupSkull
         case starFilled
         case starUnfilled
-        case lockFilled
-        case lockUnfilled
 
         var value: UIImage? {
-            return self == .mappin ? UIImage(systemName: "mappin.and.ellipse") : UIImage(named: String(describing: self))
+            return UIImage(named: String(describing: self))
+        }
+    }
+
+    enum SystemImage: String {
+        case mappin = "mappin.and.ellipse"
+        case location = "location.fill"
+
+        var value: UIImage? {
+            return UIImage(systemName: self.rawValue)
         }
     }
 }
