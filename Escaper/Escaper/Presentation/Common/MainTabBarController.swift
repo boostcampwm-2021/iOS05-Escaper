@@ -53,16 +53,15 @@ private extension MainTabBarController {
             let navigationController = UINavigationController(rootViewController: homeViewController)
             let navigationAppearance: UINavigationBarAppearance = {
                 let appearance = UINavigationBarAppearance()
-                appearance.backgroundColor = EDSColor.bloodyBlack.value
+                appearance.backgroundColor = .clear
+                appearance.backgroundEffect = .none
+                appearance.shadowColor = .clear
                 return appearance
             }()
             navigationController.navigationBar.standardAppearance = navigationAppearance
+            navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
             navigationController.navigationBar.tintColor = EDSColor.skullLightWhite.value
             navigationController.navigationBar.topItem?.title = ""
-            if #available(iOS 15.0, *) {
-                navigationController.navigationBar.compactScrollEdgeAppearance = navigationAppearance
-                navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
-            }
             return navigationController
         }()
         let recordBarItem = self.makeTabBarItem(
@@ -86,16 +85,15 @@ private extension MainTabBarController {
             let navigationController = UINavigationController(rootViewController: mapViewController)
             let navigationAppearance: UINavigationBarAppearance = {
                 let appearance = UINavigationBarAppearance()
-                appearance.backgroundColor = EDSColor.bloodyBlack.value
+                appearance.backgroundColor = .clear
+                appearance.backgroundEffect = .none
+                appearance.shadowColor = .clear
                 return appearance
             }()
             navigationController.navigationBar.standardAppearance = navigationAppearance
+            navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
             navigationController.navigationBar.tintColor = EDSColor.skullLightWhite.value
             navigationController.navigationBar.topItem?.title = ""
-            if #available(iOS 15.0, *) {
-                navigationController.navigationBar.compactScrollEdgeAppearance = navigationAppearance
-                navigationController.navigationBar.scrollEdgeAppearance = navigationAppearance
-            }
             return navigationController
         }()
         let leaderBoardBarItem = self.makeTabBarItem(
