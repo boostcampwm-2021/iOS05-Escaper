@@ -14,6 +14,7 @@
 		0CEE8B3A275212FF00E6C6EA /* RoomDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */; };
 		0CEE8B3C2754B37200E6C6EA /* daehakro.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3B2754B37200E6C6EA /* daehakro.json */; };
 		0CEE8B3E2754F66900E6C6EA /* sinchon.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3D2754F66900E6C6EA /* sinchon.json */; };
+		0CEE8B4027564B7900E6C6EA /* DefaultNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3F27564B7900E6C6EA /* DefaultNavigationViewController.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F43615B274FE8CA00331C6F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingView.swift */; };
 		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
@@ -155,6 +156,7 @@
 		0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailRepository.swift; sourceTree = "<group>"; };
 		0CEE8B3B2754B37200E6C6EA /* daehakro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = daehakro.json; sourceTree = "<group>"; };
 		0CEE8B3D2754F66900E6C6EA /* sinchon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sinchon.json; sourceTree = "<group>"; };
+		0CEE8B3F27564B7900E6C6EA /* DefaultNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationViewController.swift; sourceTree = "<group>"; };
 		1F061DA7272FF896008FC519 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		1F0CAED22733E00300389CFA /* RoomDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
 		1F0CAED42733E03600389CFA /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 				25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */,
 				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
 				1F43615A274FE8CA00331C6F /* RatingView.swift */,
+				0CEE8B3F27564B7900E6C6EA /* DefaultNavigationViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -961,6 +964,7 @@
 				251CA9A5274FE0AF00BA5EC5 /* FeedbackRepository.swift in Sources */,
 				251CA991274F86BA00BA5EC5 /* UserLoginedView.swift in Sources */,
 				0CEE8B362752113F00E6C6EA /* RoomDetailUseCase.swift in Sources */,
+				0CEE8B4027564B7900E6C6EA /* DefaultNavigationViewController.swift in Sources */,
 				3EBB5ACD274E35C000715F89 /* ImageCacheManager.swift in Sources */,
 				3EBB5ACE274E35C000715F89 /* NetworkService.swift in Sources */,
 				0CEE8B3A275212FF00E6C6EA /* RoomDetailRepository.swift in Sources */,
