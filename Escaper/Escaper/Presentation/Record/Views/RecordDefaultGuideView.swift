@@ -36,8 +36,12 @@ final class RecordDefaultGuideView: RecordGuideView {
     private var guideLabel: UILabel = EDSLabel.b02R(text: "계정이 없으신가요?", color: EDSColor.gloomyPurple)
     private var signupButton: UIButton = {
         let button = UIButton()
-        button.setTitle("회원가입", for: .normal)
-        button.setTitleColor(EDSColor.bloodyBlack.value, for: .normal)
+        let text = "회원가입"
+        let title = NSMutableAttributedString(string: text)
+        let range = (text as NSString).range(of: "회원가입")
+        title.addAttribute(.foregroundColor, value: EDSColor.bloodyBlack.value ?? UIColor.darkGray, range: range)
+        title.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
+        button.setAttributedTitle(title, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         return button
     }()
