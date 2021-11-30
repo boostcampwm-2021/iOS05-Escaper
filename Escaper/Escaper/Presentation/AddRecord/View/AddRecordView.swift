@@ -125,7 +125,7 @@ final class AddRecordView: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        self.satisFactionRatingView.starSize = (Int(self.satisFactionRatingView.frame.width) - self.satisFactionRatingView.starSpacing * 4) / 5 - 5
+        self.satisFactionRatingView.starSize = (Int(self.satisFactionRatingView.frame.width) - self.satisFactionRatingView.starSpacing * 4) / 5
     }
 
     @objc func findRoomButtonTouched() {
@@ -197,6 +197,7 @@ private extension AddRecordView {
         self.configureImagePickerButtonLayout()
         self.configurArrrangeSubViews()
         self.configureEscapingtimePickerButtonLayout()
+        self.configureRatingViewLayout()
         self.configureRoomInformationStackViewLayout()
         self.configureEscapingStackViewLayout()
     }
@@ -237,9 +238,16 @@ private extension AddRecordView {
     }
 
     func configureEscapingtimePickerButtonLayout() {
-        self.escapingTimePickerButton.translatesAutoresizingMaskIntoConstraints = false
+        self.satisFactionRatingView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.escapingTimePickerButton.widthAnchor.constraint(equalTo: self.escapingInputStackView.widthAnchor, multiplier: 0.5)
+        ])
+    }
+
+    func configureRatingViewLayout() {
+        self.escapingTimePickerButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            self.satisFactionRatingView.widthAnchor.constraint(equalTo: self.escapingInputStackView.widthAnchor, multiplier: 0.7)
         ])
     }
 
