@@ -130,7 +130,6 @@
 		3EBB5AD8274E35CB00715F89 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D566274C89240042133B /* Validator.swift */; };
 		3EBB5AD9274E35CB00715F89 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E8A64FC274E20E30005F788 /* Error.swift */; };
 		3EBB5ADA274E35CB00715F89 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53405273FB0D200867832 /* UIView+Extension.swift */; };
-		3EBB5ADB274E35CB00715F89 /* UISearchBar+SetTextFieldColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */; };
 		3EBB5ADC274E35CB00715F89 /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CE99D2274633BC0097247E /* Array+Extension.swift */; };
 		3EBB5ADD274E35CB00715F89 /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DE4274B062F00A98006 /* StoreDetailViewController.swift */; };
 		3EBB5ADE274E35CB00715F89 /* StoreDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB1DED274B737D00A98006 /* StoreDetailViewModel.swift */; };
@@ -191,7 +190,6 @@
 		1FE53400273F8ABE00867832 /* SearchRoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoomViewController.swift; sourceTree = "<group>"; };
 		1FE53401273F8ABE00867832 /* SearchRoomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRoomTableViewCell.swift; sourceTree = "<group>"; };
 		1FE53405273FB0D200867832 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+SetTextFieldColor.swift"; sourceTree = "<group>"; };
 		1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoomViewModel.swift; sourceTree = "<group>"; };
 		1FEF941A274A828F0049D83D /* StoreOverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreOverViewTableViewCell.swift; sourceTree = "<group>"; };
 		1FEF941C274A94F30049D83D /* StoreInformationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInformationStackView.swift; sourceTree = "<group>"; };
@@ -510,7 +508,6 @@
 			isa = PBXGroup;
 			children = (
 				1FE53405273FB0D200867832 /* UIView+Extension.swift */,
-				1FE53407273FB14A00867832 /* UISearchBar+SetTextFieldColor.swift */,
 				25CE99D2274633BC0097247E /* Array+Extension.swift */,
 			);
 			path = Extensions;
@@ -862,7 +859,6 @@
 				3EBB5AD8274E35CB00715F89 /* Validator.swift in Sources */,
 				3EBB5AD9274E35CB00715F89 /* Error.swift in Sources */,
 				3EBB5ADA274E35CB00715F89 /* UIView+Extension.swift in Sources */,
-				3EBB5ADB274E35CB00715F89 /* UISearchBar+SetTextFieldColor.swift in Sources */,
 				3EBB5ADC274E35CB00715F89 /* Array+Extension.swift in Sources */,
 				3EBB5ADD274E35CB00715F89 /* StoreDetailViewController.swift in Sources */,
 				3EBB5ADE274E35CB00715F89 /* StoreDetailViewModel.swift in Sources */,

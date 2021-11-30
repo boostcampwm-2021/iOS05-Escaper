@@ -24,7 +24,11 @@ final class SearchRoomViewController: UIViewController {
     }()
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = "다녀온 테마를 검색하세요!"
+        searchBar.backgroundImage = UIImage()
+        searchBar.isTranslucent = true
+        searchBar.searchTextField.backgroundColor = EDSColor.skullLightWhite.value
+        searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return searchBar
     }()
     private let roomListTableView: UITableView = {
@@ -112,13 +116,12 @@ private extension SearchRoomViewController {
     }
 
     func configureSearchBarLayout() {
-        self.searchBar.setTextFieldColor(color: .white)
         self.searchBar.translatesAutoresizingMaskIntoConstraints = false
         self.containerView.addSubview(self.searchBar)
         NSLayoutConstraint.activate([
             self.searchBar.topAnchor.constraint(equalTo: self.containerView.topAnchor, constant: Constant.verticalSpace),
             self.searchBar.centerXAnchor.constraint(equalTo: self.containerView.centerXAnchor),
-            self.searchBar.widthAnchor.constraint(equalTo: self.containerView.widthAnchor, multiplier: 0.85)
+            self.searchBar.widthAnchor.constraint(equalTo: self.containerView.widthAnchor, multiplier: 0.8)
         ])
     }
 

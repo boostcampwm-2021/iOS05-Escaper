@@ -28,9 +28,19 @@ final class MapViewController: DefaultViewController {
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "탈출할 카페를 찾아보세요!"
-        searchBar.searchBarStyle = .minimal
-        searchBar.backgroundColor = .clear
+        searchBar.backgroundImage = UIImage()
+        searchBar.isTranslucent = true
+        searchBar.searchTextField.backgroundColor = EDSColor.skullLightWhite.value
+        searchBar.searchTextField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return searchBar
+    }()
+    private let currentLocationButton: UIButton = {
+        let button = UIButton()
+        button.setImage(EDSSystemImage.location.value, for: .normal)
+        button.tintColor = .purple
+        button.backgroundColor = EDSColor.skullLightWhite.value
+        button.layer.cornerRadius = 10
+        return button
     }()
 
     override func viewDidLoad() {
@@ -82,6 +92,11 @@ final class MapViewController: DefaultViewController {
     @objc func mapViewTapped() {
         self.searchBar.endEditing(true)
     }
+
+    @objc func currentButtonTouched() {
+        guard let currentLocation = locationManager?.location else { return }
+        self.mapView.setCenter(currentLocation.coordinate, animated: true)
+    }
 }
 
 extension MapViewController: UISearchBarDelegate {
@@ -120,7 +135,7 @@ extension MapViewController: MKMapViewDelegate {
 
     func mapView(_ mapVopiew: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation as? StoreAnnotation,
-                  !annotation.isKind(of: MKUserLocation.self) else { return }
+              !annotation.isKind(of: MKUserLocation.self) else { return }
         view.isSelected = false
         let storeDetailViewController = StoreDetailViewController()
         storeDetailViewController.create(store: annotation.store)
@@ -133,11 +148,13 @@ private extension MapViewController {
     func configure() {
         self.configureMapViewLayout()
         self.configureSearchBarLayout()
+        self.configureCurrentLocationButtonLayout()
         self.configureLocationManager()
         self.configureCurrentLocationInMapView()
         self.configureDelegates()
         self.bindViewModel()
         self.configureTapGesture()
+        self.configureCurrentButtonTarget()
     }
 
     func configureMapViewLayout() {
@@ -152,13 +169,24 @@ private extension MapViewController {
     }
 
     func configureSearchBarLayout() {
-        self.searchBar.setTextFieldColor(color: .white)
         self.searchBar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.searchBar)
         NSLayoutConstraint.activate([
-            self.searchBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            self.searchBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
             self.searchBar.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.searchBar.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.85)
+            self.searchBar.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.7),
+            self.searchBar.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+
+    func configureCurrentLocationButtonLayout() {
+        self.currentLocationButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.currentLocationButton)
+        NSLayoutConstraint.activate([
+            self.currentLocationButton.centerYAnchor.constraint(equalTo: self.searchBar.centerYAnchor),
+            self.currentLocationButton.widthAnchor.constraint(equalTo: self.searchBar.heightAnchor),
+            self.currentLocationButton.heightAnchor.constraint(equalTo: self.currentLocationButton.widthAnchor),
+            self.currentLocationButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10)
         ])
     }
 
@@ -194,5 +222,9 @@ private extension MapViewController {
     func configureTapGesture() {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(self.mapViewTapped))
         self.mapView.addGestureRecognizer(gesture)
+    }
+
+    func configureCurrentButtonTarget() {
+        self.currentLocationButton.addTarget(self, action: #selector(self.currentButtonTouched), for: .touchUpInside)
     }
 }
