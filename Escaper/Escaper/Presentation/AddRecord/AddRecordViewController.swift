@@ -115,7 +115,7 @@ extension AddRecordViewController: TimePickerDelegate {
         self.recordView.updateTimePicker(minutes: minutes, seconds: seconds)
     }
 }
-// TODO: alert
+
 extension AddRecordViewController: RoomInformationTransferable {
     func transfer(room: Room) {
         guard let isVisited = self.viewModel?.updateRoom(room) else { return }
