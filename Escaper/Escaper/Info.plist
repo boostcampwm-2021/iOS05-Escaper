@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>기록을 추가하기 위해 권한이 필요합니다. (필수권한)</string>
+	<string>기록을 추가하기 위해 권한이 필요합니다. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>현재위치를 확인하기 위해 권한이 필요합니다. (필수권한)</string>
+	<string>현재위치를 기반으로 방탈출 카페를 보여주기 위해 권한이 필요합니다. </string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UIStatusBarStyle</key>
@@ -41,9 +41,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleLightContent</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 </dict>
 </plist>
