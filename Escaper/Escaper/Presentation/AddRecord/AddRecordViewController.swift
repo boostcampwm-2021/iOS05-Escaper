@@ -7,13 +7,7 @@
 
 import UIKit
 
-protocol AddRecordViewControllerDelegate: AnyObject {
-    func addRecordButtonTouched()
-}
-
 final class AddRecordViewController: DefaultViewController {
-    private weak var delegate: AddRecordViewControllerDelegate?
-
     private var viewModel: (AddRecordViewModelInput & AddRecordViewModelOutput)?
     private let titleLabel: UILabel = EDSLabel.h02B(text: "기록 추가", color: .skullLightWhite)
     private let backButton: UIButton = {
@@ -40,14 +34,13 @@ final class AddRecordViewController: DefaultViewController {
         self.configureLayout()
     }
 
-    func create(delegateTarget: AddRecordViewControllerDelegate) {
+    func create() {
         let recordRepository = RecordRepository(service: FirebaseService.shared)
         let roomRepository = RoomListRepository(service: FirebaseService.shared)
         let userRepository = UserRepository(service: FirebaseService.shared)
         let recordUsecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
         let userUsecase = UserUseCase(userRepository: userRepository)
         let viewModel = AddRecordViewModel(recordUsecase: recordUsecase, userUsecase: userUsecase)
-        self.delegate = delegateTarget
         self.viewModel = viewModel
     }
 
@@ -63,7 +56,6 @@ final class AddRecordViewController: DefaultViewController {
             switch result {
             case .success(let urlString):
                 self?.viewModel?.post(email: userEmail, imageURLString: urlString)
-                self?.delegate?.addRecordButtonTouched()
                 self?.dismiss(animated: true)
             case .failure(let error):
                 print(error)
