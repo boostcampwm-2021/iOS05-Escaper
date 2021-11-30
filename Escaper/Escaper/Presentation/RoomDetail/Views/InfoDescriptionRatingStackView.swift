@@ -11,9 +11,7 @@ final class InfoDescriptionRatingStackView: UIStackView {
     private var titleLabel: UILabel = EDSLabel.b01B(color: .gloomyPink)
     private var ratingView: RatingView = {
         let rating = RatingView()
-        rating.fillMode = .precise
         rating.currentRating = 0
-        rating.updateOnTouch = false
         return rating
     }()
 

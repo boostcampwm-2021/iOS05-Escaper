@@ -51,14 +51,14 @@ class RatingView: UIView {
             }
         }
     }
-    var fillMode = FillMode.full
+    var fillMode:FillMode = .precise
     var starSize = 20 {
         didSet {
             self.update()
         }
     }
     var starSpacing = 5
-    var updateOnTouch = true
+    var updateOnTouch = false
     var didFinishTouchingCosmos: ((Double) -> Void)?
     var imageKind: RatingImageKind = .star
     private var viewSize = CGSize()
@@ -78,6 +78,9 @@ class RatingView: UIView {
         let layers = self.createStarLayers()
         self.layer.sublayers = layers
         self.updateSize(layers)
+        guard updateOnTouch else { return }
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
     }
 
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

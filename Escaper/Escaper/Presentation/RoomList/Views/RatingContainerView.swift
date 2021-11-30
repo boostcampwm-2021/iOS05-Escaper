@@ -12,20 +12,16 @@ final class RatingContainerView: UIView {
     private let satisfactionLabel = EDSLabel.b03R(text: "만족도", color: .skullWhite)
     private let difficultyRatingView: RatingView = {
         let rating = RatingView()
-        rating.fillMode = .precise
         rating.currentRating = 0
         rating.starSpacing = 2
         rating.imageKind = .lock
-        rating.updateOnTouch = false
         return rating
     }()
     private let satisfactionRatingView: RatingView = {
         let rating = RatingView()
-        rating.fillMode = .precise
         rating.currentRating = 0
         rating.starSpacing = 2
         rating.imageKind = .star
-        rating.updateOnTouch = false
         return rating
     }()
     override init(frame: CGRect) {
