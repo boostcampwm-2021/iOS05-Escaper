@@ -15,8 +15,6 @@ final class RecordStarView: UIView {
     }()
     private let satisfactionRatingView: RatingView = {
         let ratingView = RatingView()
-        ratingView.fillMode = .precise
-        ratingView.updateOnTouch = false
         ratingView.imageKind = .star
         return ratingView
     }()
@@ -27,8 +25,6 @@ final class RecordStarView: UIView {
     }()
     private let difficultyRatingView: RatingView = {
         let ratingView = RatingView()
-        ratingView.fillMode = .precise
-        ratingView.updateOnTouch = false
         ratingView.imageKind = .lock
         return ratingView
     }()
