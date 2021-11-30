@@ -164,7 +164,7 @@ final class AddRecordView: UIView {
         self.delegate?.updateEscapingTime(time: minutes*60 + seconds)
     }
 
-    func updateUserSelectedImage(_ image: UIImage) {
+    func updateUserSelectedImage(_ image: UIImage?) {
         self.userSelectedImageView.image = image
     }
 

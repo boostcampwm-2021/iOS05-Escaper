@@ -98,6 +98,7 @@ extension AddRecordViewController: AddRecordViewDelegate {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
         self.present(imagePickerController, animated: true)
     }
 
@@ -132,8 +133,13 @@ extension AddRecordViewController: RoomInformationTransferable {
 extension AddRecordViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true)
-        guard let image = info[.originalImage] as? UIImage else { return }
-        self.recordView.updateUserSelectedImage(image)
+        var newImage: UIImage?
+        if let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            newImage = selectedImage
+        } else if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            newImage = selectedImage
+        }
+        self.recordView.updateUserSelectedImage(newImage)
     }
 }
 
