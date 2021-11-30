@@ -12,6 +12,7 @@ class UserInputView: UIView {
     var guideWordsLabel: UILabel = {
         let label = UILabel()
         label.textColor = EDSColor.bloodyBurgundy.value
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
 
