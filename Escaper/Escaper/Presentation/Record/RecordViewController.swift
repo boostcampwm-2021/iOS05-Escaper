@@ -123,16 +123,6 @@ class RecordViewController: DefaultViewController {
     }
 }
 
-extension RecordViewController: AddRecordViewControllerDelegate {
-    func addRecordButtonTouched() {
-        // TODO: ViewWillAppear와 두번 호출 문제 발생 
-        //        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
-//        if self.recordCollectionView.numberOfItems(inSection: .zero) != .zero {
-//            self.recordCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
-//        }
-    }
-}
-
 extension RecordViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return CGFloat(10)
@@ -374,7 +364,7 @@ private extension RecordViewController {
 
     @objc func addButtonTapped() {
         let addRecordViewController = AddRecordViewController()
-        addRecordViewController.create(delegateTarget: self)
+        addRecordViewController.create()
         addRecordViewController.modalPresentationStyle = .fullScreen
         self.present(addRecordViewController, animated: true)
     }
