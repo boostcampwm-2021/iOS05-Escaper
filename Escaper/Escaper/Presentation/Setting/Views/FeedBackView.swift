@@ -53,6 +53,8 @@ extension FeedBackView: UITextViewDelegate {
         if textView.textColor == Constant.placeholderColor {
             textView.text = nil
             textView.textColor = Constant.defaultColor
+            self.sendButton.isEnabled = true
+            self.sendButton.backgroundColor = EDSColor.pumpkin.value
         }
     }
 
@@ -140,12 +142,16 @@ private extension FeedBackView {
     func placeholderSetting() {
         self.textView.text = "의견을 반영하여 좋은 서비스를 만드는데 기여하겠습니다!"
         self.textView.textColor = Constant.placeholderColor
+        self.sendButton.isEnabled = false
+        self.sendButton.backgroundColor = EDSColor.skullGrey.value
     }
 
     @objc func sendButtonTouched(sender: UIButton) {
         guard let text = self.textView.text else { return }
         self.textView.resignFirstResponder()
         self.textView.text = "피드백이 반영되었습니다! 감사합니다."
+        self.sendButton.isEnabled = false
+        self.sendButton.backgroundColor = EDSColor.skullGrey.value
         self.textView.textColor = Constant.placeholderColor
         self.delegate?.feedBackSendButtonTouched(text: text)
     }
