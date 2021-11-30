@@ -33,7 +33,7 @@ final class DefaultRecordViewModel: RecordViewModel {
                 guard !self.records.value.contains(record) else { return }
                 let records = self.records.value + [record]
                 self.records.value = records.sorted(by: { $0.createdTime > $1.createdTime })
-            case .failure(let error):
+            case .failure:
                 self.records.value = []
             }
         }
