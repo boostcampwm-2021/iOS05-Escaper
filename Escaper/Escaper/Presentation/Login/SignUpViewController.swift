@@ -378,7 +378,7 @@ extension SignUpViewController {
         self.signupLabel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.signupLabel)
         NSLayoutConstraint.activate([
-            self.signupLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor),
+            self.signupLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: Constant.shortVerticalSpace),
             self.signupLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
     }
