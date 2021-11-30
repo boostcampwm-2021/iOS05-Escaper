@@ -40,6 +40,7 @@
 		251CA9A9274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */; };
 		251CA9AB27520A7300BA5EC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 251CA9AA27520A7300BA5EC5 /* GoogleService-Info.plist */; };
 		251CA9AD27525C5B00BA5EC5 /* EmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */; };
+		251CA9B0275643CB00BA5EC5 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9AF275643CB00BA5EC5 /* ImageUploader.swift */; };
 		3E2604A92752180000E07361 /* ValidateTextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2604A82752180000E07361 /* ValidateTextFieldState.swift */; };
 		3EBB5A7E274E35C000715F89 /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
 		3EBB5A7F274E35C000715F89 /* DataInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A472744E98F00DB90BF /* DataInjection.swift */; };
@@ -225,6 +226,7 @@
 		251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRepositoryInterface.swift; sourceTree = "<group>"; };
 		251CA9AA27520A7300BA5EC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResultView.swift; sourceTree = "<group>"; };
+		251CA9AF275643CB00BA5EC5 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		25513369273108A800A92CF3 /* RoomListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListUseCase.swift; sourceTree = "<group>"; };
 		2551336B2731093B00A92CF3 /* RoomListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewModel.swift; sourceTree = "<group>"; };
 		25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListRepositoryInterface.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */,
 				1F6DC241274C7E2D0063C632 /* StoreRepository.swift */,
 				25772767273D0D0A00881845 /* ImageCacheManager.swift */,
+				251CA9AF275643CB00BA5EC5 /* ImageUploader.swift */,
 				2577276C273D18EB00881845 /* NetworkService.swift */,
 				25EA50E3274BB61F0030C17C /* UserSupervisor.swift */,
 				3E77D55C274BC41E0042133B /* UserRepository.swift */,
@@ -935,6 +938,7 @@
 				3EBB5AB5274E35C000715F89 /* UserRepositoryInterface.swift in Sources */,
 				3EBB5AB6274E35C000715F89 /* StoreRepositoryInterface.swift in Sources */,
 				3EBB5AB7274E35C000715F89 /* Tagable.swift in Sources */,
+				251CA9B0275643CB00BA5EC5 /* ImageUploader.swift in Sources */,
 				3EBB5AB8274E35C000715F89 /* District.swift in Sources */,
 				3EBB5AB9274E35C000715F89 /* Genre.swift in Sources */,
 				3EBB5ABA274E35C000715F89 /* GeoLocation.swift in Sources */,
