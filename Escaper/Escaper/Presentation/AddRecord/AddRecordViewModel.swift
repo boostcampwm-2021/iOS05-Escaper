@@ -72,7 +72,8 @@ final class AddRecordViewModel: AddRecordViewModelInput, AddRecordViewModelOutpu
 
     func post(email: String, imageURLString: String) {
         guard let score = self.calculateScore(),
-              let roomId = self.room?.roomId else { return }
+              let roomId = self.room?.roomId,
+              let timeLimit = self.room?.timeLimit else { return }
         UserSupervisor.shared.add(score: score)
         self.userUsecase.updateScore(userEmail: email, score: UserSupervisor.shared.score)
         self.recordUsecase.addRecord(imageURLString: imageURLString,
@@ -80,7 +81,7 @@ final class AddRecordViewModel: AddRecordViewModelInput, AddRecordViewModelOutpu
                                roomId: roomId,
                                satisfaction: self.satisfaction,
                                isSuccess: self.isSuccess,
-                               time: self.time,
+                               time: self.isSuccess ? self.time : timeLimit * 60,
                                records: self.records)
     }
 }
