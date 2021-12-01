@@ -34,13 +34,7 @@ final class AddRecordViewController: DefaultViewController {
         self.configureLayout()
     }
 
-    func create() {
-        let recordRepository = RecordRepository(service: FirebaseService.shared)
-        let roomRepository = RoomListRepository(service: FirebaseService.shared)
-        let userRepository = UserRepository(service: FirebaseService.shared)
-        let recordUsecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
-        let userUsecase = UserUseCase(userRepository: userRepository)
-        let viewModel = AddRecordViewModel(recordUsecase: recordUsecase, userUsecase: userUsecase)
+    func create(viewModel: AddRecordViewModelInput & AddRecordViewModelOutput) {
         self.viewModel = viewModel
     }
 
