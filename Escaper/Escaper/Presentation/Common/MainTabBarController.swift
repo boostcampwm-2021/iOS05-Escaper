@@ -66,7 +66,10 @@ private extension MainTabBarController {
 
         let leaderBoardBarItem = self.makeTabBarItem(config: .leaderBoard)
         let leaderBoardViewController = LeaderBoardViewController()
-        leaderBoardViewController.create()
+        let leaderBoardRepository = LeaderBoardRepository(service: FirebaseService.shared)
+        let leaderBoardUsecase = LeaderBoardUseCase(repository: leaderBoardRepository)
+        let leaderBoardViewModel = DefaultLeadeBoardViewModel(usecase: leaderBoardUsecase)
+        leaderBoardViewController.create(viewModel: leaderBoardViewModel)
         leaderBoardViewController.tabBarItem = leaderBoardBarItem
 
         let settingBarItem = self.makeTabBarItem(config: .setting)
