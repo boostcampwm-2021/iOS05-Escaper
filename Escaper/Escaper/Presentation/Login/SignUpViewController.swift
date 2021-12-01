@@ -36,10 +36,7 @@ class SignUpViewController: DefaultViewController {
         self.bindViewModel()
     }
 
-    func create(delegate: SignUpViewControllerDelegate) {
-        let userRepository = UserRepository(service: FirebaseService.shared)
-        let userUsecase = UserUseCase(userRepository: userRepository)
-        let viewModel = DefaultSignUpViewModel(usecase: userUsecase)
+    func create(delegate: SignUpViewControllerDelegate, viewModel: SignUpViewModel) {
         self.viewModel = viewModel
         self.delegate = delegate
     }

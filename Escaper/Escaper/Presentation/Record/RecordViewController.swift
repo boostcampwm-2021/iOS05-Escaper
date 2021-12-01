@@ -180,7 +180,10 @@ extension RecordViewController: RecordDefaultGuideViewDelegate {
 
     func signUpButtonTouched() {
         let signUpViewController = SignUpViewController()
-        signUpViewController.create(delegate: self)
+        let userRepository = UserRepository(service: FirebaseService.shared)
+        let userUsecase = UserUseCase(userRepository: userRepository)
+        let viewModel = DefaultSignUpViewModel(usecase: userUsecase)
+        signUpViewController.create(delegate: self, viewModel: viewModel)
         self.present(signUpViewController, animated: true)
     }
 }
