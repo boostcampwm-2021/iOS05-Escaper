@@ -28,6 +28,7 @@ final class RoomDetailViewController: DefaultViewController {
         label.numberOfLines = 4
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
+        label.isUserInteractionEnabled = true
         return label
     }()
     private let roomDetailInfoView = RoomDetailInfoView()
@@ -57,6 +58,16 @@ final class RoomDetailViewController: DefaultViewController {
     func update(roomId: String) {
         self.viewModel?.fetch(roomId: roomId)
     }
+
+    @objc func descriptionLabelTapped() {
+        let viewController = RoomDescriptionViewController()
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalPresentationStyle = .overFullScreen
+        if let text = self.descriptionLabel.text {
+            viewController.placeText(text: text)
+        }
+        self.present(viewController, animated: true)
+    }
 }
 
 private extension RoomDetailViewController {
@@ -74,6 +85,7 @@ private extension RoomDetailViewController {
     func configure() {
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: EDSImage.share.value, style: .plain, target: self, action: #selector(self.shareButtonTouched))
+        self.descriptionLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.descriptionLabelTapped)))
     }
 
     func configureLayout() {
