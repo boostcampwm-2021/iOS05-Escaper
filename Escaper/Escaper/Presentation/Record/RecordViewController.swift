@@ -366,7 +366,13 @@ private extension RecordViewController {
 
     @objc func addButtonTapped() {
         let addRecordViewController = AddRecordViewController()
-        addRecordViewController.create()
+        let recordRepository = RecordRepository(service: FirebaseService.shared)
+        let roomRepository = RoomListRepository(service: FirebaseService.shared)
+        let userRepository = UserRepository(service: FirebaseService.shared)
+        let recordUsecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
+        let userUsecase = UserUseCase(userRepository: userRepository)
+        let viewModel = AddRecordViewModel(recordUsecase: recordUsecase, userUsecase: userUsecase)
+        addRecordViewController.create(viewModel: viewModel)
         addRecordViewController.modalPresentationStyle = .fullScreen
         self.present(addRecordViewController, animated: true)
     }
