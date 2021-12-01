@@ -91,11 +91,7 @@ class RecordViewController: DefaultViewController {
         }
     }
 
-    func create() {
-        let roomRepository = RoomListRepository(service: FirebaseService.shared)
-        let recordRepository = RecordRepository(service: FirebaseService.shared)
-        let usecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
-        let viewModel = DefaultRecordViewModel(useCase: usecase)
+    func create(viewModel: RecordViewModel) {
         self.viewModel = viewModel
     }
 

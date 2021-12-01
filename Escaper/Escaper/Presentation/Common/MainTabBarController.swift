@@ -48,7 +48,11 @@ private extension MainTabBarController {
 
         let recordBarItem = self.makeTabBarItem(config: .record)
         let recordViewController = RecordViewController()
-        recordViewController.create()
+        let roomRepository = RoomListRepository(service: FirebaseService.shared)
+        let recordRepository = RecordRepository(service: FirebaseService.shared)
+        let recordUsecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
+        let recordViewModel = DefaultRecordViewModel(useCase: recordUsecase)
+        recordViewController.create(viewModel: recordViewModel)
         recordViewController.tabBarItem = recordBarItem
 
         let mapBarItem = self.makeTabBarItem(config: .map)
