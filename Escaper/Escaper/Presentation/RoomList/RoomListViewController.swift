@@ -78,10 +78,7 @@ final class RoomListViewController: DefaultViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
-    func create() {
-        let repository = RoomListRepository(service: FirebaseService.shared)
-        let usecase = RoomListUseCase(repository: repository)
-        let viewModel = DefaultRoomListViewModel(usecase: usecase)
+    func create(viewModel: RoomListViewModelInterface) {
         self.viewModel = viewModel
     }
 }
