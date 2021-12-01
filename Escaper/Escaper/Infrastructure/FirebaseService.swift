@@ -200,8 +200,6 @@ private extension FirebaseService {
         }
     }
 
-
-
     func query(district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
         switch district {
         case .none:

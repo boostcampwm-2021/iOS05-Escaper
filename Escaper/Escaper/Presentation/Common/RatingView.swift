@@ -51,7 +51,7 @@ class RatingView: UIView {
             }
         }
     }
-    var fillMode:FillMode = .precise
+    var fillMode: FillMode = .precise
     var starSize = 20 {
         didSet {
             self.update()
