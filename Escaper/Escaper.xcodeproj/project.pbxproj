@@ -42,6 +42,7 @@
 		251CA9AD27525C5B00BA5EC5 /* EmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */; };
 		251CA9B0275643CB00BA5EC5 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9AF275643CB00BA5EC5 /* ImageUploader.swift */; };
 		3E2604A92752180000E07361 /* ValidateTextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2604A82752180000E07361 /* ValidateTextFieldState.swift */; };
+		3E90918127563A7100ACDB78 /* RoomDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E90918027563A7100ACDB78 /* RoomDescriptionViewController.swift */; };
 		3EBB5A7E274E35C000715F89 /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
 		3EBB5A7F274E35C000715F89 /* DataInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A472744E98F00DB90BF /* DataInjection.swift */; };
 		3EBB5A80274E35C000715F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6B272EE0F00027AAAD /* AppDelegate.swift */; };
@@ -268,6 +269,7 @@
 		3E77D566274C89240042133B /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		3E77D568274CC1BC0042133B /* DefaultLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginViewModel.swift; sourceTree = "<group>"; };
 		3E8A64FC274E20E30005F788 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		3E90918027563A7100ACDB78 /* RoomDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDescriptionViewController.swift; sourceTree = "<group>"; };
 		3EED222D273CDA150084D290 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -564,6 +566,7 @@
 			children = (
 				0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */,
 				0CEE8B332752103300E6C6EA /* RoomDetailViewModel.swift */,
+				3E90918027563A7100ACDB78 /* RoomDescriptionViewController.swift */,
 				0CAEE3AA273A618A002C1136 /* Views */,
 			);
 			path = RoomDetail;
@@ -881,6 +884,7 @@
 				3EBB5A84274E35C000715F89 /* MainTabBarController.swift in Sources */,
 				3EBB5A85274E35C000715F89 /* DefaultViewController.swift in Sources */,
 				3EBB5A87274E35C000715F89 /* LoginViewController.swift in Sources */,
+				3E90918127563A7100ACDB78 /* RoomDescriptionViewController.swift in Sources */,
 				3EBB5A88274E35C000715F89 /* SignUpViewController.swift in Sources */,
 				3EBB5A89274E35C000715F89 /* DefaultLoginViewModel.swift in Sources */,
 				3EBB5A8A274E35C000715F89 /* DefaultSignUpViewModel.swift in Sources */,
