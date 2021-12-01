@@ -129,7 +129,10 @@ extension RoomListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         let detailViewController = RoomDetailViewController()
-        detailViewController.create()
+        let repository = RoomDetailRepository(service: FirebaseService.shared)
+        let usecase = RoomDetailUseCase(repository: repository)
+        let viewModel = DefaultRoomDetailViewModel(usecase: usecase)
+        detailViewController.create(viewModel: viewModel)
         detailViewController.update(roomId: room.roomId)
         detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)

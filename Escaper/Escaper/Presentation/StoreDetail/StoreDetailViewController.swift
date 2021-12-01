@@ -42,7 +42,10 @@ extension StoreDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
         let roomDetailViewController = RoomDetailViewController()
-        roomDetailViewController.create()
+        let repository = RoomDetailRepository(service: FirebaseService.shared)
+        let usecase = RoomDetailUseCase(repository: repository)
+        let viewModel = DefaultRoomDetailViewModel(usecase: usecase)
+        roomDetailViewController.create(viewModel: viewModel)
         roomDetailViewController.update(roomId: room.roomId)
         self.navigationController?.pushViewController(roomDetailViewController, animated: true)
     }
