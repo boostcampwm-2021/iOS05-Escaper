@@ -171,7 +171,10 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
 extension RecordViewController: RecordDefaultGuideViewDelegate {
     func loginButtonTouched() {
         let loginViewController = LoginViewController()
-        loginViewController.create(delegate: self)
+        let userRepository = UserRepository(service: FirebaseService.shared)
+        let userUsecase = UserUseCase(userRepository: userRepository)
+        let viewModel = DefaultLoginViewModel(usecase: userUsecase)
+        loginViewController.create(delegate: self, viewModel: viewModel)
         self.present(loginViewController, animated: true)
     }
 

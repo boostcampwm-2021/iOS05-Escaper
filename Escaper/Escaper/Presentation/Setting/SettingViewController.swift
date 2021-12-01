@@ -67,7 +67,10 @@ extension SettingViewController: UserLoginedViewDelegate {
 extension SettingViewController: UserLogoutedViewDelegate {
     func loginButtonTouched() {
         let viewController = LoginViewController()
-        viewController.create(delegate: self)
+        let userRepository = UserRepository(service: FirebaseService.shared)
+        let userUsecase = UserUseCase(userRepository: userRepository)
+        let viewModel = DefaultLoginViewModel(usecase: userUsecase)
+        viewController.create(delegate: self, viewModel: viewModel)
         self.present(viewController, animated: true)
     }
 }
