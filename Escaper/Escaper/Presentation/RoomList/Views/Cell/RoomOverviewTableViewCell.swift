@@ -45,6 +45,7 @@ final class RoomOverviewTableViewCell: UITableViewCell {
     }
 
     override func prepareForReuse() {
+        super.prepareForReuse()
         self.genreImageView.image = nil
         self.titleLabel.text = ""
         self.ratingContainerView.prepareForReuse()

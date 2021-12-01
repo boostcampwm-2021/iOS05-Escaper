@@ -70,6 +70,7 @@ final class RecordCollectionViewCell: UICollectionViewCell {
     }
 
     override func prepareForReuse() {
+        super.prepareForReuse()
         self.recordUserView.prepareForReuse()
         self.recordStarView.prepareForReuse()
         self.recordResultView.prepareForReuse()
