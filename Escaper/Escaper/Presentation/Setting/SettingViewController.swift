@@ -38,10 +38,7 @@ class SettingViewController: DefaultViewController {
         self.updateUserView()
     }
 
-    func create() {
-        let repository = FeedbackRepository(service: FirebaseService.shared)
-        let usecase = FeedbackUsecase(repository: repository)
-        let viewModel = SettingViewModel(usecase: usecase)
+    func create(viewModel: SettingViewModelInterface) {
         self.viewModel = viewModel
     }
 

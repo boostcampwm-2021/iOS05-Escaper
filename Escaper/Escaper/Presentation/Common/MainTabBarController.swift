@@ -74,7 +74,10 @@ private extension MainTabBarController {
 
         let settingBarItem = self.makeTabBarItem(config: .setting)
         let settingViewController = SettingViewController()
-        settingViewController.create()
+        let settingRepository = FeedbackRepository(service: FirebaseService.shared)
+        let settingUsecase = FeedbackUsecase(repository: settingRepository)
+        let settingViewModel = SettingViewModel(usecase: settingUsecase)
+        settingViewController.create(viewModel: settingViewModel)
         settingViewController.tabBarItem = settingBarItem
 
         let viewControllers = [
