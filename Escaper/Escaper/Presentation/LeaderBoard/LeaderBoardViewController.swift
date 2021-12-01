@@ -103,13 +103,16 @@ private extension LeaderBoardViewController {
 
     func configureRefreshControl() {
         self.refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
-        self.scrollView.insertSubview(self.refreshControl, at: .zero)
+        self.scrollView.refreshControl = self.refreshControl
     }
 
     func bindViewModel() {
         self.viewModel?.users.observe(on: self, observerBlock: { [weak self] users in
             self?.topRankView.update(users: users.prefix(3).map {$0})
             self?.updateStackView(users: users.prefix(10).map {$0})
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: { [weak self] in
+                    self?.refreshControl.endRefreshing()
+            })
         })
     }
 
@@ -133,6 +136,5 @@ private extension LeaderBoardViewController {
 
     @objc func refresh(sender: UIRefreshControl) {
         self.update()
-        self.refreshControl.endRefreshing()
     }
 }
