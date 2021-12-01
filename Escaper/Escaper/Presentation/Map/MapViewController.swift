@@ -138,7 +138,10 @@ extension MapViewController: MKMapViewDelegate {
               !annotation.isKind(of: MKUserLocation.self) else { return }
         view.isSelected = false
         let storeDetailViewController = StoreDetailViewController()
-        storeDetailViewController.create(store: annotation.store)
+        let repository = RoomListRepository(service: FirebaseService.shared)
+        let usecase = RoomListUseCase(repository: repository)
+        let viewModel = StoreDetailViewModel(usecase: usecase)
+        storeDetailViewController.create(store: annotation.store, viewModel: viewModel)
         storeDetailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(storeDetailViewController, animated: true)
     }

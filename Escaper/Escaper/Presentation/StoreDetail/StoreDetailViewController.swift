@@ -32,11 +32,8 @@ class StoreDetailViewController: DefaultViewController {
         self.navigationController?.navigationBar.topItem?.title = ""
     }
 
-    func create(store: Store) {
+    func create(store: Store, viewModel: StoreDetailViewModelInterface) {
         self.store = store
-        let repository = RoomListRepository(service: FirebaseService.shared)
-        let usecase = RoomListUseCase(repository: repository)
-        let viewModel = StoreDetailViewModel(usecase: usecase)
         self.viewModel = viewModel
     }
 }
