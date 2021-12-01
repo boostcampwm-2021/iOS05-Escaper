@@ -35,10 +35,7 @@ class LoginViewController: DefaultViewController {
         self.bindViewModel()
     }
 
-    func create(delegate: LoginViewControllerDelegate) {
-        let userRepository = UserRepository(service: FirebaseService.shared)
-        let userUsecase = UserUseCase(userRepository: userRepository)
-        let viewModel = DefaultLoginViewModel(usecase: userUsecase)
+    func create(delegate: LoginViewControllerDelegate, viewModel: LoginViewModel) {
         self.viewModel = viewModel
         self.delegate = delegate
     }
