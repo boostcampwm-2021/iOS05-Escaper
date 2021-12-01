@@ -74,7 +74,10 @@ extension AddRecordViewController: AddRecordViewDelegate {
 
     func findRoomTitleButtonTapped() {
         let findRoomViewController = SearchRoomViewController()
-        findRoomViewController.create()
+        let repository = RoomListRepository(service: FirebaseService.shared)
+        let usecase = RoomListUseCase(repository: repository)
+        let viewModel = SearchRoomViewModel(usecase: usecase)
+        findRoomViewController.create(viewModel: viewModel)
         findRoomViewController.modalPresentationStyle = .automatic
         findRoomViewController.roomTransferDelegate = self
         self.present(findRoomViewController, animated: true)

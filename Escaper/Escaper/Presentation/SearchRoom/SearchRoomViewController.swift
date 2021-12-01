@@ -49,10 +49,7 @@ final class SearchRoomViewController: UIViewController {
         self.containerView.roundCorners(corners: [.topLeft, .topRight], radius: 50)
     }
 
-    func create() {
-        let repository = RoomListRepository(service: FirebaseService.shared)
-        let usecase = RoomListUseCase(repository: repository)
-        let viewModel = SearchRoomViewModel(usecase: usecase)
+    func create(viewModel: SearchRoomViewModelInput & SearchRoomViewModelOutput) {
         self.viewModel = viewModel
     }
 
