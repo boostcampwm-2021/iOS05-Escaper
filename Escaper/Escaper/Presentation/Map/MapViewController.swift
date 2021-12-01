@@ -58,10 +58,7 @@ final class MapViewController: DefaultViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
-    func create() {
-        let storeRepository = StoreRepository(service: FirebaseService.shared)
-        let usecase = StoreUseCase(repository: storeRepository)
-        let viewModel = MapViewModel(usecase: usecase)
+    func create(viewModel: MapViewModelInterface) {
         self.viewModel = viewModel
     }
 
