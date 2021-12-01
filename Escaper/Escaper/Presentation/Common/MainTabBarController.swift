@@ -39,7 +39,10 @@ private extension MainTabBarController {
     func configure() {
         let homeBarItem = self.makeTabBarItem(config: .home)
         let homeViewController = RoomListViewController()
-        homeViewController.create()
+        let homeRepository = RoomListRepository(service: FirebaseService.shared)
+        let homeUsecase = RoomListUseCase(repository: homeRepository)
+        let homeViewModel = DefaultRoomListViewModel(usecase: homeUsecase)
+        homeViewController.create(viewModel: homeViewModel)
         let homeNavigationController = DefaultNavigationViewController(rootViewController: homeViewController)
         homeNavigationController.tabBarItem = homeBarItem
 
