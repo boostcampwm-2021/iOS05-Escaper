@@ -42,10 +42,7 @@ final class LeaderBoardViewController: DefaultViewController {
         self.bindViewModel()
     }
 
-    func create() {
-        let repository = LeaderBoardRepository(service: FirebaseService.shared)
-        let usecase = LeaderBoardUseCase(repository: repository)
-        let viewModel = DefaultLeadeBoardViewModel(usecase: usecase)
+    func create(viewModel: LeaderBoardViewModelInterface) {
         self.viewModel = viewModel
     }
 }
