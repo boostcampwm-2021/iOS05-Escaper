@@ -53,7 +53,10 @@ private extension MainTabBarController {
 
         let mapBarItem = self.makeTabBarItem(config: .map)
         let mapViewController = MapViewController()
-        mapViewController.create()
+        let mapRepository = StoreRepository(service: FirebaseService.shared)
+        let mapUsecase = StoreUseCase(repository: mapRepository)
+        let mapViewModel = MapViewModel(usecase: mapUsecase)
+        mapViewController.create(viewModel: mapViewModel)
         let mapNavigationController = DefaultNavigationViewController(rootViewController: mapViewController)
         mapNavigationController.tabBarItem = mapBarItem
 
