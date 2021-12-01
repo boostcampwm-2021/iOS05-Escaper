@@ -47,10 +47,7 @@ final class RoomDetailViewController: DefaultViewController {
         self.bindViewModel()
     }
 
-    func create() {
-        let repository = RoomDetailRepository(service: FirebaseService.shared)
-        let usecase = RoomDetailUseCase(repository: repository)
-        let viewModel = DefaultRoomDetailViewModel(usecase: usecase)
+    func create(viewModel: RoomDetailViewModelInterface) {
         self.viewModel = viewModel
     }
 
