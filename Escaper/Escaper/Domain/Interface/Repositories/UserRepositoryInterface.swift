@@ -10,7 +10,7 @@ import Foundation
 protocol UserRepositoryInterface {
     func query(userEmail: String, completion: @escaping (Result<Bool, Error>) -> Void)
     func confirm(userEmail: String, userPassword: String, completion: @escaping (Result<User, UserError>) -> Void)
-//    func updateScore(userEmail: String, score: Int)
+    func fetchAllUser(completion: @escaping (Result<[User], Error>) -> Void)
     func update(score: Int, belongsTo userEmail: String)
     func add(user: User)
 }

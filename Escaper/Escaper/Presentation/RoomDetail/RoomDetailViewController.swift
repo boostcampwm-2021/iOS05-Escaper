@@ -217,7 +217,7 @@ private extension RoomDetailViewController {
                 rankView.update(imageURL: user.imageURL)
             }
         }
-        self.viewModel.room.observe(on: self) { [weak self ] room in
+        self.viewModel.room.observe(on: self) { [weak self] room in
             guard let room = room else { return }
             self?.update(room: room)
             self?.roomDetailInfoView.update(room: room)

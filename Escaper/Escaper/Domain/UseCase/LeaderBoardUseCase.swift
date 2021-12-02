@@ -12,14 +12,14 @@ protocol LeaderBoardUseCaseInterface {
 }
 
 final class LeaderBoardUseCase: LeaderBoardUseCaseInterface {
-    private let repository: LeaderBoardRepositoryInterface
+    private let repository: UserRepositoryInterface
 
-    init(repository: LeaderBoardRepositoryInterface) {
+    init(repository: UserRepositoryInterface) {
         self.repository = repository
     }
 
     func fetch(completion: @escaping (Result<[User], Error>) -> Void) {
-        self.repository.fetch { result in
+        self.repository.fetchAllUser { result in
             switch result {
             case .success(let users):
                 completion(.success(users))

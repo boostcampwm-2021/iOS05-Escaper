@@ -62,7 +62,7 @@ private extension MainTabBarController {
         mapNavigationController.tabBarItem = mapBarItem
 
         let leaderBoardBarItem = self.makeTabBarItem(config: .leaderBoard)
-        let leaderBoardRepository = LeaderBoardRepository(service: FirebaseService.shared)
+        let leaderBoardRepository = UserRepository(service: FirebaseService.shared)
         let leaderBoardUsecase = LeaderBoardUseCase(repository: leaderBoardRepository)
         let leaderBoardViewModel = DefaultLeadeBoardViewModel(usecase: leaderBoardUsecase)
         let leaderBoardViewController = LeaderBoardViewController(viewModel: leaderBoardViewModel)
