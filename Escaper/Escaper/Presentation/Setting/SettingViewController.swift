@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingViewController: DefaultViewController {
+final class SettingViewController: DefaultViewController {
     private var viewModel: SettingViewModelInterface?
     private let titleLabel: UILabel = {
         let label: UILabel = EDSLabel.h01B(text: "설정", color: .skullWhite)
@@ -179,3 +179,4 @@ private extension SettingViewController {
         self.infoDescriptionStackView.inject(view: InfoDescriptionDetailStackView(title: "박영광", content: "https://github.com/poisonF2", shouldOpen: true))
     }
 }
+

@@ -13,7 +13,7 @@ protocol StoreDetailViewModelInterface {
     func fetchRooms(ids: [String])
 }
 
-class StoreDetailViewModel: StoreDetailViewModelInterface {
+final class StoreDetailViewModel: StoreDetailViewModelInterface {
     private let usecase: StoreDetailUseCaseInterface
     private(set) var rooms: Observable<[Room]>
 

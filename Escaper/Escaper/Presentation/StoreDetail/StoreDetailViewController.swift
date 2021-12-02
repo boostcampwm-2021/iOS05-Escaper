@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class StoreDetailViewController: DefaultViewController {
+final class StoreDetailViewController: DefaultViewController {
     private var store: Store?
     private var viewModel: StoreDetailViewModelInterface?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?

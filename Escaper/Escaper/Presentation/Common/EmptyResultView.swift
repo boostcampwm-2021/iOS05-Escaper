@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmptyResultView: UIView {
+final class EmptyResultView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: Genre.romance.detailImageAssetName))
         imageView.contentMode = .scaleAspectFit

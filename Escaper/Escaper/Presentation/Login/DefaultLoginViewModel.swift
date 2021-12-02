@@ -27,7 +27,7 @@ protocol LoginViewModelEditable {
 
 protocol LoginViewModel: LoginViewModelProperty, LoginViewModelConfirm, LoginViewModelCheckButton, LoginViewModelEditable { }
 
-class DefaultLoginViewModel: LoginViewModel {
+final class DefaultLoginViewModel: LoginViewModel {
     var usecase: UserUseCaseInterface
     var emailMessage: Observable<String>
     var passwordMessage: Observable<String>

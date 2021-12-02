@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoDescriptionStackView: UIStackView {
+final class InfoDescriptionStackView: UIStackView {
     required init(coder: NSCoder) {
         super.init(coder: coder)
         self.configure()
