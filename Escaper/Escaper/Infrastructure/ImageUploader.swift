@@ -12,7 +12,6 @@ import UIKit
 class ImageUploader {
     static let shared = ImageUploader()
 
-    private let fileManager = FileManager.default
     private let storage = Storage.storage()
 
     func uploadRecord(image: UIImage? = nil, userEmail: String, roomId: String, completion: @escaping (Result<String, Error>) -> Void) {

@@ -64,13 +64,6 @@ final class LoginViewController: DefaultDIViewController<LoginViewModel> {
         return button
     }()
 
-    private var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.distribution = .fillProportionally
-        stackView.alignment = .center
-        return stackView
-    }()
-
     @objc func cancelButtonTapped() {
         self.dismiss(animated: true)
     }

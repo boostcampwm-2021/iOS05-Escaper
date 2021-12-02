@@ -96,11 +96,11 @@ private extension RecordDefaultGuideView {
     }
 
     func configureLoginButton() {
-        self.loginButton.addTarget(self, action: #selector(loginButtonTouched(sender:)), for: .touchUpInside)
+        self.loginButton.addTarget(self, action: #selector(loginButtonTouched), for: .touchUpInside)
     }
 
     func configureSignupButton() {
-        self.signupButton.addTarget(self, action: #selector(self.signUpButtonTouched(sender:)), for: .touchUpInside)
+        self.signupButton.addTarget(self, action: #selector(self.signUpButtonTouched), for: .touchUpInside)
     }
 
     func configureStackView() {
@@ -108,11 +108,11 @@ private extension RecordDefaultGuideView {
         self.guideStackView.addArrangedSubview(self.signupButton)
     }
 
-    @objc func loginButtonTouched(sender: UIButton) {
+    @objc func loginButtonTouched() {
         self.delegate?.loginButtonTouched()
     }
 
-    @objc func signUpButtonTouched(sender: UIButton) {
+    @objc func signUpButtonTouched() {
         self.delegate?.signUpButtonTouched()
     }
 }

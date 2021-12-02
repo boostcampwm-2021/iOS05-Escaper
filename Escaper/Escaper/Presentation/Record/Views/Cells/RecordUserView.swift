@@ -89,11 +89,6 @@ final class RecordUserView: UIView {
 }
 
 private extension RecordUserView {
-    enum Constant {
-        static let verticalSpace = CGFloat(10)
-        static let horizontalSpace = CGFloat(5)
-    }
-
     enum Result: String {
         case success = "Success"
         case fail = "Fail"

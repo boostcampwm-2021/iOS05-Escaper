@@ -47,10 +47,10 @@ private extension UserLoginedView {
     }
 
     func configureButtonTarget() {
-        self.registerButton.addTarget(self, action: #selector(self.logoutButtonTouched(sender:)), for: .touchUpInside)
+        self.registerButton.addTarget(self, action: #selector(self.logoutButtonTouched), for: .touchUpInside)
     }
 
-    @objc func logoutButtonTouched(sender: UIButton) {
+    @objc func logoutButtonTouched() {
         self.delegate?.logoutButtonTouched()
     }
 }

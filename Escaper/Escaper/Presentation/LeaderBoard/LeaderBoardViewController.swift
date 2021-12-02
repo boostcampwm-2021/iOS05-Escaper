@@ -40,10 +40,6 @@ final class LeaderBoardViewController: DefaultDIViewController<LeaderBoardViewMo
         self.update()
         self.bindViewModel()
     }
-
-    func create(viewModel: LeaderBoardViewModelInterface) {
-        self.viewModel = viewModel
-    }
 }
 
 private extension LeaderBoardViewController {
@@ -98,7 +94,7 @@ private extension LeaderBoardViewController {
     }
 
     func configureRefreshControl() {
-        self.refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         self.scrollView.refreshControl = self.refreshControl
     }
 
@@ -130,7 +126,7 @@ private extension LeaderBoardViewController {
         }
     }
 
-    @objc func refresh(sender: UIRefreshControl) {
+    @objc func refresh() {
         self.update()
     }
 }
