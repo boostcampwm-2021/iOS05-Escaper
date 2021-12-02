@@ -19,6 +19,6 @@ class FeedbackUsecase: FeedbackUseCaseInterface {
     }
 
     func addFeedback(content: String) {
-        self.repository.addFeedback(feedback: Feedback(content: content))
+        self.repository.add(feedback: Feedback(content: content))
     }
 }

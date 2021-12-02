@@ -14,7 +14,7 @@ final class FeedbackRepository: FeedbackRepositoryInterface {
         self.service = service
     }
 
-    func addFeedback(feedback: Feedback) {
-        self.service.addFeedback(feedbackDTO: feedback.toDTO())
+    func add(feedback: Feedback) {
+        self.service.add(feedbackDTO: feedback.toDTO())
     }
 }

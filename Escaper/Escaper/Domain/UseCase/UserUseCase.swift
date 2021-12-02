@@ -59,6 +59,7 @@ final class UserUseCase: UserUseCaseInterface {
 
 extension UserUseCase: UpdateUserUscCaseInterface {
     func updateScore(userEmail: String, score: Int) {
-        self.repository.updateScore(userEmail: userEmail, score: score)
+//        self.repository.updateScore(userEmail: userEmail, score: score)
+        self.repository.update(score: score, belongsTo: userEmail)
     }
 }
