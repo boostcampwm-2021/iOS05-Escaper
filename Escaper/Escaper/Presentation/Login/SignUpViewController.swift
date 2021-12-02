@@ -11,22 +11,8 @@ protocol SignUpViewControllerDelegate: AnyObject {
     func signUpSuccessed()
 }
 
-final class SignUpViewController: DefaultViewController {
-    enum Constant {
-        static let shortVerticalSpace = CGFloat(20)
-        static let middleVerticalSpace = CGFloat(40)
-        static let signupButtonHeight = CGFloat(50)
-        static let defaultSpace = CGFloat(15)
-        static let loginButtonHeight = CGFloat(50)
-        static let inputViewWidthRatio = CGFloat(0.8)
-        static let inputViewHeightRatio = CGFloat(0.1)
-        static let middleWidthRatio = CGFloat(0.6)
-        static let textFieldBorderWidth = CGFloat(0.7)
-    }
-
+final class SignUpViewController: DefaultDIViewController<SignUpViewModel> {
     private weak var delegate: SignUpViewControllerDelegate?
-
-    private var viewModel: SignUpViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +28,13 @@ final class SignUpViewController: DefaultViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.emailMessage.observe(on: self) { [weak self] text in
+        self.viewModel.emailMessage.observe(on: self) { [weak self] text in
             self?.emailInputView.guideWordsLabel.text = text
         }
-        self.viewModel?.passwordMessage.observe(on: self) { [weak self] text in
+        self.viewModel.passwordMessage.observe(on: self) { [weak self] text in
             self?.passwordInputView.guideWordsLabel.text = text
         }
-        self.viewModel?.passwordCheckMessage.observe(on: self) { [weak self] text in
+        self.viewModel.passwordCheckMessage.observe(on: self) { [weak self] text in
             self?.passwordCheckInputView.guideWordsLabel.text = text
         }
     }
@@ -163,11 +149,11 @@ final class SignUpViewController: DefaultViewController {
         ImageUploader.shared.uploadUser(image: userImage(), userEmail: email) { result in
             switch result {
             case .success(let urlString):
-                self.viewModel?.queryUser(email: email) { isExist in
+                self.viewModel.queryUser(email: email) { isExist in
                     if isExist {
                         self.designateSignupButtonState()
                     } else {
-                        self.viewModel?.addUser(email: email, password: password, urlString: urlString)
+                        self.viewModel.addUser(email: email, password: password, urlString: urlString)
                         UserSupervisor.shared.login(email: email, score: .zero, imageURLString: urlString)
                         self.delegate?.signUpSuccessed()
                         self.dismiss(animated: true)
@@ -180,7 +166,7 @@ final class SignUpViewController: DefaultViewController {
     }
 
     func designateSignupButtonState() {
-        if self.viewModel!.isSignupButtonEnabled() {
+        if self.viewModel.isSignupButtonEnabled() {
             self.signupButton.backgroundColor = EDSColor.bloodyBurgundy.value
             self.signupButton.isEnabled = true
         } else {
@@ -227,14 +213,26 @@ extension SignUpViewController: UIImagePickerControllerDelegate & UINavigationCo
 }
 
 extension SignUpViewController: UITextFieldDelegate {
+    enum Constant {
+        static let shortVerticalSpace = CGFloat(20)
+        static let middleVerticalSpace = CGFloat(40)
+        static let signupButtonHeight = CGFloat(50)
+        static let defaultSpace = CGFloat(15)
+        static let loginButtonHeight = CGFloat(50)
+        static let inputViewWidthRatio = CGFloat(0.8)
+        static let inputViewHeightRatio = CGFloat(0.1)
+        static let middleWidthRatio = CGFloat(0.6)
+        static let textFieldBorderWidth = CGFloat(0.7)
+    }
+
     func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField {
         case self.emailInputView.textField:
-            self.viewModel?.checkEmail(text: textField.text!)
+            self.viewModel.checkEmail(text: textField.text!)
         case self.passwordInputView.textField:
-            self.viewModel?.checkPassword(text: textField.text!)
+            self.viewModel.checkPassword(text: textField.text!)
         case self.passwordCheckInputView.textField:
-            self.viewModel?.checkDiscordance(text1: (self.passwordInputView.textField?.text)!, text2: textField.text!)
+            self.viewModel.checkDiscordance(text1: (self.passwordInputView.textField?.text)!, text2: textField.text!)
         default:
             break
         }

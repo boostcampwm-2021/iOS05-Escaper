@@ -38,46 +38,41 @@ final class MainTabBarController: UITabBarController {
 private extension MainTabBarController {
     func configure() {
         let homeBarItem = self.makeTabBarItem(config: .home)
-        let homeViewController = RoomListViewController()
         let homeRepository = RoomListRepository(service: FirebaseService.shared)
         let homeUsecase = RoomListUseCase(repository: homeRepository)
         let homeViewModel = DefaultRoomListViewModel(usecase: homeUsecase)
-        homeViewController.create(viewModel: homeViewModel)
+        let homeViewController = RoomListViewController(viewModel: homeViewModel)
         let homeNavigationController = DefaultNavigationViewController(rootViewController: homeViewController)
         homeNavigationController.tabBarItem = homeBarItem
 
         let recordBarItem = self.makeTabBarItem(config: .record)
-        let recordViewController = RecordViewController()
         let roomRepository = RoomListRepository(service: FirebaseService.shared)
         let recordRepository = RecordRepository(service: FirebaseService.shared)
         let recordUsecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
         let recordViewModel = DefaultRecordViewModel(useCase: recordUsecase)
-        recordViewController.create(viewModel: recordViewModel)
+        let recordViewController = RecordViewController(viewModel: recordViewModel)
         recordViewController.tabBarItem = recordBarItem
 
         let mapBarItem = self.makeTabBarItem(config: .map)
-        let mapViewController = MapViewController()
         let mapRepository = StoreRepository(service: FirebaseService.shared)
         let mapUsecase = StoreUseCase(repository: mapRepository)
         let mapViewModel = MapViewModel(usecase: mapUsecase)
-        mapViewController.create(viewModel: mapViewModel)
+        let mapViewController = MapViewController(viewModel: mapViewModel)
         let mapNavigationController = DefaultNavigationViewController(rootViewController: mapViewController)
         mapNavigationController.tabBarItem = mapBarItem
 
         let leaderBoardBarItem = self.makeTabBarItem(config: .leaderBoard)
-        let leaderBoardViewController = LeaderBoardViewController()
         let leaderBoardRepository = LeaderBoardRepository(service: FirebaseService.shared)
         let leaderBoardUsecase = LeaderBoardUseCase(repository: leaderBoardRepository)
         let leaderBoardViewModel = DefaultLeadeBoardViewModel(usecase: leaderBoardUsecase)
-        leaderBoardViewController.create(viewModel: leaderBoardViewModel)
+        let leaderBoardViewController = LeaderBoardViewController(viewModel: leaderBoardViewModel)
         leaderBoardViewController.tabBarItem = leaderBoardBarItem
 
         let settingBarItem = self.makeTabBarItem(config: .setting)
-        let settingViewController = SettingViewController()
         let settingRepository = FeedbackRepository(service: FirebaseService.shared)
         let settingUsecase = FeedbackUsecase(repository: settingRepository)
         let settingViewModel = SettingViewModel(usecase: settingUsecase)
-        settingViewController.create(viewModel: settingViewModel)
+        let settingViewController = SettingViewController(viewModel: settingViewModel)
         settingViewController.tabBarItem = settingBarItem
 
         let viewControllers = [

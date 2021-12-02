@@ -7,8 +7,7 @@
 
 import UIKit
 
-final class LeaderBoardViewController: DefaultViewController {
-    private var viewModel: LeaderBoardViewModelInterface?
+final class LeaderBoardViewController: DefaultDIViewController<LeaderBoardViewModelInterface> {
     private let scrollView = UIScrollView()
     private let titleLabel: UILabel = {
         let label = EDSLabel.h01B(text: "리더보드", color: .skullWhite)
@@ -104,7 +103,7 @@ private extension LeaderBoardViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.users.observe(on: self, observerBlock: { [weak self] users in
+        self.viewModel.users.observe(on: self, observerBlock: { [weak self] users in
             self?.topRankView.update(users: users.prefix(3).map {$0})
             self?.updateStackView(users: users.prefix(10).map {$0})
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.7, execute: { [weak self] in
@@ -114,7 +113,7 @@ private extension LeaderBoardViewController {
     }
 
     func update() {
-        self.viewModel?.fetch()
+        self.viewModel.fetch()
     }
 
     func updateStackView(users: [User]) {

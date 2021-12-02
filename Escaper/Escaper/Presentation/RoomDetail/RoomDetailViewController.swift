@@ -7,8 +7,7 @@
 
 import UIKit
 
-final class RoomDetailViewController: DefaultViewController {
-    private var viewModel: RoomDetailViewModelInterface?
+final class RoomDetailViewController: DefaultDIViewController<RoomDetailViewModelInterface> {
     private let scrollView = UIScrollView()
     private let genreImageView: UIImageView = {
         let imageView = UIImageView()
@@ -56,12 +55,8 @@ final class RoomDetailViewController: DefaultViewController {
         self.bindViewModel()
     }
 
-    func create(viewModel: RoomDetailViewModelInterface) {
-        self.viewModel = viewModel
-    }
-
     func update(roomId: String) {
-        self.viewModel?.fetch(roomId: roomId)
+        self.viewModel.fetch(roomId: roomId)
     }
 
     @objc func descriptionLabelTapped() {
@@ -216,13 +211,13 @@ private extension RoomDetailViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.users.observe(on: self) { [weak self] users in
+        self.viewModel.users.observe(on: self) { [weak self] users in
             for (index, user) in users.enumerated() {
                 guard let rankView = self?.userRankStackView.subviews[index] as? UserRankDetailView else { return }
                 rankView.update(imageURL: user.imageURL)
             }
         }
-        self.viewModel?.room.observe(on: self) { [weak self ] room in
+        self.viewModel.room.observe(on: self) { [weak self ] room in
             guard let room = room else { return }
             self?.update(room: room)
             self?.roomDetailInfoView.update(room: room)

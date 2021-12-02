@@ -99,10 +99,10 @@ extension StoreListViewController: StoreListDelegate {
 extension StoreListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedStore = self.dataSource?.itemIdentifier(for: indexPath) else { return }
-        let storeDetailViewController = StoreDetailViewController()
         let repository = RoomListRepository(service: FirebaseService.shared)
         let usecase = RoomListUseCase(repository: repository)
         let viewModel = StoreDetailViewModel(usecase: usecase)
+        let storeDetailViewController = StoreDetailViewController(viewModel: viewModel)
         storeDetailViewController.create(store: selectedStore, viewModel: viewModel)
         storeDetailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(storeDetailViewController, animated: true)

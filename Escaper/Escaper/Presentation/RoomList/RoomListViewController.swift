@@ -8,8 +8,7 @@
 import UIKit
 import CoreLocation
 
-final class RoomListViewController: DefaultViewController {
-    private var viewModel: RoomListViewModelInterface?
+final class RoomListViewController: DefaultDIViewController<RoomListViewModelInterface> {
     private var selectedDistrict: District?
     private var locationManager: CLLocationManager?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
@@ -77,10 +76,6 @@ final class RoomListViewController: DefaultViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-
-    func create(viewModel: RoomListViewModelInterface) {
-        self.viewModel = viewModel
-    }
 }
 
 extension RoomListViewController: TagScrollViewDelegate {
@@ -90,7 +85,7 @@ extension RoomListViewController: TagScrollViewDelegate {
             let district = self.districtSelectButton.selectedDistrict ?? .none
             self.fetchWithCurrentSelectedOption(with: district)
         case let sortingOption as SortingOption:
-            self.viewModel?.sort(option: sortingOption)
+            self.viewModel.sort(option: sortingOption)
         default:
             break
         }
@@ -128,11 +123,10 @@ extension RoomListViewController: CLLocationManagerDelegate {
 extension RoomListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
-        let detailViewController = RoomDetailViewController()
         let repository = RoomDetailRepository(service: FirebaseService.shared)
         let usecase = RoomDetailUseCase(repository: repository)
         let viewModel = DefaultRoomDetailViewModel(usecase: usecase)
-        detailViewController.create(viewModel: viewModel)
+        let detailViewController = RoomDetailViewController(viewModel: viewModel)
         detailViewController.update(roomId: room.roomId)
         detailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(detailViewController, animated: true)
@@ -269,7 +263,7 @@ private extension RoomListViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.rooms.observe(on: self) { [weak self] roomList in
+        self.viewModel.rooms.observe(on: self) { [weak self] roomList in
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([Section.main])
             snapshot.appendItems(roomList)
@@ -293,7 +287,7 @@ private extension RoomListViewController {
     func fetchWithCurrentSelectedOption(with district: District) {
         guard let genre = self.genreTagScrollView.selectedButton?.element as? Genre,
               let sortingOption = self.sortingOptionTagScrollView.selectedButton?.element as? SortingOption else { return }
-        self.viewModel?.fetch(district: district, genre: genre, sortingOption: sortingOption)
+        self.viewModel.fetch(district: district, genre: genre, sortingOption: sortingOption)
     }
 
     func locationAuthorization() {

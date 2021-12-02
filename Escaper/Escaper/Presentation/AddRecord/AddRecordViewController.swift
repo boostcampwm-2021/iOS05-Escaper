@@ -7,8 +7,7 @@
 
 import UIKit
 
-final class AddRecordViewController: DefaultViewController {
-    private var viewModel: AddRecordViewModelInterface?
+final class AddRecordViewController: DefaultDIViewController<AddRecordViewModelInterface> {
     private let titleLabel: UILabel = EDSLabel.h02B(text: "기록 추가", color: .skullLightWhite)
     private let backButton: UIButton = {
         let button = UIButton()
@@ -34,22 +33,18 @@ final class AddRecordViewController: DefaultViewController {
         self.configureLayout()
     }
 
-    func create(viewModel: AddRecordViewModelInterface) {
-        self.viewModel = viewModel
-    }
-
     @objc func backButtonTapped() {
         self.dismiss(animated: true)
     }
 
     @objc func saveRecordButtonTapped() {
         let userEmail = UserSupervisor.shared.email
-        guard let roomId = self.viewModel?.room?.roomId else { return }
         let image = self.recordView.fetchSelectedImage()
+        guard let roomId = self.viewModel.room?.roomId else { return }
         ImageUploader.shared.uploadRecord(image: image, userEmail: userEmail, roomId: roomId) { [weak self] result in
             switch result {
             case .success(let urlString):
-                self?.viewModel?.post(email: userEmail, imageURLString: urlString)
+                self?.viewModel.post(email: userEmail, imageURLString: urlString)
                 self?.dismiss(animated: true)
             case .failure(let error):
                 print(error)
@@ -60,24 +55,23 @@ final class AddRecordViewController: DefaultViewController {
 
 extension AddRecordViewController: AddRecordViewDelegate {
     func updateRating(_ value: Double) {
-        self.viewModel?.satisfaction = value
+        self.viewModel.satisfaction = value
     }
 
     func updateEscapingTime(time: Int) {
-        self.viewModel?.time = time
-        self.viewModel?.changeSaveState()
+        self.viewModel.time = time
+        self.viewModel.changeSaveState()
     }
 
     func updateIsSuccess(_ isSuccess: Bool) {
-        self.viewModel?.isSuccess = isSuccess
+        self.viewModel.isSuccess = isSuccess
     }
 
     func findRoomTitleButtonTapped() {
-        let findRoomViewController = SearchRoomViewController()
         let repository = RoomListRepository(service: FirebaseService.shared)
         let usecase = RoomListUseCase(repository: repository)
         let viewModel = SearchRoomViewModel(usecase: usecase)
-        findRoomViewController.create(viewModel: viewModel)
+        let findRoomViewController = SearchRoomViewController(viewModel: viewModel)
         findRoomViewController.modalPresentationStyle = .automatic
         findRoomViewController.roomTransferDelegate = self
         self.present(findRoomViewController, animated: true)
@@ -93,7 +87,7 @@ extension AddRecordViewController: AddRecordViewDelegate {
 
     func escapingTimePickerButtonTapped() {
         let timePickerController = TimePickerViewController()
-        timePickerController.timeLimit = self.viewModel?.room?.timeLimit
+        timePickerController.timeLimit = self.viewModel.room?.timeLimit
         timePickerController.delegate = self
         self.present(timePickerController, animated: true)
     }
@@ -107,7 +101,7 @@ extension AddRecordViewController: TimePickerDelegate {
 
 extension AddRecordViewController: RoomInformationTransferable {
     func transfer(room: Room) {
-        guard let isVisited = self.viewModel?.updateRoom(room) else { return }
+        let isVisited = self.viewModel.updateRoom(room)
         if isVisited {
             self.recordView.updateRoomInformation(room)
         } else {
@@ -203,7 +197,7 @@ private extension AddRecordViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.state.observe(on: self) { [weak self] postableState in
+        self.viewModel.state.observe(on: self) { [weak self] postableState in
             self?.saveRecordButton.isEnabled = postableState
             self?.saveRecordButton.backgroundColor = postableState ? EDSColor.pumpkin.value : EDSColor.skullGrey.value
         }
