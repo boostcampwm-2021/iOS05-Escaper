@@ -21,7 +21,6 @@ final class RoomDetailViewController: DefaultViewController {
         label.lineBreakMode = .byTruncatingTail
         return label
     }()
-
     private let storeNameLabel = EDSLabel.b01R(color: .skullGrey)
     private let descriptionLabel: UILabel = {
         let label = EDSLabel.b01R(color: .skullLightWhite)
@@ -31,10 +30,19 @@ final class RoomDetailViewController: DefaultViewController {
         label.isUserInteractionEnabled = true
         return label
     }()
-    private let roomDetailInfoView = RoomDetailInfoView()
-    private let rankTitleLabel = EDSLabel.h01B(text: "TOP 3", color: .skullLightWhite)
+    private let roomDetailInfoView: RoomDetailInfoView = {
+        let infoView = RoomDetailInfoView()
+        infoView.isHidden = true
+        return infoView
+    }()
+    private let rankTitleLabel: UILabel = {
+        let label = EDSLabel.h01B(text: "TOP 3", color: .skullLightWhite)
+        label.isHidden = true
+        return label
+    }()
     private let userRankStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.isHidden = true
         stackView.axis = .vertical
         stackView.spacing = Constant.stackViewSpace
         stackView.distribution = .fill
@@ -197,6 +205,7 @@ private extension RoomDetailViewController {
             rankView.update(record, rank: rank)
             self.userRankStackView.addArrangedSubview(rankView)
         }
+        self.userRankStackView.isHidden = records.isEmpty
     }
 
     @objc func shareButtonTouched() {
@@ -213,12 +222,12 @@ private extension RoomDetailViewController {
                 rankView.update(imageURL: user.imageURL)
             }
         }
-
         self.viewModel?.room.observe(on: self) { [weak self ] room in
             guard let room = room else { return }
             self?.update(room: room)
             self?.roomDetailInfoView.update(room: room)
             self?.updateStackView(records: room.records)
+            self?.roomDetailInfoView.isHidden = false
         }
     }
 }

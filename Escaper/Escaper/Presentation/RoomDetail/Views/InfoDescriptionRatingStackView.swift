@@ -33,7 +33,7 @@ final class InfoDescriptionRatingStackView: UIStackView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        self.ratingView.starSize = (Int(self.ratingView.frame.width) - self.ratingView.starSpacing * 4) / 5 - 5
+        self.ratingView.starSize = (Int(self.ratingView.frame.width) - self.ratingView.starSpacing * 4) / 5 - 3
     }
 
     func inject(title: String, rating: Double) {
