@@ -50,17 +50,14 @@ final class RoomDetailUserRankView: UIView {
         self.rankLabel.text = "\(rank + 1)"
         self.titleLabel.text = Helper.parseUsername(email: record.userEmail)
         self.timeLabel.text = self.timeToString(time: record.escapingTime)
-        self.backgroundColor = rank < 3 ? Self.rankColor[rank] : UIColor.clear
+        self.applyViewAppearance(rank: rank)
     }
 
     func update(_ user: User, rank: Int) {
         self.rankLabel.text = "\(rank + 1)"
         self.titleLabel.text = user.name
         self.timeLabel.text = "\(user.score) pts"
-        self.backgroundColor = rank < 3 ? Self.rankColor[rank] : EDSColor.gloomyBrown.value
-        self.titleLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
-        self.rankLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
-        self.timeLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
+        self.applyViewAppearance(rank: rank)
         ImageCacheManager.shared.download(urlString: user.imageURL, completion: { [weak self] result in
             switch result {
             case .success(let data):
@@ -148,5 +145,12 @@ private extension RoomDetailUserRankView {
             ret = "\(hour)h " + ret
         }
         return ret
+    }
+
+    func applyViewAppearance(rank: Int) {
+        self.backgroundColor = rank < 3 ? Self.rankColor[rank] : EDSColor.gloomyBrown.value
+        self.titleLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
+        self.rankLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
+        self.timeLabel.textColor = rank < 3 ? EDSColor.bloodyBlack.value : EDSColor.skullLightWhite.value
     }
 }

@@ -12,45 +12,59 @@ protocol RoomDetailViewModelInterface {
     var users: Observable<[User]> { get }
 
     func fetch(roomId: String)
-    func fetch(userId: String, at index: Int)
 }
 
 final class DefaultRoomDetailViewModel: RoomDetailViewModelInterface {
     private let usecase: RoomDetailUseCaseInterface
+    private var numberOfRank = 0
     private(set) var room: Observable<Room?>
     private(set) var users: Observable<[User]>
-    private var usersBuffer: [User?]
+    private var usersBuffer: [User?] {
+        didSet {
+            let fetchedUsers = self.usersBuffer.compactMap { $0 }
+            if fetchedUsers.count == self.numberOfRank {
+                self.users.value = fetchedUsers
+            }
+        }
+    }
 
     init(usecase: RoomDetailUseCaseInterface) {
         self.usecase = usecase
         self.room = Observable(nil)
         self.users = Observable([])
-        self.usersBuffer = [nil, nil, nil]
+        self.usersBuffer = []
     }
 
     func fetch(roomId: String) {
         self.usecase.fetch(roomId: roomId) { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success(let room):
-                self?.room.value = room
+            case .success(var room):
+                self.numberOfRank = room.records.count > 5 ? 5 : room.records.count
+                self.usersBuffer = Array.init(repeating: nil, count: self.numberOfRank)
+                room.records = room.records.prefix(self.numberOfRank).map { $0 }
+                self.room.value = room
                 for (index, record) in room.records.enumerated() {
-                    self?.fetch(userId: record.userEmail, at: index)
+                    self.fetch(userId: record.userEmail, at: index)
                 }
             case .failure(let error):
                 print(error)
             }
         }
     }
+}
+
+private extension DefaultRoomDetailViewModel {
+    enum Constant {
+        static let maxRankNumber = 5
+    }
 
     func fetch(userId: String, at index: Int) {
         self.usecase.fetch(userId: userId) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let user):
-                self?.usersBuffer[index] = user
-                if let usersBuffer = self?.usersBuffer.compactMap({ $0 }),
-                   usersBuffer.count == self?.room.value?.records.count {
-                    self?.users.value = usersBuffer
-                }
+                self.usersBuffer[index] = user
             case .failure(let error):
                 print(error)
             }

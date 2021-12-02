@@ -36,7 +36,7 @@ final class RoomDetailViewController: DefaultViewController {
         return infoView
     }()
     private let rankTitleLabel: UILabel = {
-        let label = EDSLabel.h01B(text: "TOP 3", color: .skullLightWhite)
+        let label = EDSLabel.h01B(text: "TOP 5", color: .skullLightWhite)
         label.isHidden = true
         return label
     }()
