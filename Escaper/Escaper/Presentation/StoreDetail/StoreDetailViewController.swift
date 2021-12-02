@@ -8,9 +8,8 @@
 import UIKit
 import CoreLocation
 
-final class StoreDetailViewController: DefaultViewController {
+final class StoreDetailViewController: DefaultDIViewController<StoreDetailViewModelInterface> {
     private var store: Store?
-    private var viewModel: StoreDetailViewModelInterface?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
     private var storeTitleLabel: UILabel = EDSLabel.h01B(color: .pumpkin)
     private var infoDescriptionStackView = InfoDescriptionStackView(frame: .zero)
@@ -28,7 +27,7 @@ final class StoreDetailViewController: DefaultViewController {
         self.bindViewModel()
         guard let store = store else { return }
         self.inject(store: store)
-        self.viewModel?.fetchRooms(ids: store.roomIds)
+        self.viewModel.fetchRooms(ids: store.roomIds)
         self.navigationController?.navigationBar.topItem?.title = ""
     }
 
@@ -41,11 +40,10 @@ final class StoreDetailViewController: DefaultViewController {
 extension StoreDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
-        let roomDetailViewController = RoomDetailViewController()
         let repository = RoomDetailRepository(service: FirebaseService.shared)
         let usecase = RoomDetailUseCase(repository: repository)
         let viewModel = DefaultRoomDetailViewModel(usecase: usecase)
-        roomDetailViewController.create(viewModel: viewModel)
+        let roomDetailViewController = RoomDetailViewController(viewModel: viewModel)
         roomDetailViewController.update(roomId: room.roomId)
         self.navigationController?.pushViewController(roomDetailViewController, animated: true)
     }
@@ -124,7 +122,7 @@ private extension StoreDetailViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.rooms.observe(on: self, observerBlock: { rooms in
+        self.viewModel.rooms.observe(on: self, observerBlock: { rooms in
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([Section.main])
             snapshot.appendItems(rooms)

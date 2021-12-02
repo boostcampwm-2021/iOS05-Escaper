@@ -20,6 +20,7 @@
 		1FAAD0AC2746ADA400C2AE90 /* gangnam.json in Resources */ = {isa = PBXBuildFile; fileRef = 1FAAD0AB2746ADA400C2AE90 /* gangnam.json */; };
 		1FCDDE75272EE0F10027AAAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE74272EE0F10027AAAD /* Assets.xcassets */; };
 		1FCDDE78272EE0F10027AAAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE76272EE0F10027AAAD /* LaunchScreen.storyboard */; };
+		1FF21BB82759256600CD3BC5 /* DefaultDIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF21BB72759256600CD3BC5 /* DefaultDIViewController.swift */; };
 		25104A512745408E00DB90BF /* extra.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A502745408D00DB90BF /* extra.json */; };
 		25104A53274546E100DB90BF /* sinlim.json in Resources */ = {isa = PBXBuildFile; fileRef = 25104A52274546E100DB90BF /* sinlim.json */; };
 		251CA989274F72B300BA5EC5 /* hongdae.json in Resources */ = {isa = PBXBuildFile; fileRef = 251CA988274F72B200BA5EC5 /* hongdae.json */; };
@@ -196,6 +197,7 @@
 		1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoomViewModel.swift; sourceTree = "<group>"; };
 		1FEF941A274A828F0049D83D /* StoreOverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreOverViewTableViewCell.swift; sourceTree = "<group>"; };
 		1FEF941C274A94F30049D83D /* StoreInformationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreInformationStackView.swift; sourceTree = "<group>"; };
+		1FF21BB72759256600CD3BC5 /* DefaultDIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDIViewController.swift; sourceTree = "<group>"; };
 		25020597273A3300004B024E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		25020599273A33A5004B024E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2502059B273A33CB004B024E /* LeaderBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewController.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				25F92C5E273A2AC3005E4A21 /* MainTabBarController.swift */,
 				0CEE8B3F27564B7900E6C6EA /* DefaultNavigationViewController.swift */,
 				3E4378CC2732914B001ED120 /* DefaultViewController.swift */,
+				1FF21BB72759256600CD3BC5 /* DefaultDIViewController.swift */,
 				1FF21BB627591C7100CD3BC5 /* Views */,
 			);
 			path = Common;
@@ -874,6 +877,7 @@
 				3EBB5ADA274E35CB00715F89 /* UIView+Extension.swift in Sources */,
 				3EBB5ADC274E35CB00715F89 /* Array+Extension.swift in Sources */,
 				3EBB5ADD274E35CB00715F89 /* StoreDetailViewController.swift in Sources */,
+				1FF21BB82759256600CD3BC5 /* DefaultDIViewController.swift in Sources */,
 				3EBB5ADE274E35CB00715F89 /* StoreDetailViewModel.swift in Sources */,
 				3EBB5ADF274E35CB00715F89 /* HorizontalLineView.swift in Sources */,
 				3EBB5AE0274E35CB00715F89 /* StoreDTO.swift in Sources */,

@@ -11,22 +11,8 @@ protocol LoginViewControllerDelegate: AnyObject {
     func loginSuccessed()
 }
 
-final class LoginViewController: DefaultViewController {
-    enum Constant {
-        static let shortVerticalSpace = CGFloat(20)
-        static let middleVerticalSpace = CGFloat(40)
-        static let longVerticalSpace = CGFloat(75)
-        static let defaultSpace = CGFloat(15)
-        static let loginButtonHeight = CGFloat(50)
-        static let inputViewWidthRatio = CGFloat(0.8)
-        static let inputViewHeightRatio = CGFloat(0.1)
-        static let middleWidthRatio = CGFloat(0.6)
-        static let textFieldBorderWidth = CGFloat(0.7)
-    }
-
+final class LoginViewController: DefaultDIViewController<LoginViewModel> {
     private weak var delegate: LoginViewControllerDelegate?
-
-    private var viewModel: LoginViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +27,11 @@ final class LoginViewController: DefaultViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.emailMessage.observe(on: self) { [weak self] text in
-            self?.emailInputView.guideWordsLabel.text = self?.viewModel?.emailMessage.value
+        self.viewModel.emailMessage.observe(on: self) { [weak self] text in
+            self?.emailInputView.guideWordsLabel.text = self?.viewModel.emailMessage.value
         }
-        self.viewModel?.passwordMessage.observe(on: self) { [weak self] text in
-            self?.passwordInputView.guideWordsLabel.text = self?.viewModel?.passwordMessage.value
+        self.viewModel.passwordMessage.observe(on: self) { [weak self] text in
+            self?.passwordInputView.guideWordsLabel.text = self?.viewModel.passwordMessage.value
         }
     }
 
@@ -92,7 +78,7 @@ final class LoginViewController: DefaultViewController {
     @objc func loginButtonTapped() {
         guard let email = self.emailInputView.textField?.text,
               let password = self.passwordInputView.textField?.text else { return }
-        self.viewModel?.confirmUser(email: email, password: password) { result in
+        self.viewModel.confirmUser(email: email, password: password) { result in
             switch result {
             case .success(let user):
                 let imageURLString = user.imageURL
@@ -108,8 +94,7 @@ final class LoginViewController: DefaultViewController {
     }
 
     func designateSignupButtonState() {
-        guard let viewModel = self.viewModel else { return }
-        if viewModel.isLoginButtonEnabled() {
+        if self.viewModel.isLoginButtonEnabled() {
             self.loginButton.backgroundColor = EDSColor.pumpkin.value
             self.loginButton.isEnabled = true
         } else {
@@ -128,7 +113,7 @@ final class LoginViewController: DefaultViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        self.viewModel?.startEditing()
+        self.viewModel.startEditing()
         self.designateSignupButtonState()
     }
 
@@ -181,6 +166,18 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 extension LoginViewController {
+    enum Constant {
+        static let shortVerticalSpace = CGFloat(20)
+        static let middleVerticalSpace = CGFloat(40)
+        static let longVerticalSpace = CGFloat(75)
+        static let defaultSpace = CGFloat(15)
+        static let loginButtonHeight = CGFloat(50)
+        static let inputViewWidthRatio = CGFloat(0.8)
+        static let inputViewHeightRatio = CGFloat(0.1)
+        static let middleWidthRatio = CGFloat(0.6)
+        static let textFieldBorderWidth = CGFloat(0.7)
+    }
+
     func configure() {
         self.emailInputView.injectDelegate(self)
         self.passwordInputView.injectDelegate(self)

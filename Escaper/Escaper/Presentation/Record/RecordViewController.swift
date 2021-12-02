@@ -8,10 +8,9 @@
 import UIKit
 import AVFoundation
 
-class RecordViewController: DefaultViewController {
+class RecordViewController: DefaultDIViewController<RecordViewModel> {
     private typealias Datasource = UICollectionViewDiffableDataSource<Section, RecordCard>
 
-    private var viewModel: RecordViewModel?
     private var datasource: Datasource?
     private let titleLabel: UILabel = {
         let label: UILabel = EDSLabel.h01B(text: "탈출 기록", color: .skullWhite)
@@ -74,29 +73,25 @@ class RecordViewController: DefaultViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if UserSupervisor.shared.isLogined {
-            guard let userName = Helper.parseUsername(email: UserSupervisor.shared.email), let records = self.viewModel?.records.value else { return }
-            if !records.allSatisfy({ $0.username == userName }) {
-                self.viewModel?.records.value = []
+            guard let userName = Helper.parseUsername(email: UserSupervisor.shared.email) else { return }
+            if !self.viewModel.records.value.allSatisfy({ $0.username == userName }) {
+                self.viewModel.records.value = []
                 self.applyRecordCollectionViewData(recordCards: [], animated: false)
             }
-            self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+            self.viewModel.fetch(userEmail: UserSupervisor.shared.email)
         } else {
             self.recordDefaultGuideView.isHidden = false
             self.recordEmptyGuideView.isHidden = true
             self.addButton.isHidden = true
             self.countingLabel.text = "👻"
             self.greetingLabel.text = "당신의 실력은 어느 수준일까요?"
-            self.viewModel?.records.value = []
+            self.viewModel.records.value = []
             self.applyRecordCollectionViewData(recordCards: [], animated: false)
         }
     }
 
-    func create(viewModel: RecordViewModel) {
-        self.viewModel = viewModel
-    }
-
     func bindViewModel() {
-        self.viewModel?.records.observe(on: self) { [weak self] results in
+        self.viewModel.records.observe(on: self) { [weak self] results in
             guard UserSupervisor.shared.isLogined else { return }
             if results.isEmpty {
                 self?.recordDefaultGuideView.isHidden = true
@@ -166,19 +161,19 @@ extension RecordViewController: UICollectionViewDelegateFlowLayout {
 
 extension RecordViewController: RecordDefaultGuideViewDelegate {
     func loginButtonTouched() {
-        let loginViewController = LoginViewController()
         let userRepository = UserRepository(service: FirebaseService.shared)
         let userUsecase = UserUseCase(userRepository: userRepository)
         let viewModel = DefaultLoginViewModel(usecase: userUsecase)
+        let loginViewController = LoginViewController(viewModel: viewModel)
         loginViewController.create(delegate: self, viewModel: viewModel)
         self.present(loginViewController, animated: true)
     }
 
     func signUpButtonTouched() {
-        let signUpViewController = SignUpViewController()
         let userRepository = UserRepository(service: FirebaseService.shared)
         let userUsecase = UserUseCase(userRepository: userRepository)
         let viewModel = DefaultSignUpViewModel(usecase: userUsecase)
+        let signUpViewController = SignUpViewController(viewModel: viewModel)
         signUpViewController.create(delegate: self, viewModel: viewModel)
         self.present(signUpViewController, animated: true)
     }
@@ -186,11 +181,11 @@ extension RecordViewController: RecordDefaultGuideViewDelegate {
 
 extension RecordViewController: LoginViewControllerDelegate, SignUpViewControllerDelegate {
     func loginSuccessed() {
-        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+        self.viewModel.fetch(userEmail: UserSupervisor.shared.email)
     }
 
     func signUpSuccessed() {
-        self.viewModel?.fetch(userEmail: UserSupervisor.shared.email)
+        self.viewModel.fetch(userEmail: UserSupervisor.shared.email)
     }
 }
 
@@ -238,7 +233,6 @@ private extension RecordViewController {
         self.configureAddButtonLayout()
         self.configureRecordDefaultGuideViewConstraint()
         self.configureRecordEmptyGuideViewConstraint()
-
     }
 
     func configureRecordCollectionView() {
@@ -365,14 +359,13 @@ private extension RecordViewController {
     }
 
     @objc func addButtonTapped() {
-        let addRecordViewController = AddRecordViewController()
         let recordRepository = RecordRepository(service: FirebaseService.shared)
         let roomRepository = RoomListRepository(service: FirebaseService.shared)
         let userRepository = UserRepository(service: FirebaseService.shared)
         let recordUsecase = RecordUsecase(roomRepository: roomRepository, recordRepository: recordRepository)
         let userUsecase = UserUseCase(userRepository: userRepository)
         let viewModel = AddRecordViewModel(recordUsecase: recordUsecase, userUsecase: userUsecase)
-        addRecordViewController.create(viewModel: viewModel)
+        let addRecordViewController = AddRecordViewController(viewModel: viewModel)
         addRecordViewController.modalPresentationStyle = .fullScreen
         self.present(addRecordViewController, animated: true)
     }

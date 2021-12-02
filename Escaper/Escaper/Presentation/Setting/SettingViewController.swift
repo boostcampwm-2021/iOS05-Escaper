@@ -7,8 +7,7 @@
 
 import UIKit
 
-final class SettingViewController: DefaultViewController {
-    private var viewModel: SettingViewModelInterface?
+final class SettingViewController: DefaultDIViewController<SettingViewModelInterface> {
     private let titleLabel: UILabel = {
         let label: UILabel = EDSLabel.h01B(text: "설정", color: .skullWhite)
         label.textAlignment = .center
@@ -63,10 +62,10 @@ extension SettingViewController: UserLoginedViewDelegate {
 
 extension SettingViewController: UserLogoutedViewDelegate {
     func loginButtonTouched() {
-        let viewController = LoginViewController()
         let userRepository = UserRepository(service: FirebaseService.shared)
         let userUsecase = UserUseCase(userRepository: userRepository)
         let viewModel = DefaultLoginViewModel(usecase: userUsecase)
+        let viewController = LoginViewController(viewModel: viewModel)
         viewController.create(delegate: self, viewModel: viewModel)
         self.present(viewController, animated: true)
     }
@@ -74,7 +73,7 @@ extension SettingViewController: UserLogoutedViewDelegate {
 
 extension SettingViewController: FeedBackViewDelegate {
     func feedBackSendButtonTouched(text: String) {
-        self.viewModel?.addFeedback(content: text)
+        self.viewModel.addFeedback(content: text)
     }
 }
 

@@ -12,10 +12,9 @@ protocol StoreListDelegate: AnyObject {
     func transfer(_ stores: [Store])
 }
 
-final class MapViewController: DefaultViewController {
+final class MapViewController: DefaultDIViewController<MapViewModelInterface> {
     private weak var delegate: StoreListDelegate?
     private weak var childViewController: StoreListViewController?
-    private var viewModel: MapViewModelInterface?
     private var locationManager: CLLocationManager?
     private var mapView: MKMapView = {
         let mapView = MKMapView()
@@ -56,10 +55,6 @@ final class MapViewController: DefaultViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-
-    func create(viewModel: MapViewModelInterface) {
-        self.viewModel = viewModel
     }
 
     func addBottomSheetView() {
@@ -108,7 +103,7 @@ extension MapViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let storeName = searchBar.searchTextField.text else { return }
-        self.viewModel?.query(name: storeName)
+        self.viewModel.query(name: storeName)
         self.searchBar.endEditing(true)
         guard self.childViewController == nil else { return }
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -134,11 +129,10 @@ extension MapViewController: MKMapViewDelegate {
         guard let annotation = view.annotation as? StoreAnnotation,
               !annotation.isKind(of: MKUserLocation.self) else { return }
         view.isSelected = false
-        let storeDetailViewController = StoreDetailViewController()
         let repository = RoomListRepository(service: FirebaseService.shared)
         let usecase = RoomListUseCase(repository: repository)
         let viewModel = StoreDetailViewModel(usecase: usecase)
-        storeDetailViewController.create(store: annotation.store, viewModel: viewModel)
+        let storeDetailViewController = StoreDetailViewController(viewModel: viewModel)
         storeDetailViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(storeDetailViewController, animated: true)
     }
@@ -211,7 +205,7 @@ private extension MapViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.stores.observe(on: self, observerBlock: { [weak self] stores in
+        self.viewModel.stores.observe(on: self, observerBlock: { [weak self] stores in
             self?.delegate?.transfer(stores)
             self?.mapView.addAnnotations(stores.map { StoreAnnotation(store: $0) })
             guard let nearestStore = stores.first else { return }

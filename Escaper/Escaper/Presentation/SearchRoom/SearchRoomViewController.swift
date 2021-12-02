@@ -11,10 +11,9 @@ protocol RoomInformationTransferable: AnyObject {
     func transfer(room: Room)
 }
 
-final class SearchRoomViewController: UIViewController {
+final class SearchRoomViewController: DefaultDIViewController<SearchRoomViewModelInterface> {
     weak var roomTransferDelegate: RoomInformationTransferable?
 
-    private var viewModel: SearchRoomViewModelInterface?
     private var searchRequestWorkItem: DispatchWorkItem?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
     private let containerView: UIView = {
@@ -64,7 +63,7 @@ extension SearchRoomViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.searchRequestWorkItem?.cancel()
         let requestWorkItem = DispatchWorkItem { [weak self] in
-            self?.viewModel?.fetch(name: searchText)
+            self?.viewModel.fetch(name: searchText)
         }
         self.searchRequestWorkItem = requestWorkItem
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.2, execute: requestWorkItem)
@@ -143,13 +142,13 @@ private extension SearchRoomViewController {
     }
 
     func bindViewModel() {
-        self.viewModel?.rooms.observe(on: self) { [weak self] roomList in
+        self.viewModel.rooms.observe(on: self) { [weak self] roomList in
             var snapshot = NSDiffableDataSourceSnapshot<Section, Room>()
             snapshot.appendSections([Section.main])
             snapshot.appendItems(roomList)
             self?.dataSource?.apply(snapshot, animatingDifferences: true)
         }
-        self.viewModel?.fetch(name: "")
+        self.viewModel.fetch(name: "")
     }
 
     func configureDelegates() {
