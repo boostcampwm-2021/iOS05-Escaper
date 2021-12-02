@@ -54,8 +54,8 @@
 		3EBB5A85274E35C000715F89 /* DefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4378CC2732914B001ED120 /* DefaultViewController.swift */; };
 		3EBB5A87274E35C000715F89 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3157182743661800472CAD /* LoginViewController.swift */; };
 		3EBB5A88274E35C000715F89 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603082744F53E003F414D /* SignUpViewController.swift */; };
-		3EBB5A89274E35C000715F89 /* DefaultLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D568274CC1BC0042133B /* DefaultLoginViewModel.swift */; };
-		3EBB5A8A274E35C000715F89 /* DefaultSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D562274C840B0042133B /* DefaultSignUpViewModel.swift */; };
+		3EBB5A89274E35C000715F89 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D568274CC1BC0042133B /* LoginViewModel.swift */; };
+		3EBB5A8A274E35C000715F89 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D562274C840B0042133B /* SignUpViewModel.swift */; };
 		3EBB5A8B274E35C000715F89 /* UserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E31571B274366B900472CAD /* UserInputView.swift */; };
 		3EBB5A8C274E35C000715F89 /* UserInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4603062744D514003F414D /* UserInputTextField.swift */; };
 		3EBB5A8D274E35C000715F89 /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */; };
@@ -263,9 +263,9 @@
 		3E77D55C274BC41E0042133B /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		3E77D55E274BC8E70042133B /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		3E77D560274BC9550042133B /* UserRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryInterface.swift; sourceTree = "<group>"; };
-		3E77D562274C840B0042133B /* DefaultSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignUpViewModel.swift; sourceTree = "<group>"; };
+		3E77D562274C840B0042133B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		3E77D566274C89240042133B /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		3E77D568274CC1BC0042133B /* DefaultLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLoginViewModel.swift; sourceTree = "<group>"; };
+		3E77D568274CC1BC0042133B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		3E8A64FC274E20E30005F788 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		3E90918027563A7100ACDB78 /* RoomDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDescriptionViewController.swift; sourceTree = "<group>"; };
 		3EED222D273CDA150084D290 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
@@ -718,9 +718,9 @@
 			children = (
 				3E31571A2743665F00472CAD /* Views */,
 				3E3157182743661800472CAD /* LoginViewController.swift */,
-				3E77D568274CC1BC0042133B /* DefaultLoginViewModel.swift */,
+				3E77D568274CC1BC0042133B /* LoginViewModel.swift */,
 				3E4603082744F53E003F414D /* SignUpViewController.swift */,
-				3E77D562274C840B0042133B /* DefaultSignUpViewModel.swift */,
+				3E77D562274C840B0042133B /* SignUpViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -890,8 +890,8 @@
 				3EBB5A87274E35C000715F89 /* LoginViewController.swift in Sources */,
 				3E90918127563A7100ACDB78 /* RoomDescriptionViewController.swift in Sources */,
 				3EBB5A88274E35C000715F89 /* SignUpViewController.swift in Sources */,
-				3EBB5A89274E35C000715F89 /* DefaultLoginViewModel.swift in Sources */,
-				3EBB5A8A274E35C000715F89 /* DefaultSignUpViewModel.swift in Sources */,
+				3EBB5A89274E35C000715F89 /* LoginViewModel.swift in Sources */,
+				3EBB5A8A274E35C000715F89 /* SignUpViewModel.swift in Sources */,
 				3EBB5A8B274E35C000715F89 /* UserInputView.swift in Sources */,
 				3EBB5A8C274E35C000715F89 /* UserInputTextField.swift in Sources */,
 				0CEE8B342752103300E6C6EA /* RoomDetailViewModel.swift in Sources */,

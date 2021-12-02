@@ -8,7 +8,7 @@
 import UIKit
 
 final class AddRecordViewController: DefaultViewController {
-    private var viewModel: (AddRecordViewModelInput & AddRecordViewModelInterface)?
+    private var viewModel: AddRecordViewModelInterface?
     private let titleLabel: UILabel = EDSLabel.h02B(text: "기록 추가", color: .skullLightWhite)
     private let backButton: UIButton = {
         let button = UIButton()
@@ -34,7 +34,7 @@ final class AddRecordViewController: DefaultViewController {
         self.configureLayout()
     }
 
-    func create(viewModel: AddRecordViewModelInput & AddRecordViewModelInterface) {
+    func create(viewModel: AddRecordViewModelInterface) {
         self.viewModel = viewModel
     }
 

@@ -14,7 +14,7 @@ protocol RoomInformationTransferable: AnyObject {
 final class SearchRoomViewController: UIViewController {
     weak var roomTransferDelegate: RoomInformationTransferable?
 
-    private var viewModel: (SearchRoomViewModelInput & SearchRoomViewModelOutput)?
+    private var viewModel: SearchRoomViewModelInterface?
     private var searchRequestWorkItem: DispatchWorkItem?
     private var dataSource: UITableViewDiffableDataSource<Section, Room>?
     private let containerView: UIView = {
@@ -49,7 +49,7 @@ final class SearchRoomViewController: UIViewController {
         self.containerView.roundCorners(corners: [.topLeft, .topRight], radius: 50)
     }
 
-    func create(viewModel: SearchRoomViewModelInput & SearchRoomViewModelOutput) {
+    func create(viewModel: SearchRoomViewModelInterface) {
         self.viewModel = viewModel
     }
 
