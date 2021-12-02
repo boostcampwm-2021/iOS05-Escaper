@@ -17,9 +17,6 @@
 		0CEE8B4027564B7900E6C6EA /* DefaultNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3F27564B7900E6C6EA /* DefaultNavigationViewController.swift */; };
 		1F061DA8272FF896008FC519 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 1F061DA7272FF896008FC519 /* .swiftlint.yml */; };
 		1F43615B274FE8CA00331C6F /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F43615A274FE8CA00331C6F /* RatingView.swift */; };
-		1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC22740D4E500DE67D8 /* FirebaseFirestore */; };
-		1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */; };
-		1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F884BC62740D51100DE67D8 /* FirebaseStorage */; };
 		1FAAD0AC2746ADA400C2AE90 /* gangnam.json in Resources */ = {isa = PBXBuildFile; fileRef = 1FAAD0AB2746ADA400C2AE90 /* gangnam.json */; };
 		1FCDDE75272EE0F10027AAAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE74272EE0F10027AAAD /* Assets.xcassets */; };
 		1FCDDE78272EE0F10027AAAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCDDE76272EE0F10027AAAD /* LaunchScreen.storyboard */; };
@@ -42,6 +39,9 @@
 		251CA9AD27525C5B00BA5EC5 /* EmptyResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */; };
 		251CA9B0275643CB00BA5EC5 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9AF275643CB00BA5EC5 /* ImageUploader.swift */; };
 		251CA9B3275847E000BA5EC5 /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251CA9B2275847E000BA5EC5 /* UserDTO.swift */; };
+		2538781F27588E6300969119 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2538781E27588E6300969119 /* FirebaseFirestore */; };
+		2538782127588E6C00969119 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 2538782027588E6C00969119 /* FirebaseFirestoreSwift-Beta */; };
+		2538782327588E7300969119 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2538782227588E7300969119 /* FirebaseStorage */; };
 		3E2604A92752180000E07361 /* ValidateTextFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2604A82752180000E07361 /* ValidateTextFieldState.swift */; };
 		3E90918127563A7100ACDB78 /* RoomDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E90918027563A7100ACDB78 /* RoomDescriptionViewController.swift */; };
 		3EBB5A7E274E35C000715F89 /* InjectionDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25104A452744E90F00DB90BF /* InjectionDTOs.swift */; };
@@ -67,7 +67,7 @@
 		3EBB5A93274E35C000715F89 /* RoomOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */; };
 		3EBB5A94274E35C000715F89 /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */; };
 		3EBB5A95274E35C000715F89 /* RoomDetailInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */; };
-		3EBB5A96274E35C000715F89 /* RoomDetailUserRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */; };
+		3EBB5A96274E35C000715F89 /* UserRankDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAEE3B0273BA7C3002C1136 /* UserRankDetailView.swift */; };
 		3EBB5A97274E35C000715F89 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020599273A33A5004B024E /* MapViewController.swift */; };
 		3EBB5A98274E35C000715F89 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC247274CAD310063C632 /* MapViewModel.swift */; };
 		3EBB5A99274E35C000715F89 /* StoreAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC249274D213B0063C632 /* StoreAnnotation.swift */; };
@@ -145,7 +145,7 @@
 		0C955CE727437A300002B787 /* RankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankView.swift; sourceTree = "<group>"; };
 		0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewController.swift; sourceTree = "<group>"; };
 		0CAEE3AB273A61B2002C1136 /* RoomDetailInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailInfoView.swift; sourceTree = "<group>"; };
-		0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailUserRankView.swift; sourceTree = "<group>"; };
+		0CAEE3B0273BA7C3002C1136 /* UserRankDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankDetailView.swift; sourceTree = "<group>"; };
 		0CEA7ED5274B6F37008194AD /* LeaderBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewModel.swift; sourceTree = "<group>"; };
 		0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardUseCase.swift; sourceTree = "<group>"; };
 		0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepositoryInterface.swift; sourceTree = "<group>"; };
@@ -278,9 +278,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F884BC52740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta in Frameworks */,
-				1F884BC32740D4E500DE67D8 /* FirebaseFirestore in Frameworks */,
-				1F884BC72740D51100DE67D8 /* FirebaseStorage in Frameworks */,
+				2538781F27588E6300969119 /* FirebaseFirestore in Frameworks */,
+				2538782127588E6C00969119 /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				2538782327588E7300969119 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,12 +317,12 @@
 			path = DataMapping;
 			sourceTree = "<group>";
 		};
-		1F74F111273CEEFE00CE4D37 /* View */ = {
+		1F74F111273CEEFE00CE4D37 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				1F74F112273CEEFE00CE4D37 /* AddRecordView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		1FAAD093274666AD00C2AE90 /* Entities */ = {
@@ -388,9 +388,9 @@
 		1FE533FF273F8ABE00867832 /* SearchRoom */ = {
 			isa = PBXGroup;
 			children = (
+				1FE5342B273FB9D500867832 /* Cell */,
 				1FE53400273F8ABE00867832 /* SearchRoomViewController.swift */,
 				1FE53409273FB25D00867832 /* SearchRoomViewModel.swift */,
-				1FE5342B273FB9D500867832 /* Cell */,
 			);
 			path = SearchRoom;
 			sourceTree = "<group>";
@@ -416,7 +416,7 @@
 				251031C32733AAF500BD07BF /* RoomOverviewTableViewCell.swift */,
 				251CA9AC27525C5B00BA5EC5 /* EmptyResultView.swift */,
 				251031C52733BCAC00BD07BF /* RatingContainerView.swift */,
-				0CAEE3B0273BA7C3002C1136 /* RoomDetailUserRankView.swift */,
+				0CAEE3B0273BA7C3002C1136 /* UserRankDetailView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -433,9 +433,9 @@
 		251CA98C274F7CA400BA5EC5 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				251CA98F274F81A400BA5EC5 /* Views */,
 				251CA9A6274FE26000BA5EC5 /* SettingViewModel.swift */,
 				251CA98D274F7CDE00BA5EC5 /* SettingViewController.swift */,
-				251CA98F274F81A400BA5EC5 /* Views */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -493,6 +493,7 @@
 		255133562730E8FD00A92CF3 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				1F0CAED12733DFF300389CFA /* DataMapping */,
 				1F0CAED42733E03600389CFA /* FirebaseService.swift */,
 				0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */,
 				25020604273CE1FC004B024E /* RecordRepository.swift */,
@@ -505,7 +506,6 @@
 				251CA9AF275643CB00BA5EC5 /* ImageUploader.swift */,
 				2577276C273D18EB00881845 /* NetworkService.swift */,
 				25EA50E3274BB61F0030C17C /* UserSupervisor.swift */,
-				1F0CAED12733DFF300389CFA /* DataMapping */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -560,9 +560,9 @@
 		2551335C2730EDA900A92CF3 /* RoomList */ = {
 			isa = PBXGroup;
 			children = (
+				255133632730F06100A92CF3 /* Views */,
 				1FCDDE6F272EE0F00027AAAD /* RoomListViewController.swift */,
 				2551336B2731093B00A92CF3 /* RoomListViewModel.swift */,
-				255133632730F06100A92CF3 /* Views */,
 			);
 			path = RoomList;
 			sourceTree = "<group>";
@@ -570,10 +570,10 @@
 		2551335D2730EEDB00A92CF3 /* RoomDetail */ = {
 			isa = PBXGroup;
 			children = (
+				0CAEE3AA273A618A002C1136 /* Views */,
 				0CAEE3A8273A3769002C1136 /* RoomDetailViewController.swift */,
 				0CEE8B332752103300E6C6EA /* RoomDetailViewModel.swift */,
 				3E90918027563A7100ACDB78 /* RoomDescriptionViewController.swift */,
-				0CAEE3AA273A618A002C1136 /* Views */,
 			);
 			path = RoomDetail;
 			sourceTree = "<group>";
@@ -594,9 +594,9 @@
 		2551335F2730EEEF00A92CF3 /* LeaderBoard */ = {
 			isa = PBXGroup;
 			children = (
+				0C955CE427434E330002B787 /* Views */,
 				2502059B273A33CB004B024E /* LeaderBoardViewController.swift */,
 				0CEA7ED5274B6F37008194AD /* LeaderBoardViewModel.swift */,
-				0C955CE427434E330002B787 /* Views */,
 			);
 			path = LeaderBoard;
 			sourceTree = "<group>";
@@ -604,9 +604,9 @@
 		255133602730EF0300A92CF3 /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				3E5902A1273AA1BB0045ADDE /* Views */,
 				25020597273A3300004B024E /* RecordViewController.swift */,
 				3EED222D273CDA150084D290 /* RecordViewModel.swift */,
-				3E5902A1273AA1BB0045ADDE /* Views */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -614,10 +614,10 @@
 		255133612730EF4500A92CF3 /* AddRecord */ = {
 			isa = PBXGroup;
 			children = (
+				1F74F111273CEEFE00CE4D37 /* Views */,
 				1F74F10D273CEEC700CE4D37 /* AddRecordViewController.swift */,
 				3E0A921E27423679002166C6 /* AddRecordViewModel.swift */,
 				1F22E651273D14D700409A96 /* TimePickerViewController.swift */,
-				1F74F111273CEEFE00CE4D37 /* View */,
 			);
 			path = AddRecord;
 			sourceTree = "<group>";
@@ -695,11 +695,11 @@
 		3E315717274365E800472CAD /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				3E31571A2743665F00472CAD /* Views */,
 				3E3157182743661800472CAD /* LoginViewController.swift */,
 				3E4603082744F53E003F414D /* SignUpViewController.swift */,
 				3E77D568274CC1BC0042133B /* DefaultLoginViewModel.swift */,
 				3E77D562274C840B0042133B /* DefaultSignUpViewModel.swift */,
-				3E31571A2743665F00472CAD /* Views */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -753,9 +753,9 @@
 			);
 			name = Escaper;
 			packageProductDependencies = (
-				1F884BC22740D4E500DE67D8 /* FirebaseFirestore */,
-				1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */,
-				1F884BC62740D51100DE67D8 /* FirebaseStorage */,
+				2538781E27588E6300969119 /* FirebaseFirestore */,
+				2538782027588E6C00969119 /* FirebaseFirestoreSwift-Beta */,
+				2538782227588E7300969119 /* FirebaseStorage */,
 			);
 			productName = Escaper;
 			productReference = 1FCDDE68272EE0F00027AAAD /* Escaper.app */;
@@ -884,7 +884,7 @@
 				3EBB5A93274E35C000715F89 /* RoomOverviewTableViewCell.swift in Sources */,
 				3EBB5A94274E35C000715F89 /* RoomDetailViewController.swift in Sources */,
 				3EBB5A95274E35C000715F89 /* RoomDetailInfoView.swift in Sources */,
-				3EBB5A96274E35C000715F89 /* RoomDetailUserRankView.swift in Sources */,
+				3EBB5A96274E35C000715F89 /* UserRankDetailView.swift in Sources */,
 				3EBB5A97274E35C000715F89 /* MapViewController.swift in Sources */,
 				3EBB5A98274E35C000715F89 /* MapViewModel.swift in Sources */,
 				3EBB5A99274E35C000715F89 /* StoreAnnotation.swift in Sources */,
@@ -1104,8 +1104,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Escaper/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다.(필수권한)";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다. (필수권한)";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "기록을 추가하기 위해 권한이 필요합니다. (필수권한)";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재위치를 기반으로 방탈출 카페를 보여주기 위해 권한이 필요합니다. ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "기록을 추가하기 위해 권한이 필요합니다. ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1136,8 +1136,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Escaper/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다.(필수권한)";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재위치를 확인하기 위해 권한이 필요합니다. (필수권한)";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "기록을 추가하기 위해 권한이 필요합니다. (필수권한)";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "현재위치를 기반으로 방탈출 카페를 보여주기 위해 권한이 필요합니다. ";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "기록을 추가하기 위해 권한이 필요합니다. ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1192,17 +1192,17 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1F884BC22740D4E500DE67D8 /* FirebaseFirestore */ = {
+		2538781E27588E6300969119 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1FE6C8AA2732621800AC7408 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		1F884BC42740D4FE00DE67D8 /* FirebaseFirestoreSwift-Beta */ = {
+		2538782027588E6C00969119 /* FirebaseFirestoreSwift-Beta */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1FE6C8AA2732621800AC7408 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFirestoreSwift-Beta";
 		};
-		1F884BC62740D51100DE67D8 /* FirebaseStorage */ = {
+		2538782227588E7300969119 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1FE6C8AA2732621800AC7408 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
