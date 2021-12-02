@@ -15,19 +15,12 @@ class ImageCacheManager {
 
     static let shared = ImageCacheManager()
 
-    private let fileManager = FileManager.default
     private let storage = Storage.storage()
-    private let cachePath = URL(string: NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0])
     lazy private var cache: URLCache = {
         let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let diskCacheURL = cachesURL.appendingPathComponent("DownloadedCache")
         let cache = URLCache(memoryCapacity: 0, diskCapacity: 10_000_000, directory: diskCacheURL)
         return cache
-    }()
-    lazy private var session: URLSession = {
-        let config = URLSessionConfiguration.default
-        config.urlCache = cache
-        return URLSession(configuration: config)
     }()
 
     private init() {}

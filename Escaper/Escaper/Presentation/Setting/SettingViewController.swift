@@ -37,10 +37,6 @@ final class SettingViewController: DefaultDIViewController<SettingViewModelInter
         self.updateUserView()
     }
 
-    func create(viewModel: SettingViewModelInterface) {
-        self.viewModel = viewModel
-    }
-
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)

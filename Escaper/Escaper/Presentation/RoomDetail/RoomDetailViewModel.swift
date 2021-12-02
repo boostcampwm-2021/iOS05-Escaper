@@ -55,10 +55,6 @@ final class DefaultRoomDetailViewModel: RoomDetailViewModelInterface {
 }
 
 private extension DefaultRoomDetailViewModel {
-    enum Constant {
-        static let maxRankNumber = 5
-    }
-
     func fetch(userId: String, at index: Int) {
         self.usecase.fetch(userId: userId) { [weak self] result in
             guard let self = self else { return }

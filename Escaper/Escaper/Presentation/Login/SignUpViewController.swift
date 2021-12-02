@@ -218,7 +218,6 @@ extension SignUpViewController: UITextFieldDelegate {
         static let middleVerticalSpace = CGFloat(40)
         static let signupButtonHeight = CGFloat(50)
         static let defaultSpace = CGFloat(15)
-        static let loginButtonHeight = CGFloat(50)
         static let inputViewWidthRatio = CGFloat(0.8)
         static let inputViewHeightRatio = CGFloat(0.1)
         static let middleWidthRatio = CGFloat(0.6)

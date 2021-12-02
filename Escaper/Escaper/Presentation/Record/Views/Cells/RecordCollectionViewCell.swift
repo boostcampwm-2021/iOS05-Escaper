@@ -224,7 +224,6 @@ private extension RecordCollectionViewCell {
 }
 
 extension UIView {
-
     func addDashedBorder() {
         let shapeLayer = CAShapeLayer()
         shapeLayer.strokeColor = EDSColor.skullWhite.value?.cgColor
