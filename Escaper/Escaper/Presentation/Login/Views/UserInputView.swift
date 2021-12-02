@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserInputView: UIView {
+final class UserInputView: UIView {
     var textField: UserInputTextField?
     var guideWordsLabel: UILabel = {
         let label = UILabel()

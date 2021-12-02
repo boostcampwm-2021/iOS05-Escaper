@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HorizontalLineView: UIView {
+final class HorizontalLineView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         self.configure()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserInputTextField: UITextField {
+final class UserInputTextField: UITextField {
     private var imageView: UIImageView = UIImageView()
     private var eyeButton: UIButton = UIButton()
 

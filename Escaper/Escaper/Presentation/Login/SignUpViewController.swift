@@ -11,7 +11,7 @@ protocol SignUpViewControllerDelegate: AnyObject {
     func signUpSuccessed()
 }
 
-class SignUpViewController: DefaultViewController {
+final class SignUpViewController: DefaultViewController {
     enum Constant {
         static let shortVerticalSpace = CGFloat(20)
         static let middleVerticalSpace = CGFloat(40)

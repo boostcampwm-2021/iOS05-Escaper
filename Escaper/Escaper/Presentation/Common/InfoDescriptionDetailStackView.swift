@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoDescriptionDetailStackView: UIStackView {
+final class InfoDescriptionDetailStackView: UIStackView {
     private var infoTitleLabel: UILabel = EDSLabel.b01B(color: .gloomyPink)
     private var infoContentLabel: UILabel = {
         let label = EDSLabel.b01B(color: .skullWhite)

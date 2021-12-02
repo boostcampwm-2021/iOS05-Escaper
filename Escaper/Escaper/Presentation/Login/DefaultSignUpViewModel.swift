@@ -31,7 +31,7 @@ protocol SignUpViewModelUser {
 
 protocol SignUpViewModel: SignUpViewModelProperty, SignUpViewModelCheck, SignUpViewModelEnableButton, SignUpViewModelUser { }
 
-class DefaultSignUpViewModel: SignUpViewModel {
+final class DefaultSignUpViewModel: SignUpViewModel {
     internal var usecase: UserUseCaseInterface
     var emailMessage: Observable<String>
     var passwordMessage: Observable<String>

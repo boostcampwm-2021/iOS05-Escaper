@@ -11,7 +11,7 @@ protocol LoginViewControllerDelegate: AnyObject {
     func loginSuccessed()
 }
 
-class LoginViewController: DefaultViewController {
+final class LoginViewController: DefaultViewController {
     enum Constant {
         static let shortVerticalSpace = CGFloat(20)
         static let middleVerticalSpace = CGFloat(40)
