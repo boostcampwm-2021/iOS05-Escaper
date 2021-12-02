@@ -7,15 +7,13 @@
 
 import Foundation
 
-protocol SearchRoomViewModelInput {
+protocol SearchRoomViewModelInterface {
+    var rooms: Observable<[Room]> { get }
+
     func fetch(name: String)
 }
 
-protocol SearchRoomViewModelOutput {
-    var rooms: Observable<[Room]> { get }
-}
-
-final class SearchRoomViewModel: SearchRoomViewModelInput, SearchRoomViewModelOutput {
+final class SearchRoomViewModel: SearchRoomViewModelInterface {
     private let usecase: RoomListUseCaseInterface
     private(set) var rooms: Observable<[Room]>
 
