@@ -26,6 +26,6 @@ final class RecordRepository: RecordRepositoryInterface {
     }
 
     func addRecord(_ record: Record) {
-        self.service.add(recordDTO: record.toDTO())
+        self.service.addRecord(recordDTO: record.toDTO())
     }
 }

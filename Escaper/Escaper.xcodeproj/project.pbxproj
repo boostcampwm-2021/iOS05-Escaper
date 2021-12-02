@@ -10,8 +10,6 @@
 		0CEE8B32274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */; };
 		0CEE8B342752103300E6C6EA /* RoomDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B332752103300E6C6EA /* RoomDetailViewModel.swift */; };
 		0CEE8B362752113F00E6C6EA /* RoomDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B352752113F00E6C6EA /* RoomDetailUseCase.swift */; };
-		0CEE8B382752127B00E6C6EA /* RoomDetailRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B372752127B00E6C6EA /* RoomDetailRepositoryInterface.swift */; };
-		0CEE8B3A275212FF00E6C6EA /* RoomDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */; };
 		0CEE8B3C2754B37200E6C6EA /* daehakro.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3B2754B37200E6C6EA /* daehakro.json */; };
 		0CEE8B3E2754F66900E6C6EA /* sinchon.json in Resources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3D2754F66900E6C6EA /* sinchon.json */; };
 		0CEE8B4027564B7900E6C6EA /* DefaultNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE8B3F27564B7900E6C6EA /* DefaultNavigationViewController.swift */; };
@@ -149,8 +147,6 @@
 		0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDescriptionRatingStackView.swift; sourceTree = "<group>"; };
 		0CEE8B332752103300E6C6EA /* RoomDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewModel.swift; sourceTree = "<group>"; };
 		0CEE8B352752113F00E6C6EA /* RoomDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailUseCase.swift; sourceTree = "<group>"; };
-		0CEE8B372752127B00E6C6EA /* RoomDetailRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailRepositoryInterface.swift; sourceTree = "<group>"; };
-		0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailRepository.swift; sourceTree = "<group>"; };
 		0CEE8B3B2754B37200E6C6EA /* daehakro.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = daehakro.json; sourceTree = "<group>"; };
 		0CEE8B3D2754F66900E6C6EA /* sinchon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sinchon.json; sourceTree = "<group>"; };
 		0CEE8B3F27564B7900E6C6EA /* DefaultNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationViewController.swift; sourceTree = "<group>"; };
@@ -304,11 +300,11 @@
 		1F0CAED12733DFF300389CFA /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
-				25020608273CE349004B024E /* RecordDTO.swift */,
 				1F0CAED22733E00300389CFA /* RoomDTO.swift */,
 				25104A4A2744ED8100DB90BF /* StoreDTO.swift */,
-				251CA9A0274FDFE300BA5EC5 /* FeedbackDTO.swift */,
 				251CA9B2275847E000BA5EC5 /* UserDTO.swift */,
+				25020608273CE349004B024E /* RecordDTO.swift */,
+				251CA9A0274FDFE300BA5EC5 /* FeedbackDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -325,12 +321,12 @@
 			isa = PBXGroup;
 			children = (
 				1FAAD097274666AD00C2AE90 /* Supplementary */,
-				1FAAD094274666AD00C2AE90 /* RecordCard.swift */,
-				1FAAD095274666AD00C2AE90 /* User.swift */,
 				1FAAD096274666AD00C2AE90 /* Room.swift */,
-				1FAAD0A92746885100C2AE90 /* StoreRegion.swift */,
 				1FAAD09D274666AD00C2AE90 /* Store.swift */,
+				1FAAD0A92746885100C2AE90 /* StoreRegion.swift */,
+				1FAAD095274666AD00C2AE90 /* User.swift */,
 				1FAAD09E274666AD00C2AE90 /* Record.swift */,
+				1FAAD094274666AD00C2AE90 /* RecordCard.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -402,11 +398,10 @@
 		1FF21BB42759183C00CD3BC5 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */,
-				25020604273CE1FC004B024E /* RecordRepository.swift */,
 				1F0CAED62733E04F00389CFA /* RoomListRepository.swift */,
 				1F6DC241274C7E2D0063C632 /* StoreRepository.swift */,
 				3E77D55C274BC41E0042133B /* UserRepository.swift */,
+				25020604273CE1FC004B024E /* RecordRepository.swift */,
 				251CA9A4274FE0AF00BA5EC5 /* FeedbackRepository.swift */,
 			);
 			path = Repository;
@@ -492,10 +487,10 @@
 			isa = PBXGroup;
 			children = (
 				251031BA2733950900BD07BF /* Common */,
-				25BB1DE3274B060F00A98006 /* StoreDetail */,
 				3E315717274365E800472CAD /* Login */,
 				2551335C2730EDA900A92CF3 /* RoomList */,
 				2551335D2730EEDB00A92CF3 /* RoomDetail */,
+				25BB1DE3274B060F00A98006 /* StoreDetail */,
 				2551335E2730EEE200A92CF3 /* Map */,
 				255133602730EF0300A92CF3 /* Record */,
 				255133612730EF4500A92CF3 /* AddRecord */,
@@ -521,8 +516,8 @@
 			isa = PBXGroup;
 			children = (
 				1F0CAED12733DFF300389CFA /* DataMapping */,
-				1F0CAED42733E03600389CFA /* FirebaseService.swift */,
 				1FF21BB42759183C00CD3BC5 /* Repository */,
+				1F0CAED42733E03600389CFA /* FirebaseService.swift */,
 				25772767273D0D0A00881845 /* ImageCacheManager.swift */,
 				251CA9AF275643CB00BA5EC5 /* ImageUploader.swift */,
 				25EA50E3274BB61F0030C17C /* UserSupervisor.swift */,
@@ -655,12 +650,12 @@
 			isa = PBXGroup;
 			children = (
 				25513369273108A800A92CF3 /* RoomListUseCase.swift */,
+				0CEE8B352752113F00E6C6EA /* RoomDetailUseCase.swift */,
+				1F6DC245274C81AF0063C632 /* StoreUseCase.swift */,
+				3E77D55E274BC8E70042133B /* UserUseCase.swift */,
 				25020602273CE1E1004B024E /* RecordUsecase.swift */,
 				0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */,
-				3E77D55E274BC8E70042133B /* UserUseCase.swift */,
-				1F6DC245274C81AF0063C632 /* StoreUseCase.swift */,
 				251CA9A2274FE04D00BA5EC5 /* FeedbackUseCase.swift */,
-				0CEE8B352752113F00E6C6EA /* RoomDetailUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -677,11 +672,10 @@
 			isa = PBXGroup;
 			children = (
 				25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */,
-				25772762273CE87F00881845 /* RecordRepositoryInterface.swift */,
-				3E77D560274BC9550042133B /* UserRepositoryInterface.swift */,
 				1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */,
+				3E77D560274BC9550042133B /* UserRepositoryInterface.swift */,
+				25772762273CE87F00881845 /* RecordRepositoryInterface.swift */,
 				251CA9A8274FE32B00BA5EC5 /* FeedbackRepositoryInterface.swift */,
-				0CEE8B372752127B00E6C6EA /* RoomDetailRepositoryInterface.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -926,7 +920,6 @@
 				3EBB5AA8274E35C000715F89 /* AddRecordViewModel.swift in Sources */,
 				3EBB5AA9274E35C000715F89 /* TimePickerViewController.swift in Sources */,
 				3EBB5AAA274E35C000715F89 /* AddRecordView.swift in Sources */,
-				0CEE8B382752127B00E6C6EA /* RoomDetailRepositoryInterface.swift in Sources */,
 				3EBB5AAB274E35C000715F89 /* SearchRoomViewController.swift in Sources */,
 				3EBB5AAC274E35C000715F89 /* SearchRoomViewModel.swift in Sources */,
 				3EBB5AAD274E35C000715F89 /* SearchRoomTableViewCell.swift in Sources */,
@@ -971,7 +964,6 @@
 				0CEE8B362752113F00E6C6EA /* RoomDetailUseCase.swift in Sources */,
 				0CEE8B4027564B7900E6C6EA /* DefaultNavigationViewController.swift in Sources */,
 				3EBB5ACD274E35C000715F89 /* ImageCacheManager.swift in Sources */,
-				0CEE8B3A275212FF00E6C6EA /* RoomDetailRepository.swift in Sources */,
 				3EBB5ACF274E35C000715F89 /* UserSupervisor.swift in Sources */,
 				3EBB5AD0274E35C000715F89 /* UserRepository.swift in Sources */,
 				3EBB5AD1274E35C000715F89 /* RecordDTO.swift in Sources */,
