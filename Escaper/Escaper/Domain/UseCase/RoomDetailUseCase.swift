@@ -13,14 +13,16 @@ protocol RoomDetailUseCaseInterface {
 }
 
 final class RoomDetailUseCase: RoomDetailUseCaseInterface {
-    private let repository: RoomDetailRepositoryInterface
+    private let roomListRepository: RoomListRepositoryInterface
+    private let userRepository: UserRepositoryInterface
 
-    init(repository: RoomDetailRepositoryInterface) {
-        self.repository = repository
+    init(roomListRepository: RoomListRepositoryInterface, userRepository: UserRepositoryInterface) {
+        self.roomListRepository = roomListRepository
+        self.userRepository = userRepository
     }
 
     func fetch(roomId: String, completion: @escaping (Result<Room, Error>) -> Void) {
-        self.repository.fetch(roomId: roomId) { result in
+        self.roomListRepository.fetch(roomId: roomId) { result in
             switch result {
             case .success(var room):
                 room.records = room.records
@@ -34,7 +36,7 @@ final class RoomDetailUseCase: RoomDetailUseCaseInterface {
     }
 
     func fetch(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
-        self.repository.fetch(userId: userId) { result in
+        self.userRepository.fetchUser(userId: userId) { result in
             switch result {
             case .success(let user):
                 completion(.success(user))

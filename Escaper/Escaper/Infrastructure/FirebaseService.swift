@@ -18,7 +18,7 @@ protocol RoomListNetwork: AnyObject {
 
 protocol RecordNetwork: AnyObject {
     func queryRecord(userEmail: String, completion: @escaping (Result<[RecordDTO], Error>) -> Void)
-    func add(recordDTO: RecordDTO)
+    func addRecord(recordDTO: RecordDTO)
 }
 
 protocol StoreNetwork: AnyObject {
@@ -26,19 +26,16 @@ protocol StoreNetwork: AnyObject {
 }
 
 protocol UserNetwork: AnyObject {
-    func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void)
-    func confirmUser(email: String, password: String, completion: @escaping (Result<UserDTO, UserError>) -> Void)
+    func queryisExistUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void)
+    func queryUser(userId: String, completion: @escaping (Result<UserDTO, Error>) -> Void)
     func queryAllUser(completion: @escaping (Result<[UserDTO], Error>) -> Void)
-    func add(userDTO: UserDTO)
-    func update(score: Int, belongsTo userEmail: String)
+    func confirmUser(email: String, password: String, completion: @escaping (Result<UserDTO, UserError>) -> Void)
+    func addUser(userDTO: UserDTO)
+    func updateScore(score: Int, belongsTo userEmail: String)
 }
 
 protocol FeedbackNetwork: AnyObject {
     func add(feedbackDTO: FeedbackDTO)
-}
-
-protocol RoomDetailNetwork: AnyObject {
-    func queryUser(userId: String, completion: @escaping (Result<UserDTO, Error>) -> Void)
 }
 
 final class FirebaseService: RoomListNetwork {
@@ -136,7 +133,7 @@ extension FirebaseService: RecordNetwork {
             }
     }
 
-    func add(recordDTO: RecordDTO) {
+    func addRecord(recordDTO: RecordDTO) {
         let path = self.database.collection(Collection.records.value).document("\(recordDTO.userEmail)_\(recordDTO.roomId)")
         path.setData(recordDTO.toDictionary())
     }
@@ -243,7 +240,7 @@ extension FirebaseService: StoreNetwork {
 }
 
 extension FirebaseService: UserNetwork {
-    func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func queryisExistUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         self.database.collection(Collection.users.value)
             .whereField("email", isEqualTo: email)
             .getDocuments { snapshot, _ in
@@ -258,6 +255,41 @@ extension FirebaseService: UserNetwork {
                 switch result {
                 case .success:
                     completion(.success(true))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+
+    func queryUser(userId: String, completion: @escaping (Result<UserDTO, Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .whereField("email", isEqualTo: userId)
+            .getDocuments { snapshot, _ in
+                guard let document = snapshot?.documents.first else { return }
+                let result = Result {
+                    try document.data(as: UserDTO.self)
+                }
+                switch result {
+                case .success(let userDTO):
+                    if let userDTO = userDTO {
+                        completion(.success(userDTO))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+
+    func queryAllUser(completion: @escaping (Result<[UserDTO], Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                let result = Result {
+                    try documents.map { try $0.data(as: UserDTO.self) }.compactMap { $0 }
+                }
+                switch result {
+                case .success(let users):
+                    completion(.success(users))
                 case .failure(let error):
                     completion(.failure(error))
                 }
@@ -288,28 +320,12 @@ extension FirebaseService: UserNetwork {
             }
     }
 
-    func queryAllUser(completion: @escaping (Result<[UserDTO], Error>) -> Void) {
-        self.database.collection(Collection.users.value)
-            .getDocuments { snapshot, _ in
-                guard let documents = snapshot?.documents else { return }
-                let result = Result {
-                    try documents.map { try $0.data(as: UserDTO.self) }.compactMap { $0 }
-                }
-                switch result {
-                case .success(let users):
-                    completion(.success(users))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-    }
-
-    func add(userDTO: UserDTO) {
+    func addUser(userDTO: UserDTO) {
         let path = self.database.collection(Collection.users.value).document("\(userDTO.email)")
         path.setData(userDTO.toDictionary())
     }
 
-    func update(score: Int, belongsTo userEmail: String) {
+    func updateScore(score: Int, belongsTo userEmail: String) {
         let path = self.database.collection(Collection.users.value).document(userEmail)
         path.updateData([
             "score": score
@@ -321,26 +337,5 @@ extension FirebaseService: FeedbackNetwork {
     func add(feedbackDTO: FeedbackDTO) {
         let path = self.database.collection(Collection.feedbacks.value).document()
         path.setData(feedbackDTO.toDictionary())
-    }
-}
-
-extension FirebaseService: RoomDetailNetwork {
-    func queryUser(userId: String, completion: @escaping (Result<UserDTO, Error>) -> Void) {
-        self.database.collection(Collection.users.value)
-            .whereField("email", isEqualTo: userId)
-            .getDocuments { snapshot, _ in
-                guard let document = snapshot?.documents.first else { return }
-                let result = Result {
-                    try document.data(as: UserDTO.self)
-                }
-                switch result {
-                case .success(let userDTO):
-                    if let userDTO = userDTO {
-                        completion(.success(userDTO))
-                    }
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
     }
 }

@@ -123,8 +123,9 @@ extension RoomListViewController: CLLocationManagerDelegate {
 extension RoomListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let room = self.dataSource?.itemIdentifier(for: indexPath) else { return }
-        let repository = RoomDetailRepository(service: FirebaseService.shared)
-        let usecase = RoomDetailUseCase(repository: repository)
+        let roomListRepository = RoomListRepository(service: FirebaseService.shared)
+        let userRepository = UserRepository(service: FirebaseService.shared)
+        let usecase = RoomDetailUseCase(roomListRepository: roomListRepository, userRepository: userRepository)
         let viewModel = DefaultRoomDetailViewModel(usecase: usecase)
         let detailViewController = RoomDetailViewController(viewModel: viewModel)
         detailViewController.update(roomId: room.roomId)

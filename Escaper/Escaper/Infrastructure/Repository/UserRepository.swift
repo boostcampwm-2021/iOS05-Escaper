@@ -15,7 +15,7 @@ final class UserRepository: UserRepositoryInterface {
     }
 
     func query(userEmail: String, completion: @escaping (Result<Bool, Error>) -> Void) {
-        self.service.queryUser(email: userEmail) { result in
+        self.service.queryisExistUser(email: userEmail) { result in
             switch result {
             case .success(let isOverlaped):
                 if isOverlaped {
@@ -43,6 +43,17 @@ final class UserRepository: UserRepositoryInterface {
         }
     }
 
+    func fetchUser(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
+        self.service.queryUser(userId: userId) { result in
+            switch result {
+            case .success(let userDTO):
+                completion(.success(userDTO.toDomain()))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     func fetchAllUser(completion: @escaping (Result<[User], Error>) -> Void) {
         self.service.queryAllUser { result in
             switch result {
@@ -55,10 +66,10 @@ final class UserRepository: UserRepositoryInterface {
     }
 
     func add(user: User) {
-        self.service.add(userDTO: user.toDTO())
+        self.service.addUser(userDTO: user.toDTO())
     }
 
     func update(score: Int, belongsTo userEmail: String) {
-        self.service.update(score: score, belongsTo: userEmail)
+        self.service.updateScore(score: score, belongsTo: userEmail)
     }
 }
