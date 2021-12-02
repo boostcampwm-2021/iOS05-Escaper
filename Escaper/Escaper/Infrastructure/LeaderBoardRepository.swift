@@ -18,7 +18,7 @@ final class LeaderBoardRepository: LeaderBoardRepositoryInterface {
         self.service.queryUser { result in
             switch result {
             case .success(let userDTOs):
-                completion(.success(userDTOs.map{ $0.toDomain() }))
+                completion(.success(userDTOs.map { $0.toDomain() }))
             case .failure(let error):
                 completion(.failure(error))
             }

@@ -24,7 +24,7 @@ final class RatingContainerView: UIView {
         rating.imageKind = .star
         return rating
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configure()

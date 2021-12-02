@@ -1,5 +1,5 @@
 //
-//  RoomDetailUserRankView.swift
+//  UserRankDetailView.swift
 //  Escaper
 //
 //  Created by 박영광 on 2021/11/10.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RoomDetailUserRankView: UIView {
+final class UserRankDetailView: UIView {
     static let rankColor = [EDSColor.pumpkin.value, EDSColor.gloomyPink.value, EDSColor.gloomyRed.value]
 
     private let rankLabel: UILabel = {
@@ -71,7 +71,7 @@ final class RoomDetailUserRankView: UIView {
     }
 }
 
-private extension RoomDetailUserRankView {
+private extension UserRankDetailView {
     enum Constant {
         static let userImageSize = CGFloat(50)
         static let leftSideSpace = CGFloat(40)
@@ -131,7 +131,7 @@ private extension RoomDetailUserRankView {
         var ret = ""
         var time = time
         let second = time % 60
-        if second > 0 {
+        if second >= 0 {
             ret = "\(second)s " + ret
         }
         time /= 60

@@ -313,7 +313,7 @@ extension FirebaseService: UserNetwork {
         let path = self.database.collection(Collection.users.value).document("\(userDTO.email)")
         path.setData(userDTO.toDictionary())
     }
-    
+
     func update(score: Int, belongsTo userEmail: String) {
         let path = self.database.collection(Collection.users.value).document(userEmail)
         path.updateData([
