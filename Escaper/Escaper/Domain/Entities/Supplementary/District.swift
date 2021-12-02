@@ -8,6 +8,7 @@
 import Foundation
 
 enum District: String, CaseIterable, Codable {
+    case all = "서울 전체"
     case gangnamgu = "강남구"
     case gangdonggu = "강동구"
     case gangbukgu = "강북구"
