@@ -96,7 +96,6 @@
 		3EBB5AB0274E35C000715F89 /* TopRankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE527434E690002B787 /* TopRankView.swift */; };
 		3EBB5AB1274E35C000715F89 /* RankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C955CE727437A300002B787 /* RankView.swift */; };
 		3EBB5AB2274E35C000715F89 /* RoomListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */; };
-		3EBB5AB3274E35C000715F89 /* LeaderBoardRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */; };
 		3EBB5AB4274E35C000715F89 /* RecordRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772762273CE87F00881845 /* RecordRepositoryInterface.swift */; };
 		3EBB5AB5274E35C000715F89 /* UserRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E77D560274BC9550042133B /* UserRepositoryInterface.swift */; };
 		3EBB5AB6274E35C000715F89 /* StoreRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */; };
@@ -119,7 +118,6 @@
 		3EBB5AC8274E35C000715F89 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED42733E03600389CFA /* FirebaseService.swift */; };
 		3EBB5AC9274E35C000715F89 /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25020604273CE1FC004B024E /* RecordRepository.swift */; };
 		3EBB5ACA274E35C000715F89 /* RoomListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CAED62733E04F00389CFA /* RoomListRepository.swift */; };
-		3EBB5ACB274E35C000715F89 /* LeaderBoardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */; };
 		3EBB5ACC274E35C000715F89 /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6DC241274C7E2D0063C632 /* StoreRepository.swift */; };
 		3EBB5ACD274E35C000715F89 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25772767273D0D0A00881845 /* ImageCacheManager.swift */; };
 		3EBB5ACF274E35C000715F89 /* UserSupervisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA50E3274BB61F0030C17C /* UserSupervisor.swift */; };
@@ -148,8 +146,6 @@
 		0CAEE3B0273BA7C3002C1136 /* UserRankDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRankDetailView.swift; sourceTree = "<group>"; };
 		0CEA7ED5274B6F37008194AD /* LeaderBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardViewModel.swift; sourceTree = "<group>"; };
 		0CEA7ED7274B7229008194AD /* LeaderBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardUseCase.swift; sourceTree = "<group>"; };
-		0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepositoryInterface.swift; sourceTree = "<group>"; };
-		0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardRepository.swift; sourceTree = "<group>"; };
 		0CEE8B31274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDescriptionRatingStackView.swift; sourceTree = "<group>"; };
 		0CEE8B332752103300E6C6EA /* RoomDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewModel.swift; sourceTree = "<group>"; };
 		0CEE8B352752113F00E6C6EA /* RoomDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailUseCase.swift; sourceTree = "<group>"; };
@@ -407,7 +403,6 @@
 			isa = PBXGroup;
 			children = (
 				0CEE8B39275212FF00E6C6EA /* RoomDetailRepository.swift */,
-				0CEA7EDB274B7412008194AD /* LeaderBoardRepository.swift */,
 				25020604273CE1FC004B024E /* RecordRepository.swift */,
 				1F0CAED62733E04F00389CFA /* RoomListRepository.swift */,
 				1F6DC241274C7E2D0063C632 /* StoreRepository.swift */,
@@ -682,7 +677,6 @@
 			isa = PBXGroup;
 			children = (
 				25772761273CE87F00881845 /* RoomListRepositoryInterface.swift */,
-				0CEA7ED9274B735A008194AD /* LeaderBoardRepositoryInterface.swift */,
 				25772762273CE87F00881845 /* RecordRepositoryInterface.swift */,
 				3E77D560274BC9550042133B /* UserRepositoryInterface.swift */,
 				1F6DC243274C7E820063C632 /* StoreRepositoryInterface.swift */,
@@ -943,7 +937,6 @@
 				251CA995274F875200BA5EC5 /* UserLogoutedView.swift in Sources */,
 				3EBB5AB2274E35C000715F89 /* RoomListRepositoryInterface.swift in Sources */,
 				251CA9AD27525C5B00BA5EC5 /* EmptyResultView.swift in Sources */,
-				3EBB5AB3274E35C000715F89 /* LeaderBoardRepositoryInterface.swift in Sources */,
 				3EBB5AB4274E35C000715F89 /* RecordRepositoryInterface.swift in Sources */,
 				251CA9A3274FE04D00BA5EC5 /* FeedbackUseCase.swift in Sources */,
 				0CEE8B32274FC1DB00E6C6EA /* InfoDescriptionRatingStackView.swift in Sources */,
@@ -972,7 +965,6 @@
 				3EBB5AC9274E35C000715F89 /* RecordRepository.swift in Sources */,
 				3EBB5ACA274E35C000715F89 /* RoomListRepository.swift in Sources */,
 				251CA9A1274FDFE300BA5EC5 /* FeedbackDTO.swift in Sources */,
-				3EBB5ACB274E35C000715F89 /* LeaderBoardRepository.swift in Sources */,
 				3EBB5ACC274E35C000715F89 /* StoreRepository.swift in Sources */,
 				251CA9A5274FE0AF00BA5EC5 /* FeedbackRepository.swift in Sources */,
 				251CA991274F86BA00BA5EC5 /* UserLoginedView.swift in Sources */,

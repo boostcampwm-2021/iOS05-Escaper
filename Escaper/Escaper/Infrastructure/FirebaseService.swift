@@ -21,10 +21,6 @@ protocol RecordNetwork: AnyObject {
     func add(recordDTO: RecordDTO)
 }
 
-protocol LeaderBoardNetwork: AnyObject {
-    func queryUser(completion: @escaping (Result<[UserDTO], Error>) -> Void)
-}
-
 protocol StoreNetwork: AnyObject {
     func queryStore(name: String, completion: @escaping (Result<[StoreDTO], Error>) -> Void)
 }
@@ -32,6 +28,7 @@ protocol StoreNetwork: AnyObject {
 protocol UserNetwork: AnyObject {
     func queryUser(email: String, completion: @escaping (Result<Bool, Error>) -> Void)
     func confirmUser(email: String, password: String, completion: @escaping (Result<UserDTO, UserError>) -> Void)
+    func queryAllUser(completion: @escaping (Result<[UserDTO], Error>) -> Void)
     func add(userDTO: UserDTO)
     func update(score: Int, belongsTo userEmail: String)
 }
@@ -142,24 +139,6 @@ extension FirebaseService: RecordNetwork {
     func add(recordDTO: RecordDTO) {
         let path = self.database.collection(Collection.records.value).document("\(recordDTO.userEmail)_\(recordDTO.roomId)")
         path.setData(recordDTO.toDictionary())
-    }
-}
-
-extension FirebaseService: LeaderBoardNetwork {
-    func queryUser(completion: @escaping (Result<[UserDTO], Error>) -> Void) {
-        self.database.collection(Collection.users.value)
-            .getDocuments { snapshot, _ in
-                guard let documents = snapshot?.documents else { return }
-                let result = Result {
-                    try documents.map { try $0.data(as: UserDTO.self) }.compactMap { $0 }
-                }
-                switch result {
-                case .success(let users):
-                    completion(.success(users))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
     }
 }
 
@@ -305,6 +284,22 @@ extension FirebaseService: UserNetwork {
                     }
                 case .failure:
                     completion(.failure(.networkUnconneted))
+                }
+            }
+    }
+
+    func queryAllUser(completion: @escaping (Result<[UserDTO], Error>) -> Void) {
+        self.database.collection(Collection.users.value)
+            .getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                let result = Result {
+                    try documents.map { try $0.data(as: UserDTO.self) }.compactMap { $0 }
+                }
+                switch result {
+                case .success(let users):
+                    completion(.success(users))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
             }
     }

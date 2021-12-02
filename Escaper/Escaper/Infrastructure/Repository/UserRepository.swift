@@ -43,6 +43,17 @@ final class UserRepository: UserRepositoryInterface {
         }
     }
 
+    func fetchAllUser(completion: @escaping (Result<[User], Error>) -> Void) {
+        self.service.queryAllUser { result in
+            switch result {
+            case .success(let userDTOs):
+                completion(.success(userDTOs.map { $0.toDomain() }))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     func add(user: User) {
         self.service.add(userDTO: user.toDTO())
     }
