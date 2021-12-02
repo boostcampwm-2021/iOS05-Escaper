@@ -22,7 +22,7 @@ class ImageCacheManager {
     lazy private var cache: URLCache = {
         let cachesURL = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
         let diskCacheURL = cachesURL.appendingPathComponent("DownloadedCache")
-        let cache = URLCache(memoryCapacity: 100_000_000, diskCapacity: 500_000_000, directory: diskCacheURL)
+        let cache = URLCache(memoryCapacity: 0, diskCapacity: 100_000_000, directory: diskCacheURL)
         return cache
     }()
     lazy private var session: URLSession = {
