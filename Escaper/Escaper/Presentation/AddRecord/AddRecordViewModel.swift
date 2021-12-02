@@ -7,23 +7,20 @@
 
 import Foundation
 
-protocol AddRecordViewModelInput {
-    func post(email: String, imageURLString: String)
-}
-
-protocol AddRecordViewModelOutput {
+protocol AddRecordViewModelInterface {
     var room: Room? { get set }
     var satisfaction: Double { get set }
     var isSuccess: Bool { get set }
     var time: Int { get set }
     var records: [Record] { get set }
     var state: Observable<Bool> { get }
-    func updateRoom(_ room: Room) -> Bool
 
+    func updateRoom(_ room: Room) -> Bool
     func changeSaveState()
+    func post(email: String, imageURLString: String)
 }
 
-final class AddRecordViewModel: AddRecordViewModelInput, AddRecordViewModelOutput {
+final class AddRecordViewModel: AddRecordViewModelInterface {
     private let recordUsecase: RecordUsecaseInterface
     private let userUsecase: UpdateUserUscCaseInterface
     var room: Room?
