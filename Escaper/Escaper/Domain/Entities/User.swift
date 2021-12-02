@@ -7,21 +7,18 @@
 
 import Foundation
 
-struct User: Decodable {
+struct User {
     let email: String
     let name: String
     let password: String
     let imageURL: String
     let score: Int
 
-    func toDictionary() -> [String: Any] {
-        let dictionary: [String: Any] = [
-            "email": self.email,
-            "name": self.name,
-            "password": self.password,
-            "imageURL": self.imageURL,
-            "score": self.score
-        ]
-        return dictionary
+    func toDTO() -> UserDTO {
+        return UserDTO(email: self.email,
+                       name: self.name,
+                       password: self.password,
+                       imageURL: self.imageURL,
+                       score: self.score)
     }
 }
