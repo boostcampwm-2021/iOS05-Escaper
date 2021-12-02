@@ -142,7 +142,7 @@ extension FirebaseService: RecordNetwork {
 private extension FirebaseService {
     func query(by genre: Genre, district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
         switch district {
-        case .none:
+        case .all, .none:
             self.database.collection(Collection.rooms.value)
                 .whereField("genre", isEqualTo: genre.name)
                 .getDocuments { snapshot, _ in
@@ -178,7 +178,7 @@ private extension FirebaseService {
 
     func query(district: District, completion: @escaping (Result<[RoomDTO], Error>) -> Void) {
         switch district {
-        case .none:
+        case .all, .none:
             self.queryRoomAll(completion: completion)
         default:
             self.queryRoombyDistrict(district: district, completion: completion)
