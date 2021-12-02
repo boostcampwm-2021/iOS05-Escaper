@@ -39,13 +39,13 @@ final class DefaultLoginViewModel: LoginViewModel {
     }
 
     func confirmUser(email: String, password: String, completion: @escaping (Result<User, UserError>) -> Void) {
-        self.usecase.confirm(userEmail: email, userPassword: password) { result in
+        self.usecase.confirm(userEmail: email, userPassword: password) { [weak self] result in
             switch result {
             case .success(let user):
                 completion(.success(user))
             case .failure(.notExist):
-                self.emailMessage.value = ValidateTextFieldState.notConfirmedError.value
-                self.passwordMessage.value = ValidateTextFieldState.notConfirmedError.value
+                self?.emailMessage.value = ValidateTextFieldState.notConfirmedError.value
+                self?.passwordMessage.value = ValidateTextFieldState.notConfirmedError.value
                 completion(.failure(.notExist))
             case .failure(.networkUnconneted):
                 completion(.failure(.networkUnconneted))

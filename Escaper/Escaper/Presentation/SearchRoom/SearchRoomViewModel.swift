@@ -23,10 +23,10 @@ final class SearchRoomViewModel: SearchRoomViewModelInterface {
     }
 
     func fetch(name: String) {
-        self.usecase.fetch(name: name) { result in
+        self.usecase.fetch(name: name) { [weak self] result in
             switch result {
             case .success(let rooms):
-                self.rooms.value = rooms
+                self?.rooms.value = rooms
             case .failure(let error):
                 print(error)
             }

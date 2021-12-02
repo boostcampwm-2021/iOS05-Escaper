@@ -23,10 +23,10 @@ final class MapViewModel: MapViewModelInterface {
     }
 
     func query(name: String) {
-        self.usecase.query(name: name) { result in
+        self.usecase.query(name: name) { [weak self] result in
             switch result {
             case .success(let stores):
-                self.stores.value = stores.sorted { $0.distance < $1.distance }
+                self?.stores.value = stores.sorted { $0.distance < $1.distance }
             case .failure(let error):
                 print(error)
             }

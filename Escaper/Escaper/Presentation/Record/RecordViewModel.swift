@@ -27,7 +27,8 @@ final class DefaultRecordViewModel: RecordViewModel {
     }
 
     func fetch(userEmail: String) {
-        self.useCase?.fetchAllRecords(userEmail: userEmail) { result in
+        self.useCase?.fetchAllRecords(userEmail: userEmail) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let record):
                 guard !self.records.value.contains(record) else { return }
