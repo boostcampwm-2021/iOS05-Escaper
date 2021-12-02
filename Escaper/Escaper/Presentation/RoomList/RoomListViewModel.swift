@@ -24,7 +24,8 @@ final class DefaultRoomListViewModel: RoomListViewModelInterface {
     }
 
     func fetch(district: District, genre: Genre, sortingOption: SortingOption) {
-        self.usecase.query(district: district, genre: genre) { result in
+        self.usecase.query(district: district, genre: genre) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let rooms):
                 self.rooms.value = self.sort(rooms: rooms, by: sortingOption)

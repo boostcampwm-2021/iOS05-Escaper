@@ -73,11 +73,11 @@ final class DefaultSignUpViewModel: SignUpViewModel {
     }
 
     func queryUser(email: String, completion: @escaping (Bool) -> Void) {
-        self.usecase.query(userEmail: email) { result in
+        self.usecase.query(userEmail: email) { [weak self] result in
             switch result {
             case .success(let isExist):
                 if isExist {
-                    self.emailMessage.value = ValidateTextFieldState.alreadyExistError.value
+                    self?.emailMessage.value = ValidateTextFieldState.alreadyExistError.value
                     completion(true)
                 } else {
                     completion(false)

@@ -23,10 +23,10 @@ final class StoreDetailViewModel: StoreDetailViewModelInterface {
     }
 
     func fetchRooms(ids: [String]) {
-        self.usecase.fetch(ids: ids) { result in
+        self.usecase.fetch(ids: ids) { [weak self] result in
             switch result {
             case .success(let room):
-                self.rooms.value.append(room)
+                self?.rooms.value.append(room)
             case .failure(let error):
                 print(error)
             }
