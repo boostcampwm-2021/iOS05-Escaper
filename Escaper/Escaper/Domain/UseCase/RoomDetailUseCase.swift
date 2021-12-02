@@ -25,7 +25,6 @@ final class RoomDetailUseCase: RoomDetailUseCaseInterface {
             case .success(var room):
                 room.records = room.records
                     .sorted { $0.escapingTime < $1.escapingTime }
-                    .prefix(3)
                     .map { $0 }
                 completion(.success(room))
             case .failure(let error):
