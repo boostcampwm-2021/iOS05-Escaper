@@ -198,7 +198,7 @@ private extension RoomDetailViewController {
     func updateStackView(records: [Record]) {
         self.rankTitleLabel.isHidden = records.isEmpty
         for (rank, record) in records.enumerated() {
-            let rankView = RoomDetailUserRankView()
+            let rankView = UserRankDetailView()
             rankView.translatesAutoresizingMaskIntoConstraints = false
             rankView.heightAnchor.constraint(equalToConstant: Constant.rankViewHeight).isActive = true
             rankView.layer.cornerRadius = 10
@@ -218,7 +218,7 @@ private extension RoomDetailViewController {
     func bindViewModel() {
         self.viewModel?.users.observe(on: self) { [weak self] users in
             for (index, user) in users.enumerated() {
-                guard let rankView = self?.userRankStackView.subviews[index] as? RoomDetailUserRankView else { return }
+                guard let rankView = self?.userRankStackView.subviews[index] as? UserRankDetailView else { return }
                 rankView.update(imageURL: user.imageURL)
             }
         }

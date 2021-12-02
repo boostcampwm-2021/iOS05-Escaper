@@ -34,7 +34,7 @@ class ImageCacheManager {
     private init() {}
 
     func download(urlString: String, completion: @escaping DataCompletion) {
-        self.storage.reference(forURL: urlString).downloadURL { url, error in
+        self.storage.reference(forURL: urlString).downloadURL { url, _ in
             guard let url = url else { return }
             let request = URLRequest(url: url)
             if let data = self.cache.cachedResponse(for: request)?.data {
