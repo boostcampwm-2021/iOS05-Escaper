@@ -9,7 +9,6 @@ import Foundation
 
 protocol RoomDetailUseCaseInterface {
     func fetch(roomId: String, completion: @escaping (Result<Room, Error>) -> Void)
-
     func fetch(userId: String, completion: @escaping (Result<User, Error>) -> Void)
 }
 

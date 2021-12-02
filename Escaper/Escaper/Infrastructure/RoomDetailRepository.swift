@@ -28,8 +28,8 @@ final class RoomDetailRepository: RoomDetailRepositoryInterface {
     func fetch(userId: String, completion: @escaping (Result<User, Error>) -> Void) {
         self.service.queryUser(userId: userId) { result in
             switch result {
-            case .success(let user):
-                completion(.success(user))
+            case .success(let userDTO):
+                completion(.success(userDTO.toDomain()))
             case .failure(let error):
                 completion(.failure(error))
             }

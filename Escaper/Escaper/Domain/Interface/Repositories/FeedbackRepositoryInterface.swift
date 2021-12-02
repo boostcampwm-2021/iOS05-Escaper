@@ -8,5 +8,5 @@
 import Foundation
 
 protocol FeedbackRepositoryInterface {
-    func addFeedback(feedback: Feedback)
+    func add(feedback: Feedback)
 }

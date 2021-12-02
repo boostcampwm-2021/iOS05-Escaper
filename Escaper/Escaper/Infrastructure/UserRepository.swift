@@ -33,8 +33,8 @@ final class UserRepository: UserRepositoryInterface {
     func confirm(userEmail: String, userPassword: String, completion: @escaping (Result<User, UserError>) -> Void) {
         self.service.confirmUser(email: userEmail, password: userPassword) { result in
             switch result {
-            case .success(let user):
-                completion(.success(user))
+            case .success(let userDTO):
+                completion(.success(userDTO.toDomain()))
             case .failure(.notExist):
                 completion(.failure(.notExist))
             case .failure(.networkUnconneted):
@@ -44,10 +44,10 @@ final class UserRepository: UserRepositoryInterface {
     }
 
     func add(user: User) {
-        self.service.addUser(user: user)
+        self.service.add(userDTO: user.toDTO())
     }
 
-    func updateScore(userEmail: String, score: Int) {
-        self.service.updateScore(userEmail: userEmail, score: score)
+    func update(score: Int, belongsTo userEmail: String) {
+        self.service.update(score: score, belongsTo: userEmail)
     }
 }
